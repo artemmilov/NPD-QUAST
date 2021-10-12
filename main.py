@@ -76,13 +76,13 @@ def _is_identification_correct(dereplicator_identification, true_identifications
     return False
 
 
-def percent_true_top(spectre_identifications, true_identifications, top=None):
-    if top is None:
-        top = len(spectre_identifications)
+def percent_true_top(spectre_identifications, true_identifications, best=None):
+    if best is None:
+        best = len(spectre_identifications)
     true_answers = 0
-    for spectre_identification in sorted(spectre_identifications, key=lambda si: si.p_value, reverse=True)[:top]:
+    for spectre_identification in sorted(spectre_identifications, key=lambda si: si.p_value, reverse=True)[:best]:
         true_answers += _is_identification_correct(spectre_identification, true_identifications)
-    return float(true_answers) / top * 10
+    return float(true_answers) / best * 10
 
 
 def main():
@@ -92,14 +92,14 @@ def main():
         print('Incorrect input!')
         return
     true_identifications = initialize_true_specs(library_address, smiles_address)
-    spectre_identifications = initialize_dereplicator_specs(all_matches_address)
+    dereplicator_identifications = initialize_dereplicator_specs(all_matches_address)
     print('{} {} {} {}'.format(
-        percent_true_top(spectre_identifications, true_identifications),
-        percent_true_top(spectre_identifications, true_identifications, top=10),
-        percent_true_top(spectre_identifications, true_identifications, top=100),
-        percent_true_top(spectre_identifications, true_identifications, top=1000)
+        percent_true_top(dereplicator_identifications, true_identifications),
+        percent_true_top(dereplicator_identifications, true_identifications, best=10),
+        percent_true_top(dereplicator_identifications, true_identifications, best=100),
+        percent_true_top(dereplicator_identifications, true_identifications, best=1000)
     ))
 
 
 if __name__ == '__main__':
-    main()  # converter/input_sample/input_library.mgf converter/test/all_matches.tsv converter/output_sample/database/smiles.info
+    main()  # converter_from_NPDTools/input_sample/input_library.mgf converter_from_NPDTools/test/all_matches.tsv converter_from_NPDTools/output_sample/database/smiles.info

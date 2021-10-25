@@ -94,7 +94,7 @@ def handle_mols_data(gnps_library_address,
                         file_npdtools_input.write('SCANS={0}\n'.format(scan))
                 file_npdtools_input.write('\n\n')
 
-                file_true_answers.write('{}\t{}\n'.format(scan, inchi.MolToInchiKey(m)))
+                file_true_answers.write('{}\t{}\n'.format(scan, inchi.MolToInchiKey(m).split('-')[0]))
 
                 scan += 1
             except Exception as e:
@@ -117,7 +117,7 @@ def print_dereplicator_answers(all_matches_address,
                 if library_info_line.split(' ')[1] == answer_name:
                     answer_address = os.path.join(database_address, library_info_line.split(' ')[0])
                     answer_mol = Chem.MolFromMolFile(answer_address)
-                    answer = inchi.MolToInchiKey(answer_mol)
+                    answer = inchi.MolToInchiKey(answer_mol).split('-')[0]
                     dereplicator_answers.write('{0}\t{1}\t{2}\n'.format(scan, answer, p_value))
 
 
@@ -144,8 +144,8 @@ def main():
 
 
 if __name__ == '__main__':
-    print_dereplicator_answers('test/all_matches.tsv',
-                               'tool_answers.txt',
-                               'output_sample/database')
-    # main()  # input_sample/input_library output_sample/database output_sample/NPDTools_input output_sample/true_answers
+    #print_dereplicator_answers('test/all_matches.tsv',
+    #                           'tool_answers.txt',
+    #                           'output_sample/database')
+    main()  # input_sample/input_library output_sample/database output_sample/NPDTools_input output_sample/true_answers
     # dereplicator.py output_sample/NPDTools_input/ --db-path output_sample/database/ -o test

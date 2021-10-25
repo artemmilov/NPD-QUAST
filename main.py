@@ -1,7 +1,7 @@
 
 def percent_true_best(true_answers, tool_answers, best=None):
     if best is None:
-        best = len(true_answers.keys())
+        best = len(tool_answers.keys())
     correct_matches = 0
     for scan in sorted(tool_answers, key=lambda scn: tool_answers[scn][1], reverse=True)[:best]:
         correct_matches += (tool_answers[scan][0] == true_answers[scan])

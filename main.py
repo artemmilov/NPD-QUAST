@@ -1,11 +1,4 @@
-def percent_true_best(true_answers, tool_answers, best=None):
-    total = len(tool_answers.keys())
-    if best is None:
-        best = total
-    correct_matches = 0
-    for scan in sorted(tool_answers, key=lambda scn: tool_answers[scn][1], reverse=True)[:best]:
-        correct_matches += (tool_answers[scan][0] == true_answers[scan])
-    return float(correct_matches) / min(best, total) * 100
+import metrics
 
 
 def main():
@@ -21,7 +14,32 @@ def main():
             if tool_answer != '':
                 tool_answers[int(tool_answer.split('\t')[0])] = (tool_answer.split('\t')[1], tool_answer.split('\t')[2])
     for best in [10, 100, 1000, None]:
-        print('{0:0.2f}% correct in best {1}.'.format(percent_true_best(true_answers, tool_answers, best=best), best))
+        print(
+            'Correct in best {0}: {1:0.2f}%.'.format(
+                best,
+                metrics.percent_true_best(true_answers, tool_answers, best=best),
+            ),
+        )
+    print(
+        'Classic medal score: {0}.'.format(
+            metrics.classic_medal_score(true_answers, tool_answers),
+        ),
+    )
+    print(
+        'F1 score: {0}.'.format(
+            metrics.formula1_score(true_answers, tool_answers),
+        ),
+    )
+    print(
+        'Gold medals: {0}.'.format(
+            metrics.gold_medals(true_answers, tool_answers),
+        ),
+    )
+    print(
+        'All medals: {0}.'.format(
+            metrics.all_medals(true_answers, tool_answers),
+        ),
+    )
 
 
 if __name__ == '__main__':

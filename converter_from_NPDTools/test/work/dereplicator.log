@@ -1,33 +1,33 @@
-2021-10-26 03:29:53	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py output_sample/NPDTools_input --db-path output_sample/database -o test 
-2021-10-26 03:29:53	INFO: 
-2021-10-26 03:29:53	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST/converter_from_NPDTools
-2021-10-26 03:29:53	INFO: System information:
+2021-11-01 23:54:53	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py output_sample/NPDTools_input --db-path output_sample/database -o test 
+2021-11-01 23:54:53	INFO: 
+2021-11-01 23:54:53	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST/converter_from_NPDTools
+2021-11-01 23:54:53	INFO: System information:
 	OS: Linux-5.11.0-38-generic-x86_64-with-Ubuntu-20.04-focal
 	Python version: 2.7.18 (interpreter: /usr/bin/python)
-2021-10-26 03:29:53	INFO: Chemical Structure Database information:
+2021-11-01 23:54:53	INFO: Chemical Structure Database information:
 	root dir: output_sample/database
 	library.info: output_sample/database/library.info
 	library.smiles: N/A
-2021-10-26 03:29:53	INFO: Starting Dereplicator in 1 thread
-2021-10-26 03:29:53	INFO:   Parameters are saved to test/work/params.tsv
-2021-10-26 03:29:53	INFO:   Total number of spectra: 1 
-2021-10-26 03:29:53	INFO: Starting: output_sample/NPDTools_input/input.mgf --> spectra-00000
-2021-10-26 03:29:53	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "test/work/spectra-00000.mgf" "output_sample/database" "output_sample/database/library.info" --configs_dir "test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --isotope 0 > "test/work/spectra-00000_dereplicator.log"
-2021-10-26 03:29:57	INFO: Run on spectra-00000 (input.mgf) finished correctly (8797 scans processed). PSMs found: 293 (significant: 163); visualizations generated: 0
-2021-10-26 03:29:57	INFO: 
+2021-11-01 23:54:53	INFO: Starting Dereplicator in 1 thread
+2021-11-01 23:54:53	INFO:   Parameters are saved to test/work/params.tsv
+2021-11-01 23:54:53	INFO:   Total number of spectra: 1 
+2021-11-01 23:54:53	INFO: Starting: output_sample/NPDTools_input/input.mgf --> spectra-00000
+2021-11-01 23:54:53	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "test/work/spectra-00000.mgf" "output_sample/database" "output_sample/database/library.info" --configs_dir "test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --isotope 0 > "test/work/spectra-00000_dereplicator.log"
+2021-11-01 23:54:56	INFO: Run on spectra-00000 (input.mgf) finished correctly (3664 scans processed). PSMs found: 234 (significant: 133); visualizations generated: 0
+2021-11-01 23:54:56	INFO: 
 
   Summary (saved to test/summary.tsv):
     Number of spectra files: 1
       out of them: 0 failed conversion to mgf
       out of them: 0 failed processing
       out of them: 0 had completed results and were reused
-    Number of processed spectra scans: 8797
-    Found PSMs: 293
-      out of them: 163 significant (p-value < 1e-10)
+    Number of processed spectra scans: 3664
+    Found PSMs: 234
+      out of them: 133 significant (p-value < 1e-10)
       out of them: 0 visualizations generated
 
   Matches are in test/all_matches.tsv and significant_matches.tsv
   Log is in test/work/dereplicator.log
 
-  Elapsed time: 0:00:03.885256
+  Elapsed time: 0:00:03.325531
 

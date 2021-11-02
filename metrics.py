@@ -1,31 +1,42 @@
+from numpy import mean, median, quantile
+
+
 def percent_true_best(true_answers, tool_answers, best=None):
     total = len(tool_answers.keys())
     if best is None:
         best = total
+    sorted_answers = sorted(
+        [
+            [scan, tool_answer[0], tool_answer[1]]
+            for scan, scan_answers in tool_answers.items()
+            for tool_answer in scan_answers
+        ],
+        key=lambda ans: ans[2],
+        reverse=True,
+    )
     correct_matches = 0
-    for scan in sorted(tool_answers, key=lambda scn: tool_answers[scn][1], reverse=True)[:best]:
-        correct_matches += (tool_answers[scan][0] == true_answers[scan])
+    for answer in sorted_answers[:best]:
+        scan, tool_inchi, _ = answer
+        correct_matches += (tool_inchi == true_answers[scan])
     return float(correct_matches) / min(best, total) * 100
 
 
 def _abstract_medal_score(true_answers, tool_answers, medals):
     score = 0
     for scan, true_inchi in true_answers.items():
-        candidate_inches = list(
-            map(
-                lambda scn: tool_answers[scn][0],
-                sorted(
-                    filter(
-                        lambda tool_scan: tool_scan == scan,
-                        tool_answers,
-                    ),
-                    key=lambda scn: tool_answers[scn][1],
-                    reverse=True,
-                ),
-            ),
+        sorted_tool_answers = sorted(
+            tool_answers[scan],
+            key=lambda ans: ans[1],
+            reverse=True,
         )
-        if true_inchi in candidate_inches:
-            pos = candidate_inches.index(true_inchi)
+        sorted_inches = tuple(
+            map(
+                lambda ans: ans[0],
+                sorted_tool_answers,
+            )
+        )
+        if true_inchi in sorted_inches:
+            pos = sorted_inches.index(true_inchi)
             if pos < len(medals):
                 score += medals[pos]
     return score
@@ -49,3 +60,110 @@ def gold_medals(true_answers, tool_answers):
 
 def all_medals(true_answers, tool_answers):
     return _abstract_medal_score(true_answers, tool_answers, [1, 1, 1])
+
+
+def _get_sorted_inches_for_scan(tool_answers, scan):
+    sorted_answers = sorted(
+        [
+            [tool_answer[0], tool_answer[1]]
+            for tool_answer in tool_answers[scan]
+        ],
+        key=lambda ans: ans[1],
+        reverse=True,
+    )
+    return list(
+        map(
+            lambda ans: ans[0],
+            sorted_answers,
+        ),
+    )
+
+
+def _get_ranks(true_answers, tool_answers):
+    ranks = []
+    for scan, true_inchi in true_answers.items():
+        sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
+        if true_inchi in sorted_inches:
+            ranks.append(sorted_inches.index(true_inchi))
+    return ranks
+
+
+def mean_rank(true_answers, tool_answers):
+    return mean(_get_ranks(true_answers, tool_answers))
+
+
+def median_rank(true_answers, tool_answers):
+    return median(_get_ranks(true_answers, tool_answers))
+
+
+def _get_rprs(true_answers, tool_answers):
+    rprs = []
+    for scan, true_inchi in true_answers.items():
+        sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
+        if true_inchi in sorted_inches:
+            true_pos = sorted_inches.index(true_inchi)
+            up_correct = len(sorted_inches[:true_pos])
+            below_correct = len(sorted_inches[true_pos+1:])
+            total = len(sorted_inches)
+            if total > 1:
+                rprs.append(1/2.0 * (1 - (up_correct - below_correct) / (total - 1.0)))
+            else:
+                rprs.append(1 / 2.0)
+    return rprs
+
+
+def mean_rpr(true_answers, tool_answers):
+    return mean(_get_rprs(true_answers, tool_answers))
+
+
+def median_rpr(true_answers, tool_answers):
+    return median(_get_rprs(true_answers, tool_answers))
+
+
+def _get_weighted_rprs(true_answers, tool_answers):
+    weighted_rprs = []
+    for scan, true_inchi in true_answers.items():
+        sorted_answers = sorted(
+            [
+                [tool_answer[0], tool_answer[1]]
+                for tool_answer in tool_answers[scan]
+            ],
+            key=lambda ans: ans[1],
+            reverse=True,
+        )
+        sorted_inches = list(
+            map(
+                lambda ans: ans[0],
+                sorted_answers,
+            ),
+        )
+        sorted_scores = list(
+            map(
+                lambda ans: float(ans[1]),
+                sorted_answers,
+            ),
+        )
+        if true_inchi in sorted_inches:
+            true_pos = sorted_inches.index(true_inchi)
+            true_score = sorted_scores[true_pos]
+            up_normalized = float(sum(score for score in sorted_scores if score > true_score)) / sum(sorted_scores)
+            same_normalized = float(sum(score for score in sorted_scores if score == true_score)) / sum(sorted_scores)
+            weighted_rprs.append(1 - up_normalized - same_normalized)
+    return weighted_rprs
+
+
+def mean_weighted_rpr(true_answers, tool_answers):
+    return mean(_get_weighted_rprs(true_answers, tool_answers))
+
+
+def median_weighted_rpr(true_answers, tool_answers):
+    return median(_get_weighted_rprs(true_answers, tool_answers))
+
+
+def k_quantile(true_answers, tool_answers, k=50):
+    positions = []
+    for scan, true_inchi in true_answers.items():
+        sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
+        if true_inchi in sorted_inches:
+            positions.append(sorted_inches.index(true_inchi))
+    return quantile(positions, k / 100.0)

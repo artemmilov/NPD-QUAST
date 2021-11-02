@@ -28,7 +28,7 @@ def main():
         try:
             npdtools_output_folder, database_folder, answers_folder = input().split()
             break
-        except (ValueError, EOFError):
+        except (ValueError, EOFError, SyntaxError):
             print('Incorrect input!')
 
     print_dereplicator_answers(npdtools_output_folder,

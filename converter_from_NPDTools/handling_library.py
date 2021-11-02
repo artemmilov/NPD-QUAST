@@ -4,7 +4,7 @@ import shutil
 from rdkit import Chem
 from rdkit.Chem import Descriptors, inchi
 
-from quast_mol import QuastMol
+from quast_mol import QuastMol, QuastMolInitException
 
 
 def prepare_directories(database_folder,
@@ -27,11 +27,6 @@ def prepare_directories(database_folder,
         shutil.rmtree(os.path.join(os.getcwd(), npdtools_input_file), ignore_errors=True)
     except OSError:
         pass
-    #try:
-    #    os.mkdir(os.path.join(os.getcwd(), npdtools_input_file))
-    #except OSError:
-    #    print('Failed to make directory: {}'.format(os.path.join(os.getcwd(), npdtools_input_file)))
-    #    return False
     return True
 
 
@@ -50,25 +45,29 @@ def handle_library(library_file,
         for mol_data in mols_data:
             try:
                 quast_mol = QuastMol(mol_data, scan)
-                if quast_mol.inchi_key not in existing_inches:
-                    library_info.write(
-                        'mols/{} {} {} 1000 DB\n'.format(
-                            quast_mol.filename,
-                            quast_mol.name,
-                            Descriptors.ExactMolWt(quast_mol.mol),
-                        ),
-                    )
+            except QuastMolInitException as e:
+                print(e)
+                continue
+            if quast_mol.inchi_key not in existing_inches:
+                library_info.write(
+                    'mols/{} {} {} 1000 DB\n'.format(
+                        quast_mol.filename,
+                        quast_mol.name,
+                        Descriptors.ExactMolWt(quast_mol.mol),
+                    ),
+                )
+                try:
                     quast_mol.to_mol_file(os.path.join(database_folder, 'mols'))
-                    smiles.write(quast_mol.smiles)
-                    existing_inches.add(quast_mol.inchi_key)
+                except FileNotFoundError as e:
+                    print(e)
+                    continue
+                smiles.write(quast_mol.smiles)
+                existing_inches.add(quast_mol.inchi_key)
                 npdtools_input.write(quast_mol.to_npdtools_input() + '\n\n')
                 true_answers.write(
                     '{0}\t{1}\n'.format(quast_mol.scan, quast_mol.inchi_key)
                 )
                 scan += 1
-            except Exception as e:
-                print(e)
-                continue
 
 
 def print_dereplicator_answers(all_matches_file,
@@ -96,7 +95,7 @@ def main():
         try:
             library_file, database_folder, npdtools_input_file, answers_folder = input().split()
             break
-        except (ValueError, EOFError):
+        except (ValueError, EOFError, SyntaxError):
             print('Incorrect input!')
             return
 

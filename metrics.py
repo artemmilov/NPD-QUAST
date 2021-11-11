@@ -18,7 +18,7 @@ def percent_true_best(true_answers, tool_answers, best=None):
     for answer in sorted_answers[:best]:
         scan, tool_inchi, _ = answer
         correct_matches += (tool_inchi == true_answers[scan])
-    return float(correct_matches) / min(best, total) * 100
+    return correct_matches / min(best, total) * 100
 
 
 def _abstract_medal_score(true_answers, tool_answers, medals):
@@ -79,21 +79,23 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
     )
 
 
-def _get_ranks(true_answers, tool_answers):
+def _get_ranks(true_answers, tool_answers, default_rank=None):
     ranks = []
     for scan, true_inchi in true_answers.items():
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         if true_inchi in sorted_inches:
             ranks.append(sorted_inches.index(true_inchi))
+        elif default_rank is not None:
+            ranks.append(default_rank)
     return ranks
 
 
-def mean_rank(true_answers, tool_answers):
-    return mean(_get_ranks(true_answers, tool_answers))
+def mean_rank(true_answers, tool_answers, default_rank=None):
+    return mean(_get_ranks(true_answers, tool_answers, default_rank))
 
 
-def median_rank(true_answers, tool_answers):
-    return median(_get_ranks(true_answers, tool_answers))
+def median_rank(true_answers, tool_answers, default_rank=None):
+    return median(_get_ranks(true_answers, tool_answers, default_rank))
 
 
 def _get_rprs(true_answers, tool_answers):
@@ -103,12 +105,12 @@ def _get_rprs(true_answers, tool_answers):
         if true_inchi in sorted_inches:
             true_pos = sorted_inches.index(true_inchi)
             up_correct = len(sorted_inches[:true_pos])
-            below_correct = len(sorted_inches[true_pos+1:])
+            below_correct = len(sorted_inches[true_pos + 1:])
             total = len(sorted_inches)
             if total > 1:
-                rprs.append(1/2.0 * (1 - (up_correct - below_correct) / (total - 1.0)))
+                rprs.append(1 / 2 * (1 - (up_correct - below_correct) / (total - 1)))
             else:
-                rprs.append(1 / 2.0)
+                rprs.append(1 / 2)
     return rprs
 
 
@@ -146,8 +148,8 @@ def _get_weighted_rprs(true_answers, tool_answers):
         if true_inchi in sorted_inches:
             true_pos = sorted_inches.index(true_inchi)
             true_score = sorted_scores[true_pos]
-            up_normalized = float(sum(score for score in sorted_scores if score > true_score)) / sum(sorted_scores)
-            same_normalized = float(sum(score for score in sorted_scores if score == true_score)) / sum(sorted_scores)
+            up_normalized = sum(score for score in sorted_scores if score > true_score) / sum(sorted_scores)
+            same_normalized = sum(score for score in sorted_scores if score == true_score) / sum(sorted_scores)
             weighted_rprs.append(1 - up_normalized - same_normalized)
     return weighted_rprs
 
@@ -166,4 +168,4 @@ def k_quantile(true_answers, tool_answers, k=50):
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         if true_inchi in sorted_inches:
             positions.append(sorted_inches.index(true_inchi))
-    return quantile(positions, k / 100.0)
+    return quantile(positions, k / 100)

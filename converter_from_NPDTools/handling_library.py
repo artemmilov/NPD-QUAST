@@ -97,7 +97,6 @@ def main():
             break
         except (ValueError, EOFError, SyntaxError):
             print('Incorrect input!')
-            return
 
     if not prepare_directories(database_folder, npdtools_input_file):
         return

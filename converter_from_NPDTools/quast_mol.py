@@ -22,7 +22,21 @@ class QuastMolInitException(Exception):
 
 
 class QuastMol:
-    def __init__(self, data, scan):
+    def __init__(self, *args):
+        if len(args) == 2:
+            data, scan = args
+            self._full_init(data, scan)
+        elif len(args) == 4:
+            filename, name, mass, smiles = args
+            self._short_init(filename, name, mass, smiles)
+        else:
+            raise QuastMolInitException(
+                'Expected 2 or 4 arguments, but {0} given.'.format(
+                    len(args),
+                )
+            )
+
+    def _full_init(self, data, scan):
         self.scan = scan
         self.spectra = ''
         self.smiles, self.filename, self.name, self.mass, num_acids = None, None, None, None, None
@@ -64,6 +78,16 @@ class QuastMol:
             raise QuastMolInitException('Scan: {0}. {1} are unfounded.'.format(scan, ','.join(unfounded_params)))
         if not _is_valid_smiles(self.smiles):
             raise QuastMolInitException('Scan: {0}. Smiles {1} is invalid.'.format(scan, self.smiles))
+        self.mol = Chem.AddHs(Chem.MolFromSmiles(self.smiles))
+        self.inchi_key = Chem.inchi.MolToInchiKey(self.mol).split('-')[0]
+
+    def _short_init(self, filename, name, mass, smiles):
+        self.filename = filename
+        self.name = name
+        self.mass = mass
+        self.smiles = smiles
+        if not _is_valid_smiles(self.smiles):
+            raise QuastMolInitException('Smiles {0} is invalid.'.format(self.smiles))
         self.mol = Chem.AddHs(Chem.MolFromSmiles(self.smiles))
         self.inchi_key = Chem.inchi.MolToInchiKey(self.mol).split('-')[0]
 

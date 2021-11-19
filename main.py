@@ -4,7 +4,7 @@ from collections import defaultdict
 from report import write_report
 
 
-def check_folders(answers_folder, report_folder):
+def _check_folders(answers_folder, report_folder):
     if len(os.listdir(answers_folder)) != 2:
         return False
     if 'true_answers.txt' not in os.listdir(answers_folder):
@@ -37,10 +37,13 @@ def handle_answers(answers_folder):
 
 def main():
     while True:
-        answers_folder, report_folder = input().split(' ')
-        if check_folders(answers_folder, report_folder):
-            break
-        print('Incorrect input!')
+        try:
+            answers_folder, report_folder = input().split(' ')
+            if _check_folders(answers_folder, report_folder):
+                break
+            print('Incorrect input!')
+        except (ValueError, EOFError, SyntaxError):
+            print('Incorrect input!')
     true_answers, tool_answers = handle_answers(answers_folder)
     write_report(report_folder, true_answers, tool_answers)
 

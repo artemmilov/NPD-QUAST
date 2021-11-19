@@ -1,10 +1,9 @@
 Parameter	Value
-Database	database
 Precursor Ion Mass Tolerance	0.02 Da
 Fragment Ion Mass Tolerance	0.02 Da
 Max charge	2
 Max isotopic shift	0
 Adducts	None
 Minimum Number of Bonds	Not set
-Accurate P-values	No
+Accurate P-values	Yes
 Search Analogs	No

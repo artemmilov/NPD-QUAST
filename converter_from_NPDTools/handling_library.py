@@ -7,8 +7,10 @@ from rdkit.Chem import Descriptors, inchi
 from quast_mol import QuastMol, QuastMolInitException
 
 
-def prepare_directories(database_folder,
-                        npdtools_input_file):
+def prepare_directories(
+        database_folder,
+        npdtools_input_file,
+):
     try:
         shutil.rmtree(os.path.join(os.getcwd(), database_folder), ignore_errors=True)
     except OSError:
@@ -30,10 +32,12 @@ def prepare_directories(database_folder,
     return True
 
 
-def handle_library(library_file,
-                   database_folder,
-                   npdtools_input_file,
-                   answers_folder):
+def handle_library(
+        library_file,
+        database_folder,
+        npdtools_input_file,
+        answers_folder,
+):
     with open(library_file, 'r', encoding='utf-8') as library, \
             open(os.path.join(database_folder, 'library.info'), 'w') as library_info, \
             open(os.path.join(database_folder, 'smiles.info'), 'w') as smiles, \
@@ -61,7 +65,7 @@ def handle_library(library_file,
                 except FileNotFoundError as e:
                     print(e)
                     continue
-                smiles.write(quast_mol.smiles)
+                smiles.write(quast_mol.smiles + '\n')
                 existing_inches.add(quast_mol.inchi_key)
                 npdtools_input.write(quast_mol.to_npdtools_input() + '\n\n')
                 true_answers.write(
@@ -70,9 +74,11 @@ def handle_library(library_file,
                 scan += 1
 
 
-def print_dereplicator_answers(all_matches_file,
-                               dereplicator_answers_folder,
-                               database_folder):
+def print_dereplicator_answers(
+        all_matches_file,
+        dereplicator_answers_folder,
+        database_folder,
+):
     library_info_file = os.path.join(database_folder, 'library.info')
     with open(all_matches_file) as all_matches, \
             open(dereplicator_answers_folder, 'w') as dereplicator_answers, \
@@ -100,10 +106,12 @@ def main():
 
     if not prepare_directories(database_folder, npdtools_input_file):
         return
-    handle_library(library_file,
-                   database_folder,
-                   npdtools_input_file,
-                   answers_folder)
+    handle_library(
+        library_file,
+        database_folder,
+        npdtools_input_file,
+        answers_folder,
+    )
 
     print('Handling library is done!')
 
@@ -112,3 +120,4 @@ if __name__ == '__main__':
     main()
     # input_sample/input_library.mgf output_sample/database output_sample/NPDTools_input/input.mgf test_main_input
     # dereplicator.py output_sample/NPDTools_input/ --db-path output_sample/database/ -o test
+    # dereplicator.py output_sample/NPDTools_input/ --db-path pnpdatabase/ -o test

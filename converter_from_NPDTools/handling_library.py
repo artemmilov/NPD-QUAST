@@ -5,6 +5,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, inchi
 
 from quast_mol import QuastMol, QuastMolInitException
+from npdtools_database import NpdToolsDatabase, DatabaseInitException
 
 
 def prepare_directories(
@@ -21,11 +22,6 @@ def prepare_directories(
         print('Failed to make directory: {0}'.format(os.path.join(os.getcwd(), database_folder)))
         return False
     try:
-        os.mkdir(os.path.join(os.getcwd(), database_folder, 'mols'))
-    except OSError:
-        print('Failed to make directory: {}'.format(os.path.join(os.getcwd(), database_folder, 'mols')))
-        return False
-    try:
         shutil.rmtree(os.path.join(os.getcwd(), npdtools_input_file), ignore_errors=True)
     except OSError:
         pass
@@ -38,38 +34,24 @@ def handle_library(
         npdtools_input_file,
         answers_folder,
 ):
+    database = NpdToolsDatabase(database_folder)
     with open(library_file, 'r', encoding='utf-8') as library, \
-            open(os.path.join(database_folder, 'library.info'), 'w') as library_info, \
-            open(os.path.join(database_folder, 'smiles.info'), 'w') as smiles, \
             open(npdtools_input_file, 'w') as npdtools_input, \
             open(os.path.join(answers_folder, 'true_answers.txt'), 'w') as true_answers:
         mols_data = library.read().split('\n\n')
         scan = 1
-        existing_inches = set()
         for mol_data in mols_data:
             try:
                 quast_mol = QuastMol(mol_data, scan)
             except QuastMolInitException as e:
                 print(e)
                 continue
-            if quast_mol.inchi_key not in existing_inches:
-                library_info.write(
-                    'mols/{} {} {} 1000 DB\n'.format(
-                        quast_mol.filename,
-                        quast_mol.name,
-                        Descriptors.ExactMolWt(quast_mol.mol),
-                    ),
+            if database.add_mol(quast_mol):
+                npdtools_input.write(
+                    quast_mol.to_npdtools_input() + '\n\n',
                 )
-                try:
-                    quast_mol.to_mol_file(os.path.join(database_folder, 'mols'))
-                except FileNotFoundError as e:
-                    print(e)
-                    continue
-                smiles.write(quast_mol.smiles + '\n')
-                existing_inches.add(quast_mol.inchi_key)
-                npdtools_input.write(quast_mol.to_npdtools_input() + '\n\n')
                 true_answers.write(
-                    '{0}\t{1}\n'.format(quast_mol.scan, quast_mol.inchi_key)
+                    '{0}\t{1}\n'.format(quast_mol.scan, quast_mol.inchi_key),
                 )
                 scan += 1
 

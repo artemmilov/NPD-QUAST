@@ -128,7 +128,7 @@ class NpdToolsDatabase:
 
     def add_mol(self, quast_mol):
         if quast_mol.inchi_key in self._existing_inches:
-            return
+            return False
         quast_mol.to_mol_file(os.path.join(self.folder, 'mols'))
         with open(
                 os.path.join(self.folder, 'library.info'),
@@ -147,6 +147,7 @@ class NpdToolsDatabase:
         ) as library_smiles:
             library_smiles.write(Chem.MolToSmiles(quast_mol.mol) + '\n')
         self._l += 1
+        return True
 
     def add_database(self, other_database):
         for quast_mol in other_database:

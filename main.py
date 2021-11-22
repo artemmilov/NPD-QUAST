@@ -1,6 +1,8 @@
 import os
 from collections import defaultdict
 
+from rdkit import RDLogger
+
 from report import write_report
 
 
@@ -36,6 +38,8 @@ def handle_answers(answers_folder):
 
 
 def main():
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     while True:
         try:
             answers_folder, report_folder = input().split(' ')
@@ -49,6 +53,4 @@ def main():
 
 
 if __name__ == '__main__':
-    lg = RDLogger.logger()
-    lg.setLevel(RDLogger.CRITICAL)
     main()  # converter_from_NPDTools/test_main_input test_main_output

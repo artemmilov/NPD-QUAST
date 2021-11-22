@@ -24,6 +24,8 @@ def print_dereplicator_answers(npdtools_output_folder,
 
 
 def main():
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     while True:
         try:
             npdtools_output_folder, database_folder, answers_folder = input().split()
@@ -39,6 +41,4 @@ def main():
 
 
 if __name__ == '__main__':
-    lg = RDLogger.logger()
-    lg.setLevel(RDLogger.CRITICAL)
     main()  # test output_sample/database test_main_input

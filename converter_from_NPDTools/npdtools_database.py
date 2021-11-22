@@ -200,6 +200,8 @@ def merge_databases(database_folder_1, database_folder_2, result_database_folder
 
 
 def main():
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     database_folder_1, database_folder_2, result_database_folder = input().split(' ')
     database_1 = NpdToolsDatabase(database_folder_1)
     database_2 = NpdToolsDatabase(database_folder_2)
@@ -209,7 +211,5 @@ def main():
 
 
 if __name__ == '__main__':
-    lg = RDLogger.logger()
-    lg.setLevel(RDLogger.CRITICAL)
     main()
     # output_sample/database ../pnpdatabase merged_database

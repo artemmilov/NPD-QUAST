@@ -49,4 +49,6 @@ def main():
 
 
 if __name__ == '__main__':
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     main()  # converter_from_NPDTools/test_main_input test_main_output

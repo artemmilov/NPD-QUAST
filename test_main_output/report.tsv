@@ -1,22 +1,22 @@
-Correct in best 10: 90.00%.
-Correct in best 100: 85.00%.
-Correct in best 1000: 99.14%.
-Correct in best None: 81.55%.
-Classic medal score: 1126.
-F1 score: 5466.
-Gold medals: 221.
-All medals: 228.
-Mean rank: 0.07. Default rank is 0.
+Correct in best 10: 100.00%.
+Correct in best 100: 95.00%.
+Correct in best 1000: 84.70%.
+Correct in best None: 80.54%.
+Classic medal score: 1406.
+F1 score: 6816.
+Gold medals: 276.
+All medals: 286.
+Mean rank: 0.10. Default rank is 0.
 Median rank: 0.00. Default rank is 0.
-Mean rank: 0.07. Default rank is 5.
+Mean rank: 0.10. Default rank is 5.
 Median rank: 0.00. Default rank is 5.
-Mean rank: 0.07. Default rank is 10.
+Mean rank: 0.10. Default rank is 10.
 Median rank: 0.00. Default rank is 10.
-Mean RPR: 0.52.
+Mean RPR: 0.68.
 Median RPR: 0.50.
 Mean weighted RPR: 0.00.
 Median weighted RPR: 0.00.
 25% quantile: 0.00.
 50% quantile: 0.00.
 75% quantile: 0.00.
-100% quantile: 3.00.
+100% quantile: 6.00.

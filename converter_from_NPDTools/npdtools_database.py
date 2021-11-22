@@ -1,6 +1,6 @@
 import os
 
-from rdkit import Chem
+from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, inchi
 
 from quast_mol import QuastMol, QuastMolInitException
@@ -117,10 +117,10 @@ class NpdToolsDatabase:
         with open(os.path.join(self.folder, 'library.info')) as library_info, \
                 open(os.path.join(self.folder, 'smiles.info')) as library_smiles:
             mol_data = library_info.readlines()[i]
-            filename, name, mass = mol_data.split(' ')[:3]
+            full_filename, name, mass = mol_data.split(' ')[:3]
             smiles = library_smiles.readlines()[i]
             return QuastMol(
-                filename,
+                os.path.split(full_filename)[-1],
                 name,
                 mass,
                 smiles,
@@ -136,7 +136,7 @@ class NpdToolsDatabase:
         ) as library_info:
             library_info.write(
                 '{0} {1} {2} 1000 DB\n'.format(
-                    quast_mol.filename,
+                    os.path.join('mols', quast_mol.filename),
                     quast_mol.name,
                     Descriptors.ExactMolWt(quast_mol.mol),
                 ),
@@ -209,5 +209,7 @@ def main():
 
 
 if __name__ == '__main__':
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     main()
     # output_sample/database ../pnpdatabase merged_database

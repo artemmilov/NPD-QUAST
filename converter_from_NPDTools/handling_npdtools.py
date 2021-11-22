@@ -1,6 +1,6 @@
 import os
 
-from rdkit import Chem
+from rdkit import Chem, RDLogger
 from rdkit.Chem import inchi
 
 
@@ -39,4 +39,6 @@ def main():
 
 
 if __name__ == '__main__':
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     main()  # test output_sample/database test_main_input

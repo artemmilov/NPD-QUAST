@@ -2,9 +2,6 @@ from numpy import mean, median, quantile
 
 
 def percent_true_best(true_answers, tool_answers, best=None):
-    total = len(tool_answers.keys())
-    if best is None:
-        best = total
     sorted_answers = sorted(
         [
             [scan, tool_answer[0], tool_answer[1]]
@@ -14,6 +11,9 @@ def percent_true_best(true_answers, tool_answers, best=None):
         key=lambda ans: ans[2],
         reverse=True,
     )
+    total = len(sorted_answers)
+    if best is None:
+        best = total
     correct_matches = 0
     for answer in sorted_answers[:best]:
         scan, tool_inchi, _ = answer

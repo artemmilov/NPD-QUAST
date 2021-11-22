@@ -3,6 +3,8 @@ import shutil
 
 from rdkit import Chem
 from rdkit.Chem import Descriptors, inchi
+from rdkit import RDLogger
+
 
 from quast_mol import QuastMol, QuastMolInitException
 from npdtools_database import NpdToolsDatabase, DatabaseInitException
@@ -79,6 +81,8 @@ def print_dereplicator_answers(
 
 
 def main():
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     while True:
         try:
             library_file, database_folder, npdtools_input_file, answers_folder = input().split()
@@ -101,5 +105,7 @@ def main():
 if __name__ == '__main__':
     main()
     # input_sample/input_library.mgf output_sample/database output_sample/NPDTools_input/input.mgf test_main_input
-    # dereplicator.py output_sample/NPDTools_input/ --db-path output_sample/database/ -o test
+    # dereplicator.py output_sample/NPDTools_input --db-path output_sample/database -o test
     # dereplicator.py output_sample/NPDTools_input/ --db-path pnpdatabase/ -o test
+    # /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py
+    # output_sample/NPDTools_input/ --db-path merged_database/ -o test --pass-to-dereplicate "--num_hits_to_report 10"

@@ -3,7 +3,24 @@ import os
 from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, inchi
 
-from quast_mol import QuastMol, QuastMolInitException
+from converter_from_NPDTools.quast_mol import QuastMol, QuastMolInitException
+
+
+def _parse_from_mgf(s):
+    res = []
+    cur = ''
+    in_brackets = False
+    for a in s:
+        if (a == ',') and (not in_brackets):
+            res.append(cur)
+            cur = ''
+        elif a == '\"':
+            in_brackets = not in_brackets
+        else:
+            cur += a
+    if cur != '':
+        res.append(cur)
+    return res
 
 
 class DatabaseInitException(Exception):
@@ -57,7 +74,7 @@ class NpdToolsDatabase:
     def __init__(self, folder):
         if len(os.listdir(folder)) == 0:
             self._empty_init(folder)
-        if len(os.listdir(folder)) != 0:
+        elif len(os.listdir(folder)) != 0:
             self._not_empty_init(folder)
 
     def _empty_init(self, folder):
@@ -91,13 +108,62 @@ class NpdToolsDatabase:
                     quast_mol = QuastMol(
                         os.path.split(line.split()[0])[-1],
                         line.split()[1],
-                        line.split()[2],
+                        float(line.split()[2]),
                         smiles,
                     )
                 except QuastMolInitException:
                     continue
                 self.add_mol(quast_mol)
         _clean_database(folder)
+
+    def clean(self):
+        os.remove(
+            os.path.join(self.folder, 'library.info')
+        )
+        os.remove(
+            os.path.join(self.folder, 'smiles.info')
+        )
+        for mol in os.listdir(
+                os.path.join(self.folder, 'mols')
+        ):
+            os.remove(
+                os.path.join(self.folder, 'mols', mol)
+            )
+        os.rmdir(
+            os.path.join(self.folder, 'mols')
+        )
+        self._empty_init(self.folder)
+
+    def transform_from_casmi_data(self, casmi_file):
+        folder = os.path.dirname(casmi_file)
+        name = os.path.split(casmi_file)[-1].replace(' ', '')
+        if len(name.split('.')) != 2:
+            raise DatabaseInitException(
+                'Incorrect name: {0}'.format(name)
+            )
+        if name.split('.')[1] != 'csv':
+            raise DatabaseInitException()
+        if name.split('.')[0] in os.listdir(folder):
+            raise DatabaseInitException()
+        with open(casmi_file) as casmi_data:
+            for line in casmi_data.readlines()[1:]:
+                if line != '':
+                    splitted_line = _parse_from_mgf(line)
+                    identifier = int(line.split(',')[0])
+                    name = splitted_line[1]
+                    mass = float(splitted_line[2])
+                    smiles = splitted_line[3]
+                    try:
+                        self.add_mol(
+                            QuastMol(
+                                f'compound_{identifier:09d}.mol',
+                                name,
+                                mass,
+                                smiles,
+                            ),
+                        )
+                    except QuastMolInitException:
+                        pass
 
     def __len__(self):
         return self._l
@@ -212,4 +278,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # output_sample/database ../pnpdatabase merged_database
+    # output_sample/database ../pnpdatabase merged_database      !!!

@@ -1,517 +1,245 @@
-VisualizationID	SpecFile	LocalSpecIdx	Scan	LocalPeptideIdx	Name	Score	P-Value	PeptideMass	SpectrumMass	Retention	MassDiff	Adduct	Charge
-None	output_sample/NPDTools_input/input.mgf	1610	1697	11534	E'Surugamide_B'	31	2.0e-71	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	31	2.0e-71	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	11536	E'Surugamide_D'	30	4.0e-68	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	3480	Dereplicator_Identification_-_E'Surugamide_D'_M+H	30	4.0e-68	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	30	4.0e-68	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	11534	E'Surugamide_B'	29	2.3e-65	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	29	2.3e-65	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	28	1.6e-64	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	28	1.6e-64	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	11537	E'Champacyclin'	28	1.6e-64	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	11535	E'Surugamide_C'	28	1.6e-64	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	11534	E'Surugamide_B'	28	1.6e-64	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	1701	Dereplicator_Identification_-_E'Champacyclin'_M+H	28	1.6e-64	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	11536	E'Surugamide_D'	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	3480	Dereplicator_Identification_-_E'Surugamide_D'_M+H	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	11537	E'Champacyclin'	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	11535	E'Surugamide_C'	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	1701	Dereplicator_Identification_-_E'Champacyclin'_M+H	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1610	1697	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	28	4.6e-63	897.605	898.62	-1	-0.00755951	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	11537	E'Champacyclin'	28	1.3e-62	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	28	1.3e-62	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	11535	E'Surugamide_C'	28	1.3e-62	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1616	1703	1701	Dereplicator_Identification_-_E'Champacyclin'_M+H	28	1.3e-62	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	27	1.5e-60	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	11535	E'Surugamide_C'	27	1.5e-60	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1440	1515	1512	Cyclosporin_A_M+H	29	3.0e-58	1201.84	1202.85	-1	-0.00135201	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1440	1515	9112	Cyclosporin,_9CI_9-(N-Methyl-L-isoleucine)_analogue	29	3.0e-58	1201.84	1202.85	-1	-0.00135201	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	26	8.0e-58	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	11534	E'Surugamide_B'	26	8.0e-58	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	11536	E'Surugamide_D'	25	3.5e-56	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	3480	Dereplicator_Identification_-_E'Surugamide_D'_M+H	25	3.5e-56	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1617	1704	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	25	3.5e-56	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	11536	E'Surugamide_D'	25	4.0e-55	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	3480	Dereplicator_Identification_-_E'Surugamide_D'_M+H	25	4.0e-55	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	11537	E'Champacyclin'	25	4.0e-55	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	1701	Dereplicator_Identification_-_E'Champacyclin'_M+H	25	4.0e-55	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1618	1705	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	25	4.0e-55	897.605	898.63	-1	-0.0175595	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1874	1963	8860	Citrusin_VI_Citrusin_VI	26	7.0e-55	794.469	795.478	-1	-0.00165906	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1874	1963	1960	Dereplicator_Identification_-_Citrusin_VI_Citrusin_VI_M+H	26	7.0e-55	794.469	795.478	-1	-0.00165906	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	11536	E'Surugamide_D'	23	1.8e-49	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	3480	Dereplicator_Identification_-_E'Surugamide_D'_M+H	23	1.8e-49	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	23	1.8e-49	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	11534	E'Surugamide_B'	23	1.8e-49	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	23	1.8e-49	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3398	3517	12235	hymenamide_K	22	3.4e-49	1006.49	1007.5	-1	-0.00146707	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3398	3517	3514	Hymenamide_K_M+H	22	3.4e-49	1006.49	1007.5	-1	-0.00146707	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2009	2100	9668	Orfamide_A_Orfamide_A	27	1.4e-48	1294.84	1295.84	-1	0.00362219	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2009	2100	2097	Putative_orfamide_A_M+H	27	1.4e-48	1294.84	1295.84	-1	0.00362219	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1041	1099	10462	Puwainaphycin_B_Puwainaphycin_B	27	4.5e-47	1232.74	1233.75	-1	-0.00469488	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1041	1099	1099	Puwainaphycin_B_M+H	27	4.5e-47	1232.74	1233.75	-1	-0.00469488	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1041	1099	1098	Puwainaphycin_B_M+H	27	4.5e-47	1232.74	1233.75	-1	-0.00469488	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4211	4338	4335	Dereplicator_Identification_-_CDA2a_structure_1_M+2H	29	6.2e-47	1560.47	781.24	-1	0.00640907	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	4211	4338	11355	CDA2a_structure_1	29	6.2e-47	1560.47	781.24	-1	0.00640907	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2010	2101	8445	Orfamide_A_7-Valine_analogue	26	2.9e-46	1280.82	1281.83	-1	-0.00202788	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2010	2101	2098	Putative_orfamide_B_M+H	26	2.9e-46	1280.82	1281.83	-1	-0.00202788	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1111	1169	12711	Scytonemin_A	27	6.5e-45	1462.76	1463.78	-1	-0.0131716	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1111	1169	1169	Scytonemin_A_M+2H	27	6.5e-45	1462.76	1463.78	-1	-0.0131716	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1111	1169	1168	Scytonemin_A_M+H	27	6.5e-45	1462.76	1463.78	-1	-0.0131716	M+H	1
-None	output_sample/NPDTools_input/input.mgf	644	658	9151	Putisolvin_I_Putisolvin_I	21	1.1e-44	1379.83	1380.83	-1	0.0048484	M+H	1
-None	output_sample/NPDTools_input/input.mgf	644	658	657	Spectra_matches_to_compound_Putisolvin_M+H	21	1.1e-44	1379.83	1380.83	-1	0.0048484	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2011	2102	8407	Orfamide_A_10-N-Deacyl,_10-N-(3-hydroxydodecanoyl)	24	7.9e-42	1266.81	1267.81	-1	0.00232206	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2011	2102	2099	Putative_orfamide_C_M+H	24	7.9e-42	1266.81	1267.81	-1	0.00232206	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	11537	E'Champacyclin'	20	9.0e-42	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	1701	Dereplicator_Identification_-_E'Champacyclin'_M+H	20	9.0e-42	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1045	1103	1102	Puwainaphycin_D_M+H	25	2.8e-41	1224.69	1225.71	-1	-0.0142319	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1045	1103	1103	Puwainaphycin_D_M+H	25	2.8e-41	1224.69	1225.71	-1	-0.0142319	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1564	1647	11533	E'Surugamide_A'	19	3.0e-41	911.621	912.628	-1	9.0552e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1564	1647	1703	Dereplicator_Identification_-_E'Surugamide_A'_M+H	19	3.0e-41	911.621	912.628	-1	9.0552e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1564	1647	1644	Surugamide_A_M+H	19	3.0e-41	911.621	912.628	-1	9.0552e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1954	2045	425	Plipastatin_M+H	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	423	Plipastatin_M+H	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	427	Plipastatin_M+K	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	431	Plipastatin_M+Na	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	428	Plipastatin_M+K	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	432	Plipastatin_M+Na	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	2041	Plipastatin_M+H	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	429	Plipastatin_M+K	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	424	Plipastatin_M+H	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1954	2045	422	Plipastatin_M+H	20	9.4e-40	1462.8	732.402	-1	0.00649392	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3374	3493	12084	phakellistatin_1	18	2.3e-39	827.458	828.465	-1	0.000441912	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1135	1197	11952	stylopeptide_1	20	3.0e-39	767.458	768.475	-1	-0.00955809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1135	1197	1186	Stylopeptide_1_M+H	20	3.0e-39	767.458	768.475	-1	-0.00955809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1135	1197	1190	Stylopeptide_1_M+Na	20	3.0e-39	767.458	768.475	-1	-0.00955809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1135	1197	1196	Stylopeptide_1_M+H	20	3.0e-39	767.458	768.475	-1	-0.00955809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	238	Surfactin_C14_M+K	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	236	Surfactin_C14_M+H+K	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	239	Surfactin_C14_M+Na	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	448	Surfactin_M+H	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	446	Surfactin_M+H	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	449	Surfactin_M+K	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	450	Surfactin_M+K	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	447	Surfactin_M+H	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	237	Surfactin_C14_M+H+Na	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3445	3565	235	Surfactin_C14_M+H	19	6.2e-39	1021.67	1022.68	-1	-0.00523403	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3366	3485	3482	Surugamide_G_M+H	20	8.4e-39	883.59	442.801	-1	0.00207042	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3221	3339	11932	hymenamide_C	18	5.2e-38	826.401	827.409	-1	-0.000344692	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3221	3339	3336	Hymenamide_C_M+H	18	5.2e-38	826.401	827.409	-1	-0.000344692	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1044	1102	8933	Puwainaphycin_C_Puwainaphycin_C	23	6.6e-38	1226.67	1227.69	-1	-0.0149674	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1044	1102	1101	Puwainaphycin_C_M+H	23	6.6e-38	1226.67	1227.69	-1	-0.0149674	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1044	1102	1100	Puwainaphycin_C_M+H	23	6.6e-38	1226.67	1227.69	-1	-0.0149674	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3396	3515	11980	axinastatin_3	17	6.6e-37	780.453	781.46	-1	0.00069088	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3396	3515	3512	axinastatin_3_M+H	17	6.6e-37	780.453	781.46	-1	0.00069088	M+H	1
-None	output_sample/NPDTools_input/input.mgf	63	64	8474	Etamycin_A_Etamycin_A	18	7.6e-37	878.454	879.461	-1	8.4804e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	63	64	65	Etamycin_M+Na	18	7.6e-37	878.454	879.461	-1	8.4804e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	63	64	1621	Etamycin_M+Na	18	7.6e-37	878.454	879.461	-1	8.4804e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	63	64	63	Etamycin_M+H	18	7.6e-37	878.454	879.461	-1	8.4804e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	11535	E'Surugamide_C'	18	8.6e-37	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3364	3483	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	18	8.6e-37	897.605	898.613	-1	-0.000559512	M+H	1
-None	output_sample/NPDTools_input/input.mgf	648	662	8546	Massetolides_Massetolide_H	18	1.3e-36	1153.72	1154.72	-1	0.00825809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	648	662	1678	Massetolide_H_M+H	18	1.3e-36	1153.72	1154.72	-1	0.00825809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1045	1103	9245	Puwainaphycin_D_Puwainaphycin_D	22	3.2e-35	1224.69	1225.71	-1	-0.0142319	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3395	3514	12210	hymenamide_H	17	3.7e-35	903.522	904.529	-1	0.000104788	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3395	3514	3511	Hymenamide_H_M+H	17	3.7e-35	903.522	904.529	-1	0.000104788	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1440	1515	10766	Cyclosporin,_9CI_Cyclosporin_X	19	1.3e-34	1201.84	1202.85	-1	-0.00135201	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1440	1515	10094	Cyclosporin,_9CI_N*-De-Me	19	1.3e-34	1201.84	1202.85	-1	-0.00135201	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1039	1097	10423	Puwainaphycin_A_Puwainaphycin_A	21	1.9e-34	1234.72	1235.74	-1	-0.0154303	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1039	1097	1097	Puwainaphycin_A_M+H	21	1.9e-34	1234.72	1235.74	-1	-0.0154303	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1039	1097	1096	Puwainaphycin_A_M+H	21	1.9e-34	1234.72	1235.74	-1	-0.0154303	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3374	3493	12063	phakellistatin_2	16	3.3e-34	827.458	828.465	-1	0.000441912	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1449	1524	12722	Gramicidin_C;_11-L-Tyrosinegramicidin_A;	15	3.4e-34	1858.05	1859.06	-1	0.00182861	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1449	1524	1521	Gramicidin_C_M+H	15	3.4e-34	1858.05	1859.06	-1	0.00182861	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1160	1228	11976	hymenamide_B	19	6.0e-34	830.396	831.415	-1	-0.0114301	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1160	1228	1228	Hymenamide_B_M+Na	19	6.0e-34	830.396	831.415	-1	-0.0114301	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1160	1228	1229	Hymenamide_B_M+H	19	6.0e-34	830.396	831.415	-1	-0.0114301	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1160	1228	1227	Hymenamide_B_M+H	19	6.0e-34	830.396	831.415	-1	-0.0114301	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3450	3573	8651	FR_900359_FR_900359	17	1.1e-33	1001.53	1002.54	-1	-0.0006053	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3450	3573	3571	FR900359_M+NH4	17	1.1e-33	1001.53	1002.54	-1	-0.0006053	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3450	3573	3572	FR900359_M+Na	17	1.1e-33	1001.53	1002.54	-1	-0.0006053	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3450	3573	3570	FR900359_M+H	17	1.1e-33	1001.53	1002.54	-1	-0.0006053	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3399	3518	11887	pseudoaxinellin	16	1.1e-33	752.422	753.429	-1	0.000390752	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3399	3518	3515	Axinastatin_1_M+H	16	1.1e-33	752.422	753.429	-1	0.000390752	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1328	1403	1401	Cycloaspeptide_A_130056_2M+H	14	1.7e-33	641.321	642.332	-1	-0.0033859	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1328	1403	1400	Cycloaspeptide_A_130056_M+H	14	1.7e-33	641.321	642.332	-1	-0.0033859	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1328	1403	1358	Cycloaspeptide_A_120252_M+H	14	1.7e-33	641.321	642.332	-1	-0.0033859	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1286	1361	1401	Cycloaspeptide_A_130056_2M+H	14	2.3e-33	641.321	642.33	-1	-0.0013859	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1286	1361	1400	Cycloaspeptide_A_130056_M+H	14	2.3e-33	641.321	642.33	-1	-0.0013859	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1286	1361	1358	Cycloaspeptide_A_120252_M+H	14	2.3e-33	641.321	642.33	-1	-0.0013859	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2639	2738	10078	Schizopeptin_791_Schizopeptin_791	15	3.9e-33	791.458	792.471	-1	-0.00555809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2639	2738	2735	Dereplicator_Identification_-_Schizopeptin_791_M+H	15	3.9e-33	791.458	792.471	-1	-0.00555809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4212	4339	11211	Antibiotic_CDA_2.1,3.1-Didehydro(Z-),_3.3-O-phosphate	22	4.9e-33	1574.49	788.25	-1	0.00205914	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	4212	4339	4336	Dereplicator_Identification_-_Antibiotic_CDA_2.1,3.1-Didehydro(Z-),_3.3-O-phosphate_M+2H	22	4.9e-33	1574.49	788.25	-1	0.00205914	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3397	3516	1188	Hymenamide_D_M+H	15	5.6e-33	769.401	770.406	-1	0.00232096	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3397	3516	1185	Hymenamide_D_M+Na	15	5.6e-33	769.401	770.406	-1	0.00232096	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3397	3516	11943	hymenamide_D	15	5.6e-33	769.401	770.406	-1	0.00232096	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3397	3516	3513	Hymenamide_D_M+H	15	5.6e-33	769.401	770.406	-1	0.00232096	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3449	3572	3569	Thermoactinoamide_A_M+H	14	9.7e-33	714.468	715.475	-1	0.000278324	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2628	2727	12877	Alamethicin_I;_Alamethicin_F30;_Alamethi	21	9.6e-32	1963.11	982.57	-1	-0.0111917	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2628	2727	2724	Alamethicin_M+2H	21	9.6e-32	1963.11	982.57	-1	-0.0111917	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2628	2727	2723	Alamethicin_M+H	21	9.6e-32	1963.11	982.57	-1	-0.0111917	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2013	2104	2101	Putative_orfamide_G_M+H	19	1.1e-31	1308.85	1309.86	-1	-0.000727748	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3374	3493	11974	stylissamide_D	15	1.1e-31	827.458	828.465	-1	0.000441912	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3374	3493	3490	stylissamide_D_M+H	15	1.1e-31	827.458	828.465	-1	0.000441912	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3019	3121	9948	Keramamide_A_Keramamide_A	14	3.0e-31	942.441	943.448	-1	-6.6724e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3019	3121	3118	keramamide_A_M+H	14	3.0e-31	942.441	943.448	-1	-6.6724e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1330	1405	1402	Cycloaspeptide_H_130057_M+H	13	7.4e-31	671.332	672.342	-1	-0.00282122	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1330	1405	1403	Cycloaspeptide_H_130057_2M+H	13	7.4e-31	671.332	672.342	-1	-0.00282122	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3446	3566	9686	Daitocidin_Pumilacidin_F	14	2.2e-30	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2593	2692	2683	Leucinostatin_A_reference_standard_M+2H	13	2.6e-30	1217.84	1218.84	-1	0.00356261	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2593	2692	2689	Leucinostatin_A_M+H_M+H	13	2.6e-30	1217.84	1218.84	-1	0.00356261	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2593	2692	12499	Leucinostatin_A;_CC-1014;_ICI_13959;_M_1	13	2.6e-30	1217.84	1218.84	-1	0.00356261	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1440	1515	10805	Cyclosporin,_9CI_Cyclosporin_Y	17	3.3e-30	1201.84	1202.85	-1	-0.00135201	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1128	1189	1188	Hymenamide_D_M+H	17	1.4e-29	769.401	770.418	-1	-0.00967904	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1128	1189	1185	Hymenamide_D_M+Na	17	1.4e-29	769.401	770.418	-1	-0.00967904	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1128	1189	11943	hymenamide_D	17	1.4e-29	769.401	770.418	-1	-0.00967904	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1128	1189	3513	Hymenamide_D_M+H	17	1.4e-29	769.401	770.418	-1	-0.00967904	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3453	3576	3574	FR1_M+NH4	15	8.4e-29	1031.54	1032.55	-1	-4.0616e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3453	3576	3573	FR1_M+H	15	8.4e-29	1031.54	1032.55	-1	-4.0616e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1981	2072	2069	Iturin_A6_Dereplicator_M+H	14	8.5e-29	1070.58	1071.58	-1	0.00332518	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1981	2072	8720	Iturin_A_Iturin_A6	14	8.5e-29	1070.58	1071.58	-1	0.00332518	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3479	3603	3600	Thermoactinoamide_F_M+H	12	6.2e-28	698.473	699.48	-1	0.000363704	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2587	2686	2689	Leucinostatin_A_M+H_M+H	14	9.6e-28	1217.84	609.925	-1	0.000842612	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2587	2686	2683	Leucinostatin_A_reference_standard_M+2H	14	9.6e-28	1217.84	609.925	-1	0.000842612	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2587	2686	12499	Leucinostatin_A;_CC-1014;_ICI_13959;_M_1	14	9.6e-28	1217.84	609.925	-1	0.000842612	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1446	1521	242	Surfactin_C15_M+H+K	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	240	Surfactin_C15_M+H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	243	Surfactin_C15_M+Na	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	455	Surfactin_M+H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	453	Surfactin_M+H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	456	Surfactin_M+H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	457	Surfactin_M+H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	454	Surfactin_M+H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	241	Surfactin_C15_M+2H	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1446	1521	227	Surfactin_C15_M+K	13	1.7e-27	1035.68	1036.69	-1	0.000416036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	647	661	8134	Massetolides_Massetolide_A	14	2.8e-27	1139.71	1140.7	-1	0.012608	M+H	1
-None	output_sample/NPDTools_input/input.mgf	647	661	660	Massetolide_A_(WLIP/Viscosin/Massetolide_molecular_family)_M+H	14	2.8e-27	1139.71	1140.7	-1	0.012608	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1042	1100	10462	Puwainaphycin_B_Puwainaphycin_B	19	3.0e-27	1232.74	617.377	-1	-0.00141488	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1042	1100	1099	Puwainaphycin_B_M+H	19	3.0e-27	1232.74	617.377	-1	-0.00141488	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1042	1100	1098	Puwainaphycin_B_M+H	19	3.0e-27	1232.74	617.377	-1	-0.00141488	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3446	3566	12137	[Ile2Val7]-Surfactin_C15_dimethyl_ester	13	4.5e-27	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3253	3372	10712	Destruxins_4',5'-Dihydro,_4'ξ,5'-dihydroxy	12	6.1e-27	611.353	612.362	-1	-0.00169185	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3253	3372	3370	Destruxin_Ed1_M+H	12	6.1e-27	611.353	612.362	-1	-0.00169185	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3253	3372	3369	Destruxin_Ed_M+H	12	6.1e-27	611.353	612.362	-1	-0.00169185	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3222	3340	11879	stylostatin_1	13	3.1e-26	742.401	743.409	-1	-0.000344692	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3222	3340	3337	Stylostatin_1_M+H	13	3.1e-26	742.401	743.409	-1	-0.000344692	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1242	1317	10010	Acuminatum_Acuminatum_B	13	5.8e-26	887.537	888.544	-1	8.6156e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1242	1317	1430	_130100_M+H	13	5.8e-26	887.537	888.544	-1	8.6156e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1242	1317	1431	_130100_M+Na	13	5.8e-26	887.537	888.544	-1	8.6156e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1242	1317	1314	W493A_130005_M+H	13	5.8e-26	887.537	888.544	-1	8.6156e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3477	3601	3598	Thermoactinoamide_D_M+H	11	5.8e-26	764.447	765.455	-1	-0.00045712	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3472	3595	3592	Thermoactinoamide_B_M+H	11	7.4e-26	700.452	701.46	-1	-0.00037174	M+H	1
-None	output_sample/NPDTools_input/input.mgf	12	13	11131	Exumolide_A_Exumolide_A	12	1.0e-25	729.41	730.418	-1	-0.0005709	M+H	1
-None	output_sample/NPDTools_input/input.mgf	12	13	15	Exumolide_A_M+Na	12	1.0e-25	729.41	730.418	-1	-0.0005709	M+H	1
-None	output_sample/NPDTools_input/input.mgf	12	13	12	Exumolide_A_M+H	12	1.0e-25	729.41	730.418	-1	-0.0005709	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2594	2693	12491	Leucinostatin_B;_SF_1907II;_Paecilotoxin	11	1.5e-25	1203.82	1204.83	-1	-0.00208745	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2594	2693	2690	Leucinostatin_B_M+H_M+H	11	1.5e-25	1203.82	1204.83	-1	-0.00208745	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2594	2693	2684	Leucinostatin_B_M+H_reference_compound_M+H	11	1.5e-25	1203.82	1204.83	-1	-0.00208745	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3567	3693	3690	Versicotide_C_M+H	11	2.1e-25	550.254	551.26	-1	0.00126281	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2600	2699	12531	Leucinostatin_K;_Paecilotoxin_K	11	2.4e-25	1233.83	1234.84	-1	-0.00152277	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2600	2699	2687	Leucinostatin_A,_N9-Oxide_;_Paecilotoxin_K_M-H2O+H_M+H-H2O	11	2.4e-25	1233.83	1234.84	-1	-0.00152277	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2600	2699	2696	Leucinostatin_K;_Paecilotoxin_K_observed_in_Leucino_A/B_standard,_annotate_with_dereplicator_M+H	11	2.4e-25	1233.83	1234.84	-1	-0.00152277	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2600	2699	2686	Leucinostatin_A,_N9-Oxide_;_Paecilotoxin_K_observed_in_Leucinostatin_A_and_B_standards_M+H	11	2.4e-25	1233.83	1234.84	-1	-0.00152277	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3446	3566	3563	Surfactin_D_M+H	12	2.5e-25	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3446	3566	9293	Surfactin_Surfactin_D	12	2.5e-25	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7899	8035	8032	Ngercheumicin_B_M+H	12	3.2e-25	840.557	841.57	-1	-0.00551275	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3010	3112	10898	Arenamide_B_Arenamide_B	12	3.7e-25	643.394	644.39	-1	0.011779	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3010	3112	3109	Scopularide_B_/_Arenamide_B_M+H	12	3.7e-25	643.394	644.39	-1	0.011779	M+H	1
-None	output_sample/NPDTools_input/input.mgf	53	54	1704	Piperazimycin_A_M+H	12	3.9e-25	726.31	727.32	-1	-0.00235262	M+H	1
-None	output_sample/NPDTools_input/input.mgf	53	54	54	Piperazimycin_A_M+Na	12	3.9e-25	726.31	727.32	-1	-0.00235262	M+H	1
-None	output_sample/NPDTools_input/input.mgf	53	54	53	Piperazimycin_A_M+H	12	3.9e-25	726.31	727.32	-1	-0.00235262	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7897	8033	9973	Ngercheumicin_A_Ngercheumicin_A	12	7.6e-25	824.526	825.539	-1	-0.00581288	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7897	8033	8030	Ngercheumicin_A__M+H	12	7.6e-25	824.526	825.539	-1	-0.00581288	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2012	2103	2100	Putative_orfamide_D_M+H	14	8.9e-25	1252.79	1253.8	-1	-0.003328	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1982	2073	11759	L-Valyl-L-leucyl-L-prolyl-L-valyl-L-prol	10	9.8e-25	651.396	652.4	-1	0.00284166	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1982	2073	2070	val-leu-pro-val-pro-gln_M+H	10	9.8e-25	651.396	652.4	-1	0.00284166	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	230	Surfactin_C13_M+H	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	234	Surfactin_C13_M+Na	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	231	Surfactin_C13_M+2H	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	233	Surfactin_C13_M+K	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	3561	Surfactin_A_M+H	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	8899	Surfactin_Surfactin_A1	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	232	Surfactin_C13_M+H+Na	12	1.2e-24	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1412	1487	9778	Myxovalargin_Myxovalargin_A	15	3.1e-24	1676.05	839.032	-1	0.000691924	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1412	1487	1484	Myxovalargin_A_M+2H	15	3.1e-24	1676.05	839.032	-1	0.000691924	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1981	2072	11894	Mycosubtilin_I	12	5.3e-24	1070.58	1071.58	-1	0.00332518	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3399	3518	11709	malaysiatin	12	6.2e-24	752.422	753.429	-1	0.000390752	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3244	3363	3360	Desmethyldestruxin_B_M+H	10	1.2e-23	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3244	3363	10922	Destruxins_NVal-De-Me	10	1.2e-23	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1135	1197	11972	euryjanicin_C	13	2.1e-23	767.458	768.475	-1	-0.00955809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	45	46	46	Emericellamide_A_M+Na	11	3.0e-23	609.41	610.416	-1	0.0014291	M+H	1
-None	output_sample/NPDTools_input/input.mgf	45	46	45	Emericellamide_A_M+H	11	3.0e-23	609.41	610.416	-1	0.0014291	M+H	1
-None	output_sample/NPDTools_input/input.mgf	45	46	8787	Emericellamides_Emericellamide_A	11	3.0e-23	609.41	610.416	-1	0.0014291	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3250	3369	8154	Destruxins_5'-Carboxylic_acid	10	6.2e-23	623.353	624.359	-1	0.00130815	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3250	3369	3366	Destruxin_D_M+H	10	6.2e-23	623.353	624.359	-1	0.00130815	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	425	Plipastatin_M+H	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	423	Plipastatin_M+H	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	427	Plipastatin_M+K	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	431	Plipastatin_M+Na	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	428	Plipastatin_M+K	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	432	Plipastatin_M+Na	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	2041	Plipastatin_M+H	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	429	Plipastatin_M+K	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	424	Plipastatin_M+H	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1953	2044	422	Plipastatin_M+H	10	6.2e-23	1462.8	1463.8	-1	0.00321392	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7899	8035	11804	Ngercheumicin_B	11	8.5e-23	840.557	841.57	-1	-0.00551275	M+H	1
-None	output_sample/NPDTools_input/input.mgf	647	661	8513	Massetolides_Massetolide_G	12	1.0e-22	1139.71	1140.7	-1	0.012608	M+H	1
-None	output_sample/NPDTools_input/input.mgf	647	661	1956	Massetolide_G_M+H	12	1.0e-22	1139.71	1140.7	-1	0.012608	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3247	3366	9329	Bursaphelocide_A_Bursaphelocide_A	10	1.0e-22	593.379	594.386	-1	0.000128972	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3247	3366	3363	Destruxin_B_M+H	10	1.0e-22	593.379	594.386	-1	0.000128972	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1112	1170	12711	Scytonemin_A	18	1.5e-22	1462.76	732.397	-1	-0.0198916	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1112	1170	1169	Scytonemin_A_M+2H	18	1.5e-22	1462.76	732.397	-1	-0.0198916	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1112	1170	1168	Scytonemin_A_M+H	18	1.5e-22	1462.76	732.397	-1	-0.0198916	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3248	3367	9253	Destruxins_2-Valine_analogue	10	1.8e-22	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3248	3367	3364	Destruxin_B2_M+H	10	1.8e-22	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3005	3107	3104	Scopularide_E_M+H	11	2.0e-22	637.441	638.44	-1	0.00872923	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2592	2691	12220	Leucinostatin_B2	11	2.0e-22	1185.81	593.913	-1	-0.00137214	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2592	2691	2688	Leucinostatin_B2_observed_in_leucinostatin_A/B_standard_dereplicator_annotation_M+2H	11	2.0e-22	1185.81	593.913	-1	-0.00137214	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3006	3108	3105	Scopularide_F_M+H	11	2.9e-22	727.488	728.49	-1	0.00567942	M+H	1
-None	output_sample/NPDTools_input/input.mgf	884	941	9242	Nostopeptolide_A_4'-Epimer	12	5.0e-22	1080.59	1081.59	-1	0.00282724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	884	941	940	nostopeptolide_A1_M+H	12	5.0e-22	1080.59	1081.59	-1	0.00282724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	12122	[Ile2,Val7]-Surfactin_C13ai_monomethyl_e	11	6.2e-22	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	23	24	25	Microsporin_A_M+Na	9	7.6e-22	512.3	513.308	-1	-0.00084962	M+H	1
-None	output_sample/NPDTools_input/input.mgf	23	24	23	Microsporin_A_M+H	9	7.6e-22	512.3	513.308	-1	-0.00084962	M+H	1
-None	output_sample/NPDTools_input/input.mgf	23	24	9251	Microsporin_B_6'-Ketone	9	7.6e-22	512.3	513.308	-1	-0.00084962	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1441	1516	1513	Substance_P_M+H	12	9.5e-22	1346.73	674.371	-1	0.000706196	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1448	1523	1520	Branched_T-peptide_N-acetyl-ESL(KNFI)DQYG-NH2_M+H	12	1.5e-21	1353.66	677.835	-1	0.00104031	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3007	3109	3106	Scopularide_G_M+H	11	1.9e-21	679.488	680.49	-1	0.00567942	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1356	1431	10052	Acuminatum_Acuminatum_C	11	3.0e-21	873.521	874.53	-1	-0.00156391	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1356	1431	1429	_130099_M+Na	11	3.0e-21	873.521	874.53	-1	-0.00156391	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1356	1431	1428	_130099_M+H	11	3.0e-21	873.521	874.53	-1	-0.00156391	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1358	1433	10010	Acuminatum_Acuminatum_B	11	5.4e-21	887.537	888.547	-1	-0.00291384	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1358	1433	1430	_130100_M+H	11	5.4e-21	887.537	888.547	-1	-0.00291384	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1358	1433	1431	_130100_M+Na	11	5.4e-21	887.537	888.547	-1	-0.00291384	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1358	1433	1314	W493A_130005_M+H	11	5.4e-21	887.537	888.547	-1	-0.00291384	M+H	1
-None	output_sample/NPDTools_input/input.mgf	95	97	8822	Scopularide_A_Scopularide_A	10	9.1e-21	671.426	672.437	-1	-0.00392084	M+H	1
-None	output_sample/NPDTools_input/input.mgf	95	97	99	Arenamide_A_M+Na	10	9.1e-21	671.426	672.437	-1	-0.00392084	M+H	1
-None	output_sample/NPDTools_input/input.mgf	95	97	3108	Scopularide_A_M+H	10	9.1e-21	671.426	672.437	-1	-0.00392084	M+H	1
-None	output_sample/NPDTools_input/input.mgf	95	97	96	Arenamide_A_M+H	10	9.1e-21	671.426	672.437	-1	-0.00392084	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7901	8037	8034	Ngercheumicin_H_M+H	10	1.3e-20	880.589	881.604	-1	-0.00821262	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3446	3566	10698	Bacillus_pumilus_KMM_1364_Lipodepsipeptides_KMM_1364C	10	1.9e-20	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3446	3566	12140	[Ile2,Ile7]-Surfactin_C15_monomethyl_est	10	3.7e-20	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3249	3368	9282	Destruxins_4'-Hydroxy	9	4.4e-20	609.374	610.38	-1	0.00104359	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3249	3368	3365	Destruxin_C_M+H	9	4.4e-20	609.374	610.38	-1	0.00104359	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	12126	[Ile2,Val7]-Surfactin_C14i	10	6.6e-20	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3248	3367	10922	Destruxins_NVal-De-Me	9	7.0e-20	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3248	3367	3360	Desmethyldestruxin_B_M+H	9	7.0e-20	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3446	3566	12150	[Ile7]-Surfactin_C14i_dimethyl_ester	10	7.1e-20	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3251	3370	9030	Destruxins_2-Valine_analogue,_5'-carboxylic_acid	9	1.1e-19	609.337	610.344	-1	0.000658084	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3251	3370	3367	Destruxin_D2_M+H	9	1.1e-19	609.337	610.344	-1	0.000658084	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3257	3376	8226	Destruxins_Piperidine_homologue,_5'-carboxylic_acid	9	1.2e-19	637.369	638.375	-1	0.000958212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3257	3376	3373	Destruxin_D1_M+H	9	1.2e-19	637.369	638.375	-1	0.000958212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3009	3111	8822	Scopularide_A_Scopularide_A	10	1.6e-19	671.426	672.43	-1	0.00307916	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3009	3111	99	Arenamide_A_M+Na	10	1.6e-19	671.426	672.43	-1	0.00307916	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3009	3111	3108	Scopularide_A_M+H	10	1.6e-19	671.426	672.43	-1	0.00307916	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3009	3111	96	Arenamide_A_M+H	10	1.6e-19	671.426	672.43	-1	0.00307916	M+H	1
-None	output_sample/NPDTools_input/input.mgf	33	34	9901	Microsporin_B_Microsporin_B	8	1.7e-19	514.316	515.322	-1	0.000800444	M+H	1
-None	output_sample/NPDTools_input/input.mgf	33	34	35	Microsporin_B_M+Na	8	1.7e-19	514.316	515.322	-1	0.000800444	M+H	1
-None	output_sample/NPDTools_input/input.mgf	33	34	33	Microsporin_B_M+H	8	1.7e-19	514.316	515.322	-1	0.000800444	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2601	2700	12147	Leucinostatin_N	8	2.1e-19	1119.76	1120.77	-1	0.000397672	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2601	2700	2697	Leucinostatin_N_observed_in_Leucin_A/B_standard_dereplicator_annotatiom_M+H	8	2.1e-19	1119.76	1120.77	-1	0.000397672	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	2799	desferrichrome_M+H	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	225	Desferrichrome_M+K	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	2879	Ferrichrome_M+H	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	11618	Desferriferrichrome	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	2880	Ferrichrome_[M-H2+Fe]_M+H	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	3031	Ferrichrome_[M-3H+Fe+Na]_M+Na	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	226	Desferrichrome_M+Na	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2782	2882	224	Desferrichrome_M+H	9	2.5e-19	687.319	688.328	-1	-0.00195212	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1230	1305	8421	Apicidin_Apicidin	8	2.6e-19	623.368	624.377	-1	-0.00143571	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1230	1305	1302	Apicidin__120249_M+H	8	2.6e-19	623.368	624.377	-1	-0.00143571	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1233	1308	1306	Apicidin_C_120251_M+Na	8	3.1e-19	609.353	610.362	-1	-0.00208578	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1233	1308	8525	Apicidin_Valine_analogue	8	3.1e-19	609.353	610.362	-1	-0.00208578	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1233	1308	1305	Apicidin_C_120251_M+H	8	3.1e-19	609.353	610.362	-1	-0.00208578	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1624	1711	1708	Propimycin_M+H	12	3.6e-19	1130.33	1131.34	-1	-0.0026421	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3146	3263	8492	Destruxins_2-Valine_analogue	9	9.6e-19	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3146	3263	3260	Destruxin_A2_M+H	9	9.6e-19	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1443	1518	9354	Bursaphelocide_B_Bursaphelocide_B	8	9.6e-19	607.394	608.402	-1	-0.000220964	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1443	1518	3382	Destruxin_B1_M+H	8	9.6e-19	607.394	608.402	-1	-0.000220964	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1443	1518	1515	Roseotoxin_A_M+H	8	9.6e-19	607.394	608.402	-1	-0.000220964	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4211	4338	11507	E'calcium-dependent_antibiotic_2a'	14	1.0e-18	1560.47	781.24	-1	0.00640907	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2596	2695	10804	Leucinostatin_D_N9-Oxide	8	1.1e-18	1133.78	1134.79	-1	-0.00395226	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2596	2695	2692	Leucinostatin_D_N9-Oxide_observed_in_leucino_A/B_standard_dereplicator_annotation_M+H	8	1.1e-18	1133.78	1134.79	-1	-0.00395226	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2596	2695	2685	Leucinostatin_A,_2-L-leucine,_N9-oxide_;_Paecilotoxin_H__M+H	8	1.1e-18	1133.78	1134.79	-1	-0.00395226	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3245	3364	3361	Desmethyldestruxin_C_M+H	8	1.6e-18	595.358	596.367	-1	-0.00160647	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3245	3364	8564	Destruxins_5'-Hydroxy,_NVal-de-Me	8	1.6e-18	595.358	596.367	-1	-0.00160647	M+H	1
-None	output_sample/NPDTools_input/input.mgf	38	39	8273	Halovirs_4'-Deoxy	8	1.8e-18	849.63	850.636	-1	0.00159262	M+H	1
-None	output_sample/NPDTools_input/input.mgf	38	39	38	Halovir_C_M+H	8	1.8e-18	849.63	850.636	-1	0.00159262	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7900	8036	8033	Ngercheumicin_G_M+H	9	2.7e-18	854.573	855.587	-1	-0.00686268	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7904	8040	8037	Ngercheumicin_F_M+H	9	2.7e-18	852.557	853.571	-1	-0.00651275	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3476	3600	3597	Thermoactinoamide_C_M+H	8	2.9e-18	728.484	729.491	-1	-7.1612e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7902	8038	8036	Ngercheumicin_I_M+H	9	3.3e-18	882.604	883.618	-1	-0.00656256	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7902	8038	8035	Ngercheumicin_I_M+H	9	3.3e-18	882.604	883.618	-1	-0.00656256	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7903	8039	8036	Ngercheumicin_I_M+H	9	3.3e-18	882.604	883.618	-1	-0.00656256	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7903	8039	8035	Ngercheumicin_I_M+H	9	3.3e-18	882.604	883.618	-1	-0.00656256	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7898	8034	8893	Ngercheumicin_A_4''',5'''-Dihydro	9	3.6e-18	826.542	827.554	-1	-0.00516281	M+H	1
-None	output_sample/NPDTools_input/input.mgf	7898	8034	8031	Ngercheumicin_A'_M+H	9	3.6e-18	826.542	827.554	-1	-0.00516281	M+H	1
-None	output_sample/NPDTools_input/input.mgf	460	468	10633	Syringomycin_Syringomycin_E	13	7.3e-18	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3446	3566	10529	Surfactin_1-Me_ester	9	8.0e-18	1049.7	1050.71	-1	-0.0039339	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1984	2075	12173	Trichorovin-IVb	11	9.1e-18	1160.75	1161.76	-1	0.00056126	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1984	2075	2072	Putative_Peptaibol_Trichodermide_D_analogue_M+H	11	9.1e-18	1160.75	1161.76	-1	0.00056126	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3242	3361	8306	Destruxins_4',5'-Dihydro,_5'-hydroxy,_4'ξ-chloro	8	9.2e-18	629.319	630.325	-1	0.00142118	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3242	3361	3358	Chlorodestruxin_M+H	8	9.2e-18	629.319	630.325	-1	0.00142118	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3365	3484	3481	Surugamide_H_putative_M+H	9	4.7e-17	869.574	435.795	-1	-0.00157964	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	878	935	12295	Aurantin_II	10	5.1e-17	1254.63	1255.63	-1	0.00575467	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1378	1453	9700	1-Alaninechlamydocin_1-Alaninechlamydocin	7	9.1e-17	512.263	513.27	-1	0.000764872	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1378	1453	1451	1-Alaninechlamydocin_130134_M+Na	7	9.1e-17	512.263	513.27	-1	0.000764872	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1378	1453	1450	1-Alaninechlamydocin_130134_M+H	7	9.1e-17	512.263	513.27	-1	0.000764872	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3008	3110	3107	Scopularide_H_M+H	9	9.7e-17	699.457	700.46	-1	0.00437929	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	2799	desferrichrome_M+H	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	225	Desferrichrome_M+K	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	2879	Ferrichrome_M+H	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	11618	Desferriferrichrome	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	2880	Ferrichrome_[M-H2+Fe]_M+H	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	3031	Ferrichrome_[M-3H+Fe+Na]_M+Na	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	226	Desferrichrome_M+Na	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2702	2802	224	Desferrichrome_M+H	10	1.9e-16	687.319	688.315	-1	0.0110479	M+H	1
-None	output_sample/NPDTools_input/input.mgf	41	42	11146	Thalassospiramide_B_Thalassospiramide_B	8	1.9e-16	1061.6	1062.61	-1	0.00216572	M+H	1
-None	output_sample/NPDTools_input/input.mgf	41	42	43	Thalassospiramide_B_M+H	8	1.9e-16	1061.6	1062.61	-1	0.00216572	M+H	1
-None	output_sample/NPDTools_input/input.mgf	41	42	41	Thalassospiramide_B_M+H	8	1.9e-16	1061.6	1062.61	-1	0.00216572	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1753	1840	9049	Pyoverdin_D_Amide	8	2.3e-16	1332.61	1333.61	-1	0.00312171	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1753	1840	1837	Pyoverdin_E_(PaO1)_M+H	8	2.3e-16	1332.61	1333.61	-1	0.00312171	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1753	1840	439	Pyoverdin_E_M+2H	8	2.3e-16	1332.61	1333.61	-1	0.00312171	M+H	1
-None	output_sample/NPDTools_input/input.mgf	648	662	8328	Massetolides_Massetolide_B	9	4.0e-16	1153.72	1154.72	-1	0.00825809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	648	662	661	Spectra_matches_to_compound_Massetolide_B_(WLIP/Viscosin/Massetolide_molecular_family)_M+H	9	4.0e-16	1153.72	1154.72	-1	0.00825809	M+H	1
-None	output_sample/NPDTools_input/input.mgf	45	46	10483	Isariins_Isariin_G1	8	4.6e-16	609.41	610.416	-1	0.0014291	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3245	3364	11278	Destruxins_2-Valine_analogue,_5'-hydroxy	7	6.8e-16	595.358	596.367	-1	-0.00160647	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1984	2075	12167	Trichorovin-VIIb	10	7.3e-16	1160.75	1161.76	-1	0.00056126	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1741	1828	8702	Ornibactin_C4_N5-Deacyl,_N5-(3ξ-hydroxyhexanoyl)	7	7.6e-16	708.365	709.37	-1	0.00266372	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1741	1828	1825	Ornibactin_C6_M+H	7	7.6e-16	708.365	709.37	-1	0.00266372	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2669	2769	2766	[Ala9]-moroidin-[QLLVWRAH]_M+2H	8	9.7e-16	1057.55	529.78	-1	0.000308092	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1742	1829	8638	Ornibactin_C4_N5-Deacyl,_N5-(3ξ-hydroxyoctanoyl)	7	9.8e-16	736.397	737.4	-1	0.00396385	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1742	1829	1826	Ornibactin_C8_M+H	7	9.8e-16	736.397	737.4	-1	0.00396385	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1601	1688	8527	Rakicidin_A_Rakicidin_A	7	1.0e-15	606.399	607.41	-1	-0.00346993	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1601	1688	1685	Rakicidin_A_M+H	7	1.0e-15	606.399	607.41	-1	-0.00346993	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3244	3363	3364	Destruxin_B2_M+H	7	1.1e-15	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3244	3363	9253	Destruxins_2-Valine_analogue	7	1.1e-15	579.363	580.369	-1	0.00147891	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2652	2752	9107	Celogentin_C_Celogentin_C	8	1.1e-15	1026.54	514.28	-1	-0.00550556	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2652	2752	2749	Celogentin_C_M+2H	8	1.1e-15	1026.54	514.28	-1	-0.00550556	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3005	3107	8637	Isariins_Isariin_A	8	1.7e-15	637.441	638.44	-1	0.00872923	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1043	1101	8933	Puwainaphycin_C_Puwainaphycin_C	12	1.7e-15	1226.67	614.347	-1	-0.0116874	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1043	1101	1101	Puwainaphycin_C_M+H	12	1.7e-15	1226.67	614.347	-1	-0.0116874	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1043	1101	1100	Puwainaphycin_C_M+H	12	1.7e-15	1226.67	614.347	-1	-0.0116874	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	4213	4340	11211	Antibiotic_CDA_2.1,3.1-Didehydro(Z-),_3.3-O-phosphate	12	1.8e-15	1574.49	788.25	-1	0.00205914	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	4213	4340	4336	Dereplicator_Identification_-_Antibiotic_CDA_2.1,3.1-Didehydro(Z-),_3.3-O-phosphate_M+2H	12	1.8e-15	1574.49	788.25	-1	0.00205914	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3462	3585	3799	Loggerpeptin_A_M+NH4	8	2.2e-15	992.522	993.536	-1	-0.00683564	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3462	3585	3583	Loggerpeptin_A_M+Na	8	2.2e-15	992.522	993.536	-1	-0.00683564	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3462	3585	3800	Loggerpeptin_A_M+Na	8	2.2e-15	992.522	993.536	-1	-0.00683564	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3462	3585	3798	Loggerpeptin_A_M+H	8	2.2e-15	992.522	993.536	-1	-0.00683564	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3462	3585	3801	Loggerpeptin_A_M+H-H2O	8	2.2e-15	992.522	993.536	-1	-0.00683564	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3462	3585	3582	Loggerpeptin_A_M+H	8	2.2e-15	992.522	993.536	-1	-0.00683564	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2653	2753	2750	Amaranthipeptide_A_M+2H	8	2.4e-15	1040.56	521.28	-1	0.0101445	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3243	3362	8524	Destruxins_NVal-De-Me	7	3.1e-15	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3243	3362	3359	Desmethyldestruxin_A_M+H	7	3.1e-15	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3481	3605	3602	Thermoactinoamide_H_M+H	6	3.6e-15	684.457	685.465	-1	-0.00028636	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3444	3564	12111	[Val2,Val7]-Surfactin_C14_monomethyl_est	8	4.0e-15	1007.65	1008.66	-1	-0.000884092	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1600	1687	8562	Rakicidin_B_Rakicidin_B	7	4.4e-15	620.415	621.42	-1	0.00218013	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1600	1687	1684	Rakicidin_B_M+H	7	4.4e-15	620.415	621.42	-1	0.00218013	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1600	1687	926	Rakicidin_B_M+H	7	4.4e-15	620.415	621.42	-1	0.00218013	M+H	1
-None	output_sample/NPDTools_input/input.mgf	878	935	8370	Actinomycin_D,_8CI,_9CI,_JAN_Actinomycin_D,_8CI,_9CI,_JAN	9	4.9e-15	1254.63	1255.63	-1	0.00575467	M+H	1
-None	output_sample/NPDTools_input/input.mgf	878	935	216	Actinomycin_D_M+H	9	4.9e-15	1254.63	1255.63	-1	0.00575467	M+H	1
-None	output_sample/NPDTools_input/input.mgf	878	935	934	Actinomycin_D_M+H	9	4.9e-15	1254.63	1255.63	-1	0.00575467	M+H	1
-None	output_sample/NPDTools_input/input.mgf	878	935	215	Actinomycin_D_M+2H	9	4.9e-15	1254.63	1255.63	-1	0.00575467	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1408	1483	1480	Myxovalargin_C_M+2H	10	5.1e-15	1648.02	825.017	-1	-0.000608204	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1442	1517	1514	Valinomycin_M+H	9	5.5e-15	1110.63	1111.64	-1	-0.00155996	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1442	1517	247	Valinomycin_M+K	9	5.5e-15	1110.63	1111.64	-1	-0.00155996	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1442	1517	8655	Valinomycin_Valinomycin	9	5.5e-15	1110.63	1111.64	-1	-0.00155996	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1442	1517	248	Valinomycin_M+Na	9	5.5e-15	1110.63	1111.64	-1	-0.00155996	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1442	1517	246	Valinomycin_M+H	9	5.5e-15	1110.63	1111.64	-1	-0.00155996	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2651	2751	2748	[Asn9]-Moroidin_M+2H	8	8.2e-15	1100.55	551.28	-1	0.00612174	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3469	3592	3785	Rivulariapeptolide_1121_M+H	8	1.8e-14	1121.6	1122.62	-1	-0.011857	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3469	3592	3783	Rivulariapeptolide_1121_M+NH4	8	1.8e-14	1121.6	1122.62	-1	-0.011857	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3469	3592	3786	Rivulariapeptolide_1121_M+H-H2O	8	1.8e-14	1121.6	1122.62	-1	-0.011857	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3469	3592	3784	Rivulariapeptolide_1121_M+Na	8	1.8e-14	1121.6	1122.62	-1	-0.011857	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3469	3592	3589	Rivulariapeptolide_1121_M+H	8	1.8e-14	1121.6	1122.62	-1	-0.011857	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1445	1520	1517	Linearized_pseudacyclin_A_M+H	6	1.9e-14	757.474	758.481	-1	9.1976e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3470	3593	3776	Rivulariapeptolide_1155_M+NH4	8	2.0e-14	1155.59	1156.6	-1	-0.00750711	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3470	3593	3773	Rivulariapeptolide_1155_M+H	8	2.0e-14	1155.59	1156.6	-1	-0.00750711	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3470	3593	4312	Rivulariapeptolide_1155_M+H	8	2.0e-14	1155.59	1156.6	-1	-0.00750711	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3470	3593	3775	Rivulariapeptolide_1155_M+Na	8	2.0e-14	1155.59	1156.6	-1	-0.00750711	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3470	3593	3590	Rivulariapeptolide_1155_M+H	8	2.0e-14	1155.59	1156.6	-1	-0.00750711	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3246	3365	8453	Destruxins_Destruxin_A	7	2.4e-14	577.348	578.353	-1	0.00182884	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3246	3365	3362	Destruxin_A_M+H	7	2.4e-14	577.348	578.353	-1	0.00182884	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3264	3383	11089	Destruxins_2-Valine_analogue,_4'ξ,5'-epoxide	7	4.0e-14	579.327	580.332	-1	0.0020934	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3264	3383	3380	Destruxin_E2_M+H	7	4.0e-14	579.327	580.332	-1	0.0020934	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1444	1519	11016	Pseudacyclin_A_Pseudacyclin_A	6	4.3e-14	739.463	740.471	-1	-0.000472708	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1444	1519	1516	Pseudacyclin_A_M+H	6	4.3e-14	739.463	740.471	-1	-0.000472708	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3146	3263	8524	Destruxins_NVal-De-Me	7	4.8e-14	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3146	3263	3359	Desmethyldestruxin_A_M+H	7	4.8e-14	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1984	2075	12168	Trichorovin-VIb	9	5.3e-14	1160.75	1161.76	-1	0.00056126	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1740	1827	8669	Ornibactin_C4_Ornibactin_C4	6	1.0e-13	680.334	681.34	-1	0.0013636	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1740	1827	1824	Ornibactin_C4_M+H	6	1.0e-13	680.334	681.34	-1	0.0013636	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3478	3602	3599	Thermoactinoamide_E_M+H	6	1.2e-13	664.489	665.496	-1	1.3768e-05	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2659	2759	2756	Moroidin-[QLAVWRGH]_M+2H	7	1.4e-13	944.462	473.24	-1	-0.00375588	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2657	2757	2754	Moroidin-[ALLVWRGH]_M+2H	7	1.6e-13	946.514	474.26	-1	0.00827969	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2656	2756	2753	Moroidin-[QLLVWRSH]_M+2H	7	1.7e-13	1016.52	509.27	-1	-0.006241	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3568	3694	3691	Versicotide_A_M+H	6	2.4e-13	479.217	480.22	-1	0.00414903	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3568	3694	8377	Versicotide_A_Versicotide_A	6	2.4e-13	479.217	480.22	-1	0.00414903	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3465	3588	3781	Rivulariapeptolide_988_M+Na	7	3.4e-13	988.491	989.505	-1	-0.00713576	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3465	3588	3779	Rivulariapeptolide_988_M+H-H2O	7	3.4e-13	988.491	989.505	-1	-0.00713576	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3465	3588	3782	Rivulariapeptolide_988_M+NH4	7	3.4e-13	988.491	989.505	-1	-0.00713576	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3465	3588	3780	Rivulariapeptolide_988_M+H	7	3.4e-13	988.491	989.505	-1	-0.00713576	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3465	3588	3585	Rivulariapeptolide_988_M+H	7	3.4e-13	988.491	989.505	-1	-0.00713576	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2664	2764	2761	_[Val9]-moroidin_M+2H	7	6.5e-13	1085.58	543.8	-1	-0.00839178	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	3266	3385	1515	Roseotoxin_A_M+H	6	6.7e-13	607.394	608.401	-1	0.000779036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3266	3385	9354	Bursaphelocide_B_Bursaphelocide_B	6	6.7e-13	607.394	608.401	-1	0.000779036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3266	3385	3382	Destruxin_B1_M+H	6	6.7e-13	607.394	608.401	-1	0.000779036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3263	3382	9381	Destruxins_3-Isoleucine_analogue	6	8.2e-13	607.394	608.401	-1	0.000779036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3263	3382	3379	Destruxin_B4_M+H	6	8.2e-13	607.394	608.401	-1	0.000779036	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3243	3362	8492	Destruxins_2-Valine_analogue	6	8.5e-13	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3243	3362	3260	Destruxin_A2_M+H	6	8.5e-13	563.332	564.339	-1	0.00017878	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3265	3384	3381	Destruxin_F_M+H	6	9.3e-13	595.358	596.365	-1	0.000393528	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3265	3384	9754	Destruxins_4',5'-Dihydro,_4'ξ-hydroxy	6	9.3e-13	595.358	596.365	-1	0.000393528	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3675	3801	3799	Loggerpeptin_A_M+NH4	6	1.3e-12	992.522	993.529	-1	0.000164364	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3675	3801	3583	Loggerpeptin_A_M+Na	6	1.3e-12	992.522	993.529	-1	0.000164364	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3675	3801	3800	Loggerpeptin_A_M+Na	6	1.3e-12	992.522	993.529	-1	0.000164364	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3675	3801	3798	Loggerpeptin_A_M+H	6	1.3e-12	992.522	993.529	-1	0.000164364	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3675	3801	3801	Loggerpeptin_A_M+H-H2O	6	1.3e-12	992.522	993.529	-1	0.000164364	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3675	3801	3582	Loggerpeptin_A_M+H	6	1.3e-12	992.522	993.529	-1	0.000164364	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1036	1094	11280	Carmabin_A_9,9,10,10-Tetrahydro,_9-oxo	6	1.8e-12	721.441	722.446	-1	0.00272923	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1036	1094	1093	Carmabin_B_M+H	6	1.8e-12	721.441	722.446	-1	0.00272923	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1036	1094	218	Carmabin_B_M+H	6	1.8e-12	721.441	722.446	-1	0.00272923	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	3584	Kurahamide_M+H	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	2528	Kurahamide_M+Na	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	3802	Kurahamide_M+H	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	3805	Kurahamide_M+H-H2O	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	3803	Kurahamide_M+NH4	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	7738	Kurahamide_M+Na	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	7825	Kurahamide_M+Na	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	3804	Kurahamide_M+Na	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	2862	Kurahamide_M+Na	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3464	3587	2526	HoshinoamideA_M+Na	7	2.4e-12	1103.55	1104.57	-1	-0.00880724	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1046	1104	9245	Puwainaphycin_D_Puwainaphycin_D	10	2.4e-12	1224.69	613.357	-1	-0.0109519	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1046	1104	1103	Puwainaphycin_D_M+H	10	2.4e-12	1224.69	613.357	-1	-0.0109519	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	1046	1104	1102	Puwainaphycin_D_M+H	10	2.4e-12	1224.69	613.357	-1	-0.0109519	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	870	927	8562	Rakicidin_B_Rakicidin_B	6	3.2e-12	620.415	621.422	-1	0.000180132	M+H	1
-None	output_sample/NPDTools_input/input.mgf	870	927	1684	Rakicidin_B_M+H	6	3.2e-12	620.415	621.422	-1	0.000180132	M+H	1
-None	output_sample/NPDTools_input/input.mgf	870	927	926	Rakicidin_B_M+H	6	3.2e-12	620.415	621.422	-1	0.000180132	M+H	1
-None	output_sample/NPDTools_input/input.mgf	1984	2075	12175	Harzianin_HB_I	8	3.5e-12	1160.75	1161.76	-1	0.00056126	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2668	2768	2765	[Val9]-moroidin-[QLLVWRAH]_M+2H	6	3.7e-12	1099.59	550.8	-1	0.00725828	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2658	2758	2755	Moroidin-[QALVWRGH]_M+2H	6	3.8e-12	944.462	473.24	-1	-0.00375588	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2654	2754	2751	Amaranthipeptide_B_M+2H	6	8.0e-12	1043.53	522.77	-1	0.00465803	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2672	2772	2751	Amaranthipeptide_B_M+2H	6	2.4e-11	1043.53	522.78	-1	-0.015342	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	545	Syringomycin_E_M+H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	544	Syringomycin_E_M+H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	467	Syringomycin_E_M+2H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	546	Syringomycin_E_M+H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	547	Syringomycin_E_M+H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	468	Syringomycin_E_M+2H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	460	468	466	Syringomycin_E_M+H	9	2.5e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	4188	4315	3776	Rivulariapeptolide_1155_M+NH4	6	4.0e-11	1155.59	1156.59	-1	0.00249289	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4188	4315	3773	Rivulariapeptolide_1155_M+H	6	4.0e-11	1155.59	1156.59	-1	0.00249289	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4188	4315	4312	Rivulariapeptolide_1155_M+H	6	4.0e-11	1155.59	1156.59	-1	0.00249289	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4188	4315	3775	Rivulariapeptolide_1155_M+Na	6	4.0e-11	1155.59	1156.59	-1	0.00249289	M+H	1
-None	output_sample/NPDTools_input/input.mgf	4188	4315	3590	Rivulariapeptolide_1155_M+H	6	4.0e-11	1155.59	1156.59	-1	0.00249289	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	3580	Molassamide_M+Na	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	2864	Molassamide_M+Na	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	3581	Molassamide_M+H-H2O	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	8870	Molassamide_Molassamide	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	3791	Molassamide_M+H	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	3792	Molassamide_M+NH4	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	3579	Molassamide_M+H	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	3459	3582	2863	Molassamide_M+Na	6	5.1e-11	962.475	963.488	-1	-0.00578583	M+H	1
-None	output_sample/NPDTools_input/input.mgf	2654	2754	2769	Moroidin-[QLLVWRGGH]_M+2H	6	5.3e-11	1043.53	522.77	-1	0.00465803	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	461	469	10633	Syringomycin_Syringomycin_E	8	5.3e-11	1224.59	613.305	-1	-0.00487506	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2587	2686	12568	g-Hydroxy-Meleu4-cyclosporin	8	7.1e-11	1217.84	609.925	-1	0.000842612	M+2H	2
-None	output_sample/NPDTools_input/input.mgf	2587	2686	10029	Cyclosporin,_9CI_Cyclosporin_C	8	7.1e-11	1217.84	609.925	-1	0.000842612	M+2H	2
+VisualizationID	SpecFile	LocalSpecIdx	Scan	LocalPeptideIdx	Name	Score	P-Value	PeptideMass	SpectrumMass	Retention	Adduct	Charge
+None	../files/output_sample/NPDTools_input/input.mgf	1610	1697	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	31	6.7e-33	897.605	898.62	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1610	1697	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	31	6.7e-33	897.605	898.62	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1616	1703	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	30	1.4e-32	897.605	898.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1616	1703	1700	Dereplicator_Identification_-_E'Surugamide_D'_M+H	30	1.4e-32	897.605	898.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	644	658	657	Spectra_matches_to_compound_Putisolvin_M+H	21	1.9e-32	1379.83	1380.83	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	644	658	657	Spectra_matches_to_compound_Putisolvin_M+H	21	1.9e-32	1379.83	1380.83	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1449	1524	1521	Gramicidin_C_M+H	15	8.5e-32	1858.05	1859.06	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1449	1524	1521	Gramicidin_C_M+H	15	8.5e-32	1858.05	1859.06	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1954	2045	422	Plipastatin_M+H	20	1.0e-29	1462.8	732.402	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1954	2045	422	Plipastatin_M+H	20	1.0e-29	1462.8	732.402	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1045	1103	1102	Puwainaphycin_D_M+H	25	1.7e-29	1224.69	1225.71	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1045	1103	1102	Puwainaphycin_D_M+H	25	1.7e-29	1224.69	1225.71	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1874	1963	1960	Dereplicator_Identification_-_Citrusin_VI_Citrusin_VI_M+H	26	7.6e-29	794.469	795.478	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1874	1963	1960	Dereplicator_Identification_-_Citrusin_VI_Citrusin_VI_M+H	26	7.6e-29	794.469	795.478	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2594	2693	2684	Leucinostatin_B_M+H_reference_compound_M+H	11	1.2e-28	1203.82	1204.83	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2594	2693	2684	Leucinostatin_B_M+H_reference_compound_M+H	11	1.2e-28	1203.82	1204.83	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2628	2727	2723	Alamethicin_M+H	21	6.8e-28	1963.11	982.57	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	2628	2727	2723	Alamethicin_M+H	21	6.8e-28	1963.11	982.57	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1440	1515	1512	Cyclosporin_A_M+H	29	1.1e-27	1201.84	1202.85	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1440	1515	1512	Cyclosporin_A_M+H	29	1.1e-27	1201.84	1202.85	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1111	1169	1168	Scytonemin_A_M+H	27	3.5e-27	1462.76	1463.78	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1111	1169	1168	Scytonemin_A_M+H	27	3.5e-27	1462.76	1463.78	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	4212	4339	4336	Dereplicator_Identification_-_Antibiotic_CDA_2.1,3.1-Didehydro(Z-),_3.3-O-phosphate_M+2H	22	5.0e-27	1574.49	788.25	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	4212	4339	4336	Dereplicator_Identification_-_Antibiotic_CDA_2.1,3.1-Didehydro(Z-),_3.3-O-phosphate_M+2H	22	5.0e-27	1574.49	788.25	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	3398	3517	3514	Hymenamide_K_M+H	22	5.4e-27	1006.49	1007.5	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3398	3517	3514	Hymenamide_K_M+H	22	5.4e-27	1006.49	1007.5	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1041	1099	1098	Puwainaphycin_B_M+H	27	2.8e-26	1232.74	1233.75	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1041	1099	1098	Puwainaphycin_B_M+H	27	2.8e-26	1232.74	1233.75	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1039	1097	1096	Puwainaphycin_A_M+H	21	4.6e-26	1234.72	1235.74	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1039	1097	1096	Puwainaphycin_A_M+H	21	4.6e-26	1234.72	1235.74	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1618	1705	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	27	1.1e-25	897.605	898.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1618	1705	1702	Dereplicator_Identification_-_E'Surugamide_C'_M+H	27	1.1e-25	897.605	898.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1617	1704	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	28	1.6e-25	897.605	898.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1617	1704	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	28	1.6e-25	897.605	898.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2593	2692	2683	Leucinostatin_A_reference_standard_M+2H	13	2.2e-25	1217.84	1218.84	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2593	2692	2683	Leucinostatin_A_reference_standard_M+2H	13	2.2e-25	1217.84	1218.84	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2011	2102	2099	Putative_orfamide_C_M+H	24	2.8e-25	1266.81	1267.81	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2011	2102	2099	Putative_orfamide_C_M+H	24	2.8e-25	1266.81	1267.81	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	4211	4338	4335	Dereplicator_Identification_-_CDA2a_structure_1_M+2H	29	3.5e-25	1560.47	781.24	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	4211	4338	4335	Dereplicator_Identification_-_CDA2a_structure_1_M+2H	29	3.5e-25	1560.47	781.24	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	2010	2101	2098	Putative_orfamide_B_M+H	26	8.0e-25	1280.82	1281.83	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2010	2101	2098	Putative_orfamide_B_M+H	26	8.0e-25	1280.82	1281.83	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2601	2700	2697	Leucinostatin_N_observed_in_Leucin_A/B_standard_dereplicator_annotatiom_M+H	8	1.3e-24	1119.76	1120.77	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2601	2700	2697	Leucinostatin_N_observed_in_Leucin_A/B_standard_dereplicator_annotatiom_M+H	8	1.3e-24	1119.76	1120.77	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1044	1102	1100	Puwainaphycin_C_M+H	23	2.5e-24	1226.67	1227.69	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1160	1228	1227	Hymenamide_B_M+H	19	2.5e-24	830.396	831.415	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1044	1102	1100	Puwainaphycin_C_M+H	23	2.5e-24	1226.67	1227.69	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1160	1228	1227	Hymenamide_B_M+H	19	2.5e-24	830.396	831.415	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2587	2686	2683	Leucinostatin_A_reference_standard_M+2H	14	4.5e-23	1217.84	609.925	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	2587	2686	2683	Leucinostatin_A_reference_standard_M+2H	14	4.5e-23	1217.84	609.925	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	2009	2100	2097	Putative_orfamide_A_M+H	27	6.7e-23	1294.84	1295.84	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2009	2100	2097	Putative_orfamide_A_M+H	27	6.7e-23	1294.84	1295.84	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2600	2699	2686	Leucinostatin_A,_N9-Oxide_;_Paecilotoxin_K_observed_in_Leucinostatin_A_and_B_standards_M+H	11	1.4e-22	1233.83	1234.84	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2600	2699	2686	Leucinostatin_A,_N9-Oxide_;_Paecilotoxin_K_observed_in_Leucinostatin_A_and_B_standards_M+H	11	1.4e-22	1233.83	1234.84	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1448	1523	1520	Branched_T-peptide_N-acetyl-ESL(KNFI)DQYG-NH2_M+H	12	6.1e-22	1353.66	677.835	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1448	1523	1520	Branched_T-peptide_N-acetyl-ESL(KNFI)DQYG-NH2_M+H	12	6.1e-22	1353.66	677.835	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1984	2075	2072	Putative_Peptaibol_Trichodermide_D_analogue_M+H	11	6.5e-22	1160.75	1161.76	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1984	2075	2072	Putative_Peptaibol_Trichodermide_D_analogue_M+H	11	6.5e-22	1160.75	1161.76	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1135	1197	1186	Stylopeptide_1_M+H	20	7.4e-22	767.458	768.475	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1135	1197	1186	Stylopeptide_1_M+H	20	7.4e-22	767.458	768.475	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3374	3493	12084	phakellistatin_1	18	3.4e-21	827.458	828.465	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3374	3493	12084	phakellistatin_1	18	3.4e-21	827.458	828.465	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2592	2691	2688	Leucinostatin_B2_observed_in_leucinostatin_A/B_standard_dereplicator_annotation_M+2H	11	4.7e-21	1185.81	593.913	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	2592	2691	2688	Leucinostatin_B2_observed_in_leucinostatin_A/B_standard_dereplicator_annotation_M+2H	11	4.7e-21	1185.81	593.913	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	2639	2738	2735	Dereplicator_Identification_-_Schizopeptin_791_M+H	15	9.3e-21	791.458	792.471	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2639	2738	2735	Dereplicator_Identification_-_Schizopeptin_791_M+H	15	9.3e-21	791.458	792.471	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3450	3573	3570	FR900359_M+H	17	9.9e-21	1001.53	1002.54	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3450	3573	3570	FR900359_M+H	17	9.9e-21	1001.53	1002.54	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3019	3121	3118	keramamide_A_M+H	14	1.9e-20	942.441	943.448	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3019	3121	3118	keramamide_A_M+H	14	1.9e-20	942.441	943.448	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3364	3483	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	23	2.9e-20	897.605	898.613	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3364	3483	1694	Dereplicator_Identification_-_E'Surugamide_B'_M+H	23	2.9e-20	897.605	898.613	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1564	1647	1644	Surugamide_A_M+H	19	6.5e-20	911.621	912.628	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1564	1647	1644	Surugamide_A_M+H	19	6.5e-20	911.621	912.628	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3396	3515	3512	axinastatin_3_M+H	17	1.7e-19	780.453	781.46	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3396	3515	3512	axinastatin_3_M+H	17	1.7e-19	780.453	781.46	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3395	3514	3511	Hymenamide_H_M+H	17	8.9e-19	903.522	904.529	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3397	3516	1185	Hymenamide_D_M+Na	15	8.9e-19	769.401	770.406	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3395	3514	3511	Hymenamide_H_M+H	17	8.9e-19	903.522	904.529	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3397	3516	1185	Hymenamide_D_M+Na	15	8.9e-19	769.401	770.406	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	648	662	1678	Massetolide_H_M+H	18	1.6e-18	1153.72	1154.72	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	648	662	1678	Massetolide_H_M+H	18	1.6e-18	1153.72	1154.72	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1953	2044	422	Plipastatin_M+H	10	1.7e-18	1462.8	1463.8	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1953	2044	422	Plipastatin_M+H	10	1.7e-18	1462.8	1463.8	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1441	1516	1513	Substance_P_M+H	12	1.7e-18	1346.73	674.371	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1441	1516	1513	Substance_P_M+H	12	1.7e-18	1346.73	674.371	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	7897	8033	8030	Ngercheumicin_A__M+H	12	1.8e-18	824.526	825.539	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7897	8033	8030	Ngercheumicin_A__M+H	12	1.8e-18	824.526	825.539	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3221	3339	3336	Hymenamide_C_M+H	18	2.8e-18	826.401	827.409	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3221	3339	3336	Hymenamide_C_M+H	18	2.8e-18	826.401	827.409	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2596	2695	2685	Leucinostatin_A,_2-L-leucine,_N9-oxide_;_Paecilotoxin_H__M+H	8	4.5e-18	1133.78	1134.79	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2596	2695	2685	Leucinostatin_A,_2-L-leucine,_N9-oxide_;_Paecilotoxin_H__M+H	8	4.5e-18	1133.78	1134.79	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1412	1487	1484	Myxovalargin_A_M+2H	15	4.7e-18	1676.05	839.032	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1412	1487	1484	Myxovalargin_A_M+2H	15	4.7e-18	1676.05	839.032	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1982	2073	2070	val-leu-pro-val-pro-gln_M+H	10	5.9e-18	651.396	652.4	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1982	2073	2070	val-leu-pro-val-pro-gln_M+H	10	5.9e-18	651.396	652.4	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1328	1403	1358	Cycloaspeptide_A_120252_M+H	14	8.5e-18	641.321	642.332	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1328	1403	1358	Cycloaspeptide_A_120252_M+H	14	8.5e-18	641.321	642.332	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7899	8035	8032	Ngercheumicin_B_M+H	12	1.2e-17	840.557	841.57	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7899	8035	8032	Ngercheumicin_B_M+H	12	1.2e-17	840.557	841.57	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2012	2103	2100	Putative_orfamide_D_M+H	14	3.2e-17	1252.79	1253.8	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2012	2103	2100	Putative_orfamide_D_M+H	14	3.2e-17	1252.79	1253.8	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3253	3372	3369	Destruxin_Ed_M+H	12	4.6e-17	611.353	612.362	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3253	3372	3369	Destruxin_Ed_M+H	12	4.6e-17	611.353	612.362	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3366	3485	3482	Surugamide_G_M+H	20	5.9e-17	883.59	442.801	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	3366	3485	3482	Surugamide_G_M+H	20	5.9e-17	883.59	442.801	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1981	2072	2069	Iturin_A6_Dereplicator_M+H	14	6.9e-17	1070.58	1071.58	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1981	2072	2069	Iturin_A6_Dereplicator_M+H	14	6.9e-17	1070.58	1071.58	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1286	1361	1358	Cycloaspeptide_A_120252_M+H	14	1.1e-16	641.321	642.33	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1286	1361	1358	Cycloaspeptide_A_120252_M+H	14	1.1e-16	641.321	642.33	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3446	3566	9686	Daitocidin_Pumilacidin_F	14	1.2e-16	1049.7	1050.71	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3446	3566	9686	Daitocidin_Pumilacidin_F	14	1.2e-16	1049.7	1050.71	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	38	39	38	Halovir_C_M+H	8	1.5e-16	849.63	850.636	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	38	39	38	Halovir_C_M+H	8	1.5e-16	849.63	850.636	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1128	1189	1185	Hymenamide_D_M+Na	17	2.1e-16	769.401	770.418	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1128	1189	1185	Hymenamide_D_M+Na	17	2.1e-16	769.401	770.418	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1330	1405	1402	Cycloaspeptide_H_130057_M+H	13	4.3e-16	671.332	672.342	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1330	1405	1402	Cycloaspeptide_H_130057_M+H	13	4.3e-16	671.332	672.342	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3445	3565	235	Surfactin_C14_M+H	19	6.9e-16	1021.67	1022.68	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3445	3565	235	Surfactin_C14_M+H	19	6.9e-16	1021.67	1022.68	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	63	64	63	Etamycin_M+H	18	1.2e-15	878.454	879.461	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	63	64	63	Etamycin_M+H	18	1.2e-15	878.454	879.461	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1042	1100	1098	Puwainaphycin_B_M+H	19	1.2e-15	1232.74	617.377	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1042	1100	1098	Puwainaphycin_B_M+H	19	1.2e-15	1232.74	617.377	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1741	1828	1825	Ornibactin_C6_M+H	7	1.5e-15	708.365	709.37	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1741	1828	1825	Ornibactin_C6_M+H	7	1.5e-15	708.365	709.37	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3399	3518	3515	Axinastatin_1_M+H	16	1.7e-15	752.422	753.429	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3399	3518	3515	Axinastatin_1_M+H	16	1.7e-15	752.422	753.429	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3222	3340	3337	Stylostatin_1_M+H	13	1.9e-15	742.401	743.409	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3222	3340	3337	Stylostatin_1_M+H	13	1.9e-15	742.401	743.409	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3449	3572	3569	Thermoactinoamide_A_M+H	14	3.3e-15	714.468	715.475	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3449	3572	3569	Thermoactinoamide_A_M+H	14	3.3e-15	714.468	715.475	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1753	1840	1837	Pyoverdin_E_(PaO1)_M+H	8	3.6e-15	1332.61	1333.61	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1753	1840	1837	Pyoverdin_E_(PaO1)_M+H	8	3.6e-15	1332.61	1333.61	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1742	1829	1826	Ornibactin_C8_M+H	7	3.7e-15	736.397	737.4	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1742	1829	1826	Ornibactin_C8_M+H	7	3.7e-15	736.397	737.4	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	12	13	12	Exumolide_A_M+H	12	4.3e-15	729.41	730.418	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	12	13	12	Exumolide_A_M+H	12	4.3e-15	729.41	730.418	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3453	3576	3573	FR1_M+H	14	6.1e-15	1031.54	1032.55	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3453	3576	3573	FR1_M+H	14	6.1e-15	1031.54	1032.55	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1446	1521	10630	Bacillus_pumilus_KMM_1364_Lipodepsipeptides_KMM_1364A	12	1.8e-14	1035.68	1036.69	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1446	1521	10630	Bacillus_pumilus_KMM_1364_Lipodepsipeptides_KMM_1364A	12	1.8e-14	1035.68	1036.69	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	647	661	660	Massetolide_A_(WLIP/Viscosin/Massetolide_molecular_family)_M+H	14	2.7e-14	1139.71	1140.7	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	647	661	660	Massetolide_A_(WLIP/Viscosin/Massetolide_molecular_family)_M+H	14	2.7e-14	1139.71	1140.7	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3010	3112	3109	Scopularide_B_/_Arenamide_B_M+H	12	2.8e-14	643.394	644.39	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3010	3112	3109	Scopularide_B_/_Arenamide_B_M+H	12	2.8e-14	643.394	644.39	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2013	2104	2101	Putative_orfamide_G_M+H	19	3.2e-14	1308.85	1309.86	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2013	2104	2101	Putative_orfamide_G_M+H	19	3.2e-14	1308.85	1309.86	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3244	3363	3360	Desmethyldestruxin_B_M+H	10	3.8e-14	579.363	580.369	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3244	3363	3360	Desmethyldestruxin_B_M+H	10	3.8e-14	579.363	580.369	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3472	3595	3592	Thermoactinoamide_B_M+H	11	4.4e-14	700.452	701.46	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3472	3595	3592	Thermoactinoamide_B_M+H	11	4.4e-14	700.452	701.46	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3245	3364	3361	Desmethyldestruxin_C_M+H	8	5.7e-14	595.358	596.367	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3245	3364	3361	Desmethyldestruxin_C_M+H	8	5.7e-14	595.358	596.367	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1624	1711	1708	Propimycin_M+H	12	6.6e-14	1130.33	1131.34	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1624	1711	1708	Propimycin_M+H	12	6.6e-14	1130.33	1131.34	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	878	935	12295	Aurantin_II	10	8.4e-14	1254.63	1255.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	878	935	12295	Aurantin_II	10	8.4e-14	1254.63	1255.63	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7901	8037	8034	Ngercheumicin_H_M+H	10	8.8e-14	880.589	881.604	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7901	8037	8034	Ngercheumicin_H_M+H	10	8.8e-14	880.589	881.604	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3479	3603	3600	Thermoactinoamide_F_M+H	12	1.1e-13	698.473	699.48	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3479	3603	3600	Thermoactinoamide_F_M+H	12	1.1e-13	698.473	699.48	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3248	3367	3364	Destruxin_B2_M+H	10	1.3e-13	579.363	580.369	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3248	3367	3364	Destruxin_B2_M+H	10	1.3e-13	579.363	580.369	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3249	3368	3365	Destruxin_C_M+H	9	1.4e-13	609.374	610.38	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3249	3368	3365	Destruxin_C_M+H	9	1.4e-13	609.374	610.38	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3250	3369	3366	Destruxin_D_M+H	10	1.5e-13	623.353	624.359	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	53	54	53	Piperazimycin_A_M+H	12	1.5e-13	726.31	727.32	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3250	3369	3366	Destruxin_D_M+H	10	1.5e-13	623.353	624.359	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	53	54	53	Piperazimycin_A_M+H	12	1.5e-13	726.31	727.32	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3247	3366	3363	Destruxin_B_M+H	10	1.6e-13	593.379	594.386	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3247	3366	3363	Destruxin_B_M+H	10	1.6e-13	593.379	594.386	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	23	24	23	Microsporin_A_M+H	9	1.7e-13	512.3	513.308	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	23	24	23	Microsporin_A_M+H	9	1.7e-13	512.3	513.308	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	41	42	41	Thalassospiramide_B_M+H	8	2.0e-13	1061.6	1062.61	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	41	42	41	Thalassospiramide_B_M+H	8	2.0e-13	1061.6	1062.61	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3242	3361	3358	Chlorodestruxin_M+H	8	3.0e-13	629.319	630.325	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3242	3361	3358	Chlorodestruxin_M+H	8	3.0e-13	629.319	630.325	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3470	3593	3590	Rivulariapeptolide_1155_M+H	9	4.9e-13	1155.59	1156.6	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3251	3370	3367	Destruxin_D2_M+H	9	4.9e-13	609.337	610.344	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3146	3263	3260	Destruxin_A2_M+H	9	4.9e-13	563.332	564.339	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3470	3593	3590	Rivulariapeptolide_1155_M+H	9	4.9e-13	1155.59	1156.6	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3251	3370	3367	Destruxin_D2_M+H	9	4.9e-13	609.337	610.344	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3146	3263	3260	Destruxin_A2_M+H	9	4.9e-13	563.332	564.339	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3477	3601	3598	Thermoactinoamide_D_M+H	11	5.0e-13	764.447	765.455	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3477	3601	3598	Thermoactinoamide_D_M+H	11	5.0e-13	764.447	765.455	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3567	3693	3690	Versicotide_C_M+H	11	6.2e-13	550.254	551.26	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3567	3693	3690	Versicotide_C_M+H	11	6.2e-13	550.254	551.26	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	884	941	940	nostopeptolide_A1_M+H	12	8.8e-13	1080.59	1081.59	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	884	941	940	nostopeptolide_A1_M+H	12	8.8e-13	1080.59	1081.59	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1112	1170	1168	Scytonemin_A_M+H	18	1.3e-12	1462.76	732.397	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1112	1170	1168	Scytonemin_A_M+H	18	1.3e-12	1462.76	732.397	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1230	1305	1302	Apicidin__120249_M+H	8	2.9e-12	623.368	624.377	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1230	1305	1302	Apicidin__120249_M+H	8	2.9e-12	623.368	624.377	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7904	8040	8037	Ngercheumicin_F_M+H	9	3.0e-12	852.557	853.571	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7904	8040	8037	Ngercheumicin_F_M+H	9	3.0e-12	852.557	853.571	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1408	1483	1480	Myxovalargin_C_M+2H	10	3.7e-12	1648.02	825.017	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1408	1483	1480	Myxovalargin_C_M+2H	10	3.7e-12	1648.02	825.017	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1356	1431	1428	_130099_M+H	11	4.2e-12	873.521	874.53	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1356	1431	1428	_130099_M+H	11	4.2e-12	873.521	874.53	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	460	468	10633	Syringomycin_Syringomycin_E	13	5.6e-12	1224.59	613.305	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	460	468	10633	Syringomycin_Syringomycin_E	13	5.6e-12	1224.59	613.305	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	3006	3108	3105	Scopularide_F_M+H	11	5.8e-12	727.488	728.49	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3006	3108	3105	Scopularide_F_M+H	11	5.8e-12	727.488	728.49	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3444	3564	230	Surfactin_C13_M+H	12	6.0e-12	1007.65	1008.66	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3444	3564	230	Surfactin_C13_M+H	12	6.0e-12	1007.65	1008.66	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1242	1317	1314	W493A_130005_M+H	13	6.1e-12	887.537	888.544	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1242	1317	1314	W493A_130005_M+H	13	6.1e-12	887.537	888.544	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	33	34	33	Microsporin_B_M+H	8	6.4e-12	514.316	515.322	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	33	34	33	Microsporin_B_M+H	8	6.4e-12	514.316	515.322	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	45	46	45	Emericellamide_A_M+H	11	9.8e-12	609.41	610.416	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	45	46	45	Emericellamide_A_M+H	11	9.8e-12	609.41	610.416	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7898	8034	8031	Ngercheumicin_A'_M+H	9	1.4e-11	826.542	827.554	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7898	8034	8031	Ngercheumicin_A'_M+H	9	1.4e-11	826.542	827.554	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3365	3484	3481	Surugamide_H_putative_M+H	9	1.4e-11	869.574	435.795	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	3365	3484	3481	Surugamide_H_putative_M+H	9	1.4e-11	869.574	435.795	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	7902	8038	8035	Ngercheumicin_I_M+H	9	1.7e-11	882.604	883.618	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7903	8039	8035	Ngercheumicin_I_M+H	9	1.7e-11	882.604	883.618	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7902	8038	8035	Ngercheumicin_I_M+H	9	1.7e-11	882.604	883.618	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7903	8039	8035	Ngercheumicin_I_M+H	9	1.7e-11	882.604	883.618	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1043	1101	1100	Puwainaphycin_C_M+H	12	2.0e-11	1226.67	614.347	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1043	1101	1100	Puwainaphycin_C_M+H	12	2.0e-11	1226.67	614.347	-1	M+2H	2
+None	../files/output_sample/NPDTools_input/input.mgf	1233	1308	1305	Apicidin_C_120251_M+H	8	2.1e-11	609.353	610.362	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1233	1308	1305	Apicidin_C_120251_M+H	8	2.1e-11	609.353	610.362	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3005	3107	3104	Scopularide_E_M+H	11	2.2e-11	637.441	638.44	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3005	3107	3104	Scopularide_E_M+H	11	2.2e-11	637.441	638.44	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3465	3588	3585	Rivulariapeptolide_988_M+H	8	2.3e-11	988.491	989.505	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3465	3588	3585	Rivulariapeptolide_988_M+H	8	2.3e-11	988.491	989.505	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3243	3362	3359	Desmethyldestruxin_A_M+H	7	3.0e-11	563.332	564.339	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3243	3362	3359	Desmethyldestruxin_A_M+H	7	3.0e-11	563.332	564.339	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2782	2882	224	Desferrichrome_M+H	9	3.2e-11	687.319	688.328	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3009	3111	96	Arenamide_A_M+H	10	3.2e-11	671.426	672.43	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	2782	2882	224	Desferrichrome_M+H	9	3.2e-11	687.319	688.328	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3009	3111	96	Arenamide_A_M+H	10	3.2e-11	671.426	672.43	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	95	97	96	Arenamide_A_M+H	10	3.4e-11	671.426	672.437	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	95	97	96	Arenamide_A_M+H	10	3.4e-11	671.426	672.437	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3257	3376	3373	Destruxin_D1_M+H	9	4.8e-11	637.369	638.375	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7900	8036	8033	Ngercheumicin_G_M+H	9	4.8e-11	854.573	855.587	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3257	3376	3373	Destruxin_D1_M+H	9	4.8e-11	637.369	638.375	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	7900	8036	8033	Ngercheumicin_G_M+H	9	4.8e-11	854.573	855.587	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1443	1518	1515	Roseotoxin_A_M+H	8	4.9e-11	607.394	608.402	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	1443	1518	1515	Roseotoxin_A_M+H	8	4.9e-11	607.394	608.402	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3462	3585	3582	Loggerpeptin_A_M+H	8	6.6e-11	992.522	993.536	-1	M+H	1
+None	../files/output_sample/NPDTools_input/input.mgf	3462	3585	3582	Loggerpeptin_A_M+H	8	6.6e-11	992.522	993.536	-1	M+H	1

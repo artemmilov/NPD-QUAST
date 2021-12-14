@@ -1,7 +1,7 @@
 Statistic	Value
 Number of spectrum files	1
 Number of spectrum scans	8797
-Number of all PSMs	912
-Number of significant PSMs (p-value < 1e-10)	516
+Number of all PSMs	1580
+Number of significant PSMs (p-value < 1e-10)	898
 FDR % for p-value < 1e-10	0.0
-Elapsed time	0:00:14.342167
+Elapsed time	0:00:29.482592

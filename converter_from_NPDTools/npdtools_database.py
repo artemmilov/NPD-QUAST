@@ -4,23 +4,8 @@ from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, inchi
 
 from converter_from_NPDTools.quast_mol import QuastMol, QuastMolInitException
-
-
-def _parse_from_mgf(s):
-    res = []
-    cur = ''
-    in_brackets = False
-    for a in s:
-        if (a == ',') and (not in_brackets):
-            res.append(cur)
-            cur = ''
-        elif a == '\"':
-            in_brackets = not in_brackets
-        else:
-            cur += a
-    if cur != '':
-        res.append(cur)
-    return res
+from abstract.abstract_database import AbstractDatabase
+from general import parse_from_mgf
 
 
 class DatabaseInitException(Exception):
@@ -70,13 +55,7 @@ def _clean_database(folder):
     os.remove(os.path.join(folder, 'old_smiles.info'))
 
 
-class NpdToolsDatabase:
-    def __init__(self, folder):
-        if len(os.listdir(folder)) == 0:
-            self._empty_init(folder)
-        elif len(os.listdir(folder)) != 0:
-            self._not_empty_init(folder)
-
+class NpdToolsDatabase(AbstractDatabase):
     def _empty_init(self, folder):
         self.folder = folder
         self._existing_inches = set()
@@ -148,11 +127,11 @@ class NpdToolsDatabase:
         with open(casmi_file) as casmi_data:
             for line in casmi_data.readlines()[1:]:
                 if line != '':
-                    splitted_line = _parse_from_mgf(line)
+                    splitted_line = parse_from_mgf(line)
                     identifier = int(line.split(',')[0])
                     name = splitted_line[1]
                     mass = float(splitted_line[2])
-                    smiles = splitted_line[3]
+                    smiles = splitted_line[4]
                     try:
                         self.add_mol(
                             QuastMol(
@@ -164,20 +143,6 @@ class NpdToolsDatabase:
                         )
                     except QuastMolInitException:
                         pass
-
-    def __len__(self):
-        return self._l
-
-    def __iter__(self):
-        self._counter = 0
-        return self
-
-    def __next__(self):
-        if self._counter < len(self):
-            self._counter += 1
-            return self[self._counter - 1]
-        else:
-            raise StopIteration
 
     def __getitem__(self, i):
         with open(os.path.join(self.folder, 'library.info')) as library_info, \
@@ -214,10 +179,6 @@ class NpdToolsDatabase:
             library_smiles.write(Chem.MolToSmiles(quast_mol.mol) + '\n')
         self._l += 1
         return True
-
-    def add_database(self, other_database):
-        for quast_mol in other_database:
-            self.add_mol(quast_mol)
 
 
 def _check_database_folder(database_folder):
@@ -278,4 +239,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # output_sample/database ../pnpdatabase merged_database      !!!
+    # ../files/output_sample/database ../files/pnpdatabase ../files/merged_database

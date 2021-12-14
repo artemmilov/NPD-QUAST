@@ -1,23 +1,26 @@
-2021-11-22 00:27:48	INFO: Command line: /home/artem/Programming/bioinformatics/NPDtools-2.5.0-Linux/bin/dereplicator.py output_sample/NPDTools_input/ --db-path ../pnpdatabase/ -o test 
-2021-11-22 00:27:48	INFO: Starting Dereplicator in 1 thread
-2021-11-22 00:27:48	INFO:   Parameters are saved to test/work/params.tsv
-2021-11-22 00:27:48	INFO:   Total number of spectra: 1 
-2021-11-22 00:27:48	INFO: Starting: output_sample/NPDTools_input/input.mgf --> spectra-00000
-2021-11-22 00:27:48	INFO:   Running: /home/artem/Programming/bioinformatics/NPDtools-2.5.0-Linux/bin/dereplicate "test/work/spectra-00000.mgf" "../pnpdatabase/" "../pnpdatabase/library.info" --configs_dir "test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --x-metropolis  --isotope 0 --min_score_for_pvalue 7 --min_score 5 --min_shared_peaks 5 --min_num_comp 0 > "test/work/spectra-00000_dereplicator.log"
-2021-11-22 00:29:07	INFO: Run on spectra-00000 (input.mgf) finished correctly (8797 scans processed). PSMs found: 134 (significant: 94); visualizations generated: 0
-2021-11-22 00:29:07	INFO: 
+2021-12-12 07:58:17	INFO: Command line: /home/artem/Programming/bioinformatics/NPDtools-2.5.0-Linux/bin/dereplicator.py ../files/output_sample/NPDTools_input --db-path ../files/output_sample/medereplicator.py ../files/output_sample/NPDTools_input --db-path ../files/merged_database -o ../files/testrged_database -o ../files/test 
+2021-12-12 07:58:17	INFO: Starting Dereplicator in 1 thread
+2021-12-12 07:58:17	INFO:   Parameters are saved to ../files/test/work/params.tsv
+2021-12-12 07:58:17	INFO:   Total number of spectra: 2 
+2021-12-12 07:58:17	INFO: Starting: ../files/output_sample/NPDTools_input/input.mgf --> spectra-00000
+2021-12-12 07:58:17	INFO:   Running: /home/artem/Programming/bioinformatics/NPDtools-2.5.0-Linux/bin/dereplicate "../files/test/work/spectra-00000.mgf" "../files/merged_database" "../files/merged_database/library.info" --configs_dir "../files/test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --x-metropolis  --isotope 0 --min_score_for_pvalue 7 --min_score 5 --min_shared_peaks 5 --min_num_comp 0 > "../files/test/work/spectra-00000_dereplicator.log"
+2021-12-12 08:05:33	INFO: Run on spectra-00000 (input.mgf) finished correctly (8797 scans processed). PSMs found: 192 (significant: 122); visualizations generated: 0
+2021-12-12 08:05:33	INFO: Starting: ../files/output_sample/NPDTools_input/input.mgf --> spectra-00001
+2021-12-12 08:05:33	INFO:   Running: /home/artem/Programming/bioinformatics/NPDtools-2.5.0-Linux/bin/dereplicate "../files/test/work/spectra-00001.mgf" "../files/merged_database" "../files/merged_database/library.info" --configs_dir "../files/test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --x-metropolis  --isotope 0 --min_score_for_pvalue 7 --min_score 5 --min_shared_peaks 5 --min_num_comp 0 > "../files/test/work/spectra-00001_dereplicator.log"
+2021-12-12 08:12:11	INFO: Run on spectra-00001 (input.mgf) finished correctly (8797 scans processed). PSMs found: 192 (significant: 122); visualizations generated: 0
+2021-12-12 08:12:11	INFO: 
 
-  Summary (saved to test/summary.tsv):
-    Number of spectrum files: 1
-    Number of spectrum scans: 8797
+  Summary (saved to ../files/test/summary.tsv):
+    Number of spectrum files: 2
+    Number of spectrum scans: 17594
       out of them: 0 failed conversion to mgf
       out of them: 0 failed processing
-    Found PSMs: 134
-      out of them: 94 significant (p-value < 1e-10)
+    Found PSMs: 384
+      out of them: 244 significant (p-value < 1e-10)
       out of them: 0 visualizations generated
 
-  Matches are in test/all_matches.tsv and significant_matches.tsv
-  Log is in test/work/dereplicator.log
+  Matches are in ../files/test/all_matches.tsv and significant_matches.tsv
+  Log is in ../files/test/work/dereplicator.log
 
-  Elapsed time: 0:01:19.322277
+  Elapsed time: 0:13:54.396345
 

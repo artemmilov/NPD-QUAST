@@ -41,4 +41,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()  # test output_sample/database test_main_input      !!!
+    main()  # ../files/test ../files/merged_database ../files/test_main_input      !!!

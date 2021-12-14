@@ -48,14 +48,14 @@ def handle_library(
             except QuastMolInitException as e:
                 print(e)
                 continue
-            if database.add_mol(quast_mol):
-                npdtools_input.write(
-                    quast_mol.to_npdtools_input() + '\n\n',
-                )
-                true_answers.write(
-                    '{0}\t{1}\n'.format(quast_mol.scan, quast_mol.inchi_key),
-                )
-                scan += 1
+            database.add_mol(quast_mol)
+            npdtools_input.write(
+                quast_mol.to_tool_input() + '\n\n',
+            )
+            true_answers.write(
+                '{0}\t{1}\n'.format(quast_mol.scan, quast_mol.inchi_key),
+            )
+            scan += 1
 
 
 def print_dereplicator_answers(
@@ -104,8 +104,11 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # input_sample/input_library.mgf output_sample/database output_sample/NPDTools_input/input.mgf test_main_input      !!!
-    # dereplicator.py output_sample/NPDTools_input --db-path output_sample/database -o test      !!!
+    # ../files/input_sample/input_library.mgf ../files/output_sample/database ->
+    # ../files/output_sample/NPDTools_input/input.mgf ../files/test_main_input
+    # dereplicator.py ../files/output_sample/NPDTools_input --db-path ../files/output_sample/database -o ../files/test
     # dereplicator.py output_sample/NPDTools_input/ --db-path pnpdatabase/ -o test      !!!
-    # /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py      !!!
-    # output_sample/NPDTools_input/ --db-path merged_database/ -o test --pass-to-dereplicate "--num_hits_to_report 10"      !!!
+    # dereplicator.py ../files/output_sample/NPDTools_input --db-path ../files/merged_database -o ../files/test
+    # /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py ->   !!!
+    # ../files/output_sample/NPDTools_input --db-path ../files/merged_database -o ->    !!!
+    # ../files/test --pass-to-dereplicate "--num_hits_to_report 10"  !!!

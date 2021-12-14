@@ -2,6 +2,8 @@ import os
 
 from rdkit import Chem
 
+from abstract.abstract_mol import AbstractMol
+
 
 def _is_valid_smiles(smiles):
     try:
@@ -21,7 +23,7 @@ class QuastMolInitException(Exception):
         return 'QuastMolInitException: {0}'.format(self.message)
 
 
-class QuastMol:
+class QuastMol(AbstractMol):
     def __init__(self, *args):
         if len(args) == 2:
             data, scan = args
@@ -91,7 +93,7 @@ class QuastMol:
         self.mol = Chem.AddHs(Chem.MolFromSmiles(self.smiles))
         self.inchi_key = Chem.inchi.MolToInchiKey(self.mol).split('-')[0]
 
-    def to_npdtools_input(self):
+    def to_tool_input(self):
         return '''BEGIN IONS\nSCANS={0}\nPEPMASS={1}\nCHARGE={2}\nMSLEVEL={3}\n{4}END IONS\n'''.format(
             self.scan,
             self.mass,
@@ -99,6 +101,3 @@ class QuastMol:
             self.ms_level,
             self.spectra,
         )
-
-    def to_mol_file(self, folder):
-        Chem.MolToMolFile(self.mol, os.path.join(folder, self.filename), forceV3000=True)

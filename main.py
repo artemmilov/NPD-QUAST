@@ -53,4 +53,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()  # converter_from_NPDTools/test_main_input test_main_output      !!!
+    main()  # files/test_main_input files/test_main_output

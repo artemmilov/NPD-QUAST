@@ -1,33 +1,33 @@
-2021-11-26 10:08:26	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py converter_from_NPDTools/output_sample/NPDTools_input --db-path converter_from_NPDTools/merged_database -o converter_from_NPDTools/test --pass-to-dereplicate "--num_hits_to_report 10" 
-2021-11-26 10:08:26	INFO: 
-2021-11-26 10:08:26	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST
-2021-11-26 10:08:26	INFO: System information:
-	OS: Linux-5.11.0-40-generic-x86_64-with-Ubuntu-20.04-focal
-	Python version: 2.7.18 (interpreter: /usr/bin/python)
-2021-11-26 10:08:26	INFO: Chemical Structure Database information:
-	root dir: converter_from_NPDTools/merged_database
-	library.info: converter_from_NPDTools/merged_database/library.info
+2021-12-12 08:15:03	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py ../files/output_sample/NPDTools_input --db-path ../files/merged_database -o ../files/test --pass-to-dereplicate "--num_hits_to_report 10" 
+2021-12-12 08:15:03	INFO: 
+2021-12-12 08:15:03	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST/converter_from_NPDTools
+2021-12-12 08:15:03	INFO: System information:
+	OS: Linux-5.11.0-41-generic-x86_64-with-glibc2.31
+	Python version: 3.9.5 (interpreter: /home/artem/Programming/miniconda3/bin/python)
+2021-12-12 08:15:03	INFO: Chemical Structure Database information:
+	root dir: ../files/merged_database
+	library.info: ../files/merged_database/library.info
 	library.smiles: N/A
-2021-11-26 10:08:26	INFO: Starting Dereplicator in 1 thread
-2021-11-26 10:08:26	INFO:   Parameters are saved to converter_from_NPDTools/test/work/params.tsv
-2021-11-26 10:08:26	INFO:   Total number of spectra: 1 
-2021-11-26 10:08:26	INFO: Starting: converter_from_NPDTools/output_sample/NPDTools_input/input.mgf --> spectra-00000
-2021-11-26 10:08:26	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "converter_from_NPDTools/test/work/spectra-00000.mgf" "converter_from_NPDTools/merged_database" "converter_from_NPDTools/merged_database/library.info" --configs_dir "converter_from_NPDTools/test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --isotope 0 --num_hits_to_report 10 > "converter_from_NPDTools/test/work/spectra-00000_dereplicator.log"
-2021-11-26 10:08:41	INFO: Run on spectra-00000 (input.mgf) finished correctly (8797 scans processed). PSMs found: 912 (significant: 516); visualizations generated: 0
-2021-11-26 10:08:41	INFO: 
+2021-12-12 08:15:03	INFO: Starting Dereplicator in 1 thread
+2021-12-12 08:15:03	INFO:   Parameters are saved to ../files/test/work/params.tsv
+2021-12-12 08:15:03	INFO:   Total number of spectra: 1 
+2021-12-12 08:15:03	INFO: Starting: ../files/output_sample/NPDTools_input/input.mgf --> spectra-00000
+2021-12-12 08:15:03	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "../files/test/work/spectra-00000.mgf" "../files/merged_database" "../files/merged_database/library.info" --configs_dir "../files/test/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --isotope 0 --num_hits_to_report 10 > "../files/test/work/spectra-00000_dereplicator.log"
+2021-12-12 08:15:33	INFO: Run on spectra-00000 (input.mgf) finished correctly (8797 scans processed). PSMs found: 1580 (significant: 898); visualizations generated: 0
+2021-12-12 08:15:33	INFO: 
 
-  Summary (saved to converter_from_NPDTools/test/summary.tsv):
+  Summary (saved to ../files/test/summary.tsv):
     Number of spectra files: 1
       out of them: 0 failed conversion to mgf
       out of them: 0 failed processing
       out of them: 0 had completed results and were reused
     Number of processed spectra scans: 8797
-    Found PSMs: 912
-      out of them: 516 significant (p-value < 1e-10)
+    Found PSMs: 1580
+      out of them: 898 significant (p-value < 1e-10)
       out of them: 0 visualizations generated
 
-  Matches are in converter_from_NPDTools/test/all_matches.tsv and significant_matches.tsv
-  Log is in converter_from_NPDTools/test/work/dereplicator.log
+  Matches are in ../files/test/all_matches.tsv and significant_matches.tsv
+  Log is in ../files/test/work/dereplicator.log
 
-  Elapsed time: 0:00:14.342167
+  Elapsed time: 0:00:29.482592
 

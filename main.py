@@ -4,6 +4,8 @@ from collections import defaultdict
 from rdkit import RDLogger
 
 from report import write_report
+from npd_quast_folder import NPDQuastFolder
+from converter_from_MAGMa_plus.magma_tool import MagmaTool
 
 
 def _check_folders(answers_folder, report_folder):

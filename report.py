@@ -86,7 +86,7 @@ def _str_quantiles(true_answers, tool_answers):
 
 
 def write_report(report_folder, true_answers, tool_answers):
-    with open(os.path.join(report_folder, 'report.tsv'), 'w') as report:
+    with open(report_folder, 'w') as report:
         report.write(
             ''.join(
                 [

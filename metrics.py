@@ -9,7 +9,6 @@ def percent_true_best(true_answers, tool_answers, best=None):
             for tool_answer in scan_answers
         ],
         key=lambda ans: ans[2],
-        reverse=True,
     )
     total = len(sorted_answers)
     if best is None:
@@ -27,7 +26,6 @@ def _abstract_medal_score(true_answers, tool_answers, medals):
         sorted_tool_answers = sorted(
             tool_answers[scan],
             key=lambda ans: ans[1],
-            reverse=True,
         )
         sorted_inches = tuple(
             map(
@@ -69,7 +67,6 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
             for tool_answer in tool_answers[scan]
         ],
         key=lambda ans: ans[1],
-        reverse=True,
     )
     return list(
         map(
@@ -168,4 +165,6 @@ def k_quantile(true_answers, tool_answers, k=50):
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         if true_inchi in sorted_inches:
             positions.append(sorted_inches.index(true_inchi))
-    return quantile(positions, k / 100)
+    if len(positions) != 0:
+        return quantile(positions, k / 100)
+    return 0

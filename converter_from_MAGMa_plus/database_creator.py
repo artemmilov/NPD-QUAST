@@ -1,13 +1,10 @@
 import sqlite3
 import zlib
 
-from idna import unicode
-
 from magma_plus_mol import MagmaPlusMol, MagmaPlusInitException
 
 
-def main():
-    csv_database_file, converted_database_file = input().split()
+def create_database(csv_database_file, converted_database_file):
     conn = sqlite3.connect(converted_database_file)
     c = conn.cursor()
     try:
@@ -68,6 +65,11 @@ def main():
     )
     conn.commit()
     print('Ok: {0}, not ok: {1}.'.format(ok, not_ok))
+
+
+def main():
+    csv_database_file, converted_database_file = input().split()
+    create_database(csv_database_file, converted_database_file)
 
 
 if __name__ == '__main__':

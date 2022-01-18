@@ -1,5 +1,4 @@
-def main():
-    mgf_data_file, mass_tree_file = input().split()
+def create_mass_tree(mgf_data_file, mass_tree_file):
     with open(mgf_data_file) as mgf_data:
         mzs = []
         norm_intensities = []
@@ -23,6 +22,11 @@ def main():
         record += ')'
         with open(mass_tree_file, 'w') as mass_tree:
             mass_tree.write(record)
+
+
+def main():
+    mgf_data_file, mass_tree_file = input().split()
+    create_mass_tree(mgf_data_file, mass_tree_file)
 
 
 if __name__ == '__main__':

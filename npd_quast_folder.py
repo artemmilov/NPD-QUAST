@@ -11,8 +11,6 @@
 import os
 import shutil
 
-from report import write_report
-
 VALID_DATA_FORMATS = ['csv', 'db']
 VALID_SPECTRA_FORMATS = ['mgf', 'tree', 'txt']
 
@@ -26,7 +24,7 @@ class NPDQuastFolder:
         if not os.path.exists(self._folder):
             return False
         if set(os.listdir(self._folder)) \
-                != {'challenges', 'reports'}:
+                != {'challenges', 'reports', 'true_answers.txt'}:
             return False
         for challenge in os.listdir(
                 os.path.join(self._folder, 'challenges'),

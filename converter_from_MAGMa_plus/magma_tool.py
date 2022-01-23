@@ -145,8 +145,9 @@ python $path_to_magma export_result $2'''.format(
                 ) as tool_answers:
                     for line in output.readlines():
                         tool_answers.write(
-                            '{0}\t{1}\t{2}\n'.format(
+                            '{0}${1}\t{2}\t{3}\n'.format(
                                 challenge,
+                                result.split('.')[0],
                                 line.split(' ')[-2][1:-1],
                                 line.split(' ')[0],
                             ),

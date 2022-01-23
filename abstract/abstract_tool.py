@@ -62,22 +62,6 @@ class AbstractTool:
             )
             res_folder = os.path.join(abs_folder, 'temp', 'results', name)
             os.mkdir(res_folder)
-            with open(
-                    os.path.join(res_folder, 'true_answers.txt'),
-                    'w',
-            ) as true_answers:
-                true_answers.write(
-                    'Challenge-116\t7399\n',
-                )
-                true_answers.write(
-                    'Challenge-126\t70292\n',
-                )
-                true_answers.write(
-                    'Challenge-140\t18829\n',
-                )
-                true_answers.write(
-                    'Challenge-206\t82863\n',
-                )
 
     def _run_tool(self, abs_folder, specification=None):
         pass
@@ -116,9 +100,6 @@ class AbstractTool:
         ):
             true_answers_data_file = os.path.join(
                 abs_folder,
-                'temp',
-                'results',
-                result,
                 'true_answers.txt',
             )
             with open(true_answers_data_file) as true_answers_data:

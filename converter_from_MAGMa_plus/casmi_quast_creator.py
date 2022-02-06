@@ -40,5 +40,5 @@ def add_magma_plus_report():
 
 
 if __name__ == '__main__':
-    main()
-    # add_magma_plus_report()
+    # main()
+    add_magma_plus_report()

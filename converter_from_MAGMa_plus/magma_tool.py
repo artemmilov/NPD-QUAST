@@ -1,7 +1,9 @@
 import os
+import sqlite3
 from subprocess import check_output
 
 from abstract.abstract_tool import AbstractTool
+from general import get_name
 
 
 class MagmaTool(AbstractTool):
@@ -150,6 +152,25 @@ python $path_to_magma export_result $2'''.format(
                         os.path.join(abs_folder, 'temp', 'results'),
                     ),
             ):
+                conn = sqlite3.connect(
+                    os.path.join(
+                        abs_folder,
+                        'challenges',
+                        challenge,
+                        [
+                            challenge_file
+                            for challenge_file in os.listdir(
+                                os.path.join(
+                                    abs_folder,
+                                    'challenges',
+                                    challenge,
+                                )
+                            )
+                            if challenge_file.split('.')[-1] == 'db'
+                        ][0]
+                    )
+                )
+                cur = conn.cursor()
                 for result in os.listdir(
                         os.path.join(
                             abs_folder,
@@ -170,11 +191,18 @@ python $path_to_magma export_result $2'''.format(
                             ),
                     ) as output:
                         for line in output.readlines():
+                            answer_id = line.split(' ')[-2][1:-1]
+                            answer_inchi_key = list(
+                                cur.execute(
+                                    'SELECT * FROM molecules WHERE id = {0}'\
+                                    .format(answer_id)
+                                )
+                            )[0][5]
                             tool_answers.write(
                                 '{0}${1}\t{2}\t{3}\n'.format(
                                     challenge,
                                     result.split('.')[0],
-                                    line.split(' ')[-2][1:-1],
+                                    answer_inchi_key,
                                     line.split(' ')[0],
                                 ),
                             )

@@ -107,8 +107,27 @@ class AbstractTool:
                     if true_answer != '':
                         true_answers[true_answer.split('\t')[0]] =\
                             true_answer.split('\t')[1]
+            if not os.path.isdir(
+                    os.path.join(
+                        abs_folder,
+                        'reports',
+                        self._tool_name,
+                    ),
+            ):
+                os.mkdir(
+                    os.path.join(
+                        abs_folder,
+                        'reports',
+                        self._tool_name,
+                    ),
+                )
             tool_answers_data_file = \
-                os.path.join(abs_folder, 'temp', 'results', result, 'tool_answers.txt')
+                os.path.join(
+                    abs_folder,
+                    'reports',
+                    self._tool_name,
+                    'tool_answers.txt',
+                )
             with open(tool_answers_data_file) as tool_answers_data:
                 for tool_answer in tool_answers_data.read().split('\n'):
                     if tool_answer != '':
@@ -119,7 +138,12 @@ class AbstractTool:
                             ),
                         )
         write_report(
-            os.path.join(abs_folder, 'reports', '{0}.txt'.format(self._tool_name)),
+            os.path.join(
+                abs_folder,
+                'reports',
+                self._tool_name,
+                '{0}.txt'.format(self._tool_name),
+            ),
             true_answers,
             tool_answers,
         )

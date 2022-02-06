@@ -14,7 +14,7 @@ def main():
     path_to_quast_folder = \
         '../files/casmi_quast'
 
-    for spectra in os.listdir(path_to_spectres):
+    for spectra in os.listdir(path_to_spectres)[:4]:
         name = spectra.split('.')[0]
         os.mkdir(
             os.path.join(path_to_quast_folder, 'challenges', name),

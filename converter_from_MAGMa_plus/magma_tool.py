@@ -53,8 +53,8 @@ path_to_magma=/home/artem/Programming/bioinformatics/MAGMa-plus/MAGMa_plus.py
 python $path_to_magma read_ms_data -i 1 -p 5 -q 0.001 -f mass_tree $1 $2
 python $path_to_magma annotate -c 0 -d 0 -b 3 -w 1 -s hmdb $2
 python $path_to_magma export_result $2'''.format(
-                    os.path.join(abs_folder, 'temp', 'tool'),
-                ),
+                os.path.join(abs_folder, 'temp', 'tool'),
+            ),
             )
         with open(
                 os.path.join(
@@ -113,42 +113,68 @@ python $path_to_magma export_result $2'''.format(
                         write = True
 
     def _parse_output(self, abs_folder):
-        for challenge in filter(
-            lambda c: os.path.isdir(
-                os.path.join(abs_folder, 'temp', 'results', c)
-            ),
-            os.listdir(
-                os.path.join(abs_folder, 'temp', 'results'),
+        if not os.path.isdir(
+            os.path.join(
+                abs_folder,
+                'reports',
+                self._tool_name,
             ),
         ):
-            for result in os.listdir(
-                os.path.join(abs_folder, 'temp', 'results', challenge, 'data'),
-            ):
-                with open(
-                    os.path.join(
-                        abs_folder,
-                        'temp',
-                        'results',
-                        challenge,
-                        'data',
-                        result,
-                    ),
-                ) as output, open(
-                    os.path.join(
-                        abs_folder,
-                        'temp',
-                        'results',
-                        challenge,
-                        'tool_answers.txt',
-                    ),
-                    'w',
-                ) as tool_answers:
-                    for line in output.readlines():
-                        tool_answers.write(
-                            '{0}${1}\t{2}\t{3}\n'.format(
-                                challenge,
-                                result.split('.')[0],
-                                line.split(' ')[-2][1:-1],
-                                line.split(' ')[0],
-                            ),
+            os.mkdir(
+                os.path.join(
+                    abs_folder,
+                    'reports',
+                    self._tool_name,
+                ),
+            )
+
+        with open(
+                os.path.join(
+                    abs_folder,
+                    'reports',
+                    self._tool_name,
+                    'tool_answers.txt',
+                ),
+                'w',
+        ) as tool_answers:
+            for challenge in filter(
+                    lambda c: os.path.isdir(
+                        os.path.join(
+                            abs_folder,
+                            'temp',
+                            'results',
+                            c
                         )
+                    ),
+                    os.listdir(
+                        os.path.join(abs_folder, 'temp', 'results'),
+                    ),
+            ):
+                for result in os.listdir(
+                        os.path.join(
+                            abs_folder,
+                            'temp',
+                            'results',
+                            challenge,
+                            'data'
+                        ),
+                ):
+                    with open(
+                            os.path.join(
+                                abs_folder,
+                                'temp',
+                                'results',
+                                challenge,
+                                'data',
+                                result,
+                            ),
+                    ) as output:
+                        for line in output.readlines():
+                            tool_answers.write(
+                                '{0}${1}\t{2}\t{3}\n'.format(
+                                    challenge,
+                                    result.split('.')[0],
+                                    line.split(' ')[-2][1:-1],
+                                    line.split(' ')[0],
+                                ),
+                            )

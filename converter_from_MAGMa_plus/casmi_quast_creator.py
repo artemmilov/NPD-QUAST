@@ -14,7 +14,7 @@ def main():
     path_to_quast_folder = \
         '../files/casmi_quast'
 
-    for spectra in os.listdir(path_to_spectres)[:1]:
+    for spectra in os.listdir(path_to_spectres)[1:2]:
         name = spectra.split('.')[0]
         os.mkdir(
             os.path.join(path_to_quast_folder, 'challenges', name),
@@ -40,5 +40,5 @@ def add_magma_plus_report():
 
 
 if __name__ == '__main__':
-    # main()
+    main()
     add_magma_plus_report()

@@ -3,7 +3,6 @@ import sqlite3
 from subprocess import check_output
 
 from abstract.abstract_tool import AbstractTool
-from general import get_name
 
 
 class MagmaTool(AbstractTool):
@@ -201,6 +200,6 @@ python $path_to_magma export_result $2'''.format(
                                     challenge,
                                     result.split('.')[0],
                                     answer_inchi_key,
-                                    line.split(' ')[0],
+                                    str(round(float(line.split(' ')[0]), 3)),
                                 ),
                             )

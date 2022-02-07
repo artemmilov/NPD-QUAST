@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 
 from abstract.abstract_tool import AbstractTool
 
@@ -80,21 +80,24 @@ python $path_to_magma export_result $2'''.format(
         path_to_results = os.path.join(abs_folder, 'temp', 'results')
         for spectra in os.listdir(path_to_spectres):
             result = spectra.split('.')[0] + '.db'
-            output = check_output(
-                ' '.join(
-                    [
-                        'bash',
-                        path_to_script,
-                        os.path.join(path_to_spectres, spectra),
-                        os.path.join(path_to_results, result.split('.')[0]),
-                    ],
-                ),
-                shell=True,
-            ).decode('utf-8')
+            try:
+                output = check_output(
+                    ' '.join(
+                        [
+                            'bash',
+                            path_to_script,
+                            os.path.join(path_to_spectres, spectra),
+                            os.path.join(path_to_results, result.split('.')[0]),
+                        ],
+                    ),
+                    shell=True,
+                ).decode('utf-8')
+            except CalledProcessError:
+                output = ''
             os.mkdir(
                 os.path.join(
                     abs_folder, 'temp', 'results', result.split('.')[0], 'data',
-                )
+                ),
             )
             with open(
                     os.path.join(

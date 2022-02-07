@@ -68,22 +68,38 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
         ],
         key=lambda ans: ans[1],
     )
-    return list(
-        map(
-            lambda ans: ans[0],
-            sorted_answers,
-        ),
-    )
+    result = []
+    last_scan = None
+    for sorted_answer in sorted_answers:
+        if sorted_answer[1] == last_scan:
+            result[-1].append(sorted_answer[0])
+        else:
+            result.append([sorted_answer[0]])
+            last_scan = sorted_answer[1]
+    return result
 
 
 def _get_ranks(true_answers, tool_answers, default_rank=None):
     ranks = []
     for scan, true_inchi in true_answers.items():
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
-        if true_inchi in sorted_inches:
-            ranks.append(sorted_inches.index(true_inchi))
-        elif default_rank is not None:
-            ranks.append(default_rank)
+        found = False
+        for i, set_inches in enumerate(sorted_inches):
+            if true_inchi in set_inches:
+                before = sum(map(len, sorted_inches[:i]))
+                ans_rank = mean(
+                    list(
+                        map(
+                            lambda x: before + x,
+                            range(0, len(set_inches)),
+                        ),
+                    ),
+                )
+                ranks.append(ans_rank)
+                found = True
+        if not found:
+            if default_rank is not None:
+                ranks.append(default_rank)
     return ranks
 
 
@@ -99,15 +115,15 @@ def _get_rprs(true_answers, tool_answers):
     rprs = []
     for scan, true_inchi in true_answers.items():
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
-        if true_inchi in sorted_inches:
-            true_pos = sorted_inches.index(true_inchi)
-            up_correct = len(sorted_inches[:true_pos])
-            below_correct = len(sorted_inches[true_pos + 1:])
-            total = len(sorted_inches)
-            if total > 1:
-                rprs.append(1 / 2 * (1 - (up_correct - below_correct) / (total - 1)))
-            else:
-                rprs.append(1 / 2)
+        for i, set_inches in enumerate(sorted_inches):
+            if true_inchi in set_inches:
+                before = sum(map(len, sorted_inches[:i]))
+                after = sum(map(len, sorted_inches[i + 1:]))
+                total = sum(list(map(len, sorted_inches)))
+                if total > 1:
+                    rprs.append(1 / 2 * (1 - (before - after) / (total - 1)))
+                else:
+                    rprs.append(1 / 2)
     return rprs
 
 
@@ -163,8 +179,18 @@ def k_quantile(true_answers, tool_answers, k=50):
     positions = []
     for scan, true_inchi in true_answers.items():
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
-        if true_inchi in sorted_inches:
-            positions.append(sorted_inches.index(true_inchi))
+        for i, set_inches in enumerate(sorted_inches):
+            if true_inchi in set_inches:
+                before = sum(map(len, sorted_inches[:i]))
+                ans_rank = mean(
+                    list(
+                        map(
+                            lambda x: before + x,
+                            range(0, len(set_inches)),
+                        ),
+                    ),
+                )
+                positions.append(ans_rank)
     if len(positions) != 0:
         return quantile(positions, k / 100)
     return 0

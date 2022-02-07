@@ -24,10 +24,8 @@ class MagmaTool(AbstractTool):
         ) as magma_ini:
             magma_ini.write(
                 '''[magma job]
-
 # Location of structure database to fetch candidate molecules to match against ms peak trees
 structure_database.hmdb = {0}
-
 chemical_engine = rdkit'''.format(
                     os.path.join(
                         abs_folder,

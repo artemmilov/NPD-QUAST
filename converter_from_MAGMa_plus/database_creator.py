@@ -33,32 +33,26 @@ def create_database(csv_database_file, converted_database_file):
     with open(csv_database_file) as csv_database:
         ok = 0
         not_ok = 0
-        exist_inches = set()
         for line in csv_database.readlines()[1:]:
             if line != '':
                 try:
                     magma_plus_mol = MagmaPlusMol(line)
-                    if magma_plus_mol.inchi_key.split('-')[0] \
-                            not in exist_inches:
-                        exist_inches.add(
-                            magma_plus_mol.inchi_key.split('-')[0]
-                        )
-                        c.execute(
-                            '''INSERT INTO molecules (id, mim, charge, natoms, molblock, inchikey,
-                             molform, name, reference, logp) VALUES (?,?,?,?,?,?,?,?,?,?)''',
-                            (
-                                magma_plus_mol.scan,
-                                int(round(magma_plus_mol.mass * 1e6)),
-                                magma_plus_mol.charge,
-                                magma_plus_mol.n_atoms,
-                                sqlite3.Binary(zlib.compress(magma_plus_mol.mol_block.encode('utf-8'))),
-                                magma_plus_mol.inchi_key.split('-')[0],
-                                magma_plus_mol.mol_form,
-                                magma_plus_mol.name,
-                                magma_plus_mol.reference,
-                                int(round(magma_plus_mol.logp * 10)),
-                            ),
-                        )
+                    c.execute(
+                        '''INSERT INTO molecules (id, mim, charge, natoms, molblock, inchikey,
+                         molform, name, reference, logp) VALUES (?,?,?,?,?,?,?,?,?,?)''',
+                        (
+                            magma_plus_mol.scan,
+                            int(round(magma_plus_mol.mass * 1e6)),
+                            magma_plus_mol.charge,
+                            magma_plus_mol.n_atoms,
+                            sqlite3.Binary(zlib.compress(magma_plus_mol.mol_block.encode('utf-8'))),
+                            magma_plus_mol.inchi_key.split('-')[0],
+                            magma_plus_mol.mol_form,
+                            magma_plus_mol.name,
+                            magma_plus_mol.reference,
+                            int(round(magma_plus_mol.logp * 10)),
+                        ),
+                    )
                     ok += 1
                 except MagmaPlusInitException:
                     not_ok += 1

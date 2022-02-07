@@ -40,16 +40,16 @@ def _str_ranks(true_answers, tool_answers):
             ''.join(
                 [
                     'Mean rank: {0:0.2f}. Default rank is {1}.\n'.format(
-                        metrics.mean_rank(true_answers, tool_answers),
+                        metrics.mean_rank(true_answers, tool_answers, default_rank),
                         default_rank,
                     ),
                     'Median rank: {0:0.2f}. Default rank is {1}.\n'.format(
-                        metrics.median_rank(true_answers, tool_answers),
+                        metrics.median_rank(true_answers, tool_answers, default_rank),
                         default_rank,
                     ),
                 ],
             )
-            for default_rank in [0, 5, 10]
+            for default_rank in [None, 0, 5, 10]
         ],
     )
 

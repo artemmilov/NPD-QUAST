@@ -75,6 +75,7 @@ class NPDQuastFolder:
         self._folder = folder
         if (not self._check_correctness()) \
                 and (len(os.listdir(folder)) != 0):
+
             raise AttributeError(
                 '{0} consist something else'.format(folder)
             )

@@ -33,7 +33,13 @@ class AbstractTool:
             cur_format,
             self._database_format,
             database,
-            os.path.join(abs_folder, 'temp', 'database.db'),
+            os.path.join(
+                abs_folder,
+                'temp',
+                'database.{0}'.format(
+                    self._database_format,
+                ),
+            ),
         )
 
     def _write_spectres(self, abs_folder, spectres):

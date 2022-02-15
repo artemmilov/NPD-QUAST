@@ -1,4 +1,5 @@
 import os
+import shutil
 import sqlite3
 from subprocess import check_output, CalledProcessError
 
@@ -52,56 +53,54 @@ path_to_magma=/home/artem/Programming/bioinformatics/MAGMa-plus/MAGMa_plus.py
 python $path_to_magma read_ms_data -i 1 -p 5 -q 0.001 -f mass_tree $1 $2
 python $path_to_magma annotate -c 0 -d 0 -b 3 -w 1 -s hmdb $2
 python $path_to_magma export_result $2'''.format(
-                os.path.join(abs_folder, 'temp', 'tool'),
+                    os.path.join(abs_folder, 'temp', 'tool'),
+                ),
+            )
+        os.mkdir(
+            os.path.join(
+                abs_folder,
+                'temp',
+                'tool',
+                'cur_results',
             ),
-            )
-        with open(
-                os.path.join(
-                    abs_folder,
-                    'temp',
-                    'tool',
-                    'structure.db',
-                ),
-                'w',
-        ) as script:
-            script.write(
-                '{0}'.format(
-                    os.path.join(
-                        abs_folder,
-                        'temp',
-                        'database.db',
-                    ),
-                ),
-            )
+        )
+        os.mkdir(
+            os.path.join(
+                abs_folder,
+                'temp',
+                'tool',
+                'cur_trees',
+            ),
+        )
 
     def _run_tool(self, abs_folder, specification=None):
         path_to_script = os.path.join(abs_folder, 'temp', 'tool', 'script.txt')
         path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
-        path_to_results = os.path.join(abs_folder, 'temp', 'results')
+        path_to_trees = os.path.join(abs_folder, 'temp', 'tool', 'cur_trees')
+        path_to_results = os.path.join(abs_folder, 'temp', 'tool', 'cur_results')
+        if os.path.isdir(path_to_trees):
+            shutil.rmtree(path_to_trees)
+            os.mkdir(path_to_trees)
+        if os.path.isdir(path_to_results):
+            shutil.rmtree(path_to_results)
+            os.mkdir(path_to_results)
         for spectra in os.listdir(path_to_spectres):
-            result = spectra.split('.')[0] + '.db'
+            converted_tree = spectra.split('.')[0] + '.db'
             try:
                 output = check_output(
-                    ' '.join(
-                        [
-                            'bash',
-                            path_to_script,
-                            os.path.join(path_to_spectres, spectra),
-                            os.path.join(path_to_results, result.split('.')[0]),
-                        ],
-                    ),
-                    shell=True,
+                    [
+                        'bash',
+                        path_to_script,
+                        os.path.join(path_to_spectres, spectra),
+                        os.path.join(path_to_trees, converted_tree),
+                    ],
                 ).decode('utf-8')
             except CalledProcessError:
                 output = ''
-            os.mkdir(
-                os.path.join(
-                    abs_folder, 'temp', 'results', result.split('.')[0], 'data',
-                ),
-            )
             with open(
                     os.path.join(
-                        abs_folder, 'temp', 'results', result.split('.')[0], 'data', result.split('.')[0] + '.txt',
+                        path_to_results,
+                        converted_tree.split('.')[0] + '.txt',
                     ),
                     'w',
             ) as res:
@@ -114,22 +113,7 @@ python $path_to_magma export_result $2'''.format(
                     if line == 'Candidate_Score Name Smiles':
                         write = True
 
-    def _parse_output(self, abs_folder):
-        if not os.path.isdir(
-            os.path.join(
-                abs_folder,
-                'reports',
-                self._tool_name,
-            ),
-        ):
-            os.mkdir(
-                os.path.join(
-                    abs_folder,
-                    'reports',
-                    self._tool_name,
-                ),
-            )
-
+    def _parse_output(self, abs_folder, challenge_name):
         with open(
                 os.path.join(
                     abs_folder,
@@ -137,72 +121,42 @@ python $path_to_magma export_result $2'''.format(
                     self._tool_name,
                     'tool_answers.txt',
                 ),
-                'w',
+                'a',
         ) as tool_answers:
-            for challenge in filter(
-                    lambda c: os.path.isdir(
-                        os.path.join(
-                            abs_folder,
-                            'temp',
-                            'results',
-                            c
-                        )
-                    ),
-                    os.listdir(
-                        os.path.join(abs_folder, 'temp', 'results'),
-                    ),
+            for result in os.listdir(
+                    os.path.join(abs_folder, 'temp', 'tool', 'cur_results'),
             ):
                 conn = sqlite3.connect(
                     os.path.join(
                         abs_folder,
-                        'challenges',
-                        challenge,
-                        [
-                            challenge_file
-                            for challenge_file in os.listdir(
-                                os.path.join(
-                                    abs_folder,
-                                    'challenges',
-                                    challenge,
-                                )
-                            )
-                            if challenge_file.split('.')[-1] == 'db'
-                        ][0]
+                        'temp',
+                        'database.db',
                     )
                 )
                 cur = conn.cursor()
-                for result in os.listdir(
+                with open(
                         os.path.join(
                             abs_folder,
                             'temp',
-                            'results',
-                            challenge,
-                            'data'
+                            'tool',
+                            'cur_results',
+                            result,
                         ),
-                ):
-                    with open(
-                            os.path.join(
-                                abs_folder,
-                                'temp',
-                                'results',
-                                challenge,
-                                'data',
-                                result,
-                            ),
-                    ) as output:
-                        for line in output.readlines():
-                            answer_id = line.split(' ')[-2][1:-1]
-                            answer_inchi_key = list(
-                                cur.execute(
-                                    'SELECT * FROM molecules WHERE id = {0}'\
-                                    .format(answer_id)
-                                )
-                            )[0][5]
-                            tool_answers.write(
-                                '{0}${1}\t{2}\t{3}\n'.format(
-                                    challenge,
-                                    result.split('.')[0],
-                                    answer_inchi_key,
-                                    str(round(float(line.split(' ')[0]), 3)),
+                ) as output:
+                    for line in output.readlines():
+                        answer_id = line.split(' ')[-2][1:-1]
+                        answer_inchi_key = list(
+                            cur.execute(
+                                'SELECT * FROM molecules WHERE id = {0}'.format(
+                                    answer_id,
                                 ),
                             )
+                        )[0][5]
+                        tool_answers.write(
+                            '{0}${1}\t{2}\t{3}\n'.format(
+                                challenge_name,
+                                result.split('.')[0],
+                                answer_inchi_key,
+                                str(round(float(line.split(' ')[0]), 3)),
+                            ),
+                        )

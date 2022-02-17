@@ -40,8 +40,6 @@ class DereplicatorTool(AbstractTool):
             for mol_data in mols_data:
                 try:
                     filename = os.path.join(
-                        database_folder,
-                        'mols',
                         parse_from_mgf(mol_data)[0] + '.mol',
                     )
                     name = parse_from_mgf(mol_data)[0]
@@ -66,7 +64,7 @@ class DereplicatorTool(AbstractTool):
                 if line != '':
                     try:
                         m = rdkit.Chem.MolFromSmiles(line)
-                        self._id_to_inchi[i] = rdkit.Chem.MolToInchiKey(m)
+                        self._id_to_inchi[i] = rdkit.Chem.MolToInchiKey(m).split('-')[0]
                     except Exception:
                         self._id_to_inchi[i] = 'ERROR'
 
@@ -80,7 +78,7 @@ class DereplicatorTool(AbstractTool):
         os.mkdir(path_to_result)
         run(
             [
-                '/home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py',
+                '/home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator+.py',
                 path_to_spectres,
                 '--db-path',
                 path_to_database,
@@ -88,6 +86,8 @@ class DereplicatorTool(AbstractTool):
                 path_to_result,
                 '--pass-to-dereplicate',
                 '--num_hits_to_report 100',
+                '--min-score',
+                '1',
             ],
         )
 
@@ -111,15 +111,15 @@ class DereplicatorTool(AbstractTool):
                     ),
             ) as output:
                 for line in output.readlines()[1:]:
-                    answer_id = line.split('\t')[3]
+                    answer_id = int(line.split('\t')[3])
                     answer_inchi_key = self._id_to_inchi[answer_id]
-                    spectra = os.path.split(line.split('\t')[0])[-1]
-                    p_value = line.split('\t')[6]
+                    spectra = os.path.split(line.split('\t')[0])[-1].split('.')[0]
+                    score = line.split('\t')[5]
                     tool_answers.write(
                         '{0}${1}\t{2}\t{3}\n'.format(
                             challenge_name,
                             spectra,
                             answer_inchi_key,
-                            p_value,
+                            score,
                         ),
                     )

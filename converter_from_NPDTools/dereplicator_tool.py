@@ -87,7 +87,7 @@ class DereplicatorTool(AbstractTool):
                 '-o',
                 path_to_result,
                 '--pass-to-dereplicate',
-                '--num_hits_to_report 10',
+                '--num_hits_to_report 100',
             ],
         )
 

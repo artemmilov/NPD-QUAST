@@ -1,8 +1,7 @@
 Statistic	Value
 Number of spectrum files	1
-Number of spectrum scans	0
-Failed to process	1
-Number of all PSMs	0
-Number of significant PSMs (p-value < 1e-10)	0
-FDR % for p-value < 1e-10	N/A
-Elapsed time	0:00:00.173276
+Number of spectrum scans	1
+Number of all PSMs	89
+Number of significant PSMs (score >= 1.0)	89
+FDR % for score >= 1.0	0.0
+Elapsed time	0:01:42.422713

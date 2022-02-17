@@ -1,33 +1,17 @@
-2022-02-17 03:06:24	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/spectres --db-path /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database -o /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result --pass-to-dereplicate "--num_hits_to_report 10" 
-2022-02-17 03:06:24	INFO: 
-2022-02-17 03:06:24	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST/converter_from_NPDTools
-2022-02-17 03:06:24	INFO: System information:
+2022-02-17 23:28:14	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator+.py /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/spectres --db-path /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database -o /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result --pass-to-dereplicate "--num_hits_to_report 100" --min-score 1 
+2022-02-17 23:28:14	INFO: 
+2022-02-17 23:28:14	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST/converter_from_NPDTools
+2022-02-17 23:28:14	INFO: System information:
 	OS: Linux-5.13.0-28-generic-x86_64-with-Ubuntu-20.04-focal
 	Python version: 2.7.18 (interpreter: /usr/bin/python)
-2022-02-17 03:06:24	INFO: Chemical Structure Database information:
+2022-02-17 23:28:14	INFO: Chemical Structure Database information:
 	root dir: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database
 	library.info: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database/library.info
 	library.smiles: N/A
-2022-02-17 03:06:24	INFO: Starting Dereplicator in 1 thread
-2022-02-17 03:06:24	INFO:   Parameters are saved to /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/params.tsv
-2022-02-17 03:06:24	INFO:   Total number of spectra: 1 
-2022-02-17 03:06:24	INFO: Starting: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/spectres/Challenge-206.mgf --> spectra-00000
-2022-02-17 03:06:24	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/spectra-00000.mgf" "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database" "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database/library.info" --configs_dir "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/configs" --product_ion_thresh 0.02 --pm_thresh 0.02 --max_charge 2 --isotope 0 --num_hits_to_report 10 > "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/spectra-00000_dereplicator.log"
-2022-02-17 03:06:24	WARNING: Run on spectra-00000 (Challenge-206.mgf) finished abnormally, skipping its results
-2022-02-17 03:06:24	INFO: 
-
-  Summary (saved to /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/summary.tsv):
-    Number of spectra files: 1
-      out of them: 0 failed conversion to mgf
-      out of them: 1 failed processing
-      out of them: 0 had completed results and were reused
-    Number of processed spectra scans: 0
-    Found PSMs: 0
-      out of them: 0 significant (p-value < 1e-10)
-      out of them: 0 visualizations generated
-
-  Matches are in /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/all_matches.tsv and significant_matches.tsv
-  Log is in /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/dereplicator.log
-
-  Elapsed time: 0:00:00.173276
-
+	preprocessed targets: N/A
+	preprocessed decoys: N/A
+2022-02-17 23:28:14	INFO: Starting Dereplicator+ in 1 thread
+2022-02-17 23:28:14	INFO:   Parameters are saved to /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/params.tsv
+2022-02-17 23:28:14	INFO:   Total number of spectra: 1 
+2022-02-17 23:28:14	INFO: Starting: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/spectres/Challenge-206.mgf --> spectra-00000
+2022-02-17 23:28:14	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/spectra-00000.mgf" "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database" "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database/library.info" --configs_dir "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/configs" --product_ion_thresh 0.01 --pm_thresh 0.01 --max_charge 2 --min_score 0.75 --fragmentation_tree --no_pvalue --min_num_comp 0 --fragment "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/configs/configs/common/fragment_list_general_6_1_6.txt" --num_hits_to_report 100 > "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/spectra-00000_dereplicator.log"

@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from converter_from_NPDTools.dereplicator_tool import DereplicatorTool
+from converter_from_NPDTools.dereplicator_plus_tool import DereplicatorPlusTool
 from npd_quast_folder import NPDQuastFolder
 
 
@@ -46,7 +46,7 @@ def main():
 def add_dereplicator_plus_report():
     path_to_npd_quast_folder = '../files/casmi_quast'
     npd_quast_folder = NPDQuastFolder(path_to_npd_quast_folder)
-    tool = DereplicatorTool()
+    tool = DereplicatorPlusTool()
     npd_quast_folder.make_tool_report(tool)
 
 

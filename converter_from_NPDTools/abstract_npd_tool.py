@@ -2,7 +2,7 @@ import os
 import shutil
 
 import rdkit
-from subprocess import run, check_output, CalledProcessError
+from subprocess import run
 
 from abstract.abstract_tool import AbstractTool
 from quast_mol import QuastMol, QuastMolInitException
@@ -10,10 +10,9 @@ from npdtools_database import NpdToolsDatabase
 from general import parse_from_mgf
 
 
-class DereplicatorTool(AbstractTool):
+class AbstractNpdTool(AbstractTool):
     _spectra_format = 'mgf'
     _database_format = 'csv'
-    _tool_name = 'Dereplicator_plus'
     _id_to_inchi = dict()
 
     def _deploy_database(self, abs_folder):
@@ -68,7 +67,7 @@ class DereplicatorTool(AbstractTool):
                     except Exception:
                         self._id_to_inchi[i] = 'ERROR'
 
-    def _run_tool(self, abs_folder, specification=None):
+    def _run_abstract_tool(self, abs_folder, specification=None):
         self._deploy_database(abs_folder)
         path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
         path_to_database = os.path.join(abs_folder, 'temp', 'tool', 'deployed_database')
@@ -76,20 +75,7 @@ class DereplicatorTool(AbstractTool):
         if os.path.isdir(path_to_result):
             shutil.rmtree(path_to_result)
         os.mkdir(path_to_result)
-        run(
-            [
-                '/home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator+.py',
-                path_to_spectres,
-                '--db-path',
-                path_to_database,
-                '-o',
-                path_to_result,
-                '--pass-to-dereplicate',
-                '--num_hits_to_report 100',
-                '--min-score',
-                '1',
-            ],
-        )
+        return path_to_spectres, path_to_database, path_to_result
 
     def _parse_output(self, abs_folder, challenge_name):
         with open(

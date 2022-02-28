@@ -74,7 +74,8 @@ class NPDQuastFolder:
             return True
 
     def _clean_temp(self):
-        shutil.rmtree(os.path.join(self._folder, 'temp'))
+        if os.path.isdir(os.path.join(self._folder, 'temp')):
+            shutil.rmtree(os.path.join(self._folder, 'temp'))
 
     def __init__(self, folder):
         if not os.path.exists(folder):

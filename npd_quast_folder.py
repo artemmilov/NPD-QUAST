@@ -23,8 +23,10 @@ class NPDQuastFolder:
             return False
         if not os.path.exists(self._folder):
             return False
-        if set(os.listdir(self._folder)) \
-                != {'challenges', 'reports', 'true_answers.txt'}:
+        if (set(os.listdir(self._folder)) not in [
+                {'challenges', 'reports', 'true_answers.txt'},
+                {'challenges', 'reports', 'temp', 'true_answers.txt'},
+        ]):
             return False
         for challenge in os.listdir(
                 os.path.join(self._folder, 'challenges'),
@@ -58,9 +60,16 @@ class NPDQuastFolder:
             for report in os.listdir(
                     os.path.join(self._folder, 'reports'),
             ):
-                if '.' not in report:
+                report_folder = os.path.join(
+                    self._folder,
+                    'reports',
+                    report
+                )
+                if len(os.listdir(report_folder)) != 2:
                     return False
-                if report.split('.')[1] != 'txt':
+                if 'tool_answers.txt' not in os.listdir(report_folder):
+                    return False
+                if report + '.txt' not in os.listdir(report_folder):
                     return False
             return True
 
@@ -75,7 +84,6 @@ class NPDQuastFolder:
         self._folder = folder
         if (not self._check_correctness()) \
                 and (len(os.listdir(folder)) != 0):
-
             raise AttributeError(
                 '{0} consist something else'.format(folder)
             )

@@ -98,3 +98,33 @@ def write_report(report_folder, true_answers, tool_answers):
                 ],
             ),
         )
+
+
+def _str_multi_medals(true_answers, tool_answers_dict):
+    return ''.join(
+        [
+            'Classic multi medal score: {0}.\n'.format(
+                metrics.classic_multi_medal_score(true_answers, tool_answers_dict),
+            ),
+            'F1 multi score: {0}.\n'.format(
+                metrics.formula1_multi_score(true_answers, tool_answers_dict),
+            ),
+            'Gold multi medals: {0}.\n'.format(
+                metrics.gold_multi_medals(true_answers, tool_answers_dict),
+            ),
+            'All multi medals: {0}.\n'.format(
+                metrics.all_multi_medals(true_answers, tool_answers_dict),
+            ),
+        ]
+    )
+
+
+def write_multi_report(multi_report_folder, true_answers, tool_answers_dict):
+    with open(multi_report_folder, 'w') as report:
+        report.write(
+            ''.join(
+                [
+                    _str_multi_medals(true_answers, tool_answers_dict),
+                ],
+            ),
+        )

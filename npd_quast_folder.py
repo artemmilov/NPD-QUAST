@@ -11,6 +11,9 @@
 import os
 import shutil
 
+import general
+from report import write_multi_report
+
 VALID_DATA_FORMATS = ['csv', 'db', 'txt']
 VALID_SPECTRA_FORMATS = ['mgf', 'tree', 'txt']
 
@@ -60,6 +63,13 @@ class NPDQuastFolder:
             for report in os.listdir(
                     os.path.join(self._folder, 'reports'),
             ):
+                if os.path.isfile(
+                    os.path.join(self._folder, 'reports', report),
+                ):
+                    if report != 'total_report.txt':
+                        return False
+                    else:
+                        continue
                 report_folder = os.path.join(
                     self._folder,
                     'reports',
@@ -93,3 +103,30 @@ class NPDQuastFolder:
         self._clean_temp()
         tool.run(self._folder)
         self._clean_temp()
+
+    def make_total_report(self):
+        true_answers = general.parse_true_answers(
+            os.path.join(
+                self._folder,
+                'true_answers.txt',
+            ),
+        )
+        tool_answers_dict = {
+            report: general.parse_tool_answers(
+                os.path.join(
+                    self._folder,
+                    'reports',
+                    report,
+                    'tool_answers.txt',
+                ),
+            )
+            for report in os.listdir(
+                os.path.join(self._folder, 'reports'),
+            )
+            if report != 'total_report.txt'
+        }
+        write_multi_report(
+            os.path.join(self._folder, 'reports', 'total_report.txt'),
+            true_answers,
+            tool_answers_dict,
+        )

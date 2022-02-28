@@ -194,3 +194,50 @@ def k_quantile(true_answers, tool_answers, k=50):
     if len(positions) != 0:
         return quantile(positions, k / 100)
     return 0
+
+
+def _abstract_multi_medal_score(true_answers, tool_answers_dict, medals):
+    scores_dict = {tool_name: 0 for tool_name in tool_answers_dict}
+    for scan, true_inchi in true_answers.items():
+        positions_dict = {}
+        for tool_name, tool_answers in tool_answers_dict.items():
+            sorted_tool_answers = sorted(
+                tool_answers[scan],
+                key=lambda ans: ans[1],
+            )
+            sorted_inches = tuple(
+                map(
+                    lambda ans: ans[0],
+                    sorted_tool_answers,
+                )
+            )
+            if true_inchi in sorted_inches:
+                pos = sorted_inches.index(true_inchi)
+                positions_dict[tool_name] = pos
+        for place in range(0, min(len(medals), len(positions_dict))):
+            tool_name = sorted(
+                positions_dict.items(),
+                key=lambda result: result[1],
+            )[place]
+            scores_dict[tool_name] = medals[place]
+    return scores_dict
+
+
+def classic_multi_medal_score(true_answers, tool_answers_dict):
+    return _abstract_multi_medal_score(true_answers, tool_answers_dict, [5, 3, 1])
+
+
+def formula1_multi_score(true_answers, tool_answers_dict):
+    return _abstract_multi_medal_score(
+        true_answers,
+        tool_answers_dict,
+        [24, 18, 15, 12, 10, 8, 6, 4, 2, 1],
+    )
+
+
+def gold_multi_medals(true_answers, tool_answers_dict):
+    return _abstract_multi_medal_score(true_answers, tool_answers_dict, [1])
+
+
+def all_multi_medals(true_answers, tool_answers_dict):
+    return _abstract_multi_medal_score(true_answers, tool_answers_dict, [1, 1, 1])

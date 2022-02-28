@@ -90,5 +90,6 @@ class NPDQuastFolder:
             )
 
     def make_tool_report(self, tool):
+        self._clean_temp()
         tool.run(self._folder)
         self._clean_temp()

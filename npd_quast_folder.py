@@ -11,7 +11,7 @@
 import os
 import shutil
 
-VALID_DATA_FORMATS = ['csv', 'db']
+VALID_DATA_FORMATS = ['csv', 'db', 'txt']
 VALID_SPECTRA_FORMATS = ['mgf', 'tree', 'txt']
 
 

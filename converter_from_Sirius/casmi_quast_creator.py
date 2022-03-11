@@ -1,5 +1,6 @@
 import os
 import shutil
+from rdkit import Chem
 
 from converter_from_Sirius.sirius_tool import SiriusTool
 from npd_quast_folder import NPDQuastFolder
@@ -14,7 +15,7 @@ def main():
     path_to_quast_folder = \
         '../files/casmi_quast'
 
-    for spectra in os.listdir(path_to_spectres)[:1]:
+    for spectra in os.listdir(path_to_spectres)[3:4]:
         name = spectra.split('.')[0]
         if os.path.isdir(os.path.join(path_to_quast_folder, 'challenges', name)):
             shutil.rmtree(os.path.join(path_to_quast_folder, 'challenges', name))
@@ -37,7 +38,12 @@ def main():
             for dataline in raw_database.readlines()[1:]:
                 if dataline == '':
                     continue
-                smiles = parse_from_mgf(dataline)[4]
+                try:
+                    smiles = Chem.MolToSmiles(
+                        Chem.AddHs(Chem.MolFromSmiles(parse_from_mgf(dataline)[4])),
+                    )
+                except Exception:
+                    continue
                 database.write(smiles + '\n')
 
 

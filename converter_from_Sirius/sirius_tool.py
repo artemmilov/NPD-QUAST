@@ -1,5 +1,6 @@
 import os
 import shutil
+from rdkit import Chem
 
 from abstract.abstract_tool import AbstractTool
 
@@ -58,4 +59,24 @@ structure'''.format(
                 pass
 
     def _parse_output(self, abs_folder, challenge_name):
-        pass
+        with open(
+            os.path.join(
+                abs_folder,
+                'temp',
+                'tool',
+                'cur_results',
+                challenge_name,
+                '0_{0}_ScanNumber1',
+            ),
+        ) as output, open(
+            os.path.join(
+                abs_folder,
+                'reports',
+                self._tool_name,
+                '{0}.txt'.format(self._tool_name),
+            ),
+            'a',
+        ) as tool_answers:
+            for line in output.readlines()[1:-1]:
+                formula = line.split('\t')[1]
+                Chem.MolTo()

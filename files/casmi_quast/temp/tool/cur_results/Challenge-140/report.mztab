@@ -1,0 +1,26 @@
+MTD	mzTab-version	2.0.0-M
+MTD	mzTab-ID	SIRIUS-a2175e2d-1910-4482-98b7-114f13238ab9
+MTD	title	SIRIUS Analysis Report: a2175e2d-1910-4482-98b7-114f13238ab9
+MTD	software[1]	[, , SIRIUS, 4.6.1]
+MTD	cv[1]-label	MS
+MTD	cv[1]-uri	URL:https://raw.githubusercontent.com/HUPO-PSI/psi-ms-CV/master/psi-ms.obo
+MTD	cv[1]-version	4.1.16
+MTD	cv[1]-full_name	PSI-MS controlled vocabulary
+MTD	small_molecule-identification_reliability	[MS, MS:1002955, hr-ms compound identification confidence level, ]
+MTD	database[1]	[, , no database, null]
+MTD	database[1]-prefix	null
+MTD	database[1]-uri	null
+MTD	database[1]-version	Unknown
+MTD	database[2]	[, , CSI:FingerID PubChem Copy, CID]
+MTD	database[2]-prefix	CID
+MTD	database[2]-uri	https://pubchem.ncbi.nlm.nih.gov/compound/
+MTD	database[2]-version	2020-06-11
+
+SMH	SML_ID	SMF_ID_REFS	database_identifier	chemical_formula	smiles	inchi	chemical_name	uri	theoretical_neutral_mass	adduct_ions	reliability	best_id_confidence_measure	best_id_confidence_value
+SML	1	1	null	C10H12O11	null	null	null	null	308.037961204	[M + H]+	4	null	null
+
+SFH	SMF_ID	SME_ID_REFS	SME_ID_REF_ambiguity_code	adduct_ion	isotopomer	exp_mass_to_charge	charge	retention_time_in_seconds	retention_time_in_seconds_start	retention_time_in_seconds_end
+SMF	1	1	2	[M + H]+	null	309.0427	1	620.04	null	null
+
+SEH	SME_ID	evidence_input_id	database_identifier	chemical_formula	smiles	inchi	chemical_name	uri	derivatized_form	adduct_ion	exp_mass_to_charge	charge	theoretical_mass_to_charge	spectra_ref	identification_method	ms_level	rank	opt_global_SIRIUS:sirius_score	opt_global_SIRIUS:isotope_score	opt_global_SIRIUS:tree_score	opt_global_SIRIUS:zodiac_score	opt_global_SIRIUS:explained_intensity_ratio	opt_global_SIRIUS:explained_intensity_of_explainable_peaks_ratio	opt_global_SIRIUS:explained_peaks_ratio	opt_global_SIRIUS:annotated_spectra_location	opt_global_SIRIUS:tree_location	opt_global_SIRIUS:candidate_location
+SME	1	0_Challenge-140_ScanNumber1:309.0427:M+H+	null	C10H12O11	null	null	null	null	null	[M + H]+	309.0427	1	309.04523765609053	null	[, , SIRIUS, 4.6.1]	[MS, MS:1000511, ms_level, 2]	1	37.22715370710156	0.0	37.22715370710156	N/A	0.8557832554834016	0.8736553173960895	0.6363636363636364	spectra/C10H12O11_[M+H]+.tsv	trees/C10H12O11_[M+H]+.json	0_Challenge-140_ScanNumber1/formula_candidates.tsv

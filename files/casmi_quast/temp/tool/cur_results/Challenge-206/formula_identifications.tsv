@@ -1,2 +1,0 @@
-rank	molecularFormula	adduct	precursorFormula	SiriusScore	TreeScore	IsotopeScore	numExplainedPeaks	explainedIntensity	medianMassErrorFragmentPeaks(ppm)	medianAbsoluteMassErrorFragmentPeaks(ppm)	massErrorPrecursor(ppm)	ionMass	retentionTimeInSeconds	id
-1	C21H8N6O9	[M + H]+	C21H8N6O9	9.263435660451423	9.263435660451423	0.0	4	0.9798952388655039	2.7655300546309842	2.7655300546309842	1.9378887756925542	489.04350	849.24	0_Challenge-206_ScanNumber1

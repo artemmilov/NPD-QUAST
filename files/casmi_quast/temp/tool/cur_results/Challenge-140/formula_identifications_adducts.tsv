@@ -1,0 +1,2 @@
+rank	molecularFormula	adduct	precursorFormula	SiriusScore	TreeScore	IsotopeScore	numExplainedPeaks	explainedIntensity	medianMassErrorFragmentPeaks(ppm)	medianAbsoluteMassErrorFragmentPeaks(ppm)	massErrorPrecursor(ppm)	ionMass	retentionTimeInSeconds	id
+1	C10H12O11	[M + H]+	C10H12O11	37.22715370710156	37.22715370710156	0.0	15	0.8557832554834016	0.21942385125951486	0.6179526967335941	-8.211344550478474	309.04270	620.04	0_Challenge-140_ScanNumber1

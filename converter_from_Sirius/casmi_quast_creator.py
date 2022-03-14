@@ -1,10 +1,11 @@
 import os
 import shutil
+
 from rdkit import Chem
 
 from converter_from_Sirius.sirius_tool import SiriusTool
-from npd_quast_folder import NPDQuastFolder
 from general import parse_from_mgf
+from npd_quast_folder import NPDQuastFolder
 
 
 def main():

@@ -1,8 +1,9 @@
 import os
 
-from converter_from_MAGMa_plus.magma_tool import MagmaTool
-from mass_tree_creator import create_mass_tree
 from database_creator import create_database
+from mass_tree_creator import create_mass_tree
+
+from converter_from_MAGMa_plus.magma_tool import MagmaTool
 from npd_quast_folder import NPDQuastFolder
 
 

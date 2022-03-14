@@ -1,7 +1,7 @@
 import os
 import shutil
 import sqlite3
-from subprocess import check_output, CalledProcessError
+from subprocess import CalledProcessError, check_output
 
 from abstract.abstract_tool import AbstractTool
 

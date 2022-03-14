@@ -1,7 +1,7 @@
 import sqlite3
 import zlib
 
-from magma_plus_mol import MagmaPlusMol, MagmaPlusInitException
+from magma_plus_mol import MagmaPlusInitException, MagmaPlusMol
 
 
 def create_database(csv_database_file, converted_database_file):

@@ -1,10 +1,10 @@
 import os
 import shutil
+from subprocess import CalledProcessError, run
+
 from rdkit import Chem
 
 from abstract.abstract_tool import AbstractTool
-
-from subprocess import run, CalledProcessError
 
 
 class SiriusTool(AbstractTool):

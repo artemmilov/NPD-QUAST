@@ -2,11 +2,10 @@ import os
 import shutil
 
 import rdkit
-from subprocess import run
+from npdtools_database import NpdToolsDatabase
+from quast_mol import QuastMol, QuastMolInitException
 
 from abstract.abstract_tool import AbstractTool
-from quast_mol import QuastMol, QuastMolInitException
-from npdtools_database import NpdToolsDatabase
 from general import parse_from_mgf
 
 

@@ -1,13 +1,10 @@
 import os
 import shutil
 
-from rdkit import Chem
-from rdkit.Chem import Descriptors, inchi
-from rdkit import RDLogger
-
-
+from npdtools_database import DatabaseInitException, NpdToolsDatabase
 from quast_mol import QuastMol, QuastMolInitException
-from npdtools_database import NpdToolsDatabase, DatabaseInitException
+from rdkit import Chem, RDLogger
+from rdkit.Chem import Descriptors, inchi
 
 
 def prepare_directories(

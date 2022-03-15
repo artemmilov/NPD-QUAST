@@ -33,7 +33,7 @@ def main():
     try:
         os.mkdir(
             os.path.join(
-                'files',
+                'sample',
                 'temp',
             ),
         )
@@ -41,23 +41,23 @@ def main():
         pass
     database = NpdToolsDatabase(
         os.path.join(
-            'files',
+            'sample',
             'temp',
         ),
     )
     for candidate in candidates:
         path_to_database = os.path.join(
-            'files',
+            'sample',
             'CASMI2016_Cat2and3_Training_Candidates',
             f'Training-{candidate:03d}.csv',
         )
         path_to_challenge = os.path.join(
-            'files',
+            'sample',
             'CASMI2016_Cat2and3_Training_positive',
             f'Training-{candidate:03d}.mgf',
         )
         path_to_output = os.path.join(
-            'files',
+            'sample',
             'CASMI2016_Cat2and3_Training_Results',
             f'Training-{candidate:03d}',
         )

@@ -1,7 +1,0 @@
-Statistic	Value
-Number of spectrum files	1
-Number of spectrum scans	1
-Number of all PSMs	89
-Number of significant PSMs (score >= 1.0)	89
-FDR % for score >= 1.0	0.0
-Elapsed time	0:01:30.508162

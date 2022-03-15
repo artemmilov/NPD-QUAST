@@ -1,0 +1,4 @@
+Classic multi medal score: {'Dereplicator_plus': 0, ('Dereplicator_plus', 35): 5}.
+F1 multi score: {'Dereplicator_plus': 0, ('Dereplicator_plus', 35): 24}.
+Gold multi medals: {'Dereplicator_plus': 0, ('Dereplicator_plus', 35): 1}.
+All multi medals: {'Dereplicator_plus': 0, ('Dereplicator_plus', 35): 1}.

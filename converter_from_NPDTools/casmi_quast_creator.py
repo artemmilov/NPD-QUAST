@@ -8,13 +8,13 @@ from npd_quast_folder import NPDQuastFolder
 
 def main():
     path_to_spectres = \
-        '../sample/CASMI2016_Cat2and3_Training_positive'
+        '../../data/NPD-QUAST/CASMI2016_Cat2and3_Training_positive'
     path_to_databases = \
-        '../sample/CASMI2016_Cat2and3_Challenge_Candidates'
+        '../../data/NPD-QUAST/CASMI2016_Cat2and3_Challenge_Candidates'
     path_to_quast_folder = \
         '../sample/large'
 
-    for spectra in os.listdir(path_to_spectres)[:1]:
+    for spectra in os.listdir(path_to_spectres):
         name = spectra.split('.')[0]
         if os.path.isdir(os.path.join(path_to_quast_folder, 'challenges', name)):
             shutil.rmtree(os.path.join(path_to_quast_folder, 'challenges', name))
@@ -54,5 +54,5 @@ def add_dereplicator_plus_report():
 
 
 if __name__ == '__main__':
-    # main()
-    add_dereplicator_plus_report()
+    main()
+    #add_dereplicator_plus_report()

@@ -21,7 +21,7 @@ def main():
         os.mkdir(os.path.join(path_to_quast_folder, 'challenges', name))
         os.mkdir(os.path.join(path_to_quast_folder, 'challenges', name, 'spectres'))
         with open(
-            os.path.join(path_to_spectres, spectra)
+                os.path.join(path_to_spectres, spectra)
         ) as raw_spectra, open(
             os.path.join(path_to_quast_folder, 'challenges', name, 'spectres', spectra),
             'w',
@@ -49,10 +49,10 @@ def add_dereplicator_plus_report():
     npd_quast_folder = NPDQuastFolder(path_to_npd_quast_folder)
     dereplicator_plus_tool = DereplicatorPlusTool()
     dereplicator_tool = DereplicatorTool()
-    npd_quast_folder.make_tool_report(dereplicator_plus_tool)
-    npd_quast_folder.make_tool_report(dereplicator_tool)
+    npd_quast_folder.make_tool_report(dereplicator_plus_tool, default_ranks=[1, 2, 3])
+    npd_quast_folder.make_tool_report(dereplicator_tool, default_ranks=[4, 5, 6])
 
 
 if __name__ == '__main__':
-    main()
+    # main()
     add_dereplicator_plus_report()

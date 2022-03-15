@@ -1,0 +1,34 @@
+2022-03-15 14:01:07	INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator+.py /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/spectres --db-path /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database -o /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result --pass-to-dereplicate "--num_hits_to_report 100" --min-score 1 
+2022-03-15 14:01:07	INFO: 
+2022-03-15 14:01:07	INFO: CWD: /home/artem/Programming/bioinformatics/NPD-QUAST/converter_from_NPDTools
+2022-03-15 14:01:07	INFO: System information:
+	OS: Linux-5.13.0-35-generic-x86_64-with-glibc2.29
+	Python version: 3.8.10 (interpreter: /usr/bin/python3.8)
+2022-03-15 14:01:07	INFO: Chemical Structure Database information:
+	root dir: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database
+	library.info: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database/library.info
+	library.smiles: N/A
+	preprocessed targets: N/A
+	preprocessed decoys: N/A
+2022-03-15 14:01:07	INFO: Starting Dereplicator+ in 1 thread
+2022-03-15 14:01:07	INFO:   Parameters are saved to /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/params.tsv
+2022-03-15 14:01:07	INFO:   Total number of spectra: 1 
+2022-03-15 14:01:07	INFO: Starting: /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/spectres/Challenge-206.mgf --> spectra-00000
+2022-03-15 14:01:07	INFO:   Running: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/spectra-00000.mgf" "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database" "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/deployed_database/library.info" --configs_dir "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/configs" --product_ion_thresh 0.01 --pm_thresh 0.01 --max_charge 2 --min_score 0.75 --fragmentation_tree --no_pvalue --min_num_comp 0 --fragment "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/configs/configs/common/fragment_list_general_6_1_6.txt" --num_hits_to_report 100 > "/home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/spectra-00000_dereplicator.log"
+2022-03-15 14:02:38	INFO: Run on spectra-00000 (Challenge-206.mgf) finished correctly (1 scans processed). PSMs found: 89 (significant: 89); visualizations generated: 0
+2022-03-15 14:02:38	INFO: 
+
+  Summary (saved to /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/summary.tsv):
+    Number of spectra files: 1
+      out of them: 0 failed conversion to mgf
+      out of them: 0 failed processing
+      out of them: 0 had completed results and were reused
+    Number of processed spectra scans: 1
+    Found PSMs: 89
+      out of them: 89 significant (score >= 1.0)
+
+  Matches are in /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/all_matches.tsv and significant_matches.tsv
+  Log is in /home/artem/Programming/bioinformatics/NPD-QUAST/files/casmi_quast/temp/tool/cur_result/work/dereplicator.log
+
+  Elapsed time: 0:01:30.508162
+

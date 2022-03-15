@@ -99,9 +99,9 @@ class NPDQuastFolder:
                 '{0} consist something else'.format(folder)
             )
 
-    def make_tool_report(self, tool):
+    def make_tool_report(self, tool, specification=None, default_ranks=None):
         self._clean_temp()
-        tool.run(self._folder)
+        tool.run(self._folder, specification, default_ranks)
         self._clean_temp()
 
     def make_total_report(self):

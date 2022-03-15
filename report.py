@@ -32,7 +32,9 @@ def _str_medals(true_answers, tool_answers):
     )
 
 
-def _str_ranks(true_answers, tool_answers):
+def _str_ranks(true_answers, tool_answers, default_ranks=None):
+    if default_ranks is None:
+        default_ranks = []
     return ''.join(
         [
             ''.join(
@@ -47,7 +49,7 @@ def _str_ranks(true_answers, tool_answers):
                     ),
                 ],
             )
-            for default_rank in [None, 0, 5, 10]
+            for default_rank in [None] + default_ranks
         ],
     )
 
@@ -83,14 +85,14 @@ def _str_quantiles(true_answers, tool_answers):
     )
 
 
-def write_report(report_folder, true_answers, tool_answers):
+def write_report(report_folder, true_answers, tool_answers, default_ranks=None):
     with open(report_folder, 'w') as report:
         report.write(
             ''.join(
                 [
                     _str_best(true_answers, tool_answers),
                     _str_medals(true_answers, tool_answers),
-                    _str_ranks(true_answers, tool_answers),
+                    _str_ranks(true_answers, tool_answers, default_ranks),
                     _str_rprs(true_answers, tool_answers),
                     _str_quantiles(true_answers, tool_answers),
                 ],

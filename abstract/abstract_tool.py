@@ -101,7 +101,7 @@ class AbstractTool:
         self._run_tool(abs_folder, specification)
         self._parse_output(abs_folder, os.path.split(challenge)[-1])
 
-    def _make_conclusion(self, abs_folder):
+    def _make_conclusion(self, abs_folder, default_ranks=None):
         true_answers = general.parse_true_answers(
             os.path.join(
                 abs_folder,
@@ -125,9 +125,12 @@ class AbstractTool:
             ),
             true_answers,
             tool_answers,
+            default_ranks,
         )
 
-    def run(self, folder, specification=None):
+    def run(self, folder, specification=None, default_ranks=None):
+        if default_ranks is None:
+            default_ranks = []
         abs_folder = os.path.abspath(folder)
         self._init_tool(abs_folder)
         for challenge in os.listdir(
@@ -138,7 +141,7 @@ class AbstractTool:
                 os.path.join(abs_folder, 'challenges', challenge),
                 specification,
             )
-        self._make_conclusion(abs_folder)
+        self._make_conclusion(abs_folder, default_ranks)
 
     def name(self):
         return self._tool_name

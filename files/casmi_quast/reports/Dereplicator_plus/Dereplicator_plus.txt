@@ -1,0 +1,18 @@
+Correct in best 10: 0.00%.
+Correct in best 100: 1.12%.
+Correct in best 1000: 1.12%.
+Correct in best None: 1.12%.
+Classic medal score: 0.
+F1 score: 0.
+Gold medals: 0.
+All medals: 0.
+Mean rank: 88.00. Default rank is None.
+Median rank: 88.00. Default rank is None.
+Mean RPR: 0.00.
+Median RPR: 0.00.
+Mean weighted RPR: 0.96.
+Median weighted RPR: 0.96.
+25% quantile: 88.00.
+50% quantile: 88.00.
+75% quantile: 88.00.
+100% quantile: 88.00.

@@ -86,7 +86,7 @@ def parse_true_answers(true_answers_data_file):
             if true_answer != '':
                 true_answers[true_answer.split('\t')[0]] = \
                     true_answer.split('\t')[1]
-    return true_answer
+    return true_answers
 
 
 def parse_tool_answers(tool_answers_data_file):

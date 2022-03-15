@@ -1,0 +1,7 @@
+Parameter	Value
+Database	deployed_database
+Precursor Ion Mass Tolerance	0.01 Da
+Fragment Ion Mass Tolerance	0.01 Da
+Max charge	2
+Min Score to Consider a PSM	0.75
+Fragmentation Mode	general_6_1_6

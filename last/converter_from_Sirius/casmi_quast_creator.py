@@ -3,18 +3,18 @@ import shutil
 
 from rdkit import Chem
 
-from converter_from_Sirius.sirius_tool import SiriusTool
+from tools.sirius_tool import SiriusTool
 from general import parse_from_mgf
 from npd_quast_folder import NPDQuastFolder
 
 
 def main():
     path_to_spectres = \
-        '../../data/NPD-QUAST/CASMI2016_Cat2and3_Training_positive'
+        '../../../data/NPD-QUAST/CASMI2016_Cat2and3_Training_positive'
     path_to_databases = \
-        '../../data/NPD-QUAST/CASMI2016_Cat2and3_Challenge_Candidates'
+        '../../../data/NPD-QUAST/CASMI2016_Cat2and3_Challenge_Candidates'
     path_to_quast_folder = \
-        '../sample/large'
+        '../../sample/large'
 
     for spectra in os.listdir(path_to_spectres):
         name = spectra.split('.')[0]
@@ -49,7 +49,7 @@ def main():
 
 
 def add_sirius_report():
-    path_to_npd_quast_folder = '../sample/large'
+    path_to_npd_quast_folder = '../../sample/large'
     npd_quast_folder = NPDQuastFolder(path_to_npd_quast_folder)
     sirius_tool = SiriusTool()
     npd_quast_folder.make_tool_report(sirius_tool)

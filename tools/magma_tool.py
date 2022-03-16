@@ -3,7 +3,7 @@ import shutil
 import sqlite3
 from subprocess import CalledProcessError, check_output
 
-from abstract.abstract_tool import AbstractTool
+from tools.abstract_tool import AbstractTool
 
 
 class MagmaTool(AbstractTool):

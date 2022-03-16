@@ -1,7 +1,6 @@
-import os
 from subprocess import run
 
-from converter_from_NPDTools.abstract_npd_tool import AbstractNpdTool
+from tools.NPDTools.abstract_npd_tool import AbstractNpdTool
 
 
 class DereplicatorPlusTool(AbstractNpdTool):

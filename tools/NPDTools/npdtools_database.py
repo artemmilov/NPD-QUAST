@@ -4,7 +4,7 @@ from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors, inchi
 
 from abstract.abstract_database import AbstractDatabase
-from converter_from_NPDTools.quast_mol import QuastMol, QuastMolInitException
+from tools.NPDTools.quast_mol import QuastMol, QuastMolInitException
 from general import parse_from_mgf
 
 

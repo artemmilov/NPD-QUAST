@@ -1,10 +1,10 @@
 import os
 import shutil
 
-from npdtools_database import DatabaseInitException, NpdToolsDatabase
-from quast_mol import QuastMol, QuastMolInitException
+from tools.NPDTools.npdtools_database import NpdToolsDatabase
+from tools.NPDTools.quast_mol import QuastMol, QuastMolInitException
 from rdkit import Chem, RDLogger
-from rdkit.Chem import Descriptors, inchi
+from rdkit.Chem import inchi
 
 
 def prepare_directories(

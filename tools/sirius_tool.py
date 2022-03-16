@@ -4,7 +4,7 @@ from subprocess import CalledProcessError, run
 
 from rdkit import Chem
 
-from abstract.abstract_tool import AbstractTool
+from tools.abstract_tool import AbstractTool
 
 
 class SiriusTool(AbstractTool):

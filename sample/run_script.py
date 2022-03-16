@@ -1,7 +1,7 @@
-from converter_from_MAGMa_plus.magma_tool import MagmaTool
-from converter_from_NPDTools.dereplicator_tool import DereplicatorTool
-from converter_from_NPDTools.dereplicator_plus_tool import DereplicatorPlusTool
-from converter_from_Sirius.sirius_tool import SiriusTool
+from tools.magma_tool import MagmaTool
+from tools.NPDTools.dereplicator_tool import DereplicatorTool
+from tools.NPDTools.dereplicator_plus_tool import DereplicatorPlusTool
+from tools.sirius_tool import SiriusTool
 from npd_quast_folder import NPDQuastFolder
 
 

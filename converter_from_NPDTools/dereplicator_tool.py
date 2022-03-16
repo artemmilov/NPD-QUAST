@@ -12,7 +12,7 @@ class DereplicatorTool(AbstractNpdTool):
             super()._run_abstract_tool(abs_folder, specification)
         run(
             [
-                '/home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py',
+                self._location,
                 path_to_spectres,
                 '--db-path',
                 path_to_database,

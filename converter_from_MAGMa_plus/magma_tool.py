@@ -45,7 +45,7 @@ chemical_engine = rdkit'''.format(
         ) as script:
             script.write('''#!/bin/bash
 cd {0}
-export PATH=/home/artem/Programming/miniconda3/bin:$PATH
+export PATH={1}:$PATH
 eval "$(conda shell.bash hook)"
 conda activate magma-plus-env
 export MAGMAPLUS_CLASSIFIER_PATH=/home/artem/Programming/bioinformatics/MAGMa-plus
@@ -54,6 +54,7 @@ python $path_to_magma read_ms_data -i 1 -p 5 -q 0.001 -f mass_tree $1 $2
 python $path_to_magma annotate -c 0 -d 0 -b 3 -w 1 -s hmdb $2
 python $path_to_magma export_result $2'''.format(
                     os.path.join(abs_folder, 'temp', 'tool'),
+                    self._location,
                 ),
             )
         os.mkdir(

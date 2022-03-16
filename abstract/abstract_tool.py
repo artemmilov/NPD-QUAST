@@ -11,6 +11,13 @@ class AbstractTool:
     _spectra_format = None
     _database_format = None
     _tool_name = None
+    _location = None
+
+    def __init__(self):
+        with open('init_information.txt') as init_information:
+            for line in init_information.readlines()[:-1]:
+                if line.split('=')[0] == self._tool_name:
+                    self._location = line.split('=')[1].replace('\n', '')
 
     def _init_tool(self, abs_folder):
         if not os.path.isdir(os.path.join(abs_folder, 'temp')):

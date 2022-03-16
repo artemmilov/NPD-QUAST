@@ -1,0 +1,4 @@
+MAGMa_plus=/home/artem/Programming/bioinformatics/MAGMa-plus/MAGMa_plus.py
+Dereplicator=/home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator.py
+Dereplicator_plus=/home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicator+.py
+Sirius=/home/artem/Programming/bioinformatics/sirius/bin/

@@ -55,6 +55,17 @@ def _transform_from_csv_to_sql(
     pass
 
 
+def _transform_from_csv_to_txt(
+        from_file,
+        to_file,
+):
+    with open(from_file) as csv, \
+            open(to_file, 'w') as txt:
+        for line in csv.readlines()[1:-1]:
+            identifier, name, _, _, smiles, _, _ = parse_from_mgf(line)
+            txt.write('{0}\t{1}\t{2}\n'.format(smiles, identifier, name))
+
+
 def transform_from_to(
         from_format,
         to_format,
@@ -67,6 +78,8 @@ def transform_from_to(
         _transform_from_mgf_to_mass_tree(from_file, to_file)
     elif (from_format == 'csv') and (to_format == 'db'):
         _transform_from_csv_to_sql(from_file, to_file)
+    elif (from_format == 'csv') and (to_format == 'txt'):
+        _transform_from_csv_to_txt(from_file, to_file)
     else:
         raise NotImplementedError
 

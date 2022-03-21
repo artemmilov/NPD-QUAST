@@ -29,29 +29,13 @@ class SiriusTool(AbstractTool):
         for spectra in os.listdir(path_to_spectres):
             try:
                 run(
-                    '''export PATH=\"/home/artem/Programming/bioinformatics/sirius/bin/:$PATH\"; \
-sirius \
--i \"{0}\" \
--o \"{1}\" \
-config \
---AlgorithmProfile qtof \
---IsotopeMs2Settings IGNORE \
---MS2MassDeviation.allowedMassDeviation "10.0ppm (0.01 Da)" \
---NumberOfCandidatesPerIon 1 \
---Timeout.secondsPerTree 1000 \
---NumberOfCandidates 10 \
---FormulaSettings.enforced HCNOPS \
---Timeout.secondsPerInstance 0 \
---AdductSettings.detectable "[[M+H]+]" \
---StructureSearchDB \"{2}\" \
---AdductSettings.fallback "[[M+H]+]" \
---FormulaResultThreshold true \
---RecomputeResults true \
-formula \
-structure'''.format(
+                    '''export PATH=\"{0}:$PATH\"; \
+sirius -i {1} custom-db --name cur_database; \
+sirius -i {2} -o {3} formula -c 10 structure --database cur_database'''.format(
+                        self._location,
+                        path_to_database,
                         os.path.join(path_to_spectres, spectra),
                         os.path.join(path_to_results, spectra.split('.')[0]),
-                        path_to_database,
                     ),
                     shell=True,
                 )
@@ -59,24 +43,42 @@ structure'''.format(
                 pass
 
     def _parse_output(self, abs_folder, challenge_name):
-        with open(
-            os.path.join(
-                abs_folder,
-                'temp',
-                'tool',
-                'cur_results',
-                challenge_name,
-                '0_{0}_ScanNumber1',
-            ),
-        ) as output, open(
-            os.path.join(
-                abs_folder,
-                'reports',
-                self._tool_name,
-                '{0}.txt'.format(self._tool_name),
-            ),
-            'a',
-        ) as tool_answers:
-            for line in output.readlines()[1:-1]:
-                formula = line.split('\t')[1]
-                Chem.MolTo()
+        for result in os.listdir(
+                os.path.join(
+                    abs_folder,
+                    'temp',
+                    'tool',
+                    'cur_results',
+                ),
+        ):
+            with open(
+                    os.path.join(
+                        abs_folder,
+                        'reports',
+                        self._tool_name,
+                        'tool_answers.txt',
+                    ),
+                    'a',
+            ) as tool_answers:
+                with open(
+                        os.path.join(
+                            abs_folder,
+                            'temp',
+                            'tool',
+                            'cur_results',
+                            result,
+                            '0_{0}_FEATURE_1'.format(result),
+                            'structure_candidates.tsv',
+                        ),
+                ) as output:
+                    for line in output.readlines()[1:]:
+                        answer_inchi_key = line.split('\t')[5]
+                        score = line.split('\t')[2]
+                        tool_answers.write(
+                            '{0}${1}\t{2}\t{3}\n'.format(
+                                challenge_name,
+                                result,
+                                answer_inchi_key,
+                                score,
+                            ),
+                        )

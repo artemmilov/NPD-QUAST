@@ -15,7 +15,7 @@ class AbstractTool:
 
     def __init__(self):
         with open('init_information.txt') as init_information:
-            for line in init_information.readlines()[:-1]:
+            for line in init_information.readlines():
                 if line.split('=')[0] == self._tool_name:
                     self._location = line.split('=')[1].replace('\n', '')
 

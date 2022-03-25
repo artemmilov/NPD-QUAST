@@ -7,8 +7,11 @@ from tools.sirius_tool import SiriusTool
 from npd_quast_folder import NPDQuastFolder
 
 
-def main():
-    args = input().split()
+def main(default_input=None):
+    if default_input is None:
+        args = input().split()
+    else:
+        args = default_input.split()
     command = args[0]
     if command == 'tool_report':
         tool_name, work_folder = args[1:]
@@ -44,5 +47,12 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    for i in [0, 1, 2]:
+        main(
+            'tool_report {} sample/short'.format(
+                'MAGMa+' * (i == 0) +
+                'Dereplicator+' * (i == 1) +
+                'Sirius' * (i == 2),
+            ),
+        )
     # tool_report Dereplicator+ sample/short

@@ -2,8 +2,7 @@ import os
 import shutil
 from subprocess import CalledProcessError, run
 
-from rdkit import Chem
-
+from general import parse_from_mgf
 from tools.abstract_tool import AbstractTool
 
 
@@ -17,6 +16,16 @@ class SiriusTool(AbstractTool):
         os.mkdir(
             os.path.join(abs_folder, 'temp', 'tool', 'cur_results'),
         )
+
+    def _convert_database(self, from_database, to_database):
+        with open(from_database) as csv, \
+                open(to_database, 'w') as txt:
+            for line in csv.readlines()[1:-1]:
+                identifier, name, _, _, smiles, _, _ = parse_from_mgf(line)
+                txt.write('{0}\t{1}\t{2}\n'.format(smiles, identifier, name))
+
+    def _convert_spectra(self, from_spectra, to_spectra):
+        shutil.copyfile(from_spectra, to_spectra)
 
     def _run_tool(self, abs_folder, specification=None):
         path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')

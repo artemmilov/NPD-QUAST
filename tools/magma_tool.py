@@ -5,6 +5,8 @@ from subprocess import CalledProcessError, check_output
 
 from tools.abstract_tool import AbstractTool
 
+from last.converter_from_MAGMa_plus.database_creator import create_database
+
 
 class MagmaTool(AbstractTool):
     _spectra_format = 'tree'
@@ -74,7 +76,37 @@ python $path_to_magma export_result $2'''.format(
             ),
         )
 
+    def _convert_database(self, from_database, to_database):
+        create_database(from_database, to_database)
+
+    def _convert_spectra(self, from_spectra, to_spectra):
+        with open(from_spectra) as mgf:
+            mzs = []
+            norm_intensities = []
+            mass = None
+            for line in mgf.readlines():
+                if '=' in line:
+                    if line.split('=')[0] == 'PEPMASS':
+                        mass = float(line.split('=')[1])
+                elif len(line.split('\t')) == 2:
+                    mzs.append(float(line.split('\t')[0]))
+                    norm_intensities.append(float(line.split('\t')[1]))
+            normalizer = max(norm_intensities)
+            record = '{0}: 100 ('.format(mass)
+            record += ', '.join(
+                '{0}: {1}'.format(
+                    mzs[i],
+                    norm_intensities[i] * 100 / normalizer,
+                )
+                for i in range(0, len(mzs))
+            )
+            record += ')'
+            with open(to_spectra, 'w') as mass_tree:
+                mass_tree.write(record)
+
     def _run_tool(self, abs_folder, specification=None):
+        my_env = os.environ.copy()
+        my_env["PATH"] = "/home/artem/Programming/miniconda3/bin:" + my_env["PATH"]
         path_to_script = os.path.join(abs_folder, 'temp', 'tool', 'script.txt')
         path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
         path_to_trees = os.path.join(abs_folder, 'temp', 'tool', 'cur_trees')
@@ -95,6 +127,7 @@ python $path_to_magma export_result $2'''.format(
                         os.path.join(path_to_spectres, spectra),
                         os.path.join(path_to_trees, converted_tree),
                     ],
+                    env=my_env,
                 ).decode('utf-8')
             except CalledProcessError:
                 output = ''

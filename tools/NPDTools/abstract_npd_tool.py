@@ -14,6 +14,12 @@ class AbstractNpdTool(AbstractTool):
     _database_format = 'csv'
     _id_to_inchi = dict()
 
+    def _convert_database(self, from_database, to_database):
+        shutil.copyfile(from_database, to_database)
+
+    def _convert_spectra(self, from_spectra, to_spectra):
+        shutil.copyfile(from_spectra, to_spectra)
+
     def _deploy_database(self, abs_folder):
         undeployed_database_file = os.path.join(
             abs_folder,

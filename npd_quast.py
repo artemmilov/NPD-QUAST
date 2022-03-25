@@ -47,7 +47,7 @@ def main(default_input=None):
 
 
 if __name__ == '__main__':
-    i = 0
+    i = 3
     main(
         'tool_report {} sample/short'.format(
             'MAGMa+' * (i == 0) +

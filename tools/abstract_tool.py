@@ -1,7 +1,5 @@
-import glob
 import os
 import shutil
-from collections import defaultdict
 
 import general
 from report import write_report
@@ -47,16 +45,16 @@ class AbstractTool:
             ),
         )
 
+    def _convert_database(self, from_database, to_database):
+        pass
+
     def _write_database(self, abs_folder, database):
         if not os.path.isfile(database):
             raise ValueError('{0} is not a file'.format(database))
         database_name = os.path.split(database)[-1]
         if len(database_name.split('.')) != 2:
             raise ValueError('Indefinable format')
-        cur_format = database_name.split('.')[1]
-        general.transform_from_to(
-            cur_format,
-            self._database_format,
+        self._convert_database(
             database,
             os.path.join(
                 abs_folder,
@@ -67,6 +65,9 @@ class AbstractTool:
             ),
         )
 
+    def _convert_spectra(self, from_spectra, to_spectra):
+        pass
+
     def _write_spectres(self, abs_folder, spectres):
         if os.path.isdir(os.path.join(abs_folder, 'temp', 'spectres')):
             shutil.rmtree(os.path.join(abs_folder, 'temp', 'spectres'))
@@ -76,10 +77,7 @@ class AbstractTool:
         for spectra in os.listdir(spectres):
             if len(spectra.split('.')) != 2:
                 raise ValueError('Indefinable format')
-            cur_format = spectra.split('.')[1]
-            general.transform_from_to(
-                cur_format,
-                self._spectra_format,
+            self._convert_spectra(
                 os.path.join(spectres, spectra),
                 os.path.join(abs_folder, 'temp', 'spectres', spectra),
             )

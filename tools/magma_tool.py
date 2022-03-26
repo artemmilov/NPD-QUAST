@@ -123,13 +123,14 @@ cd {0}
 export PATH={1}:$PATH
 eval "$(conda shell.bash hook)"
 conda activate magma-plus-env
-export MAGMAPLUS_CLASSIFIER_PATH=/home/artem/Programming/bioinformatics/MAGMa-plus
-path_to_magma=/home/artem/Programming/bioinformatics/MAGMa-plus/MAGMa_plus.py
+export MAGMAPLUS_CLASSIFIER_PATH={2}
+path_to_magma={1}
 python $path_to_magma read_ms_data -i 1 -p 5 -q 0.001 -f mass_tree $1 $2
 python $path_to_magma annotate -c 0 -d 0 -b 3 -w 1 -s hmdb $2
 python $path_to_magma export_result $2'''.format(
                     os.path.join(abs_folder, 'temp', 'tool'),
                     self._location,
+                    os.path.split(self._location)[0],
                 ),
             )
         os.mkdir(
@@ -178,8 +179,13 @@ python $path_to_magma export_result $2'''.format(
                 mass_tree.write(record)
 
     def _run_tool(self, abs_folder, specification=None):
+        path_to_conda = ''
+        with open('init_information.txt') as init_information:
+            for line in init_information.readlines():
+                if line.split('=')[0] == 'path_to_conda':
+                    path_to_conda = line.split('=')[1].replace('\n', '')
         my_env = os.environ.copy()
-        my_env["PATH"] = "/home/artem/Programming/miniconda3/bin:" + my_env["PATH"]
+        my_env["PATH"] = path_to_conda + ':' + my_env["PATH"]
         path_to_script = os.path.join(abs_folder, 'temp', 'tool', 'script.txt')
         path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
         path_to_trees = os.path.join(abs_folder, 'temp', 'tool', 'cur_trees')

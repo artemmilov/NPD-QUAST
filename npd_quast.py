@@ -52,7 +52,7 @@ if __name__ == '__main__':
     lg.setLevel(RDLogger.CRITICAL)
     for i in [0, 1, 2]:
         main(
-            'tool_report {} sample/short'.format(
+            'tool_report {} sample/medium'.format(
                 'MAGMa+' * (i == 0) +
                 'Dereplicator+' * (i == 1) +
                 'Sirius' * (i == 2),

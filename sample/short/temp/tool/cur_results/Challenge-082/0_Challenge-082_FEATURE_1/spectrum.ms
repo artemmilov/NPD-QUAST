@@ -1,0 +1,28 @@
+>compound FEATURE_1
+>parentmass 167.104
+>ionization [M + ?]+
+>instrumentation Unknown (LCMS)
+>source file:/home/artem/Programming/bioinformatics/NPD-QUAST/sample/short/temp/spectres/Challenge-082.mgf
+>quality UNKNOWN
+#scans 1
+
+>ms2peaks
+56.0496 890015.8
+58.0653 2683323.0
+60.0557 1.9158144E7
+68.0244 2064966.2
+70.04 448485.8
+81.0447 459195.2
+83.0604 8710302.0
+85.0508 3.2494888E7
+100.0869 846321.0
+108.0556 6498543.5
+110.0461 1230449.0
+112.0617 576228.1
+125.0821 1.7335174E7
+127.0727 814654.5
+139.0725 2935127.5
+140.093 1145310.1
+150.0775 826622.3
+167.1039 2.06684544E8
+

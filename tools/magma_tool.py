@@ -2,7 +2,7 @@ import os
 import shutil
 import sqlite3
 import zlib
-from subprocess import CalledProcessError, check_output
+from subprocess import CalledProcessError, check_output, STDOUT
 
 from rdkit import Chem
 from rdkit.Chem import Crippen
@@ -201,6 +201,7 @@ python $path_to_magma export_result $2'''.format(
                         os.path.join(path_to_trees, converted_tree),
                     ],
                     env=my_env,
+                    stderr=STDOUT,
                 ).decode('utf-8')
             except CalledProcessError:
                 output = ''

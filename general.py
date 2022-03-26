@@ -1,3 +1,7 @@
+class NPDQuastError(Exception):
+    pass
+
+
 def parse_from_mgf(s):
     res = []
     cur = ''

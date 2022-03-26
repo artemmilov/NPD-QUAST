@@ -1,8 +1,8 @@
 import os
 import shutil
 
-from tools.NPDTools.npdtools_database import NpdToolsDatabase
-from tools.NPDTools.quast_mol import QuastMol, QuastMolInitException
+from last.NPDTools.npdtools_database import NpdToolsDatabase
+from last.NPDTools.quast_mol import QuastMol, QuastMolInitException
 from rdkit import Chem, RDLogger
 from rdkit.Chem import inchi
 

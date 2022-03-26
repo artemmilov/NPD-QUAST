@@ -1,8 +1,8 @@
 import os
 import shutil
 
-from tools.NPDTools.dereplicator_plus_tool import DereplicatorPlusTool
-from tools.NPDTools.dereplicator_tool import DereplicatorTool
+from last.NPDTools.dereplicator_plus_tool import DereplicatorPlusTool
+from last.NPDTools.dereplicator_tool import DereplicatorTool
 from npd_quast_folder import NPDQuastFolder
 
 

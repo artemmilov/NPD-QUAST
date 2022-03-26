@@ -1,11 +1,84 @@
 import os
 import shutil
 import sqlite3
+import zlib
 from subprocess import CalledProcessError, check_output
 
+from rdkit import Chem
+from rdkit.Chem import Crippen
+
+from general import parse_from_mgf, NPDQuastError
 from tools.abstract_tool import AbstractTool
 
-from last.converter_from_MAGMa_plus.database_creator import create_database
+
+def _parse_line_for_magma(line):
+    parsed_line = parse_from_mgf(line)
+    reference = scan = parsed_line[0]
+    name = parsed_line[1]
+    mass = float(parsed_line[2])
+    mol_form = parsed_line[3]
+    smiles = parsed_line[4]
+    _ = parsed_line[5]
+    inchi_key = parsed_line[6]
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        raise NPDQuastError('Wrong smiles: {0}'.format(smiles))
+    return (
+        scan,
+        int(round(mass * 1e6)),
+        Chem.GetFormalCharge(mol),
+        mol.GetNumHeavyAtoms(),
+        sqlite3.Binary(
+            zlib.compress(
+                Chem.MolToMolBlock(mol).encode('utf-8'),
+            ),
+        ),
+        inchi_key.split('-')[0],
+        mol_form,
+        name,
+        reference,
+        int(round(Crippen.MolLogP(mol) * 10)),
+    )
+
+
+def _create_sqlite_database(
+        raw_database_file,
+        converted_database_file,
+):
+    conn = sqlite3.connect(converted_database_file)
+    c = conn.cursor()
+    try:
+        c.execute('''CREATE TABLE molecules (id TEXT PRIMARY KEY,
+                                             mim INTEGER NOT NULL,
+                                             charge INTEGER NOT NULL,
+                                             natoms INTEGER NOT NULL,
+                                             molblock TEXT,
+                                             inchikey TEXT,
+                                             molform TEXT,
+                                             name TEXT,
+                                             reference TEXT,
+                                             logp INT)''')
+        conn.commit()
+    except:
+        return
+
+    with open(raw_database_file) as raw_database:
+        for line in raw_database.readlines()[1:]:
+            if line != '':
+                try:
+                    c.execute(
+                        '''INSERT INTO molecules (id, mim, charge, natoms, molblock, inchikey,
+                         molform, name, reference, logp) VALUES (?,?,?,?,?,?,?,?,?,?)''',
+                        _parse_line_for_magma(line),
+                    )
+                except NPDQuastError:
+                    pass
+    conn.commit()
+
+    c.execute('PRAGMA temp_store = 2')
+    c.execute('''CREATE INDEX idx_cover ON molecules (charge, mim, natoms, reference, 
+molform, inchikey, name, molblock, logp)''')
+    conn.commit()
 
 
 class MagmaTool(AbstractTool):
@@ -77,7 +150,7 @@ python $path_to_magma export_result $2'''.format(
         )
 
     def _convert_database(self, from_database, to_database):
-        create_database(from_database, to_database)
+        _create_sqlite_database(from_database, to_database)
 
     def _convert_spectra(self, from_spectra, to_spectra):
         with open(from_spectra) as mgf:

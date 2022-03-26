@@ -3,7 +3,7 @@ from subprocess import run
 
 from rdkit import RDLogger
 
-from tools.NPDTools.npdtools_database import NpdToolsDatabase
+from last.NPDTools.npdtools_database import NpdToolsDatabase
 
 
 def _prepare_input(challenge_file):

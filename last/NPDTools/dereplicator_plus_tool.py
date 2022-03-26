@@ -1,10 +1,10 @@
 from subprocess import run
 
-from tools.NPDTools.abstract_npd_tool import AbstractNpdTool
+from last.NPDTools.abstract_npd_tool import AbstractNpdTool
 
 
-class DereplicatorTool(AbstractNpdTool):
-    _tool_name = 'Dereplicator'
+class DereplicatorPlusTool(AbstractNpdTool):
+    _tool_name = 'Dereplicator_plus'
 
     def _run_tool(self, abs_folder, specification=None):
         path_to_spectres, path_to_database, path_to_result =\
@@ -17,5 +17,9 @@ class DereplicatorTool(AbstractNpdTool):
                 path_to_database,
                 '-o',
                 path_to_result,
+                '--pass-to-dereplicate',
+                '--num_hits_to_report 100',
+                '--min-score',
+                '1',
             ],
         )

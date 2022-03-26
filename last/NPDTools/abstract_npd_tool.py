@@ -2,8 +2,8 @@ import os
 import shutil
 
 import rdkit
-from tools.NPDTools.npdtools_database import NpdToolsDatabase
-from tools.NPDTools.quast_mol import QuastMol, QuastMolInitException
+from last.NPDTools.npdtools_database import NpdToolsDatabase
+from last.NPDTools.quast_mol import QuastMol, QuastMolInitException
 
 from tools.abstract_tool import AbstractTool
 from general import parse_from_mgf

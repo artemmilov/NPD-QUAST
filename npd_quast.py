@@ -1,8 +1,9 @@
 import os
 
+from rdkit import RDLogger
+
 from tools.magma_tool import MagmaTool
-from tools.NPDTools.dereplicator_tool import DereplicatorTool
-from tools.NPDTools.dereplicator_plus_tool import DereplicatorPlusTool
+from tools.npdtools import DereplicatorTool, DereplicatorPlusTool
 from tools.sirius_tool import SiriusTool
 from npd_quast_folder import NPDQuastFolder
 
@@ -47,6 +48,8 @@ def main(default_input=None):
 
 
 if __name__ == '__main__':
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
     for i in [0, 1, 2]:
         main(
             'tool_report {} sample/short'.format(

@@ -47,6 +47,7 @@ sirius -i {2} -o {3} formula -c 10 structure --database cur_database'''.format(
                         os.path.join(path_to_results, spectra.split('.')[0]),
                     ),
                     shell=True,
+                    capture_output=True,
                 )
             except CalledProcessError:
                 pass

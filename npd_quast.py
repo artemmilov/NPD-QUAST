@@ -87,10 +87,6 @@ def add_tool_report(options):
             print(
                 '{0} report has been added!'.format(options.tool),
             )
-        else:
-            print('There`s no directory: {}'.format(options.folder))
-    else:
-        print('Incorrect tool name!')
 
 
 def add_total_report(options):

@@ -2,13 +2,8 @@ import os
 import shutil
 import subprocess
 
-<<<<<<< HEAD:npd_quast/tools/sirius_tool.py
 from npd_quast.general import parse_from_mgf
 from npd_quast.tools.abstract_tool import AbstractTool
-=======
-from general import parse_from_mgf
-from tools.abstract_tool import AbstractTool
->>>>>>> e61ef5e57ab5218d711b7b61ff5566891ce2d2ce:tools/sirius_tool.py
 
 
 class SiriusTool(AbstractTool):

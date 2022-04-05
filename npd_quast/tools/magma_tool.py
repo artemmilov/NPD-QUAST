@@ -81,8 +81,6 @@ def _create_sqlite_database(
 molform, inchikey, name, molblock, logp)''')
     conn.commit()
 
-from last.converter_from_MAGMa_plus.database_creator import create_database
-
 
 class MagmaTool(AbstractTool):
     _spectra_format = 'tree'

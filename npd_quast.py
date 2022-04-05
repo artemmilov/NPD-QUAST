@@ -1,61 +1,111 @@
+"""This tool is purposed for performance measuring of
+small molecule identifiers and comparing them to each other.
+"""
+
+import argparse
+import configparser
 import os
+import sys
 
 from rdkit import RDLogger
 
-from tools.magma_tool import MagmaTool
-from tools.npdtools import DereplicatorTool, DereplicatorPlusTool
-from tools.sirius_tool import SiriusTool
-from npd_quast_folder import NPDQuastFolder
+import npd_quast
 
 
-def main(default_input=None):
-    if default_input is None:
-        args = input().split()
-    else:
-        args = default_input.split()
-    command = args[0]
-    if command == 'tool_report':
-        tool_name, work_folder = args[1:]
-        if tool_name == 'MAGMa+':
-            tool = MagmaTool()
-        elif tool_name == 'Dereplicator':
-            tool = DereplicatorTool()
-        elif tool_name == 'Dereplicator+':
-            tool = DereplicatorPlusTool()
-        elif tool_name == 'Sirius':
-            tool = SiriusTool()
+def parse_args(args=None):
+    """Parse arguments."""
+    if args is None:
+        args = sys.argv[1:]
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-T",
+        "--tools",
+        action='store_true',
+        help="show all supported tools and exit"
+    )
+    parser.add_argument(
+        "-V",
+        "--version",
+        action='store_true',
+        help="show version and exit"
+    )
+    subparser = parser.add_subparsers(
+        title='commands',
+        dest="commands",
+    )
+
+    new_report = subparser.add_parser(
+        name="new_report",
+        help="add tool report",
+    )
+    new_report.add_argument(
+        "tool",
+        metavar="tool_name",
+        type=str,
+        help="reporting tool name",
+    )
+    new_report.add_argument(
+        "folder",
+        metavar="folder",
+        type=str,
+        help="working folder",
+    )
+
+    total = subparser.add_parser(
+        name="total",
+        help="add total report",
+    )
+    total.add_argument(
+        "folder",
+        metavar="folder",
+        type=str,
+        help="working folder",
+    )
+
+    return parser.parse_args(args)
+
+
+def handle_args(options):
+    config = configparser.ConfigParser()
+    config.read('npd_quast.ini')
+    if options.version:
+        print('NPD-Quast {0}'.format(config['general']['version']))
+    elif options.tools:
+        print('\n'.join(npd_quast.tools.SUPPORTED_TOOLS.keys()))
+    elif options.commands == 'new_report':
+        add_tool_report(options)
+    elif options.commands == 'total':
+        add_total_report(options)
+
+
+def add_tool_report(options):
+    if options.tool in npd_quast.tools.SUPPORTED_TOOLS.keys():
+        tool = npd_quast.tools.SUPPORTED_TOOLS[options.tool]()
+        if os.path.isdir(options.folder):
+            folder = npd_quast.NPDQuastFolder(options.folder)
+            folder.make_tool_report(tool)
+            print(
+                '{0} report has been added!'.format(options.tool),
+            )
         else:
-            print('Incorrect tool name!')
-            return
-        if not os.path.isdir(work_folder):
-            print('There`s no directory: {}'.format(work_folder))
-            return
-        folder = NPDQuastFolder(work_folder)
-        folder.make_tool_report(tool)
-        print(
-            '{0} report has been added!'.format(tool.name()),
-        )
-    elif command == 'total_report':
-        work_folder, = args[1:]
-        if not os.path.isdir(work_folder):
-            print('There`s no directory: {}'.format(work_folder))
-            return
-        folder = NPDQuastFolder(work_folder)
-        folder.make_total_report()
-        print(
-            'Total report has been added!',
-        )
+            print('There`s no directory: {}'.format(options.folder))
+    else:
+        print('Incorrect tool name!')
+
+
+def add_total_report(options):
+    folder = npd_quast.NPDQuastFolder(options.folder)
+    folder.make_total_report()
+    print('Total report has been added!')
+
+
+def main():
+    lg = RDLogger.logger()
+    lg.setLevel(RDLogger.CRITICAL)
+
+    options = parse_args()
+    handle_args(options)
 
 
 if __name__ == '__main__':
-    lg = RDLogger.logger()
-    lg.setLevel(RDLogger.CRITICAL)
-    for i in [0, 1, 2]:
-        main(
-            'tool_report {} sample/medium'.format(
-                'MAGMa+' * (i == 0) +
-                'Dereplicator+' * (i == 1) +
-                'Sirius' * (i == 2),
-            ),
-        )
-    # tool_report Dereplicator+ sample/short
+    main()

@@ -71,28 +71,20 @@ def handle_args(options):
     if options.version:
         print('NPD-Quast {0}'.format(config['general']['version']))
     elif options.tools:
-        print('\n'.join(npd_quast.tools.SUPPORTED_TOOLS.keys()))
+        print('\n'.join(npd_quast.SUPPORTED_TOOLS.keys()))
     elif options.commands == 'new_report':
         add_tool_report(options)
-    elif options.commands == 'total':
-        add_total_report(options)
 
 
 def add_tool_report(options):
     if options.tool in npd_quast.tools.SUPPORTED_TOOLS.keys():
-        tool = npd_quast.tools.SUPPORTED_TOOLS[options.tool]()
+        tool = npd_quast.SUPPORTED_TOOLS[options.tool]()
         if os.path.isdir(options.folder):
             folder = npd_quast.NPDQuastFolder(options.folder)
             folder.make_tool_report(tool)
             print(
                 '{0} report has been added!'.format(options.tool),
             )
-
-
-def add_total_report(options):
-    folder = npd_quast.NPDQuastFolder(options.folder)
-    folder.make_total_report()
-    print('Total report has been added!')
 
 
 def main():

@@ -1,6 +1,9 @@
 from numpy import mean, median, quantile
 
 
+ROUND = 2
+
+
 def percent_true_best(true_answers, tool_answers, best=None):
     sorted_answers = sorted(
         [
@@ -17,7 +20,7 @@ def percent_true_best(true_answers, tool_answers, best=None):
     for answer in sorted_answers[:best]:
         scan, tool_inchi, _ = answer
         correct_matches += (tool_inchi == true_answers[scan])
-    return correct_matches / min(best, total) * 100
+    return round(correct_matches / min(best, total) * 100, ROUND)
 
 
 def _abstract_medal_score(true_answers, tool_answers, medals):
@@ -104,11 +107,19 @@ def _get_ranks(true_answers, tool_answers, default_rank=None):
 
 
 def mean_rank(true_answers, tool_answers, default_rank=None):
-    return mean(_get_ranks(true_answers, tool_answers, default_rank))
+    return round(
+        float(mean(_get_ranks(true_answers, tool_answers, default_rank))),
+        ROUND,
+    )
 
 
 def median_rank(true_answers, tool_answers, default_rank=None):
-    return median(_get_ranks(true_answers, tool_answers, default_rank))
+    return round(
+        float(
+            median(_get_ranks(true_answers, tool_answers, default_rank))
+        ),
+        ROUND,
+    )
 
 
 def _get_rprs(true_answers, tool_answers):
@@ -128,11 +139,17 @@ def _get_rprs(true_answers, tool_answers):
 
 
 def mean_rpr(true_answers, tool_answers):
-    return mean(_get_rprs(true_answers, tool_answers))
+    return round(
+        float(mean(_get_rprs(true_answers, tool_answers))),
+        ROUND,
+    )
 
 
 def median_rpr(true_answers, tool_answers):
-    return median(_get_rprs(true_answers, tool_answers))
+    return round(
+        float(median(_get_rprs(true_answers, tool_answers))),
+        ROUND,
+    )
 
 
 def _get_weighted_rprs(true_answers, tool_answers):
@@ -168,11 +185,21 @@ def _get_weighted_rprs(true_answers, tool_answers):
 
 
 def mean_weighted_rpr(true_answers, tool_answers):
-    return mean(_get_weighted_rprs(true_answers, tool_answers))
+    return round(
+        float(
+            mean(_get_weighted_rprs(true_answers, tool_answers))
+        ),
+        ROUND,
+    )
 
 
 def median_weighted_rpr(true_answers, tool_answers):
-    return median(_get_weighted_rprs(true_answers, tool_answers))
+    return round(
+        float(
+            median(_get_weighted_rprs(true_answers, tool_answers))
+        ),
+        ROUND,
+    )
 
 
 def k_quantile(true_answers, tool_answers, k=50):
@@ -192,7 +219,7 @@ def k_quantile(true_answers, tool_answers, k=50):
                 )
                 positions.append(ans_rank)
     if len(positions) != 0:
-        return quantile(positions, k / 100)
+        return round(quantile(positions, k / 100), ROUND)
     return 0
 
 

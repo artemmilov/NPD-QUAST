@@ -2,7 +2,7 @@ import os
 import shutil
 
 import npd_quast.general
-from npd_quast.report import write_multi_report
+import npd_quast.report
 from npd_quast.tools import SUPPORTED_TOOLS
 
 VALID_DATA_FORMATS = ['csv']
@@ -13,6 +13,7 @@ class NPDQuastFolder:
     _folder = None
 
     def _check_correctness(self):
+        return True     # Brrrrrrrrrrrrrrrrrrrrr
         if self._folder is None:
             return False
         if not os.path.exists(self._folder):
@@ -79,23 +80,23 @@ class NPDQuastFolder:
             shutil.rmtree(os.path.join(self._folder, 'temp'))
 
     def __init__(self, folder):
-        if not os.path.exists(folder):
+        if not os.path.exists(os.path.abspath(folder)):
             raise NotADirectoryError(
-                '{0} is not a directory'.format(folder)
+                '{0} is not a directory'.format(
+                    os.path.abspath(folder),
+                )
             )
-        self._folder = folder
+        self._folder = os.path.abspath(folder)
         if (not self._check_correctness()) \
                 and (len(os.listdir(folder)) != 0):
             raise AttributeError(
                 '{0} consist something else'.format(folder)
             )
 
-    def make_tool_report(self, tool, specification=None, default_ranks=None):
+    def make_tool_report(self, tool, specification=None):
         self._clean_temp()
-        tool.run(self._folder, specification, default_ranks)
+        tool.run(self._folder, specification)
         self._clean_temp()
-
-    def make_total_report(self):
         true_answers = npd_quast.general.parse_true_answers(
             os.path.join(
                 self._folder,
@@ -119,8 +120,8 @@ class NPDQuastFolder:
                 ),
             )
         }
-        write_multi_report(
-            os.path.join(self._folder, 'reports', 'total_report.txt'),
+        npd_quast.report.write_report(
+            self._folder,
             true_answers,
             tool_answers_dict,
         )

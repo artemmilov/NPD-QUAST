@@ -1,7 +1,3 @@
-"""This tool is purposed for performance measuring of
-small molecule identifiers and comparing them to each other.
-"""
-
 import argparse
 import configparser
 import os
@@ -12,68 +8,96 @@ from rdkit import RDLogger
 import npd_quast
 
 
+class _VersionAction(argparse.Action):
+    def __init__(
+        self,
+        option_strings,
+        dest,
+        default=False,
+        required=False,
+        help=None,
+    ):
+        super(_VersionAction, self).__init__(
+            option_strings=option_strings,
+            dest=dest,
+            nargs=0,
+            const=True,
+            default=default,
+            required=required,
+            help=help,
+        )
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        config = configparser.ConfigParser()
+        config.read('npd_quast.ini')
+        print('NPD-Quast {0}'.format(config['general']['version']))
+        parser.exit()
+
+
+class _ToolListAction(argparse.Action):
+    def __init__(
+        self,
+        option_strings,
+        dest,
+        default=False,
+        required=False,
+        help=None,
+    ):
+        super(_ToolListAction, self).__init__(
+            option_strings=option_strings,
+            dest=dest,
+            nargs=0,
+            const=True,
+            default=default,
+            required=required,
+            help=help,
+        )
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        config = configparser.ConfigParser()
+        config.read('npd_quast.ini')
+        print('\n'.join(npd_quast.SUPPORTED_TOOLS.keys()))
+        parser.exit()
+
+
 def parse_args(args=None):
     """Parse arguments."""
     if args is None:
         args = sys.argv[1:]
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-T",
-        "--tools",
-        action='store_true',
-        help="show all supported tools and exit"
+    parser = argparse.ArgumentParser(
+        description="""This tool is purposed for performance 
+measuring of small molecule identifiers and comparing them 
+to each other. """
     )
     parser.add_argument(
-        "-V",
-        "--version",
-        action='store_true',
-        help="show version and exit"
+        '-TL',
+        '--tool_list',
+        action=_ToolListAction,
+        help='show all supported tools and exit'
     )
-    subparser = parser.add_subparsers(
-        title='commands',
-        dest="commands",
+    parser.add_argument(
+        '-V',
+        '--version',
+        action=_ToolListAction,
+        help='show version and exit'
     )
-
-    new_report = subparser.add_parser(
-        name="new_report",
-        help="add tool report",
-    )
-    new_report.add_argument(
-        "tool",
-        metavar="tool_name",
+    parser.add_argument(
+        'tool',
         type=str,
-        help="reporting tool name",
+        help='reporting tool name (required)',
     )
-    new_report.add_argument(
-        "folder",
-        metavar="folder",
+    parser.add_argument(
+        'folder',
         type=str,
-        help="working folder",
+        help='working folder (required)',
     )
-
-    total = subparser.add_parser(
-        name="total",
-        help="add total report",
-    )
-    total.add_argument(
-        "folder",
-        metavar="folder",
-        type=str,
-        help="working folder",
-    )
-
     return parser.parse_args(args)
 
 
 def handle_args(options):
     config = configparser.ConfigParser()
     config.read('npd_quast.ini')
-    if options.version:
-        print('NPD-Quast {0}'.format(config['general']['version']))
-    elif options.tools:
-        print('\n'.join(npd_quast.SUPPORTED_TOOLS.keys()))
-    elif options.commands == 'new_report':
-        add_tool_report(options)
+    add_tool_report(options)
 
 
 def add_tool_report(options):

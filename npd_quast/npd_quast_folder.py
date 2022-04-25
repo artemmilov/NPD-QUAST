@@ -13,7 +13,6 @@ class NPDQuastFolder:
     _folder = None
 
     def _check_correctness(self):
-        return True     # Brrrrrrrrrrrrrrrrrrrrr
         if self._folder is None:
             return False
         if not os.path.exists(self._folder):
@@ -52,28 +51,43 @@ class NPDQuastFolder:
                 return False
             if files_with_dot[0].split('.')[1] not in VALID_DATA_FORMATS:
                 return False
+        if len(os.listdir(
+                os.path.join(self._folder, 'reports'),
+        )) != 0:
+            total_pages = 0
+            about_pages = 0
             for report in os.listdir(
                     os.path.join(self._folder, 'reports'),
             ):
                 if os.path.isfile(
                     os.path.join(self._folder, 'reports', report),
                 ):
-                    if report != 'total_report.txt':
-                        return False
-                    else:
+                    if report == 'total_page.html':
+                        total_pages += 1
                         continue
+                    elif report == 'about_metrics_page.html':
+                        about_pages += 1
+                        continue
+                    else:
+                        return False
+                if report not in map(
+                        lambda tool: tool().name(),
+                        SUPPORTED_TOOLS.values(),
+                ):
+                    return False
                 report_folder = os.path.join(
                     self._folder,
                     'reports',
-                    report
+                    report,
                 )
-                if len(os.listdir(report_folder)) != 2:
+                if set(os.listdir(report_folder)) != {
+                    'tool_answers.txt',
+                    'tool_page.html',
+                }:
                     return False
-                if 'tool_answers.txt' not in os.listdir(report_folder):
-                    return False
-                if report + '.txt' not in os.listdir(report_folder):
-                    return False
-            return True
+            if (total_pages != 1) or (about_pages != 1):
+                return False
+        return True
 
     def _clean_temp(self):
         if os.path.isdir(os.path.join(self._folder, 'temp')):

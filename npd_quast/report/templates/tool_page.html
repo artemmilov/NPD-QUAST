@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>$TOOL_NAME$</title>
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <title>$TOOL_NAME$</title>
+    <style>
             table {
                 table-layout: auto;
-                width: 600px;
+                width: 100%;
                 margin-top:50px;
                 margin-bottom:50px;
                 background: #efffed;
             }
             aside {
                 background: #efffed;
-                width: 500px;
+                width: 250px;
                 float: left;
+                margin-left: 250px;
             }
             .main {
                 margin-left: 500px;
@@ -27,23 +28,45 @@
                 background: #e1ffde;
             }
             .p_aside {
-                text-align: Right;
+                text-align: left;
                 padding-right: 50px;
+                margin-top:20px;
+                margin-bottom:20px;
+                margin-left: 50px;
             }
-        </style>
-    </head>
-    <body>
-        $ASIDE$
-        <div class="main">
-            <div class="text">
-                <h1 class="header">$TOOL_NAME$</h1>
-                $TABLES$
-                <p>
-                    <a href="</a>">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                    </a>
-                </p>
-            </div>
-        </div>
-    </body>
+            td {
+                text-align: right;
+            }
+            .row_th {
+                text-align: left;
+                margin-left: 20%;
+            }
+            hr {
+                margin-top:50px;
+                margin-bottom:50px;
+            }
+            img {
+                margin-top:50px;
+            }
+    </style>
+</head>
+<body link="#32a844" vlink="#32a844">
+$ASIDE$
+<div class="main">
+    <div class="text">
+        <h1 class="header">$TOOL_NAME$</h1>
+        <hr>
+        <h3 class="text"> Mean Correct answer rank: $MEAN_CORRECT_ANSWER_RANK$</h3>
+        <h3 class="text"> Median Correct answer rank: $MEDIAN_CORRECT_ANSWER_RANK$</h3>
+        <h3 class="text"> Mean RRP: $MEAN_RRP$</h3>
+        <h3 class="text"> Median RRP: $MEDIAN_RRP$</h3>
+        <h3 class="text"> Mean weighted RRP: $MEAN_WEIGHTED_RRP$</h3>
+        <h3 class="text"> Median weighted RRP: $MEDIAN_WEIGHTED_RRP$</h3>
+        <img src="top_plot.png">
+        <img src="quantiles_plot.png">
+    </div>
+    <hr>
+    <h5 class="header" align="center">NPD-Quast</h5>
+</div>
+</body>
 </html>

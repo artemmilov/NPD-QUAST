@@ -12,16 +12,7 @@ VALID_SPECTRA_FORMATS = ['mgf']
 class NPDQuastFolder:
     _folder = None
 
-    def _check_correctness(self):
-        if self._folder is None:
-            return False
-        if not os.path.exists(self._folder):
-            return False
-        if (set(os.listdir(self._folder)) not in [
-                {'challenges', 'reports', 'true_answers.txt'},
-                {'challenges', 'reports', 'temp', 'true_answers.txt'},
-        ]):
-            return False
+    def _check_challenges(self):
         for challenge in os.listdir(
                 os.path.join(self._folder, 'challenges'),
         ):
@@ -51,16 +42,21 @@ class NPDQuastFolder:
                 return False
             if files_with_dot[0].split('.')[1] not in VALID_DATA_FORMATS:
                 return False
+        return True
+
+    def _check_reports(self):
         if len(os.listdir(
                 os.path.join(self._folder, 'reports'),
         )) != 0:
             total_pages = 0
             about_pages = 0
+            top_plots = 0
+            quantiles_plots = 0
             for report in os.listdir(
                     os.path.join(self._folder, 'reports'),
             ):
                 if os.path.isfile(
-                    os.path.join(self._folder, 'reports', report),
+                        os.path.join(self._folder, 'reports', report),
                 ):
                     if report == 'total_page.html':
                         total_pages += 1
@@ -68,26 +64,41 @@ class NPDQuastFolder:
                     elif report == 'about_metrics_page.html':
                         about_pages += 1
                         continue
+                    elif report == 'top_plot.png':
+                        top_plots += 1
+                        continue
+                    elif report == 'quantiles_plot.png':
+                        quantiles_plots += 1
+                        continue
                     else:
                         return False
-                if report not in map(
-                        lambda tool: tool().name(),
-                        SUPPORTED_TOOLS.values(),
-                ):
-                    return False
                 report_folder = os.path.join(
                     self._folder,
                     'reports',
                     report,
                 )
-                if set(os.listdir(report_folder)) != {
-                    'tool_answers.txt',
-                    'tool_page.html',
-                }:
+                if set(os.listdir(report_folder)) != \
+                        npd_quast.report.EMPTY_REPORT and \
+                        set(os.listdir(report_folder)) != \
+                        npd_quast.report.RAW_REPORT and \
+                        set(os.listdir(report_folder)) != \
+                        npd_quast.report.FULL_REPORT:
                     return False
-            if (total_pages != 1) or (about_pages != 1):
+            if {total_pages, about_pages, top_plots, quantiles_plots} != {1}:
                 return False
         return True
+
+    def _check_correctness(self):
+        if self._folder is None:
+            return False
+        if not os.path.exists(self._folder):
+            return False
+        if (set(os.listdir(self._folder)) not in [
+            {'challenges', 'reports', 'true_answers.txt'},
+            {'challenges', 'reports', 'temp', 'true_answers.txt'},
+        ]):
+            return False
+        return self._check_challenges() and self._check_reports()
 
     def _clean_temp(self):
         if os.path.isdir(os.path.join(self._folder, 'temp')):
@@ -104,12 +115,12 @@ class NPDQuastFolder:
         if (not self._check_correctness()) \
                 and (len(os.listdir(folder)) != 0):
             raise AttributeError(
-                '{0} consist something else'.format(folder)
+                '{0} consist something else'.format(self._folder)
             )
 
-    def make_tool_report(self, tool, specification=None):
+    def make_tool_report(self, tool, report, specification=None):
         self._clean_temp()
-        tool.run(self._folder, specification)
+        tool.run(self._folder, report, specification)
         self._clean_temp()
         true_answers = npd_quast.general.parse_true_answers(
             os.path.join(
@@ -118,21 +129,33 @@ class NPDQuastFolder:
             ),
         )
         tool_answers_dict = {
-            tool: npd_quast.general.parse_tool_answers(
+            report: npd_quast.general.parse_tool_answers(
                 os.path.join(
                     self._folder,
                     'reports',
-                    SUPPORTED_TOOLS[tool]().name(),
+                    report,
                     'tool_answers.txt',
                 ),
             )
-            for tool in SUPPORTED_TOOLS
-            if SUPPORTED_TOOLS[tool]().name() in os.listdir(
+            for report in os.listdir(
                 os.path.join(
                     self._folder,
                     'reports',
-                ),
+                )
             )
+            if os.path.isdir(
+                os.path.join(
+                    self._folder,
+                    'reports',
+                    report,
+                )
+            ) and os.listdir(
+                os.path.join(
+                    self._folder,
+                    'reports',
+                    report,
+                )
+            ) != []
         }
         npd_quast.report.write_report(
             self._folder,

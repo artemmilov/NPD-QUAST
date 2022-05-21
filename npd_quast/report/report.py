@@ -1,7 +1,7 @@
 import os.path
 
-from .pages import TotalPage, ToolPage, AboutMetricsPage
-from ..tools import SUPPORTED_TOOLS
+from .pages import TotalPage, ToolPage, HelpPage
+import npd_quast.report.plots as plots
 
 
 def write_report(
@@ -9,20 +9,62 @@ def write_report(
         true_answers,
         tool_answers_dict,
 ):
-    for tool_name, tool in SUPPORTED_TOOLS.items():
-        if tool().name() not in os.listdir(
+    for report in os.listdir(
+        os.path.join(
+            npd_quast_folder,
+            'reports',
+        )
+    ):
+        if not os.path.isdir(
             os.path.join(
                 npd_quast_folder,
                 'reports',
+                report,
             )
         ):
             continue
+        if set(
+            os.listdir(
+                os.path.join(
+                    npd_quast_folder,
+                    'reports',
+                    report,
+                )
+            )
+        ) == set():
+            continue
+        plots.write_top_plot(
+            true_answers,
+            {
+                report:
+                tool_answers_dict[report]
+            },
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                report,
+                'top_plot.png'
+            ),
+        )
+        plots.write_quantiles_plot(
+            true_answers,
+            {
+                report:
+                tool_answers_dict[report]
+            },
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                report,
+                'quantiles_plot.png'
+            ),
+        )
         with open(
             os.path.join(
                 npd_quast_folder,
                 'reports',
-                tool().name(),
-                'tool_page.html'.format(tool().name()),
+                report,
+                'tool_page.html',
             ),
             'w',
         ) as tool_page:
@@ -32,7 +74,7 @@ def write_report(
                         npd_quast_folder,
                         true_answers,
                         tool_answers_dict,
-                        tool_name,
+                        report,
                     ),
                 ),
             )
@@ -44,6 +86,24 @@ def write_report(
         ),
         'w',
     ) as total_page:
+        plots.write_top_plot(
+            true_answers,
+            tool_answers_dict,
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'top_plot.png',
+            ),
+        )
+        plots.write_quantiles_plot(
+            true_answers,
+            tool_answers_dict,
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'quantiles_plot.png',
+            ),
+        )
         total_page.write(
             str(
                 TotalPage(
@@ -62,5 +122,5 @@ def write_report(
         'w',
     ) as about_metrics_page:
         about_metrics_page.write(
-            str(AboutMetricsPage(npd_quast_folder)),
+            str(HelpPage(npd_quast_folder)),
         )

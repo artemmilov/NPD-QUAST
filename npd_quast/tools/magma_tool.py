@@ -87,8 +87,8 @@ class MagmaTool(AbstractTool):
     _database_format = 'db'
     _tool_name = 'MAGMa_plus'
 
-    def _init_tool(self, abs_folder):
-        super()._init_tool(abs_folder)
+    def _init_tool(self, abs_folder, report):
+        super()._init_tool(abs_folder, report)
         with open(
                 os.path.join(
                     abs_folder,
@@ -227,12 +227,12 @@ python $path_to_magma export_result $2'''.format(
                     if line == 'Candidate_Score Name Smiles':
                         write = True
 
-    def _parse_output(self, abs_folder, challenge_name):
+    def _parse_output(self, abs_folder, challenge_name, report):
         with open(
                 os.path.join(
                     abs_folder,
                     'reports',
-                    self._tool_name,
+                    report,
                     'tool_answers.txt',
                 ),
                 'a',

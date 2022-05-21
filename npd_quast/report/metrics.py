@@ -1,66 +1,31 @@
 from numpy import mean, median, quantile
 
-
 ROUND = 2
 
 
-def percent_true_best(true_answers, tool_answers, best=None):
-    sorted_answers = sorted(
-        [
-            [scan, tool_answer[0], tool_answer[1]]
-            for scan, scan_answers in tool_answers.items()
-            for tool_answer in scan_answers
-        ],
+def top_x(true_answers, tool_answers, x=None):
+    all_answers = []
+    for challenge, challenge_answers in tool_answers.items():
+        for challenge_answer in challenge_answers:
+            all_answers.append(
+                (
+                    challenge,
+                    challenge_answer[0],
+                    challenge_answer[1],
+                )
+            )
+    all_answers = sorted(
+        all_answers,
         key=lambda ans: ans[2],
     )
-    total = len(sorted_answers)
-    if best is None:
-        best = total
-    correct_matches = 0
-    for answer in sorted_answers[:best]:
-        scan, tool_inchi, _ = answer
-        correct_matches += (tool_inchi == true_answers[scan])
-    return round(correct_matches / min(best, total) * 100, ROUND)
-
-
-def _abstract_medal_score(true_answers, tool_answers, medals):
-    score = 0
-    for scan, true_inchi in true_answers.items():
-        sorted_tool_answers = sorted(
-            tool_answers[scan],
-            key=lambda ans: ans[1],
-        )
-        sorted_inches = tuple(
-            map(
-                lambda ans: ans[0],
-                sorted_tool_answers,
-            )
-        )
-        if true_inchi in sorted_inches:
-            pos = sorted_inches.index(true_inchi)
-            if pos < len(medals):
-                score += medals[pos]
-    return score
-
-
-def classic_medal_score(true_answers, tool_answers):
-    return _abstract_medal_score(true_answers, tool_answers, [5, 3, 1])
-
-
-def formula1_score(true_answers, tool_answers):
-    return _abstract_medal_score(
-        true_answers,
-        tool_answers,
-        [24, 18, 15, 12, 10, 8, 6, 4, 2, 1],
-    )
-
-
-def gold_medals(true_answers, tool_answers):
-    return _abstract_medal_score(true_answers, tool_answers, [1])
-
-
-def all_medals(true_answers, tool_answers):
-    return _abstract_medal_score(true_answers, tool_answers, [1, 1, 1])
+    total = len(all_answers)
+    if (x is None) or (x > total):
+        x = total
+    all_answers = all_answers[:x]
+    return len(list(filter(
+        lambda ans: ans[1] == true_answers[ans[0]],
+        all_answers,
+    )))
 
 
 def _get_sorted_inches_for_scan(tool_answers, scan):
@@ -122,8 +87,8 @@ def median_rank(true_answers, tool_answers, default_rank=None):
     )
 
 
-def _get_rprs(true_answers, tool_answers):
-    rprs = []
+def _get_rrps(true_answers, tool_answers):
+    rrps = []
     for scan, true_inchi in true_answers.items():
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         for i, set_inches in enumerate(sorted_inches):
@@ -132,28 +97,28 @@ def _get_rprs(true_answers, tool_answers):
                 after = sum(map(len, sorted_inches[i + 1:]))
                 total = sum(list(map(len, sorted_inches)))
                 if total > 1:
-                    rprs.append(1 / 2 * (1 - (before - after) / (total - 1)))
+                    rrps.append(1 / 2 * (1 - (before - after) / (total - 1)))
                 else:
-                    rprs.append(1 / 2)
-    return rprs
+                    rrps.append(1 / 2)
+    return rrps
 
 
-def mean_rpr(true_answers, tool_answers):
+def mean_rrp(true_answers, tool_answers):
     return round(
-        float(mean(_get_rprs(true_answers, tool_answers))),
+        float(mean(_get_rrps(true_answers, tool_answers))),
         ROUND,
     )
 
 
-def median_rpr(true_answers, tool_answers):
+def median_rrp(true_answers, tool_answers):
     return round(
-        float(median(_get_rprs(true_answers, tool_answers))),
+        float(median(_get_rrps(true_answers, tool_answers))),
         ROUND,
     )
 
 
-def _get_weighted_rprs(true_answers, tool_answers):
-    weighted_rprs = []
+def _get_weighted_rrps(true_answers, tool_answers):
+    weighted_rrps = []
     for scan, true_inchi in true_answers.items():
         sorted_answers = sorted(
             [
@@ -180,23 +145,23 @@ def _get_weighted_rprs(true_answers, tool_answers):
             true_score = sorted_scores[true_pos]
             up_normalized = sum(score for score in sorted_scores if score > true_score) / sum(sorted_scores)
             same_normalized = sum(score for score in sorted_scores if score == true_score) / sum(sorted_scores)
-            weighted_rprs.append(1 - up_normalized - same_normalized)
-    return weighted_rprs
+            weighted_rrps.append(1 - up_normalized - same_normalized)
+    return weighted_rrps
 
 
-def mean_weighted_rpr(true_answers, tool_answers):
+def mean_weighted_rrp(true_answers, tool_answers):
     return round(
         float(
-            mean(_get_weighted_rprs(true_answers, tool_answers))
+            mean(_get_weighted_rrps(true_answers, tool_answers))
         ),
         ROUND,
     )
 
 
-def median_weighted_rpr(true_answers, tool_answers):
+def median_weighted_rrp(true_answers, tool_answers):
     return round(
         float(
-            median(_get_weighted_rprs(true_answers, tool_answers))
+            median(_get_weighted_rrps(true_answers, tool_answers))
         ),
         ROUND,
     )
@@ -223,7 +188,7 @@ def k_quantile(true_answers, tool_answers, k=50):
     return 0
 
 
-def _abstract_multi_medal_score(true_answers, tool_answers_dict, medals):
+def _abstract_medal_score(true_answers, tool_answers_dict, medals):
     scores_dict = {tool_title: 0 for tool_title in tool_answers_dict}
     for scan, true_inchi in true_answers.items():
         positions_dict = {}
@@ -250,21 +215,21 @@ def _abstract_multi_medal_score(true_answers, tool_answers_dict, medals):
     return scores_dict
 
 
-def classic_multi_medal_score(true_answers, tool_answers_dict):
-    return _abstract_multi_medal_score(true_answers, tool_answers_dict, [5, 3, 1])
+def classic_medal_score(true_answers, tool_answers_dict):
+    return _abstract_medal_score(true_answers, tool_answers_dict, [5, 3, 1])
 
 
-def formula1_multi_score(true_answers, tool_answers_dict):
-    return _abstract_multi_medal_score(
+def formula1_score(true_answers, tool_answers_dict):
+    return _abstract_medal_score(
         true_answers,
         tool_answers_dict,
         [24, 18, 15, 12, 10, 8, 6, 4, 2, 1],
     )
 
 
-def gold_multi_medals(true_answers, tool_answers_dict):
-    return _abstract_multi_medal_score(true_answers, tool_answers_dict, [1])
+def gold_medals(true_answers, tool_answers_dict):
+    return _abstract_medal_score(true_answers, tool_answers_dict, [1])
 
 
-def all_multi_medals(true_answers, tool_answers_dict):
-    return _abstract_multi_medal_score(true_answers, tool_answers_dict, [1, 1, 1])
+def all_medals(true_answers, tool_answers_dict):
+    return _abstract_medal_score(true_answers, tool_answers_dict, [1, 1, 1])

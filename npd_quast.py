@@ -1,6 +1,5 @@
 import argparse
 import configparser
-import os
 import sys
 
 from rdkit import RDLogger
@@ -81,15 +80,33 @@ to each other. """
         action=_ToolListAction,
         help='show version and exit'
     )
-    parser.add_argument(
+    command = parser.add_subparsers(dest='command')
+    run_n_report = command.add_parser('run_n_report')
+    run_n_report.add_argument(
         'tool',
         type=str,
-        help='reporting tool name (required)',
+        help='reporting tool name',
     )
-    parser.add_argument(
+    run_n_report.add_argument(
+        'report_name',
+        type=str,
+        help='reporting folder',
+    )
+    run_n_report.add_argument(
         'folder',
         type=str,
-        help='working folder (required)',
+        help='working folder',
+    )
+    run_n_report.add_argument(
+        '--set_config',
+        action='store_true',
+        help='Change specifications',
+    )
+    compile_reports = command.add_parser('compile_reports')
+    compile_reports.add_argument(
+        'folder',
+        type=str,
+        help='working folder',
     )
     return parser.parse_args(args)
 
@@ -97,18 +114,10 @@ to each other. """
 def handle_args(options):
     config = configparser.ConfigParser()
     config.read('npd_quast.ini')
-    add_tool_report(options)
-
-
-def add_tool_report(options):
-    if options.tool in npd_quast.tools.SUPPORTED_TOOLS.keys():
-        tool = npd_quast.SUPPORTED_TOOLS[options.tool]()
-        if os.path.isdir(options.folder):
-            folder = npd_quast.NPDQuastFolder(options.folder)
-            folder.make_tool_report(tool)
-            print(
-                '{0} report has been added!'.format(options.tool),
-            )
+    if options.command == 'run_n_report':
+        npd_quast.run_n_report(options)
+    elif options.command == 'compile_reports':
+        npd_quast.compile_reports(options)
 
 
 def main():

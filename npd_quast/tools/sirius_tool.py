@@ -11,8 +11,8 @@ class SiriusTool(AbstractTool):
     _database_format = 'txt'
     _tool_name = 'Sirius'
 
-    def _init_tool(self, abs_folder):
-        super()._init_tool(abs_folder)
+    def _init_tool(self, abs_folder, report):
+        super()._init_tool(abs_folder, report)
         os.mkdir(
             os.path.join(abs_folder, 'temp', 'tool', 'cur_results'),
         )
@@ -52,7 +52,7 @@ sirius -i {2} -o {3} formula -c 10 structure --database cur_database'''.format(
             except subprocess.CalledProcessError:
                 pass
 
-    def _parse_output(self, abs_folder, challenge_name):
+    def _parse_output(self, abs_folder, challenge_name, report):
         for result in os.listdir(
                 os.path.join(
                     abs_folder,
@@ -65,7 +65,7 @@ sirius -i {2} -o {3} formula -c 10 structure --database cur_database'''.format(
                     os.path.join(
                         abs_folder,
                         'reports',
-                        self._tool_name,
+                        report,
                         'tool_answers.txt',
                     ),
                     'a',

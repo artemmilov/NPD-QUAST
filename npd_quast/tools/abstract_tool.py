@@ -14,7 +14,7 @@ class AbstractTool:
         config.read('npd_quast.ini')
         self._location = config['supported tools'][self._tool_name]
 
-    def _init_tool(self, abs_folder):
+    def _init_tool(self, abs_folder, report):
         if not os.path.isdir(os.path.join(abs_folder, 'temp')):
             os.mkdir(os.path.join(abs_folder, 'temp'))
         if len(os.listdir(os.path.join(abs_folder, 'temp'))) > 0:
@@ -24,20 +24,20 @@ class AbstractTool:
                 shutil.rmtree(subdir)
         os.mkdir(os.path.join(abs_folder, 'temp', 'spectres'))
         os.mkdir(os.path.join(abs_folder, 'temp', 'tool'))
-        if self._tool_name in os.listdir(
+        if report in os.listdir(
                 os.path.join(abs_folder, 'reports'),
         ):
             shutil.rmtree(
-                os.path.join(abs_folder, 'reports', self._tool_name),
+                os.path.join(abs_folder, 'reports', report),
             )
         os.mkdir(
-            os.path.join(abs_folder, 'reports', self._tool_name),
+            os.path.join(abs_folder, 'reports', report),
         )
         os.mknod(
             os.path.join(
                 abs_folder,
                 'reports',
-                self._tool_name,
+                report,
                 'tool_answers.txt',
             ),
         )
@@ -82,10 +82,10 @@ class AbstractTool:
     def _run_tool(self, abs_folder, specification=None):
         pass
 
-    def _parse_output(self, abs_folder, challenge_name):
+    def _parse_output(self, abs_folder, challenge_name, report):
         pass
 
-    def _run_challenge(self, abs_folder, challenge, specification=None):
+    def _run_challenge(self, abs_folder, challenge, report, specification=None):
         database = list(
             filter(
                 lambda f: len(f.split('.')) == 2,
@@ -101,17 +101,18 @@ class AbstractTool:
             os.path.join(challenge, 'spectres'),
         )
         self._run_tool(abs_folder, specification)
-        self._parse_output(abs_folder, os.path.split(challenge)[-1])
+        self._parse_output(abs_folder, os.path.split(challenge)[-1], report)
 
-    def run(self, folder, specification=None):
+    def run(self, folder, report, specification=None):
         abs_folder = os.path.abspath(folder)
-        self._init_tool(abs_folder)
+        self._init_tool(abs_folder, report)
         for challenge in os.listdir(
                 os.path.join(abs_folder, 'challenges'),
         ):
             self._run_challenge(
                 abs_folder,
                 os.path.join(abs_folder, 'challenges', challenge),
+                report,
                 specification,
             )
 

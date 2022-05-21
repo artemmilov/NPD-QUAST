@@ -185,12 +185,12 @@ class AbstractNpdTool(AbstractTool):
         os.mkdir(path_to_result)
         return path_to_spectres, path_to_database, path_to_result
 
-    def _parse_output(self, abs_folder, challenge_name):
+    def _parse_output(self, abs_folder, challenge_name, report):
         with open(
                 os.path.join(
                     abs_folder,
                     'reports',
-                    self._tool_name,
+                    report,
                     'tool_answers.txt',
                 ),
                 'a',
@@ -233,6 +233,10 @@ class DereplicatorTool(AbstractNpdTool):
                 path_to_database,
                 '-o',
                 path_to_result,
+            ] +
+            [
+                '{0} {1}'.format(k, v)
+                for k, v in specification.items()
             ],
             capture_output=True,
         )
@@ -244,6 +248,10 @@ class DereplicatorPlusTool(AbstractNpdTool):
     def _run_tool(self, abs_folder, specification=None):
         path_to_spectres, path_to_database, path_to_result =\
             super()._run_abstract_tool(abs_folder, specification)
+        if '--num_hits_to_report' in specification:
+            num_hits_to_report = specification['--num_hits_to_report']
+        else:
+            num_hits_to_report = 100
         subprocess.run(
             [
                 self._location,
@@ -253,9 +261,20 @@ class DereplicatorPlusTool(AbstractNpdTool):
                 '-o',
                 path_to_result,
                 '--pass-to-dereplicate',
-                '--num_hits_to_report 100',
+                '--num_hits_to_report {0}'.format(
+                    num_hits_to_report,
+                ),
                 '--min-score',
                 '1',
+            ] +
+            [
+                '{0} {1}'.format(k, v)
+                for k, v in specification.items()
+                if k not in [
+                    '--pass-to-dereplicate',
+                    '--num_hits_to_report',
+                    '--min-score',
+                ]
             ],
             capture_output=True,
         )

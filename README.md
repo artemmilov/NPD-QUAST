@@ -22,3 +22,37 @@ So now you have a site with pages corresponding to your reports. If you want to 
 Also, if you want to add new report from supported tool. Just tap this command.
 
 ```python npd_quast.py run_n_report tool_name report_folder your_work_folder_name```
+
+## Work folder structure
+<p class="p_text">
+    The work folder consist of directory with challenges,
+    directory with report and file with true answers.
+</p>
+<p class="p_text">
+    True answers are written as strings <i>"challenge_name$spectra_name \t answer_inchi"</i>,
+    where <i>answer_inchi</i> is the first 14 symbols of inchi-key of molecule corresponding to
+    the spectrum <i>spectra_name</i> from the challenge <i>challenge_name</i>.
+</p>
+<p class="p_text">
+    This is followed by a directory with challenges.
+    Each challenge consist of database and spectra list. Database should be written
+    in <i>csv</i> format and all spectra in <i>mgf</i>. Also each spectrum file
+    contain only one spectrum. The tool under test makes identifications between
+    spectra and molecules from database, corresponding to this challenge.
+</p>
+<p class="p_text">
+    The <i>"reports"</i> directory contains pages of this report and
+    answers of all tested tools. All identifications, which tool with
+    <i>tool_name</i> has conducted are located in file
+    <i>"./reports/tool_name/tool_answers.txt"</i>.
+    They are written as strings <i>"challenge_name$spectra_name \t answer_inchi"</i>,
+    where <i>answer_inchi</i> is the first 14 symbols of inchi-key of molecule
+    which this tool has matched to the spectrum <i>spectra_name</i> of
+    <i>challenge_name</i> challenge. <i>"scan"</i> is a number,
+    which corresponds to the confidence of match.
+    Tested tool is more confident if <i>"scan"</i> is less.
+</p>
+<p class="p_text">
+    Based on the tool answers and true answers NPD-Quast makes a report on the quality of work
+    each tool on all data and also comparing them to each other.
+</p>

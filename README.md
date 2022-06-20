@@ -23,14 +23,22 @@ Also, if you want to add new report from supported tool. Just tap this command.
 
 ```python npd_quast.py run_n_report tool_name report_folder your_work_folder_name```
 
-## Work folder structure
-The work folder consist of directory with challenges,
-directory with report and file with true answers.
+## How to write work folder
+The work folder should contain subdir with challenges, subdir with reports and file with true answers.
 
-True answers are written as strings <i>"challenge_name$spectra_name \t answer_inchi"</i>,
-where <i>answer_inchi</i> is the first 14 symbols of inchi-key of molecule corresponding to
-the spectrum <i>spectra_name</i> from the challenge <i>challenge_name</i>.
+### What are challenges are?
+Each challenge consist of database and spectra list. The tool under test makes identifications between spectra and molecules from database, corresponding to this challenge.
 
+### Subdir with challenges
+Firstly you need to make subsir for every challenge you have. In each challenge dir write the database file in format `csv` and make subdir named `spectra`. You have to make `mgf` file for every spectrum you have for this challenge and put them to the `spectra` subdir. Note each spectrum file contain only one spectrum.
+
+### Subdir with reports
+Just make empty subdir named `reports`.
+
+### True answers
+This file should be named "true.answers.txt". Each line of it corresponds to the true identification. All true identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `true_answer_inchi_key` inchi key you need to write line `challenge_name$spectrum_name'\t'true_answer_inchi` in this file. Note that you need only first 11 symbols from inchi key.
+
+## Other
 This is followed by a directory with challenges.
 Each challenge consist of database and spectra list. Database should be written
 in <i>csv</i> format and all spectra in <i>mgf</i>. Also each spectrum file

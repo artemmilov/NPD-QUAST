@@ -1,0 +1,17 @@
+{
+  "read_ms_data": {
+    "-i": 1,
+    "-p": 5,
+    "-q": 0.001,
+    "-f": "mass_tree"
+  },
+  "annotate": {
+    "-c": 0,
+    "-d": 0,
+    "-b": 3,
+    "-w": 1,
+    "-s": "hmdb"
+  },
+  "export_result": {
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "--pass-to-dereplicate": "\"--num_hits_to_report 10\"",
+  "--min-score": 1
+}

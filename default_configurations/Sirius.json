@@ -1,0 +1,11 @@
+{
+  "custom-db": {
+    "--name": "cur_database"
+  },
+  "formula": {
+    "-c": 10,
+    "structure": {
+      "--database": "cur_database"
+    }
+  }
+}

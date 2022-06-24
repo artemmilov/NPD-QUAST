@@ -1,4 +1,5 @@
 import os
+import json
 
 import npd_quast.tools as tools
 import npd_quast.report
@@ -10,20 +11,27 @@ def run_n_report(options):
     if options.tool in tools.SUPPORTED_TOOLS.keys():
         tool = tools.SUPPORTED_TOOLS[options.tool]()
         if os.path.isdir(options.folder):
-            if options.set_config:
-                specification = {}
-                while True:
-                    k = input()
-                    if k != 'stop':
-                        v = input()
-                        if v != 'stop':
-                            specification[k] = v
-                        else:
-                            break
-                    else:
-                        break
-
-            folder = npd_quast_folder.NPDQuastFolder(options.folder)
+            if options.config is not None:
+                f = open(options.config)
+            else:
+                f = open(
+                    os.path.abspath(
+                        os.path.join(
+                            os.curdir,
+                            'default_configurations',
+                            tool.name() + '.json',
+                        )
+                    )
+                )
+            specification = json.load(f)
+            try:
+                folder = npd_quast_folder.NPDQuastFolder(options.folder)
+            except AttributeError as e:
+                print(e)
+                return
+            except NotADirectoryError as e:
+                print(e)
+                return
             folder.make_tool_report(tool, options.report_name, specification)
             print(
                 '{0} report has been reported in {1}!'.format(
@@ -34,6 +42,14 @@ def run_n_report(options):
 
 
 def compile_reports(options):
+    try:
+        npd_quast_folder.NPDQuastFolder(options.folder)
+    except AttributeError as e:
+        print(e)
+        return
+    except NotADirectoryError as e:
+        print(e)
+        return
     if os.path.isdir(options.folder):
         abs_folder = os.path.abspath(
             os.path.join(

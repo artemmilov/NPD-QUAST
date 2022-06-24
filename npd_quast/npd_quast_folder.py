@@ -52,6 +52,9 @@ class NPDQuastFolder:
             about_pages = 0
             top_plots = 0
             quantiles_plots = 0
+            down_pngs = 0
+            to_right_pngs = 0
+            npd_quast_pngs = 0
             for report in os.listdir(
                     os.path.join(self._folder, 'reports'),
             ):
@@ -70,7 +73,17 @@ class NPDQuastFolder:
                     elif report == 'quantiles_plot.png':
                         quantiles_plots += 1
                         continue
+                    elif report == 'down.png':
+                        down_pngs += 1
+                        continue
+                    elif report == 'to_right.png':
+                        to_right_pngs += 1
+                        continue
+                    elif report == 'NPD-Quast.png':
+                        npd_quast_pngs += 1
+                        continue
                     else:
+                        print(report)
                         return False
                 report_folder = os.path.join(
                     self._folder,
@@ -84,7 +97,15 @@ class NPDQuastFolder:
                         set(os.listdir(report_folder)) != \
                         npd_quast.report.FULL_REPORT:
                     return False
-            if {total_pages, about_pages, top_plots, quantiles_plots} != {1}:
+            if {
+                total_pages,
+                about_pages,
+                top_plots,
+                quantiles_plots,
+                down_pngs,
+                to_right_pngs,
+                npd_quast_pngs
+            } not in [{0}, {1}]:
                 return False
         return True
 
@@ -107,7 +128,7 @@ class NPDQuastFolder:
     def __init__(self, folder):
         if not os.path.exists(os.path.abspath(folder)):
             raise NotADirectoryError(
-                '{0} is not a directory'.format(
+                '\"{0}\" is not a directory'.format(
                     os.path.abspath(folder),
                 )
             )
@@ -115,7 +136,7 @@ class NPDQuastFolder:
         if (not self._check_correctness()) \
                 and (len(os.listdir(folder)) != 0):
             raise AttributeError(
-                '{0} consist something else'.format(self._folder)
+                '\"{0}\" does not correspond to NPD-Quast format'.format(self._folder)
             )
 
     def make_tool_report(self, tool, report, specification=None):

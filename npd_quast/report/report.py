@@ -1,4 +1,5 @@
 import os.path
+import shutil
 
 from .pages import TotalPage, ToolPage, HelpPage
 import npd_quast.report.plots as plots
@@ -33,6 +34,51 @@ def write_report(
             )
         ) == set():
             continue
+        shutil.copy(
+            os.path.abspath(
+                os.path.join(
+                    'npd_quast',
+                    'report',
+                    'templates',
+                    'NPD-Quast.png',
+                ),
+            ),
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'NPD-Quast.png',
+            )
+        )
+        shutil.copy(
+            os.path.abspath(
+                os.path.join(
+                    'npd_quast',
+                    'report',
+                    'templates',
+                    'to_right.png',
+                ),
+            ),
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'to_right.png',
+            )
+        )
+        shutil.copy(
+            os.path.abspath(
+                os.path.join(
+                    'npd_quast',
+                    'report',
+                    'templates',
+                    'down.png',
+                ),
+            ),
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'down.png',
+            )
+        )
         plots.write_top_plot(
             true_answers,
             {

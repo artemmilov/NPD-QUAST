@@ -175,7 +175,7 @@ class AbstractNpdTool(AbstractTool):
                     else:
                         self._id_to_inchi[i] = 'ERROR'
 
-    def _run_abstract_tool(self, abs_folder, specification=None):
+    def _run_abstract_tool(self, abs_folder):
         self._deploy_database(abs_folder)
         path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
         path_to_database = os.path.join(abs_folder, 'temp', 'tool', 'deployed_database')
@@ -224,7 +224,7 @@ class DereplicatorTool(AbstractNpdTool):
 
     def _run_tool(self, abs_folder, specification=None):
         path_to_spectres, path_to_database, path_to_result =\
-            super()._run_abstract_tool(abs_folder, specification)
+            super()._run_abstract_tool(abs_folder)
         subprocess.run(
             [
                 self._location,
@@ -237,6 +237,12 @@ class DereplicatorTool(AbstractNpdTool):
             [
                 '{0} {1}'.format(k, v)
                 for k, v in specification.items()
+                if (v is not None) and (not isinstance(v, dict))
+            ] +
+            [
+                '{0}'.format(k, v)
+                for k, v in specification.items()
+                if (v is None) and (not isinstance(v, dict))
             ],
             capture_output=True,
         )
@@ -247,34 +253,28 @@ class DereplicatorPlusTool(AbstractNpdTool):
 
     def _run_tool(self, abs_folder, specification=None):
         path_to_spectres, path_to_database, path_to_result =\
-            super()._run_abstract_tool(abs_folder, specification)
-        if '--num_hits_to_report' in specification:
-            num_hits_to_report = specification['--num_hits_to_report']
-        else:
-            num_hits_to_report = 100
+            super()._run_abstract_tool(abs_folder)
         subprocess.run(
-            [
-                self._location,
-                path_to_spectres,
-                '--db-path',
-                path_to_database,
-                '-o',
-                path_to_result,
-                '--pass-to-dereplicate',
-                '--num_hits_to_report {0}'.format(
-                    num_hits_to_report,
-                ),
-                '--min-score',
-                '1',
-            ] +
-            [
-                '{0} {1}'.format(k, v)
-                for k, v in specification.items()
-                if k not in [
-                    '--pass-to-dereplicate',
-                    '--num_hits_to_report',
-                    '--min-score',
+            ' '.join(
+                [
+                    self._location,
+                    path_to_spectres,
+                    '--db-path',
+                    path_to_database,
+                    '-o',
+                    path_to_result,
+                ] +
+                [
+                    '{0} {1}'.format(k, v)
+                    for k, v in specification.items()
+                    if (v is not None) and (not isinstance(v, dict))
+                ] +
+                [
+                    '{0}'.format(k, v)
+                    for k, v in specification.items()
+                    if (v is None) and (not isinstance(v, dict))
                 ]
-            ],
+            ),
+            shell=True,
             capture_output=True,
         )

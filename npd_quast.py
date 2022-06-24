@@ -98,9 +98,9 @@ to each other. """
         help='working folder',
     )
     run_n_report.add_argument(
-        '--set_config',
-        action='store_true',
-        help='Change specifications',
+        '--config',
+        type=str,
+        help='Json file with configuration',
     )
     compile_reports = command.add_parser('compile_reports')
     compile_reports.add_argument(

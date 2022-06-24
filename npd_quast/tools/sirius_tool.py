@@ -37,15 +37,76 @@ class SiriusTool(AbstractTool):
 
         for spectra in os.listdir(path_to_spectres):
             try:
-                subprocess.run(
-                    '''export PATH=\"{0}:$PATH\"; \
-sirius -i {1} custom-db --name cur_database; \
-sirius -i {2} -o {3} formula -c 10 structure --database cur_database'''.format(
-                        self._location,
-                        path_to_database,
-                        os.path.join(path_to_spectres, spectra),
-                        os.path.join(path_to_results, spectra.split('.')[0]),
+                command = 'export PATH=\"{0}:$PATH\";'.format(self._location)
+                command += 'sirius -i {0} {1} custom-db {2};'.format(
+                    path_to_database,
+                    ' '.join(
+                        [
+                            '{0} {1}'.format(k, v)
+                            for k, v in specification.items()
+                            if (v is not None) and (not isinstance(v, dict))
+                        ] +
+                        [
+                            '{0}'.format(k, v)
+                            for k, v in specification.items()
+                            if (v is None) and (not isinstance(v, dict))
+                        ]
                     ),
+                    ' '.join(
+                        [
+                            '{0} {1}'.format(k, v)
+                            for k, v in specification['custom-db'].items()
+                            if (v is not None) and (not isinstance(v, dict))
+                        ] +
+                        [
+                            '{0}'.format(k, v)
+                            for k, v in specification['custom-db'].items()
+                            if (v is None) and (not isinstance(v, dict))
+                        ]
+                    ),
+                )
+                command += 'sirius -i {0} -o {1} {2} formula {3} structure {4}'.format(
+                    os.path.join(path_to_spectres, spectra),
+                    os.path.join(path_to_results, spectra.split('.')[0]),
+                    ' '.join(
+                        [
+                            '{0} {1}'.format(k, v)
+                            for k, v in specification.items()
+                            if (v is not None) and (not isinstance(v, dict))
+                        ] +
+                        [
+                            '{0}'.format(k, v)
+                            for k, v in specification.items()
+                            if (v is None) and (not isinstance(v, dict))
+                        ]
+                    ),
+                    ' '.join(
+                        [
+                            '{0} {1}'.format(k, v)
+                            for k, v in specification["formula"].items()
+                            if (v is not None) and (not isinstance(v, dict))
+                        ] +
+                        [
+                            '{0}'.format(k, v)
+                            for k, v in specification["formula"].items()
+                            if (v is None) and (not isinstance(v, dict))
+                        ]
+                    ),
+                    ' '.join(
+                        [
+                            '{0} {1}'.format(k, v)
+                            for k, v in specification["formula"]["structure"].items()
+                            if (v is not None) and (not isinstance(v, dict))
+                        ] +
+                        [
+                            '{0}'.format(k, v)
+                            for k, v in specification["formula"]["structure"].items()
+                            if (v is None) and (not isinstance(v, dict))
+                        ]
+                    ),
+                )
+                subprocess.run(
+                    command,
                     shell=True,
                     capture_output=True,
                 )

@@ -9,23 +9,28 @@
                 width: 100%;
                 margin-top:50px;
                 margin-bottom:50px;
-                background: #efffed;
+                background: #0;
             }
             aside {
-                background: #efffed;
+                font: 18px Ubuntu;
+                background: #0;
                 width: 250px;
                 float: left;
                 margin-left: 250px;
+                margin-up: 200px;
             }
             .main {
+                font: 18px Ubuntu;
                 margin-left: 500px;
+                margin-top: 200px;
                 width: 800px;
-                background: #e1ffde;
+                background: #0;
             }
             .text {
                 margin-left: 10%;
                 margin-right: 10%;
-                background: #e1ffde;
+                background: #0;
+                color: #004200;
             }
             .p_aside {
                 text-align: left;
@@ -56,6 +61,9 @@
             .MathJax_Display {
                 text-align: left !important;
             }
+            BODY {
+                background: url(NPD-Quast.png) no-repeat 0px 0px, url(to_right.png) repeat-x, url(down.png) repeat;
+            }
         </style>
         <script>
             MathJax = {
@@ -73,7 +81,36 @@
             <div class="text">
                 <h1 class="header">Help</h1>
                 <hr>
-                <h2 class="header">How it works?</h2>
+                <h2 class="header">How to run NPD-Quast</h2>
+                <p class="p_text">
+                    To run NPD-Quast you firstly need to construct work folder which structure is written below.
+                    Put all raw data in "challenges/" dir and all tool answers files in "reports/" dir.
+                    Also, you need all dependencies to be installed. We recommend you activate a "npd-quast-env.yml"
+                    environment which is located in "envs/" dir. So, just run this command:
+                </p>
+                <code>
+                    conda activate npd-quast-env
+                </code>
+                <p class="p_text">
+                    After that, if you have putted tool answers in "reports/" folder than you need to make
+                    a full reports from them. To do this you have to run such command:
+                </p>
+                <code>
+                    python npd_quast.py compile_reports your_work_folder_name
+                </code>
+                <p class="p_text">
+                    So now you have a site with pages corresponding to your reports. If you want to add new
+                    report from unsupported tool. You have to make tool answers by yourself and make new dir
+                    with them in "reports/" dir. Next, run command "compile_reports" again.
+                </p>
+                <p class="p_text">
+                    Also, if you want to add new report from supported tool. Just tap this command.
+                </p>
+                <code>
+                    python npd_quast.py run_n_report tool_name report_folder your_work_folder_name
+                </code>
+                <hr>
+                <h2 class="header">Work folder structure</h2>
                 <p class="p_text">
                     The work folder consist of directory with challenges,
                     directory with report and file with true answers.

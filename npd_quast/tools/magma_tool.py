@@ -127,9 +127,9 @@ conda env create -f envs/magma-plus-env.yml
 conda activate magma-plus-env
 export MAGMAPLUS_CLASSIFIER_PATH={2}
 path_to_magma={1}
-python $path_to_magma read_ms_data -i 1 -p 5 -q 0.001 -f mass_tree $1 $2
-python $path_to_magma annotate -c 0 -d 0 -b 3 -w 1 -s hmdb $2
-python $path_to_magma export_result $2'''.format(
+python $path_to_magma read_ms_data $3 $1 $2
+python $path_to_magma annotate $4 $2
+python $path_to_magma export_result $5 $2'''.format(
                     os.path.join(abs_folder, 'temp', 'tool'),
                     self._location,
                     os.path.split(self._location)[0],
@@ -199,12 +199,51 @@ python $path_to_magma export_result $2'''.format(
         for spectra in os.listdir(path_to_spectres):
             converted_tree = spectra.split('.')[0] + '.db'
             try:
+                read_ms_data_params = ' '.join(
+                    [
+                        '{0} {1}'.format(k, v)
+                        for k, v in specification['read_ms_data'].items()
+                        if (v is not None) and (not isinstance(v, dict))
+                    ] +
+                    [
+                        '{0}'.format(k, v)
+                        for k, v in specification['read_ms_data'].items()
+                        if (v is None) and (not isinstance(v, dict))
+                    ]
+                )
+                annotate_params = ' '.join(
+                    [
+                        '{0} {1}'.format(k, v)
+                        for k, v in specification['annotate'].items()
+                        if (v is not None) and (not isinstance(v, dict))
+                    ] +
+                    [
+                        '{0}'.format(k, v)
+                        for k, v in specification['annotate'].items()
+                        if (v is None) and (not isinstance(v, dict))
+                    ]
+                )
+                export_result_params = ' '.join(
+                    [
+                        '{0} {1}'.format(k, v)
+                        for k, v in specification['export_result'].items()
+                        if (v is not None) and (not isinstance(v, dict))
+                    ] +
+                    [
+                        '{0}'.format(k, v)
+                        for k, v in specification['export_result'].items()
+                        if (v is None) and (not isinstance(v, dict))
+                    ]
+                )
                 output = check_output(
                     [
                         'bash',
                         path_to_script,
                         os.path.join(path_to_spectres, spectra),
                         os.path.join(path_to_trees, converted_tree),
+                        read_ms_data_params,
+                        annotate_params,
+                        export_result_params,
                     ],
                     env=my_env,
                     stderr=STDOUT,

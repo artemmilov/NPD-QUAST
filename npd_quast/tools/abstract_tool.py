@@ -4,7 +4,7 @@ import shutil
 
 
 class AbstractTool:
-    _spectra_format = None
+    _specter_format = None
     _database_format = None
     _tool_name = None
     _location = None
@@ -22,7 +22,7 @@ class AbstractTool:
                     os.path.join(abs_folder, 'temp'),
             ):
                 shutil.rmtree(subdir)
-        os.mkdir(os.path.join(abs_folder, 'temp', 'spectres'))
+        os.mkdir(os.path.join(abs_folder, 'temp', 'spectra'))
         os.mkdir(os.path.join(abs_folder, 'temp', 'tool'))
         if report in os.listdir(
                 os.path.join(abs_folder, 'reports'),
@@ -62,21 +62,21 @@ class AbstractTool:
             ),
         )
 
-    def _convert_spectra(self, from_spectra, to_spectra):
+    def _convert_specter(self, from_specter, to_specter):
         pass
 
-    def _write_spectres(self, abs_folder, spectres):
-        if os.path.isdir(os.path.join(abs_folder, 'temp', 'spectres')):
-            shutil.rmtree(os.path.join(abs_folder, 'temp', 'spectres'))
-            os.mkdir(os.path.join(abs_folder, 'temp', 'spectres'))
-        if not os.path.isdir(spectres):
-            raise ValueError('{0} is not a directory'.format(spectres))
-        for spectra in os.listdir(spectres):
-            if len(spectra.split('.')) != 2:
+    def _write_spectres(self, abs_folder, spectra):
+        if os.path.isdir(os.path.join(abs_folder, 'temp', 'spectra')):
+            shutil.rmtree(os.path.join(abs_folder, 'temp', 'spectra'))
+            os.mkdir(os.path.join(abs_folder, 'temp', 'spectra'))
+        if not os.path.isdir(spectra):
+            raise ValueError('{0} is not a directory'.format(spectra))
+        for specter in os.listdir(spectra):
+            if len(specter.split('.')) != 2:
                 raise ValueError('Indefinable format')
-            self._convert_spectra(
-                os.path.join(spectres, spectra),
-                os.path.join(abs_folder, 'temp', 'spectres', spectra),
+            self._convert_specter(
+                os.path.join(spectra, specter),
+                os.path.join(abs_folder, 'temp', 'spectra', specter),
             )
 
     def _run_tool(self, abs_folder, specification=None):
@@ -98,7 +98,7 @@ class AbstractTool:
         )
         self._write_spectres(
             abs_folder,
-            os.path.join(challenge, 'spectres'),
+            os.path.join(challenge, 'spectra'),
         )
         self._run_tool(abs_folder, specification)
         self._parse_output(abs_folder, os.path.split(challenge)[-1], report)

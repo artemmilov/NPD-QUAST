@@ -23,10 +23,10 @@ class NPDQuastFolder:
             )
             if len(os.listdir(challenge_dir)) != 2:
                 return False
-            if 'spectres' not in os.listdir(challenge_dir):
+            if 'spectra' not in os.listdir(challenge_dir):
                 return False
             for spectra in os.listdir(
-                    os.path.join(challenge_dir, 'spectres'),
+                    os.path.join(challenge_dir, 'spectra'),
             ):
                 if '.' not in spectra:
                     return False

@@ -114,15 +114,15 @@ class _NpdToolsDatabase:
 
 
 class AbstractNpdTool(AbstractTool):
-    _spectra_format = 'mgf'
+    _specter_format = 'mgf'
     _database_format = 'csv'
     _id_to_inchi = dict()
 
     def _convert_database(self, from_database, to_database):
         shutil.copyfile(from_database, to_database)
 
-    def _convert_spectra(self, from_spectra, to_spectra):
-        shutil.copyfile(from_spectra, to_spectra)
+    def _convert_specter(self, from_specter, to_specter):
+        shutil.copyfile(from_specter, to_specter)
 
     def _deploy_database(self, abs_folder):
         undeployed_database_file = os.path.join(
@@ -177,13 +177,13 @@ class AbstractNpdTool(AbstractTool):
 
     def _run_abstract_tool(self, abs_folder):
         self._deploy_database(abs_folder)
-        path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
+        path_to_spectra = os.path.join(abs_folder, 'temp', 'spectra')
         path_to_database = os.path.join(abs_folder, 'temp', 'tool', 'deployed_database')
         path_to_result = os.path.join(abs_folder, 'temp', 'tool', 'cur_result')
         if os.path.isdir(path_to_result):
             shutil.rmtree(path_to_result)
         os.mkdir(path_to_result)
-        return path_to_spectres, path_to_database, path_to_result
+        return path_to_spectra, path_to_database, path_to_result
 
     def _parse_output(self, abs_folder, challenge_name, report):
         with open(
@@ -207,12 +207,12 @@ class AbstractNpdTool(AbstractTool):
                 for line in output.readlines()[1:]:
                     answer_id = int(line.split('\t')[3])
                     answer_inchi_key = self._id_to_inchi[answer_id]
-                    spectra = os.path.split(line.split('\t')[0])[-1].split('.')[0]
+                    specter = os.path.split(line.split('\t')[0])[-1].split('.')[0]
                     score = line.split('\t')[5]
                     tool_answers.write(
                         '{0}${1}\t{2}\t{3}\n'.format(
                             challenge_name,
-                            spectra,
+                            specter,
                             answer_inchi_key,
                             str(-float(score)),
                         ),
@@ -223,12 +223,12 @@ class DereplicatorTool(AbstractNpdTool):
     _tool_name = 'Dereplicator'
 
     def _run_tool(self, abs_folder, specification=None):
-        path_to_spectres, path_to_database, path_to_result =\
+        path_to_spectra, path_to_database, path_to_result =\
             super()._run_abstract_tool(abs_folder)
         subprocess.run(
             [
                 self._location,
-                path_to_spectres,
+                path_to_spectra,
                 '--db-path',
                 path_to_database,
                 '-o',
@@ -252,13 +252,13 @@ class DereplicatorPlusTool(AbstractNpdTool):
     _tool_name = 'Dereplicator_plus'
 
     def _run_tool(self, abs_folder, specification=None):
-        path_to_spectres, path_to_database, path_to_result =\
+        path_to_spectra, path_to_database, path_to_result =\
             super()._run_abstract_tool(abs_folder)
         subprocess.run(
             ' '.join(
                 [
                     self._location,
-                    path_to_spectres,
+                    path_to_spectra,
                     '--db-path',
                     path_to_database,
                     '-o',

@@ -7,7 +7,7 @@ from npd_quast.tools.abstract_tool import AbstractTool
 
 
 class SiriusTool(AbstractTool):
-    _spectra_format = 'mgf'
+    _specter_format = 'mgf'
     _database_format = 'txt'
     _tool_name = 'Sirius'
 
@@ -24,18 +24,18 @@ class SiriusTool(AbstractTool):
                 identifier, name, _, _, smiles, _, _ = parse_from_mgf(line)
                 txt.write('{0}\t{1}\t{2}\n'.format(smiles, identifier, name))
 
-    def _convert_spectra(self, from_spectra, to_spectra):
-        shutil.copyfile(from_spectra, to_spectra)
+    def _convert_specter(self, from_specter, to_specter):
+        shutil.copyfile(from_specter, to_specter)
 
     def _run_tool(self, abs_folder, specification=None):
-        path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
+        path_to_spectra = os.path.join(abs_folder, 'temp', 'spectra')
         path_to_results = os.path.join(abs_folder, 'temp', 'tool', 'cur_results')
         path_to_database = os.path.join(abs_folder, 'temp', 'database.txt')
         if os.path.isdir(path_to_results):
             shutil.rmtree(path_to_results)
             os.mkdir(path_to_results)
 
-        for spectra in os.listdir(path_to_spectres):
+        for specter in os.listdir(path_to_spectra):
             try:
                 command = 'export PATH=\"{0}:$PATH\";'.format(self._location)
                 command += 'sirius -i {0} {1} custom-db {2};'.format(
@@ -66,8 +66,8 @@ class SiriusTool(AbstractTool):
                     ),
                 )
                 command += 'sirius -i {0} -o {1} {2} formula {3} structure {4}'.format(
-                    os.path.join(path_to_spectres, spectra),
-                    os.path.join(path_to_results, spectra.split('.')[0]),
+                    os.path.join(path_to_spectra, specter),
+                    os.path.join(path_to_results, specter.split('.')[0]),
                     ' '.join(
                         [
                             '{0} {1}'.format(k, v)

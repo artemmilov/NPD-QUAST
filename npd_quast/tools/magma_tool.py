@@ -155,8 +155,8 @@ python $path_to_magma export_result $5 $2'''.format(
     def _convert_database(self, from_database, to_database):
         _create_sqlite_database(from_database, to_database)
 
-    def _convert_spectra(self, from_spectra, to_spectra):
-        with open(from_spectra) as mgf:
+    def _convert_specter(self, from_specter, to_specter):
+        with open(from_specter) as mgf:
             mzs = []
             norm_intensities = []
             mass = None
@@ -177,7 +177,7 @@ python $path_to_magma export_result $5 $2'''.format(
                 for i in range(0, len(mzs))
             )
             record += ')'
-            with open(to_spectra, 'w') as mass_tree:
+            with open(to_specter, 'w') as mass_tree:
                 mass_tree.write(record)
 
     def _run_tool(self, abs_folder, specification=None):
@@ -187,7 +187,7 @@ python $path_to_magma export_result $5 $2'''.format(
         my_env = os.environ.copy()
         my_env["PATH"] = path_to_conda + ':' + my_env["PATH"]
         path_to_script = os.path.join(abs_folder, 'temp', 'tool', 'script.txt')
-        path_to_spectres = os.path.join(abs_folder, 'temp', 'spectres')
+        path_to_spectra = os.path.join(abs_folder, 'temp', 'spectra')
         path_to_trees = os.path.join(abs_folder, 'temp', 'tool', 'cur_trees')
         path_to_results = os.path.join(abs_folder, 'temp', 'tool', 'cur_results')
         if os.path.isdir(path_to_trees):
@@ -196,8 +196,8 @@ python $path_to_magma export_result $5 $2'''.format(
         if os.path.isdir(path_to_results):
             shutil.rmtree(path_to_results)
             os.mkdir(path_to_results)
-        for spectra in os.listdir(path_to_spectres):
-            converted_tree = spectra.split('.')[0] + '.db'
+        for specter in os.listdir(path_to_spectra):
+            converted_tree = specter.split('.')[0] + '.db'
             try:
                 read_ms_data_params = ' '.join(
                     [
@@ -239,7 +239,7 @@ python $path_to_magma export_result $5 $2'''.format(
                     [
                         'bash',
                         path_to_script,
-                        os.path.join(path_to_spectres, spectra),
+                        os.path.join(path_to_spectra, specter),
                         os.path.join(path_to_trees, converted_tree),
                         read_ms_data_params,
                         annotate_params,

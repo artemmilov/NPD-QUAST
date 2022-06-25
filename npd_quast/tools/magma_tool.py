@@ -306,7 +306,7 @@ python $path_to_magma export_result $5 $2'''.format(
                             )
                         )[0][5]
                         tool_answers.write(
-                            '{0}${1}\t{2}\t{3}\n'.format(
+                            '{0}\t{1}\t{2}\t{3}\n'.format(
                                 challenge_name,
                                 result.split('.')[0],
                                 answer_inchi_key,

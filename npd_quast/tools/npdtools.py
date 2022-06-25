@@ -210,7 +210,7 @@ class AbstractNpdTool(AbstractTool):
                     specter = os.path.split(line.split('\t')[0])[-1].split('.')[0]
                     score = line.split('\t')[5]
                     tool_answers.write(
-                        '{0}${1}\t{2}\t{3}\n'.format(
+                        '{0}\t{1}\t{2}\t{3}\n'.format(
                             challenge_name,
                             specter,
                             answer_inchi_key,

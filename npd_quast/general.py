@@ -10,8 +10,8 @@ def parse_true_answers(true_answers_data_file):
     with open(true_answers_data_file) as true_answers_data:
         for true_answer in true_answers_data.read().split('\n'):
             if true_answer != '':
-                true_answers[true_answer.split('\t')[0]] = \
-                    true_answer.split('\t')[1]
+                true_answers[true_answer.split('\t')[0] + '\t' + true_answer.split('\t')[1]] = \
+                    true_answer.split('\t')[2]
     return true_answers
 
 
@@ -20,10 +20,10 @@ def parse_tool_answers(tool_answers_data_file):
     with open(tool_answers_data_file) as tool_answers_data:
         for tool_answer in tool_answers_data.read().split('\n'):
             if tool_answer != '':
-                tool_answers[tool_answer.split('\t')[0]].append(
+                tool_answers[tool_answer.split('\t')[0] + '\t' + tool_answer.split('\t')[1]].append(
                     (
-                        tool_answer.split('\t')[1],
-                        float(tool_answer.split('\t')[2], )
+                        tool_answer.split('\t')[2],
+                        float(tool_answer.split('\t')[3], )
                     ),
                 )
     return tool_answers

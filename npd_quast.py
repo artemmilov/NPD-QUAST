@@ -102,6 +102,11 @@ to each other. """
         type=str,
         help='Json file with configuration',
     )
+    run_n_report.add_argument(
+        '--debug',
+        action='store_true',
+        help='Run data in debug version',
+    )
     compile_reports = command.add_parser('compile_reports')
     compile_reports.add_argument(
         'folder',

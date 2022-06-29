@@ -32,7 +32,12 @@ def run_n_report(options):
             except NotADirectoryError as e:
                 print(e)
                 return
-            folder.make_tool_report(tool, options.report_name, specification)
+            folder.make_tool_report(
+                tool,
+                options.report_name,
+                specification,
+                debug=options.debug,
+            )
             print(
                 '{0} report has been reported in {1}!'.format(
                     options.tool,

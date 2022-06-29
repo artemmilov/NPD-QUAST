@@ -130,10 +130,10 @@ path_to_magma={1}
 python $path_to_magma read_ms_data $3 $1 $2
 python $path_to_magma annotate $4 $2
 python $path_to_magma export_result $5 $2'''.format(
-                    os.path.join(abs_folder, 'temp', 'tool'),
-                    self._location,
-                    os.path.split(self._location)[0],
-                ),
+                os.path.join(abs_folder, 'temp', 'tool'),
+                self._location,
+                os.path.split(self._location)[0],
+            ),
             )
         os.mkdir(
             os.path.join(
@@ -276,9 +276,16 @@ python $path_to_magma export_result $5 $2'''.format(
                 ),
                 'a',
         ) as tool_answers:
+            print(os.listdir(os.path.join(
+                abs_folder,
+                'temp',
+                'tool',
+                'cur_results',
+            )))
             for result in os.listdir(
                     os.path.join(abs_folder, 'temp', 'tool', 'cur_results'),
             ):
+                print(result)
                 conn = sqlite3.connect(
                     os.path.join(
                         abs_folder,
@@ -296,7 +303,9 @@ python $path_to_magma export_result $5 $2'''.format(
                             result,
                         ),
                 ) as output:
-                    for line in output.readlines():
+                    lines = output.readlines()
+                    print('{0}\t{1}'.format(challenge_name, len(lines)))
+                    for line in lines:
                         answer_id = line.split(' ')[-2][1:-1]
                         answer_inchi_key = list(
                             cur.execute(

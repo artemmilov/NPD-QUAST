@@ -117,6 +117,8 @@ class NPDQuastFolder:
         if (set(os.listdir(self._folder)) not in [
             {'challenges', 'reports', 'true_answers.txt'},
             {'challenges', 'reports', 'temp', 'true_answers.txt'},
+            {'challenges', 'reports', 'debug', 'true_answers.txt'},
+            {'challenges', 'reports', 'temp', 'debug', 'true_answers.txt'},
         ]):
             return False
         return self._check_challenges() and self._check_reports()
@@ -139,9 +141,9 @@ class NPDQuastFolder:
                 '\"{0}\" does not correspond to NPD-Quast format'.format(self._folder)
             )
 
-    def make_tool_report(self, tool, report, specification=None):
+    def make_tool_report(self, tool, report, specification=None, debug=False):
         self._clean_temp()
-        tool.run(self._folder, report, specification)
+        tool.run(self._folder, report, specification, debug)
         self._clean_temp()
         true_answers = npd_quast.general.parse_true_answers(
             os.path.join(

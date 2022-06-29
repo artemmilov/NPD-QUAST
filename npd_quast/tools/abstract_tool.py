@@ -65,7 +65,7 @@ class AbstractTool:
     def _convert_specter(self, from_specter, to_specter):
         pass
 
-    def _write_spectres(self, abs_folder, spectra):
+    def _write_spectra(self, abs_folder, spectra):
         if os.path.isdir(os.path.join(abs_folder, 'temp', 'spectra')):
             shutil.rmtree(os.path.join(abs_folder, 'temp', 'spectra'))
             os.mkdir(os.path.join(abs_folder, 'temp', 'spectra'))
@@ -85,7 +85,7 @@ class AbstractTool:
     def _parse_output(self, abs_folder, challenge_name, report):
         pass
 
-    def _run_challenge(self, abs_folder, challenge, report, specification=None):
+    def _run_challenge(self, abs_folder, challenge, report, specification=None, debug=False):
         database = list(
             filter(
                 lambda f: len(f.split('.')) == 2,
@@ -96,14 +96,32 @@ class AbstractTool:
             abs_folder,
             os.path.join(challenge, database),
         )
-        self._write_spectres(
+        self._write_spectra(
             abs_folder,
             os.path.join(challenge, 'spectra'),
         )
         self._run_tool(abs_folder, specification)
         self._parse_output(abs_folder, os.path.split(challenge)[-1], report)
+        if debug:
+            challenge_name = os.path.split(challenge)[-1]
+            if not os.path.exists(
+                    os.path.join(abs_folder, 'debug')
+            ):
+                os.mkdir(os.path.join(abs_folder, 'debug'))
+            if os.path.exists(
+                    os.path.join(abs_folder, 'debug', challenge_name)
+            ):
+                shutil.rmtree(os.path.join(abs_folder, 'debug', challenge_name))
+            shutil.copytree(
+                os.path.join(abs_folder, 'temp'),
+                os.path.join(abs_folder, 'debug', challenge_name)
+            )
+        elif os.path.exists(
+                os.path.join(abs_folder, 'debug')
+        ):
+            shutil.rmtree(os.path.join(abs_folder, 'debug'))
 
-    def run(self, folder, report, specification=None):
+    def run(self, folder, report, specification=None, debug=False):
         abs_folder = os.path.abspath(folder)
         self._init_tool(abs_folder, report)
         for challenge in os.listdir(
@@ -114,6 +132,7 @@ class AbstractTool:
                 os.path.join(abs_folder, 'challenges', challenge),
                 report,
                 specification,
+                debug,
             )
 
     def name(self):

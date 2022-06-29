@@ -21,7 +21,7 @@ Firstly you need to make subsir for every challenge you have. In each challenge 
 Just make empty subdir named `reports`.
 
 ### True answers
-This file should be named "true.answers.txt". Each line of it corresponds to the true identification. All true identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `true_answer_inchi_key` inchi key you need to write line `challenge_name$spectrum_name'\t'true_answer_inchi` in this file. Note that you need only first 11 symbols from inchi key.
+This file should be named "true.answers.txt". Each line of it corresponds to the true identification. All true identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `true_answer_inchi_key` inchi key you need to write line `challenge_name'\t'spectrum_name'\t'true_answer_inchi` in this file. Note that you need only first 11 symbols from inchi key.
 
 ## How to run NPD-Quast?
 To run NPD-Quast you firstly need to construct work folder which structure is written above. Also, you need all dependencies to be installed. We recommend you activate a `npd-quast-env.yml` environment which is located in `envs` dir. So, just run this command:
@@ -41,7 +41,7 @@ To change tool parameters you need to copy json file with original params and ch
 ### Adding unsupported tool reports
 If you want to report unsupported tool you firstly need to run it on wour machine by yourself. After that make subdir `report_name` in the `reports` dir and write there `tool_answers.txt` file. It structure is similar as `true_answers.txt` structure. 
 
-Each line of it corresponds to the tool identification. All tool identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `tool_answer_inchi_key` inchi key you need to write line `challenge_name$spectrum_name'\t'tool_answer_inchi'\t'match_score` in this file. Note that you need only first 11 symbols from inchi key.
+Each line of it corresponds to the tool identification. All tool identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `tool_answer_inchi_key` inchi key you need to write line `challenge_name'\t'spectrum_name'\t'tool_answer_inchi'\t'match_score` in this file. Note that you need only first 11 symbols from inchi key.
 
 After that just run command:
 

@@ -276,16 +276,9 @@ python $path_to_magma export_result $5 $2'''.format(
                 ),
                 'a',
         ) as tool_answers:
-            print(os.listdir(os.path.join(
-                abs_folder,
-                'temp',
-                'tool',
-                'cur_results',
-            )))
             for result in os.listdir(
-                    os.path.join(abs_folder, 'temp', 'tool', 'cur_results'),
+                os.path.join(abs_folder, 'temp', 'tool', 'cur_results'),
             ):
-                print(result)
                 conn = sqlite3.connect(
                     os.path.join(
                         abs_folder,
@@ -304,7 +297,6 @@ python $path_to_magma export_result $5 $2'''.format(
                         ),
                 ) as output:
                     lines = output.readlines()
-                    print('{0}\t{1}'.format(challenge_name, len(lines)))
                     for line in lines:
                         answer_id = line.split(' ')[-2][1:-1]
                         answer_inchi_key = list(

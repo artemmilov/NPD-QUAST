@@ -46,6 +46,16 @@ class AbstractTool:
         pass
 
     def _write_database(self, abs_folder, database):
+        if os.path.exists(os.path.join(
+                abs_folder,
+                'temp',
+                'database.{0}'.format(self._database_format),
+        )):
+            os.remove(os.path.join(
+                abs_folder,
+                'temp',
+                'database.{0}'.format(self._database_format),
+            ))
         if not os.path.isfile(database):
             raise ValueError('{0} is not a file'.format(database))
         database_name = os.path.split(database)[-1]

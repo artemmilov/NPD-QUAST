@@ -1,0 +1,16 @@
+#INFO: Starting ...
+#INFO: Command line: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux/bin/dereplicate /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/cur_result/work/spectra-00000.mgf /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/deployed_database /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/deployed_database/library.info --configs_dir /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/cur_result/work/configs --product_ion_thresh 0.01 --pm_thresh 0.01 --max_charge 2 --min_score 0.75 --fragmentation_tree --no_pvalue --min_num_comp 0 --fragment /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/cur_result/work/configs/configs/common/fragment_list_general_6_1_6.txt --num_hits_to_report 10 
+#INFO: Current working dir: /home/artem/Programming/bioinformatics/NPD-QUAST
+#INFO: Using fragment list: /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/cur_result/work/configs/configs/common/fragment_list_general_6_1_6.txt
+#INFO: parse spectrum file
+#INFO: parsing done
+#INFO: peak merging
+#INFO: peak filtering
+#INFO: normalizing spectrum file
+#INFO: load done, elapsed: 8.5e-05
+#INFO: 1 spectra loaded with charges from 1 to 1.
+#INFO: filtering database by min number of components per compound
+#INFO: filtering finished, number of compound reduced from 598 to 598
+#INFO: detecting candidate compound spectrum matches .#INFO: elapsed: 2.3e-05
+#INFO: will construct theoric spectrum for 596 compounds 
+#INFO: Computing scores for 596 compound spectrum matches .................................................

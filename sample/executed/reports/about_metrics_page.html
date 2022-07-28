@@ -19,6 +19,9 @@
                 margin-left: 250px;
                 margin-up: 200px;
             }
+            header {
+                color: #004200;
+            }
             .main {
                 font: 18px Ubuntu;
                 margin-left: 500px;
@@ -95,105 +98,97 @@
             <div class="text">
                 <h1 class="header">Help</h1>
                 <hr>
-                <h2 class="header">How to run NPD-Quast</h2>
+                <h2 class="header">About NPD-Quast</h2>
                 <p class="p_text">
-                    To run NPD-Quast you firstly need to construct work folder which structure is written below.
-                    Put all raw data in "challenges/" dir and all tool answers files in "reports/" dir.
-                    Also, you need all dependencies to be installed. We recommend you activate a "npd-quast-env.yml"
-                    environment which is located in "envs/" dir. So, just run this command:
+                NPD-Quast is designed for analyzing natural peptide identificator\`s reports of the provided data and comparing them to each other.
                 </p>
+                <ul>
+                <li> Copability: NPD-Quast is Python 3.9+ compliant </li>
+                <li> Prerequisites: Apart from a working version of Python, the following non-standard libraries need to be installed: conda, numpy and matplotlib. Also you need to install RDKit if you want to run NPD-Quast whithout `npd-quast-env` activated.</li>
+                <li> Disclaimer: NPD-Quast should work on all platforms, but was only tested in a Linux (Ubuntu 20.04) system.</li>
+                </ul>
+
+                <hr>
+                <h2 class="header">How to instal NPD-Quast?</h2>
+                <p class="p_text">
+                Just clone this repository on your local machine and fill `npd_quast.ini` file. Note that you need to write location just that tools, which you want to run.
+                </p>
+
+                <hr>
+                <h2 class="header">How to construct work folder?</h2>
+                <p class="p_text">
+                The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are three examples of work folders in `sample` dir.
+                </p>
+
+                <h3 class="header">What are challenges are?</h3>
+                <p class="p_text">
+                Each challenge consist of database and spectra list. The tool under test makes identifications between spectra and molecules from database, corresponding to this challenge.
+                </p>
+
+                <h3 class="header">Subdir with challenges</h3>
+                <p class="p_text">
+                Firstly you need to make subsir for every challenge you have. In each challenge dir write the database file in format `csv` and make subdir named `spectra`. You have to make `mgf` file for every spectrum you have for this challenge and put them to the `spectra` subdir. Note each spectrum file contain only one spectrum.
+                </p>
+
+                <h3 class="header">Subdir with reports</h3>
+                <p class="p_text">
+                Just make empty subdir named `reports`.
+                </p>
+
+                <h3 class="header">True answers</h3>
+                <p class="p_text">
+                This file should be named "true.answers.txt". Each line of it corresponds to the true identification. All true identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `true_answer_inchi_key` inchi key you need to write line `challenge_name'\t'spectrum_name'\t'true_answer_inchi` in this file. Note that you need only first 11 symbols from inchi key.
+                </p>
+
+                <hr>
+                <h2 class="header">How to run NPD-Quast?</h2>
+                <p class="p_text">
+                To run NPD-Quast you firstly need to construct work folder which structure is written above. Also, you need all dependencies to be installed. We recommend you activate a `npd-quast-env.yml` environment which is located in `envs` dir. So, just run this command:
+                </p>
+
                 <code>
                     conda activate npd-quast-env
                 </code>
+
+                <h3 class="header">Running supported tool</h3>
                 <p class="p_text">
-                    After that, if you have putted tool answers in "reports/" folder than you need to make
-                    a full reports from them. To do this you have to run such command:
+                If you want to run your data by one of the supported tool (assume it\`s named `tool_name`) run such command (here we decided to name page with report `report_name`, you can name it as you want):
                 </p>
+
                 <code>
-                    python npd_quast.py compile_reports your_work_folder_name
+                    python npd_quast.py run_n_report tool_name report_name path_to_work_folder
                 </code>
+
+                <h3 class="header">Changing tool parameters</h3>
                 <p class="p_text">
-                    So now you have a site with pages corresponding to your reports. If you want to add new
-                    report from unsupported tool. You have to make tool answers by yourself and make new dir
-                    with them in "reports/" dir. Next, run command "compile_reports" again.
+                To change tool parameters you need to copy json file with original params and change it as you need. After run this command:
                 </p>
-                <p class="p_text">
-                    Also, if you want to add new report from supported tool. Just tap this command.
-                </p>
+
                 <code>
-                    python npd_quast.py run_n_report tool_name report_folder your_work_folder_name
+                    python npd_quast.py run_n_report tool_name report_name path_to_work_folder --config path_to_your_configuration
                 </code>
-                <hr>
-                <h2 class="header">Work folder structure</h2>
+
+                <h3 class="header">Adding unsupported tool reports</h3>
                 <p class="p_text">
-                    The work folder consist of directory with challenges,
-                    directory with report and file with true answers.
+                If you want to report unsupported tool you firstly need to run it on wour machine by yourself. After that make subdir `report_name` in the `reports` dir and write there `tool_answers.txt` file. It structure is similar as `true_answers.txt` structure.
                 </p>
+
                 <p class="p_text">
-                    True answers are written as strings <i>"challenge_name$spectra_name \t answer_inchi"</i>,
-                    where <i>answer_inchi</i> is the first 14 symbols of inchi-key of molecule corresponding to
-                    the spectrum <i>spectra_name</i> from the challenge <i>challenge_name</i>.
+                Each line of it corresponds to the tool identification. All tool identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `tool_answer_inchi_key` inchi key you need to write line `challenge_name'\t'spectrum_name'\t'tool_answer_inchi'\t'match_score` in this file. Note that you need only first 11 symbols from inchi key.
                 </p>
+
                 <p class="p_text">
-                    This is followed by a directory with challenges.
-                    Each challenge consist of database and spectra list. Database should be written
-                    in <i>csv</i> format and all spectra in <i>mgf</i>. Also each spectrum file
-                    contain only one spectrum. The tool under test makes identifications between
-                    spectra and molecules from database, corresponding to this challenge.
+                After that just run command:
                 </p>
-                <p class="p_text">
-                    The <i>"reports"</i> directory contains pages of this report and
-                    answers of all tested tools. All identifications, which tool with
-                    <i>tool_name</i> has conducted are located in file
-                    <i>"./reports/tool_name/tool_answers.txt"</i>.
-                    They are written as strings <i>"challenge_name$spectra_name \t answer_inchi"</i>,
-                    where <i>answer_inchi</i> is the first 14 symbols of inchi-key of molecule
-                    which this tool has matched to the spectrum <i>spectra_name</i> of
-                    <i>challenge_name</i> challenge. <i>"scan"</i> is a number,
-                    which corresponds to the confidence of match.
-                    Tested tool is more confident if <i>"scan"</i> is less.
-                </p>
-                <p class="p_text">
-                    Based on the tool answers and true answers NPD-Quast makes a report on the quality of work
-                    each tool on all data and also comparing them to each other.
-                </p>
+
+                <code>
+                    python npd_quast.py compile_reports path_to_work_folder
+                </code>
+
                 <hr>
                 <h2 class="header">Supported tools</h2>
                 <ul><li>MAGMa+</li><br><li>Dereplicator</li><br><li>Dereplicator+</li><br><li>Sirius</li></ul>
-                <hr>
-                <h2 class="header">Metrics</h2>
-                <p>
-                    <b>Top x</b> is the count of right identifications in position no more than x by score ranging.
-                </p>
-                <p>
-                    <b>Quantile</b> is simple statistics quantile.
-                </p>
-                <p>
-                    <b>Correct answer rank</b> is mean/median rank of correct answers. If the correct answer for some spectra is not founded but incorrect identifications are written than the correct answer rank is the count of incorrect answer. If there are no any answers with spectra than it is not participate in calculation.
-                </p>
-                <p>
-                    <b>RRP</b> is Relative Ranking Position. It is calculated by such formula:
-                    \[ \hspace{20px} RRP = \frac{1}{2} \Big{(} 1 - \frac{UpCorrect - BelowCorrect}{Total - 1} \Big{)},\]
-                    where:
-                    \[ \hspace{20px} UpCorrect = \#\big{\{}candidate \mid candidateScan < trueAnswerScan\big{\}},\]
-                    \[ \hspace{20px} BelowCorrect = \#\big{\{}candidate \mid candidateScan < trueAnswerScan\big{\}}.\]
-                </p>
-                <p>
-                    <b>Weighted RRP</b> is calculated by formula:
-                    \[ \hspace{20px} wRRP = 1 - UpNormalized - SameNormalized, \]
-                    where:
-                    \[ \hspace{20px} UpNormalized = \frac{\sum_{candidateScan < trueAnswerScan}candidateScan}{\sum_{allCandidates} candidateScan}, \]
-                    \[ \hspace{20px} SameNormalized = \frac{\sum_{candidateScan = trueAnswerScan}candidateScan}{\sum_{allCandidates} candidateScan}. \]
-                </p>
-                <p>
-                    <b>Medal score</b> is the sum of points which tool got
-                    for each answer. The table of points depends on the counting method.
-                    The correspondence of methods and points is written below:
-                    \[ \hspace{20px} Classic - [5, 3, 1],\]
-                    \[ \hspace{20px} F1 - [24, 18, 15, 12, 10, 8, 6, 4, 2, 1],\]
-                    \[ \hspace{20px} Gold - [1],\]
-                    \[ \hspace{20px} All - [1, 1, 1].\]
-                </p>
+
             </div>
             <hr>
             <h5 class="header" align="center">NPD-Quast</h5>

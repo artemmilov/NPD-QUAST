@@ -46,3 +46,9 @@ Each line of it corresponds to the tool identification. All tool identification 
 After that just run command:
 
 ```python npd_quast.py compile_reports path_to_work_folder```
+
+## Supported tools
+* Dereplicator (https://github.com/ablab/npdtools)
+* Dereplicator+ (https://github.com/ablab/npdtools)
+* MAGMa+ (https://github.com/savantas/MAGMa-plus)
+* Sirius (https://github.com/boecker-lab/sirius)

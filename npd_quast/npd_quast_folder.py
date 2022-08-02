@@ -52,6 +52,8 @@ class NPDQuastFolder:
             about_pages = 0
             top_plots = 0
             quantiles_plots = 0
+            mean_similarity_plots = 0
+            median_similarity_plots = 0
             down_pngs = 0
             to_right_pngs = 0
             npd_quast_pngs = 0
@@ -73,6 +75,12 @@ class NPDQuastFolder:
                     elif report == 'quantiles_plot.png':
                         quantiles_plots += 1
                         continue
+                    elif report == 'mean_similarity_plot.png':
+                        mean_similarity_plots += 1
+                        continue
+                    elif report == 'median_similarity_plot.png':
+                        median_similarity_plots += 1
+                        continue
                     elif report == 'down.png':
                         down_pngs += 1
                         continue
@@ -83,7 +91,6 @@ class NPDQuastFolder:
                         npd_quast_pngs += 1
                         continue
                     else:
-                        print(report)
                         return False
                 report_folder = os.path.join(
                     self._folder,
@@ -102,6 +109,8 @@ class NPDQuastFolder:
                 about_pages,
                 top_plots,
                 quantiles_plots,
+                mean_similarity_plots,
+                median_similarity_plots,
                 down_pngs,
                 to_right_pngs,
                 npd_quast_pngs

@@ -19,6 +19,9 @@
                 margin-left: 250px;
                 margin-up: 200px;
             }
+            header {
+                color: #004200;
+            }
             .main {
                 font: 18px Ubuntu;
                 margin-left: 500px;
@@ -91,11 +94,13 @@
                 <li> Disclaimer: NPD-Quast should work on all platforms, but was only tested in a Linux (Ubuntu 20.04) system.</li>
                 </ul>
 
+                <hr>
                 <h2 class="header">How to instal NPD-Quast?</h2>
                 <p class="p_text">
                 Just clone this repository on your local machine and fill `npd_quast.ini` file. Note that you need to write location just that tools, which you want to run.
                 </p>
 
+                <hr>
                 <h2 class="header">How to construct work folder?</h2>
                 <p class="p_text">
                 The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are three examples of work folders in `sample` dir.
@@ -121,6 +126,7 @@
                 This file should be named "true.answers.txt". Each line of it corresponds to the true identification. All true identification should be written there. So if the `spectrum_name` spectrum from `challenge_name` challenge matches to the molecule with `true_answer_inchi_key` inchi key you need to write line `challenge_name'\t'spectrum_name'\t'true_answer_inchi` in this file. Note that you need only first 11 symbols from inchi key.
                 </p>
 
+                <hr>
                 <h2 class="header">How to run NPD-Quast?</h2>
                 <p class="p_text">
                 To run NPD-Quast you firstly need to construct work folder which structure is written above. Also, you need all dependencies to be installed. We recommend you activate a `npd-quast-env.yml` environment which is located in `envs` dir. So, just run this command:
@@ -165,6 +171,7 @@
                     python npd_quast.py compile_reports path_to_work_folder
                 </code>
 
+                <hr>
                 <h2 class="header">Supported tools</h2>
                 $SUPPORTED_TOOLS$
 

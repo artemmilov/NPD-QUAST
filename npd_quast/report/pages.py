@@ -12,6 +12,10 @@ FULL_REPORT = {
     'tool_page.html',
     'top_plot.png',
     'quantiles_plot.png',
+    'top_plot.png',
+    'quantiles_plot.png',
+    'mean_similarity_plot.png',
+    'median_similarity_plot.png'
 }
 
 
@@ -126,6 +130,8 @@ class TotalPage(_AbstractPage):
                             true_answers,
                             tool_answers_dict,
                         ),
+                        "<img src=\"mean_similarity_plot.png\">",
+                        "<img src=\"median_similarity_plot.png\">",
                     ],
                 ),
             ),

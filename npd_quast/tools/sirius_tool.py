@@ -144,12 +144,14 @@ class SiriusTool(AbstractTool):
                 ) as output:
                     for line in output.readlines()[1:]:
                         answer_inchi_key = line.split('\t')[5]
+                        smiles = line.split('\t')[8]
                         score = line.split('\t')[2]
                         tool_answers.write(
-                            '{0}\t{1}\t{2}\t{3}\n'.format(
+                            '{0}\t{1}\t{2}\t{3}\t{4}\n'.format(
                                 challenge_name,
                                 result,
                                 answer_inchi_key,
+                                smiles,
                                 str(-float(score)),
                             ),
                         )

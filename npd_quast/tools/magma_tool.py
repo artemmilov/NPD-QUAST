@@ -86,6 +86,7 @@ class MagmaTool(AbstractTool):
     _spectra_format = 'tree'
     _database_format = 'db'
     _tool_name = 'MAGMa_plus'
+    _id_to_smiles = dict()
 
     def _init_tool(self, abs_folder, report):
         super()._init_tool(abs_folder, report)
@@ -154,6 +155,12 @@ python $path_to_magma export_result $5 $2'''.format(
 
     def _convert_database(self, from_database, to_database):
         _create_sqlite_database(from_database, to_database)
+        with open(from_database) as raw_database:
+            for line in raw_database.readlines()[1:]:
+                parsed_line = parse_from_mgf(line)
+                scan = parsed_line[0]
+                smiles = parsed_line[4]
+                self._id_to_smiles[scan] = smiles
 
     def _convert_specter(self, from_specter, to_specter):
         with open(from_specter) as mgf:
@@ -307,10 +314,11 @@ python $path_to_magma export_result $5 $2'''.format(
                             )
                         )[0][5]
                         tool_answers.write(
-                            '{0}\t{1}\t{2}\t{3}\n'.format(
+                            '{0}\t{1}\t{2}\t{3}\t{4}\n'.format(
                                 challenge_name,
                                 result.split('.')[0],
                                 answer_inchi_key,
+                                self._id_to_smiles[answer_id],
                                 str(round(float(line.split(' ')[0]), 3)),
                             ),
                         )

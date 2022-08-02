@@ -117,6 +117,7 @@ class AbstractNpdTool(AbstractTool):
     _specter_format = 'mgf'
     _database_format = 'csv'
     _id_to_inchi = dict()
+    _id_to_smiles = dict()
 
     def _convert_database(self, from_database, to_database):
         shutil.copyfile(from_database, to_database)
@@ -172,8 +173,10 @@ class AbstractNpdTool(AbstractTool):
                     m = rdkit.Chem.MolFromSmiles(line)
                     if m is not None:
                         self._id_to_inchi[i] = rdkit.Chem.MolToInchiKey(m).split('-')[0]
+                        self._id_to_smiles[i] = line.replace('\n', '')
                     else:
                         self._id_to_inchi[i] = 'ERROR'
+                        self._id_to_smiles[i] = 'ERROR'
 
     def _run_abstract_tool(self, abs_folder):
         self._deploy_database(abs_folder)
@@ -207,13 +210,15 @@ class AbstractNpdTool(AbstractTool):
                 for line in output.readlines()[1:]:
                     answer_id = int(line.split('\t')[3])
                     answer_inchi_key = self._id_to_inchi[answer_id]
+                    answer_smiles = self._id_to_smiles[answer_id]
                     specter = os.path.split(line.split('\t')[0])[-1].split('.')[0]
                     score = line.split('\t')[5]
                     tool_answers.write(
-                        '{0}\t{1}\t{2}\t{3}\n'.format(
+                        '{0}\t{1}\t{2}\t{3}\t{4}\n'.format(
                             challenge_name,
                             specter,
                             answer_inchi_key,
+                            answer_smiles,
                             str(-float(score)),
                         ),
                     )

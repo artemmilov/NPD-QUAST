@@ -11,7 +11,7 @@ def parse_true_answers(true_answers_data_file):
         for true_answer in true_answers_data.read().split('\n'):
             if true_answer != '':
                 true_answers[true_answer.split('\t')[0] + '\t' + true_answer.split('\t')[1]] = \
-                    true_answer.split('\t')[2]
+                    (true_answer.split('\t')[2], true_answer.split('\t')[3],)
     return true_answers
 
 
@@ -22,8 +22,11 @@ def parse_tool_answers(tool_answers_data_file):
             if tool_answer != '':
                 tool_answers[tool_answer.split('\t')[0] + '\t' + tool_answer.split('\t')[1]].append(
                     (
-                        tool_answer.split('\t')[2],
-                        float(tool_answer.split('\t')[3], )
+                        (
+                            tool_answer.split('\t')[2],
+                            tool_answer.split('\t')[3],
+                            float(tool_answer.split('\t')[4]),
+                        )
                     ),
                 )
     return tool_answers

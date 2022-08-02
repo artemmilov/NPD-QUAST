@@ -1,10 +1,10 @@
-Challenge-082	Challenge-082	LVQDKIWDGQRHTE
-Challenge-083	Challenge-083	VHYFNPMBLIVWCW
-Challenge-084	Challenge-084	DDRJAANPRJIHGJ
-Challenge-085	Challenge-085	HYZJCKYKOHLVJF
-Challenge-086	Challenge-086	PAFZNILMFXTMIY
-Challenge-087	Challenge-087	KLGQWSOYKYFBTR
-Challenge-088	Challenge-088	TWFZGCMQGLPBSX
-Challenge-089	Challenge-089	TWIIRMSFZNYMQE
-Challenge-090	Challenge-090	YHMYGUUIMTVXNW
-Challenge-091	Challenge-091	GEFDRROBUCULOD
+Challenge-082	Challenge-082	LVQDKIWDGQRHTE	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-083	Challenge-083	VHYFNPMBLIVWCW	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-084	Challenge-084	DDRJAANPRJIHGJ	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-085	Challenge-085	HYZJCKYKOHLVJF	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-086	Challenge-086	PAFZNILMFXTMIY	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-087	Challenge-087	KLGQWSOYKYFBTR	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-088	Challenge-088	TWFZGCMQGLPBSX	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-089	Challenge-089	TWIIRMSFZNYMQE	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-090	Challenge-090	YHMYGUUIMTVXNW	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]
+Challenge-091	Challenge-091	GEFDRROBUCULOD	[H]C1=NC2=NC(C([H])([H])[H])=C([H])C([H])(N([H])N([H])[H])N2N1[H]

@@ -1,6 +1,7 @@
+import rdkit.Chem
 from matplotlib.ticker import MultipleLocator
 
-from .metrics import top_x, k_quantile
+from .metrics import top_x, k_quantile, mean_similarity_top_x, median_similarity_top_x
 import matplotlib.pyplot as plt
 
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w']
@@ -11,6 +12,8 @@ def write_top_plot(true_answers, tool_answers_dict, folder):
     n = 10
     m = 10
     fig, ax = plt.subplots()
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
     ax.set_title('Top x')
     ax.set_xlabel('x')
     ax.set_ylabel('')
@@ -56,9 +59,11 @@ def write_quantiles_plot(true_answers, tool_answers_dict, folder):
     legend = False
     m = 10
     fig, ax = plt.subplots()
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
     ax.set_title('Quantile k%')
-    ax.set_xlabel('k')
-    ax.set_ylabel('')
+    ax.set_xlabel('Rank')
+    ax.set_ylabel('Quantile')
     for i, tool in enumerate(tool_answers_dict.keys()):
         tool_answers = tool_answers_dict[tool]
         quantiles = [
@@ -68,19 +73,93 @@ def write_quantiles_plot(true_answers, tool_answers_dict, folder):
         if max(quantiles) - min(quantiles) > m:
             m = max(quantiles) - min(quantiles)
         if len(tool_answers_dict) == 1:
-            ax.plot(range(10, 90), quantiles, alpha=1.0)
+            ax.plot(quantiles, range(10, 90), alpha=1.0)
         else:
-            ax.plot(range(10, 90), quantiles, alpha=1.0, color=COLORS[i], label=tool)
+            ax.plot(quantiles, range(10, 90), alpha=1.0, color=COLORS[i], label=tool)
             legend = True
 
-    ax.xaxis.set_major_locator(MultipleLocator(10))
-    ax.xaxis.set_minor_locator(MultipleLocator(2))
+    ax.yaxis.set_major_locator(MultipleLocator(10))
+    ax.yaxis.set_minor_locator(MultipleLocator(2))
     if m > 1:
-        ax.yaxis.set_major_locator(MultipleLocator(m / 5))
-        ax.yaxis.set_minor_locator(MultipleLocator(m / 50))
+        ax.xaxis.set_major_locator(MultipleLocator(m / 5))
+        ax.xaxis.set_minor_locator(MultipleLocator(m / 50))
     else:
-        ax.yaxis.set_major_locator(MultipleLocator(0.1))
-        ax.yaxis.set_minor_locator(MultipleLocator(0.05))
+        ax.xaxis.set_major_locator(MultipleLocator(0.1))
+        ax.xaxis.set_minor_locator(MultipleLocator(0.05))
+    ax.grid(which='major', color='#CCCCCC', linestyle='--')
+    ax.grid(which='minor', color='#CCCCCC', linestyle=':')
+    ax.grid(True)
+    if legend:
+        ax.legend()
+
+    fig.savefig(folder)
+
+
+def write_mean_similarity_plot(true_answers, tool_answers_dict, folder):
+    legend = False
+    m = 10
+    fig, ax = plt.subplots()
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+    ax.set_title('Mean similarity top x')
+    ax.set_xlabel('x')
+    for i, tool in enumerate(tool_answers_dict.keys()):
+        tool_answers = tool_answers_dict[tool]
+        similarities = [
+            mean_similarity_top_x(true_answers, tool_answers, x)
+            for x in range(10)
+        ]
+        if len(tool_answers_dict) == 1:
+            ax.plot(range(10), similarities, alpha=1.0)
+        else:
+            ax.plot(range(100), similarities, alpha=1.0, color=COLORS[i], label=tool)
+            legend = True
+
+    ax.yaxis.set_major_locator(MultipleLocator(10))
+    ax.yaxis.set_minor_locator(MultipleLocator(2))
+    if m > 1:
+        ax.xaxis.set_major_locator(MultipleLocator(m / 5))
+        ax.xaxis.set_minor_locator(MultipleLocator(m / 50))
+    else:
+        ax.xaxis.set_major_locator(MultipleLocator(0.1))
+        ax.xaxis.set_minor_locator(MultipleLocator(0.05))
+    ax.grid(which='major', color='#CCCCCC', linestyle='--')
+    ax.grid(which='minor', color='#CCCCCC', linestyle=':')
+    ax.grid(True)
+    if legend:
+        ax.legend()
+
+    fig.savefig(folder)
+
+
+def write_median_similarity_plot(true_answers, tool_answers_dict, folder):
+    legend = False
+    m = 10
+    fig, ax = plt.subplots()
+    fig.patch.set_alpha(0.0)
+    ax.patch.set_alpha(0.0)
+    ax.set_title('Median similarity top x')
+    ax.set_xlabel('x')
+    for i, tool in enumerate(tool_answers_dict.keys()):
+        tool_answers = tool_answers_dict[tool]
+        similarities = [
+            median_similarity_top_x(true_answers, tool_answers, x)
+            for x in range(10)
+        ]
+        if len(tool_answers_dict) == 1:
+            ax.plot(range(10), similarities, alpha=1.0)
+        else:
+            ax.plot(range(100), similarities, alpha=1.0, color=COLORS[i], label=tool)
+            legend = True
+
+    ax.yaxis.set_major_locator(MultipleLocator(10))
+    ax.yaxis.set_minor_locator(MultipleLocator(2))
+    if m > 1:
+        ax.xaxis.set_major_locator(MultipleLocator(m / 5))
+        ax.xaxis.set_minor_locator(MultipleLocator(m / 50))
+    else:
+        ax.xaxis.set_major_locator(MultipleLocator(0.1))
+        ax.xaxis.set_minor_locator(MultipleLocator(0.05))
     ax.grid(which='major', color='#CCCCCC', linestyle='--')
     ax.grid(which='minor', color='#CCCCCC', linestyle=':')
     ax.grid(True)

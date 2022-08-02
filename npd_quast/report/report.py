@@ -105,6 +105,32 @@ def write_report(
                 'quantiles_plot.png'
             ),
         )
+        plots.write_mean_similarity_plot(
+            true_answers,
+            {
+                report:
+                    tool_answers_dict[report]
+            },
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                report,
+                'mean_similarity_plot.png'
+            ),
+        )
+        plots.write_median_similarity_plot(
+            true_answers,
+            {
+                report:
+                    tool_answers_dict[report]
+            },
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                report,
+                'median_similarity_plot.png'
+            ),
+        )
         with open(
             os.path.join(
                 npd_quast_folder,
@@ -148,6 +174,24 @@ def write_report(
                 npd_quast_folder,
                 'reports',
                 'quantiles_plot.png',
+            ),
+        )
+        plots.write_mean_similarity_plot(
+            true_answers,
+            tool_answers_dict,
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'mean_similarity_plot.png'
+            ),
+        )
+        plots.write_median_similarity_plot(
+            true_answers,
+            tool_answers_dict,
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                'median_similarity_plot.png'
             ),
         )
         total_page.write(

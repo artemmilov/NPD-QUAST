@@ -131,12 +131,14 @@ class AbstractTool:
         ):
             shutil.rmtree(os.path.join(abs_folder, 'debug'))
 
-    def run(self, folder, report, specification=None, debug=False):
+    def run(self, folder, report, specification, logger, debug=False):
         abs_folder = os.path.abspath(folder)
+        logger.info('Initialization...')
         self._init_tool(abs_folder, report)
         for challenge in os.listdir(
                 os.path.join(abs_folder, 'challenges'),
         ):
+            logger.info('Run challenge {}...'.format(challenge))
             self._run_challenge(
                 abs_folder,
                 os.path.join(abs_folder, 'challenges', challenge),
@@ -144,6 +146,7 @@ class AbstractTool:
                 specification,
                 debug,
             )
+            logger.info('Ok!')
 
     def name(self):
         return self._tool_name

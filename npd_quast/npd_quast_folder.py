@@ -141,9 +141,9 @@ class NPDQuastFolder:
                 '\"{0}\" does not correspond to NPD-Quast format'.format(self._folder)
             )
 
-    def make_tool_report(self, tool, report, specification=None, debug=False):
+    def make_tool_report(self, tool, report, specification, logger, debug=False):
         self._clean_temp()
-        tool.run(self._folder, report, specification, debug)
+        tool.run(self._folder, report, specification, logger, debug)
         self._clean_temp()
         true_answers = npd_quast.general.parse_true_answers(
             os.path.join(
@@ -180,6 +180,7 @@ class NPDQuastFolder:
                 )
             ) != []
         }
+        logger.info('Analyzing data...')
         npd_quast.report.write_report(
             self._folder,
             true_answers,

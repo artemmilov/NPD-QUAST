@@ -7,8 +7,9 @@ import npd_quast.npd_quast_folder as npd_quast_folder
 import npd_quast.general as general
 
 
-def run_n_report(options):
+def run_n_report(options, logger):
     if options.tool in tools.SUPPORTED_TOOLS.keys():
+        logger.info('Running \"{}\" tool')
         tool = tools.SUPPORTED_TOOLS[options.tool]()
         if os.path.isdir(options.folder):
             if options.config is not None:
@@ -27,26 +28,24 @@ def run_n_report(options):
             try:
                 folder = npd_quast_folder.NPDQuastFolder(options.folder)
             except AttributeError as e:
+                logger.error(e)
                 print(e)
                 return
             except NotADirectoryError as e:
+                logger.error(e)
                 print(e)
                 return
+            logger.info('Input data is ok. Started making report...')
             folder.make_tool_report(
                 tool,
                 options.report_name,
                 specification,
+                logger,
                 debug=options.debug,
             )
-            print(
-                '{0} report has been reported in {1}!'.format(
-                    options.tool,
-                    options.report_name,
-                ),
-            )
 
 
-def compile_reports(options):
+def compile_reports(options, logger):
     try:
         npd_quast_folder.NPDQuastFolder(options.folder)
     except AttributeError as e:

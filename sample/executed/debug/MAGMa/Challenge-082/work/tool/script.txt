@@ -1,0 +1,11 @@
+#!/bin/bash
+cd /home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool
+export PATH=/home/artem/Programming/bioinformatics/MAGMa-plus/MAGMa_plus.py:$PATH
+eval "$(conda shell.bash hook)"
+conda env create -f envs/magma-plus-env.yml
+conda activate magma-plus-env
+export MAGMAPLUS_CLASSIFIER_PATH=/home/artem/Programming/bioinformatics/MAGMa-plus
+path_to_magma=/home/artem/Programming/bioinformatics/MAGMa-plus/MAGMa_plus.py
+python $path_to_magma read_ms_data $3 $1 $2
+python $path_to_magma annotate $4 $2
+python $path_to_magma export_result $5 $2

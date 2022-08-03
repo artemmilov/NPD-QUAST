@@ -89,13 +89,16 @@ class AbstractTool:
                 os.path.join(abs_folder, 'temp', 'spectra', specter),
             )
 
-    def _run_tool(self, abs_folder, specification=None):
+    def _run_tool(self, abs_folder, specification, logger):
         pass
 
     def _parse_output(self, abs_folder, challenge_name, report):
         pass
 
-    def _run_challenge(self, abs_folder, challenge, report, specification=None, debug=False):
+    def _run_challenge(self, abs_folder, challenge, report, specification, logger, debug):
+        if debug:
+            challenge_name = os.path.split(challenge)[-1]
+            os.mkdir(os.path.join(abs_folder, 'debug', report, challenge_name))
         database = list(
             filter(
                 lambda f: len(f.split('.')) == 2,
@@ -110,26 +113,24 @@ class AbstractTool:
             abs_folder,
             os.path.join(challenge, 'spectra'),
         )
-        self._run_tool(abs_folder, specification)
+        completed_process = self._run_tool(abs_folder, specification, logger)
         self._parse_output(abs_folder, os.path.split(challenge)[-1], report)
         if debug:
             challenge_name = os.path.split(challenge)[-1]
-            if not os.path.exists(
-                    os.path.join(abs_folder, 'debug')
-            ):
-                os.mkdir(os.path.join(abs_folder, 'debug'))
-            if os.path.exists(
-                    os.path.join(abs_folder, 'debug', challenge_name)
-            ):
-                shutil.rmtree(os.path.join(abs_folder, 'debug', challenge_name))
             shutil.copytree(
                 os.path.join(abs_folder, 'temp'),
-                os.path.join(abs_folder, 'debug', challenge_name)
+                os.path.join(abs_folder, 'debug', report, challenge_name, 'work')
             )
-        elif os.path.exists(
-                os.path.join(abs_folder, 'debug')
-        ):
-            shutil.rmtree(os.path.join(abs_folder, 'debug'))
+            with open(
+                    os.path.join(abs_folder, 'debug', report, challenge_name, 'stdout'),
+                    'w'
+            ) as stdout:
+                stdout.write(completed_process.stdout.decode())
+            with open(
+                    os.path.join(abs_folder, 'debug', report, challenge_name, 'stderr'),
+                    'w'
+            ) as stderr:
+                stderr.write(completed_process.stderr.decode())
 
     def run(self, folder, report, specification, logger, debug=False):
         abs_folder = os.path.abspath(folder)
@@ -144,6 +145,7 @@ class AbstractTool:
                 os.path.join(abs_folder, 'challenges', challenge),
                 report,
                 specification,
+                logger,
                 debug,
             )
             logger.info('Ok!')

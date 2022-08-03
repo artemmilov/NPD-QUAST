@@ -3,7 +3,7 @@ import os
 import shutil
 import sqlite3
 import zlib
-from subprocess import STDOUT, CalledProcessError, check_output
+import subprocess
 
 from rdkit import Chem
 from rdkit.Chem import Crippen
@@ -180,7 +180,7 @@ python $path_to_magma export_result $5 $2'''.format(
             with open(to_specter, 'w') as mass_tree:
                 mass_tree.write(record)
 
-    def _run_tool(self, abs_folder, specification=None):
+    def _run_tool(self, abs_folder, specification, logger):
         config = configparser.ConfigParser()
         config.read('npd_quast.ini')
         path_to_conda = config['dependencies']['path_to_conda']
@@ -235,7 +235,16 @@ python $path_to_magma export_result $5 $2'''.format(
                         if (v is None) and (not isinstance(v, dict))
                     ]
                 )
-                output = check_output(
+                logger.info('Run script {} with params:\n{}\n\t{}\n\t{}\n\t{}\n\t{}'.format(
+                        path_to_script,
+                        os.path.join(path_to_spectra, specter),
+                        os.path.join(path_to_trees, converted_tree),
+                        read_ms_data_params,
+                        annotate_params,
+                        export_result_params,
+                    )
+                )
+                completed_process = subprocess.run(
                     [
                         'bash',
                         path_to_script,
@@ -245,11 +254,13 @@ python $path_to_magma export_result $5 $2'''.format(
                         annotate_params,
                         export_result_params,
                     ],
+                    capture_output=True,
                     env=my_env,
-                    stderr=STDOUT,
-                ).decode('utf-8')
-            except CalledProcessError:
-                output = ''
+                )
+            except subprocess.CalledProcessError as e:
+                logger.error(e)
+                return
+            output = completed_process.stdout.decode('utf-8')
             with open(
                     os.path.join(
                         path_to_results,
@@ -265,6 +276,7 @@ python $path_to_magma export_result $5 $2'''.format(
                         res.write(line + '\n')
                     if line == 'Candidate_Score Name Smiles':
                         write = True
+            return completed_process
 
     def _parse_output(self, abs_folder, challenge_name, report):
         with open(

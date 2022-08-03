@@ -222,10 +222,10 @@ class AbstractNpdTool(AbstractTool):
 class DereplicatorTool(AbstractNpdTool):
     _tool_name = 'Dereplicator'
 
-    def _run_tool(self, abs_folder, specification=None):
+    def _run_tool(self, abs_folder, specification, logger):
         path_to_spectra, path_to_database, path_to_result =\
             super()._run_abstract_tool(abs_folder)
-        subprocess.run(
+        command = ' '.join(
             [
                 self._location,
                 path_to_spectra,
@@ -243,38 +243,74 @@ class DereplicatorTool(AbstractNpdTool):
                 '{0}'.format(k, v)
                 for k, v in specification.items()
                 if (v is None) and (not isinstance(v, dict))
-            ],
-            capture_output=True,
+            ]
         )
+        logger.info('Run command:\n{}'.format(command))
+        try:
+            completed_process = subprocess.run(
+                command,
+                shell=True,
+                capture_output=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logger.error(e)
+            return
+        return completed_process
 
 
 class DereplicatorPlusTool(AbstractNpdTool):
     _tool_name = 'Dereplicator_plus'
 
-    def _run_tool(self, abs_folder, specification=None):
+    def _run_tool(self, abs_folder, specification, logger):
         path_to_spectra, path_to_database, path_to_result =\
             super()._run_abstract_tool(abs_folder)
-        subprocess.run(
-            ' '.join(
-                [
-                    self._location,
-                    path_to_spectra,
-                    '--db-path',
-                    path_to_database,
-                    '-o',
-                    path_to_result,
-                ] +
-                [
-                    '{0} {1}'.format(k, v)
-                    for k, v in specification.items()
-                    if (v is not None) and (not isinstance(v, dict))
-                ] +
-                [
-                    '{0}'.format(k, v)
-                    for k, v in specification.items()
-                    if (v is None) and (not isinstance(v, dict))
-                ]
-            ),
-            shell=True,
-            capture_output=True,
+        command = ' '.join(
+            [
+                self._location,
+                path_to_spectra,
+                '--db-path',
+                path_to_database,
+                '-o',
+                path_to_result,
+            ] +
+            [
+                '{0} {1}'.format(k, v)
+                for k, v in specification.items()
+                if (v is not None) and (not isinstance(v, dict))
+            ] +
+            [
+                '{0}'.format(k, v)
+                for k, v in specification.items()
+                if (v is None) and (not isinstance(v, dict))
+            ]
         )
+        logger.info('Run command:\n{}'.format(command))
+        try:
+            completed_process = subprocess.run(
+                ' '.join(
+                    [
+                        self._location,
+                        path_to_spectra,
+                        '--db-path',
+                        path_to_database,
+                        '-o',
+                        path_to_result,
+                    ] +
+                    [
+                        '{0} {1}'.format(k, v)
+                        for k, v in specification.items()
+                        if (v is not None) and (not isinstance(v, dict))
+                    ] +
+                    [
+                        '{0}'.format(k, v)
+                        for k, v in specification.items()
+                        if (v is None) and (not isinstance(v, dict))
+                    ]
+                ),
+                shell=True,
+                capture_output=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logger.error(e)
+            return
+        return completed_process

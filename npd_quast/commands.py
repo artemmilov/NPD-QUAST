@@ -9,7 +9,7 @@ import npd_quast.general as general
 
 def run_n_report(options, logger):
     if options.tool in tools.SUPPORTED_TOOLS.keys():
-        logger.info('Running \"{}\" tool')
+        logger.info('Running \"{}\" tool'.format(options.tool))
         tool = tools.SUPPORTED_TOOLS[options.tool]()
         if os.path.isdir(options.folder):
             if options.config is not None:

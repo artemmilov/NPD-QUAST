@@ -127,6 +127,22 @@ class NPDQuastFolder:
         if os.path.isdir(os.path.join(self._folder, 'temp')):
             shutil.rmtree(os.path.join(self._folder, 'temp'))
 
+    def _prepare_debug_folder(self, report, debug):
+        if debug:
+            if not os.path.exists(
+                    os.path.join(self._folder, 'debug')
+            ):
+                os.mkdir(os.path.join(self._folder, 'debug'))
+            if os.path.exists(
+                    os.path.join(self._folder, 'debug', report)
+            ):
+                shutil.rmtree(os.path.join(self._folder, 'debug', report))
+            os.mkdir(os.path.join(self._folder, 'debug', report))
+        elif os.path.exists(
+                os.path.join(self._folder, 'debug', report)
+        ):
+            shutil.rmtree(os.path.join(self._folder, 'debug', report))
+
     def __init__(self, folder):
         if not os.path.exists(os.path.abspath(folder)):
             raise NotADirectoryError(
@@ -141,8 +157,9 @@ class NPDQuastFolder:
                 '\"{0}\" does not correspond to NPD-Quast format'.format(self._folder)
             )
 
-    def make_tool_report(self, tool, report, specification, logger, debug=False):
+    def make_tool_report(self, tool, report, specification, logger, debug):
         self._clean_temp()
+        self._prepare_debug_folder(report, debug)
         tool.run(self._folder, report, specification, logger, debug)
         self._clean_temp()
         true_answers = npd_quast.general.parse_true_answers(

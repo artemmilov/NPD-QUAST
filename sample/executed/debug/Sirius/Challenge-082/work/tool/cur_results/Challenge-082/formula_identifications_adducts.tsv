@@ -1,0 +1,2 @@
+rank	molecularFormula	adduct	precursorFormula	SiriusScore	TreeScore	IsotopeScore	numExplainedPeaks	explainedIntensity	medianMassErrorFragmentPeaks(ppm)	medianAbsoluteMassErrorFragmentPeaks(ppm)	massErrorPrecursor(ppm)	ionMass	retentionTimeInSeconds	id
+1	C6H10N6	[M + H]+	C6H10N6	18.7958450173967	18.7958450173967	0.0	17	0.9917809423640067	-0.2185179715805852	0.5218897533810977	0.1749084970650408	167.10400	NaN	0_Challenge-082_FEATURE_1

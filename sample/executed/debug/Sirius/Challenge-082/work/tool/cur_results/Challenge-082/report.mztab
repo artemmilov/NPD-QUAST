@@ -1,0 +1,29 @@
+MTD	mzTab-version	2.0.0-M
+MTD	mzTab-ID	SIRIUS-e8033c8b-3316-48e9-b92e-0f5691e1d940
+MTD	title	SIRIUS Analysis Report: e8033c8b-3316-48e9-b92e-0f5691e1d940
+MTD	software[1]	[, , SIRIUS, 4.6.1]
+MTD	software[2]	[, , CSI:FingerID, 1.6.0]
+MTD	cv[1]-label	MS
+MTD	cv[1]-uri	URL:https://raw.githubusercontent.com/HUPO-PSI/psi-ms-CV/master/psi-ms.obo
+MTD	cv[1]-version	4.1.16
+MTD	cv[1]-full_name	PSI-MS controlled vocabulary
+MTD	small_molecule-identification_reliability	[MS, MS:1002955, hr-ms compound identification confidence level, ]
+MTD	database[1]	[, , no database, null]
+MTD	database[1]-prefix	null
+MTD	database[1]-uri	null
+MTD	database[1]-version	Unknown
+MTD	database[2]	[, , CSI:FingerID PubChem Copy, CID]
+MTD	database[2]-prefix	CID
+MTD	database[2]-uri	https://pubchem.ncbi.nlm.nih.gov/compound/
+MTD	database[2]-version	2020-06-11
+MTD	id_confidence_measure[1]	[, , CSI:FingerID Confidence Score (PP), ]
+
+SMH	SML_ID	SMF_ID_REFS	database_identifier	chemical_formula	smiles	inchi	chemical_name	uri	theoretical_neutral_mass	adduct_ions	reliability	best_id_confidence_measure	best_id_confidence_value
+SML	1	1	CID:47866|CID:71315143|CID:138396140	C6H10N6	C1CC1NC2=NC(=NC(=N2)N)N	InChI=1S/C6H10N6/c7-4-10-5(8)12-6(11-4)9-3-1-2-3/h3H,1-2H2,(H5,7,8,9,10,11,12)	Citation	https://pubchem.ncbi.nlm.nih.gov/compound/47866|https://pubchem.ncbi.nlm.nih.gov/compound/71315143|https://pubchem.ncbi.nlm.nih.gov/compound/138396140	166.09669431999998	[M + H]+	2	[, , CSI:FingerID Confidence Score (PP), ]	0.7542774572762926
+
+SFH	SMF_ID	SME_ID_REFS	SME_ID_REF_ambiguity_code	adduct_ion	isotopomer	exp_mass_to_charge	charge	retention_time_in_seconds	retention_time_in_seconds_start	retention_time_in_seconds_end
+SMF	1	1|2	2	[M + H]+	null	167.104	1	null	null	null
+
+SEH	SME_ID	evidence_input_id	database_identifier	chemical_formula	smiles	inchi	chemical_name	uri	derivatized_form	adduct_ion	exp_mass_to_charge	charge	theoretical_mass_to_charge	spectra_ref	identification_method	ms_level	id_confidence_measure[1]	rank	opt_global_SIRIUS:sirius_score	opt_global_SIRIUS:isotope_score	opt_global_SIRIUS:tree_score	opt_global_SIRIUS:zodiac_score	opt_global_SIRIUS:explained_intensity_ratio	opt_global_SIRIUS:explained_intensity_of_explainable_peaks_ratio	opt_global_SIRIUS:explained_peaks_ratio	opt_global_SIRIUS:annotated_spectra_location	opt_global_SIRIUS:tree_location	opt_global_SIRIUS:candidate_location	opt_global_CSI:FingerID:score	opt_global_CSI:FingerID:confidence	opt_global_CSI:FingerID:fingerprint_location	opt_global_CSI:FingerID:candidate_location
+SME	1	0_Challenge-082_FEATURE_1:167.104:M+H+	null	C6H10N6	null	null	null	null	null	[M + H]+	167.104	1	167.10397077209052	null	[, , SIRIUS, 4.6.1]	[MS, MS:1000511, ms_level, 2]		1	18.7958450173967	0.0	18.7958450173967	N/A	0.9917809423640067	0.9917809423640067	0.9411764705882353	spectra/C6H10N6_[M+H]+.tsv	trees/C6H10N6_[M+H]+.json	0_Challenge-082_FEATURE_1/formula_candidates.tsv				
+SME	2	0_Challenge-082_FEATURE_1:C6H10N6:M+H+	null	C6H10N6	C1CC1NC2=NC(=NC(=N2)N)N	InChI=1S/C6H10N6/c7-4-10-5(8)12-6(11-4)9-3-1-2-3/h3H,1-2H2,(H5,7,8,9,10,11,12)	Citation	null	null	[M + H]+	167.104	1	167.10397077209052	null	[, , CSI:FingerID, 1.6.0]	[MS, MS:1000511, ms_level, 2]	0.7542774572762926	1											-8.399849267767584	0.7542774572762926	fingerprints/C6H10N6_[M+H]+.fpt	fingerid/C6H10N6_[M+H]+.tsv

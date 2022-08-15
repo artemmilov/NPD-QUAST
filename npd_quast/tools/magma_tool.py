@@ -87,6 +87,12 @@ class MagmaTool(AbstractTool):
     _database_format = 'db'
     _tool_name = 'MAGMa_plus'
 
+    def clarify_location(self, loc):
+        return os.path.join(
+            loc,
+            'MAGMa_plus.py',
+        )
+
     def _init_tool(self, abs_folder, report):
         super()._init_tool(abs_folder, report)
         with open(

@@ -11,6 +11,12 @@ class SiriusTool(AbstractTool):
     _database_format = 'txt'
     _tool_name = 'Sirius'
 
+    def clarify_location(self, loc):
+        return os.path.join(
+            loc,
+            'bin',
+        )
+
     def _init_tool(self, abs_folder, report):
         super()._init_tool(abs_folder, report)
         os.mkdir(

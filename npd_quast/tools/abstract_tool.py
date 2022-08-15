@@ -12,7 +12,7 @@ class AbstractTool:
     def __init__(self):
         config = configparser.ConfigParser()
         config.read('npd_quast.ini')
-        self._location = config['supported tools'][self._tool_name]
+        self._location = self.clarify_location(config['supported tools'][self._tool_name])
 
     def _init_tool(self, abs_folder, report):
         if not os.path.isdir(os.path.join(abs_folder, 'temp')):
@@ -41,6 +41,9 @@ class AbstractTool:
                 'tool_answers.txt',
             ),
         )
+
+    def clarify_location(self, loc):
+        pass
 
     def _convert_database(self, from_database, to_database):
         pass

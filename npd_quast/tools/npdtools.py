@@ -222,6 +222,13 @@ class AbstractNpdTool(AbstractTool):
 class DereplicatorTool(AbstractNpdTool):
     _tool_name = 'Dereplicator'
 
+    def clarify_location(self, loc):
+        return os.path.join(
+            loc,
+            'bin',
+            'dereplicator.py',
+        )
+
     def _run_tool(self, abs_folder, specification, logger):
         path_to_spectra, path_to_database, path_to_result =\
             super()._run_abstract_tool(abs_folder)
@@ -260,6 +267,13 @@ class DereplicatorTool(AbstractNpdTool):
 
 class DereplicatorPlusTool(AbstractNpdTool):
     _tool_name = 'Dereplicator_plus'
+
+    def clarify_location(self, loc):
+        return os.path.join(
+            loc,
+            'bin',
+            'dereplicator+.py',
+        )
 
     def _run_tool(self, abs_folder, specification, logger):
         path_to_spectra, path_to_database, path_to_result =\

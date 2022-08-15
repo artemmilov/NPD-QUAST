@@ -1,5 +1,0 @@
-
-EnvironmentFileNotFound: '/home/artem/Programming/bioinformatics/NPD-QUAST/sample/executed/temp/tool/envs/magma-plus-env.yml' file not found
-
-/home/artem/Programming/miniconda3/envs/magma-plus-env/lib/python2.7/site-packages/sqlalchemy/sql/sqltypes.py:269: SAWarning: Unicode type received non-unicode bind param value '{}'. (this warning may be suppressed after 10 occurrences)
-  (util.ellipses_string(value),),

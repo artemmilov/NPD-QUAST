@@ -9,7 +9,7 @@ NPD-Quast is designed for analyzing natural peptide identificator\`s reports of 
 Just clone this repository on your local machine and fill `npd_quast.ini` file. Note that you need to write location just that tools, which you want to run.
 
 ## How to construct work folder?
-The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are four examples of work folders in `sample` dir (`sample/unexecuted/short`, `sample/unexecuted/large`, `sample/executed/short`, `sample/executed/large` are different correct work folders).
+The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are four examples of work folders in `sample` dir (`sample/short/unexecuted`, `sample/short/executed`, `sample/large/unexecuted`, `sample/large/executed` are different correct work folders).
 
 ### What are challenges are?
 Each challenge consist of database and spectra list. The tool under test makes identifications between spectra and molecules from database, corresponding to this challenge.

@@ -9,7 +9,7 @@ NPD-Quast is designed for analyzing natural peptide identificator\`s reports of 
 Just clone this repository on your local machine and fill `npd_quast.ini` file. Note that you need to write location just that tools, which you want to run.
 
 ## How to construct work folder?
-The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are three examples of work folders in `sample` dir.
+The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are four examples of work folders in `sample` dir (`sample/unexecuted/short`, `sample/unexecuted/large`, `sample/executed/short`, `sample/executed/large` are different correct work folders).
 
 ### What are challenges are?
 Each challenge consist of database and spectra list. The tool under test makes identifications between spectra and molecules from database, corresponding to this challenge.
@@ -32,6 +32,9 @@ To run NPD-Quast you firstly need to construct work folder which structure is wr
 If you want to run your data by one of the supported tool (assume it\`s named `tool_name`) run such command (here we decided to name page with report `report_name`, you can name it as you want):
 
 ```python npd_quast.py run_n_report tool_name report_name path_to_work_folder```
+
+#### Clause
+To run MAGMa+ tool you need to create `magma-plus-env` which is in `envs` dir such as `npd-quast-env`.
 
 ### Changing tool parameters
 To change tool parameters you need to copy json file with original params and change it as you need. After run this command:

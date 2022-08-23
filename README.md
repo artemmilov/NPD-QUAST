@@ -6,7 +6,7 @@ NPD-Quast is designed for analyzing natural peptide identificator\`s reports of 
 * Disclaimer: NPD-Quast should work on all platforms, but was only tested in a Linux (Ubuntu 20.04) system.
 
 ## How to instal NPD-Quast?
-Just clone this repository on your local machine and fill `npd_quast.ini` file. Note that you need to write location just that tools, which you want to run.
+Firstly, clone this repository on your local machine and fill `npd_quast.ini` file. Note that you need to write locations of just that tools, which you want to run. After create `magma-plus-env` if you are going to run `MAGMa+` tool. We also recommend you to create and activate `npd-quast-env`. All envs are contained in `envs/` dir.
 
 ## How to construct work folder?
 The work folder should contain subdir with challenges, subdir with reports and file with true answers. There are four examples of work folders in `sample` dir (`sample/short/unexecuted`, `sample/short/executed`, `sample/large/unexecuted`, `sample/large/executed` are different correct work folders).

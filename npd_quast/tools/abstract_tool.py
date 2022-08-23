@@ -24,6 +24,8 @@ class AbstractTool:
                 shutil.rmtree(subdir)
         os.mkdir(os.path.join(abs_folder, 'temp', 'spectra'))
         os.mkdir(os.path.join(abs_folder, 'temp', 'tool'))
+        if not os.path.exists(os.path.join(abs_folder, 'reports')):
+            os.mkdir(os.path.join(abs_folder, 'reports'))
         if report in os.listdir(
                 os.path.join(abs_folder, 'reports'),
         ):

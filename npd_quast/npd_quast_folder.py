@@ -45,6 +45,8 @@ class NPDQuastFolder:
         return True
 
     def _check_reports(self):
+        if not os.path.exists(os.path.join(self._folder, 'reports')):
+            return True
         if len(os.listdir(
                 os.path.join(self._folder, 'reports'),
         )) != 0:
@@ -119,6 +121,10 @@ class NPDQuastFolder:
             {'challenges', 'reports', 'temp', 'true_answers.txt'},
             {'challenges', 'reports', 'debug', 'true_answers.txt'},
             {'challenges', 'reports', 'temp', 'debug', 'true_answers.txt'},
+            {'challenges', 'true_answers.txt'},
+            {'challenges', 'temp', 'true_answers.txt'},
+            {'challenges', 'debug', 'true_answers.txt'},
+            {'challenges', 'temp', 'debug', 'true_answers.txt'},
         ]):
             return False
         return self._check_challenges() and self._check_reports()

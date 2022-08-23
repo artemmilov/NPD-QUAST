@@ -301,26 +301,7 @@ class DereplicatorPlusTool(AbstractNpdTool):
         logger.info('Run command:\n{}'.format(command))
         try:
             completed_process = subprocess.run(
-                ' '.join(
-                    [
-                        self._location,
-                        path_to_spectra,
-                        '--db-path',
-                        path_to_database,
-                        '-o',
-                        path_to_result,
-                    ] +
-                    [
-                        '{0} {1}'.format(k, v)
-                        for k, v in specification.items()
-                        if (v is not None) and (not isinstance(v, dict))
-                    ] +
-                    [
-                        '{0}'.format(k, v)
-                        for k, v in specification.items()
-                        if (v is None) and (not isinstance(v, dict))
-                    ]
-                ),
+                command,
                 shell=True,
                 capture_output=True,
             )

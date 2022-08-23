@@ -154,8 +154,8 @@ def main():
     lg.setLevel(RDLogger.CRITICAL)
 
     logger = NerpaLogger()
-    logger.info('Start running NPD-Quast')
     options = parse_args()
+    logger.info('Start running NPD-Quast')
     handle_args(options, logger)
 
 

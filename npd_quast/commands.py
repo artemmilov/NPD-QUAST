@@ -26,14 +26,9 @@ def run_n_report(options, logger):
                 )
             specification = json.load(f)
             try:
-                folder = npd_quast_folder.NPDQuastFolder(options.folder)
-            except AttributeError as e:
-                logger.error(e)
-                print(e)
-                return
-            except NotADirectoryError as e:
-                logger.error(e)
-                print(e)
+                folder = npd_quast_folder.NPDQuastFolder(options.folder, logger)
+            except AttributeError or NotADirectoryError:
+                logger.error(' ', is_exception=True)
                 return
             logger.info('Input data is ok. Started making report...')
             folder.make_tool_report(
@@ -47,12 +42,9 @@ def run_n_report(options, logger):
 
 def compile_reports(options, logger):
     try:
-        npd_quast_folder.NPDQuastFolder(options.folder)
-    except AttributeError as e:
-        print(e)
-        return
-    except NotADirectoryError as e:
-        print(e)
+        npd_quast_folder.NPDQuastFolder(options.folder, logger)
+    except AttributeError or NotADirectoryError:
+        logger.error(' ', is_exception=True)
         return
     if os.path.isdir(options.folder):
         abs_folder = os.path.abspath(

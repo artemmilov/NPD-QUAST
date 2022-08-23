@@ -12,7 +12,7 @@ VALID_SPECTRA_FORMATS = ['mgf']
 class NPDQuastFolder:
     _folder = None
 
-    def _check_challenges(self):
+    def _check_challenges(self, logger):
         for challenge in os.listdir(
                 os.path.join(self._folder, 'challenges'),
         ):
@@ -22,15 +22,28 @@ class NPDQuastFolder:
                 challenge,
             )
             if len(os.listdir(challenge_dir)) != 2:
+                logger.info(
+                    'Listdir length in {0} is {1} but should be 2'.format(
+                        challenge_dir,
+                        len(os.listdir(challenge_dir)),
+                    )
+                )
                 return False
             if 'spectra' not in os.listdir(challenge_dir):
+                logger.info(
+                    'There is no \'spectra\' subdir in {} folder'.format(
+                        challenge_dir
+                    )
+                )
                 return False
-            for spectra in os.listdir(
+            for specter in os.listdir(
                     os.path.join(challenge_dir, 'spectra'),
             ):
-                if '.' not in spectra:
+                if '.' not in specter:
+                    logger.info('Specter {} does not have any format'.format(specter))
                     return False
-                if spectra.split('.')[1] not in VALID_SPECTRA_FORMATS:
+                if specter.split('.')[1] not in VALID_SPECTRA_FORMATS:
+                    logger.info('Specter {} is in invalid format'.format(specter))
                     return False
             files_with_dot = list(
                 filter(
@@ -39,12 +52,14 @@ class NPDQuastFolder:
                 )
             )
             if len(files_with_dot) != 1:
+                logger.info('There is no database in {} dir'.format(challenge_dir))
                 return False
             if files_with_dot[0].split('.')[1] not in VALID_DATA_FORMATS:
+                logger.info('Database {} is in invalid format'.format(files_with_dot[0]))
                 return False
         return True
 
-    def _check_reports(self):
+    def _check_reports(self, logger):
         if not os.path.exists(os.path.join(self._folder, 'reports')):
             return True
         if len(os.listdir(
@@ -85,7 +100,7 @@ class NPDQuastFolder:
                         npd_quast_pngs += 1
                         continue
                     else:
-                        print(report)
+                        logger.info(report)
                         return False
                 report_folder = os.path.join(
                     self._folder,
@@ -98,6 +113,7 @@ class NPDQuastFolder:
                         npd_quast.report.RAW_REPORT and \
                         set(os.listdir(report_folder)) != \
                         npd_quast.report.FULL_REPORT:
+                    logger.info('Incorrect report consistence')
                     return False
             if {
                 total_pages,
@@ -108,13 +124,16 @@ class NPDQuastFolder:
                 to_right_pngs,
                 npd_quast_pngs
             } not in [{0}, {1}]:
+                logger.info('Reports dir is invalid')
                 return False
         return True
 
-    def _check_correctness(self):
+    def _check_correctness(self, logger):
         if self._folder is None:
+            logger.info('Folder is None')
             return False
         if not os.path.exists(self._folder):
+            logger.info('{} does not exists'.format(self._folder))
             return False
         if (set(os.listdir(self._folder)) not in [
             {'challenges', 'reports', 'true_answers.txt'},
@@ -126,8 +145,9 @@ class NPDQuastFolder:
             {'challenges', 'debug', 'true_answers.txt'},
             {'challenges', 'temp', 'debug', 'true_answers.txt'},
         ]):
+            logger.info('Invalid folder format')
             return False
-        return self._check_challenges() and self._check_reports()
+        return self._check_challenges(logger) and self._check_reports(logger)
 
     def _clean_temp(self):
         if os.path.isdir(os.path.join(self._folder, 'temp')):
@@ -149,7 +169,7 @@ class NPDQuastFolder:
         ):
             shutil.rmtree(os.path.join(self._folder, 'debug', report))
 
-    def __init__(self, folder):
+    def __init__(self, folder, logger):
         if not os.path.exists(os.path.abspath(folder)):
             raise NotADirectoryError(
                 '\"{0}\" is not a directory'.format(
@@ -157,7 +177,7 @@ class NPDQuastFolder:
                 )
             )
         self._folder = os.path.abspath(folder)
-        if (not self._check_correctness()) \
+        if (not self._check_correctness(logger)) \
                 and (len(os.listdir(folder)) != 0):
             raise AttributeError(
                 '\"{0}\" does not correspond to NPD-Quast format'.format(self._folder)

@@ -35,13 +35,9 @@ class AbstractTool:
         os.mkdir(
             os.path.join(abs_folder, 'reports', report),
         )
-        os.mknod(
-            os.path.join(
-                abs_folder,
-                'reports',
-                report,
-                'tool_answers.txt',
-            ),
+        open(
+            os.path.join(abs_folder, 'reports', report, 'tool_answers.txt'),
+            'w',
         )
 
     def clarify_location(self, loc):

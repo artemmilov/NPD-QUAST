@@ -56,12 +56,12 @@ def _rename_database(folder):
         os.path.join(folder, 'library.info'),
         os.path.join(folder, 'old_library.info'),
     )
-    os.mknod(os.path.join(folder, 'library.info'))
+    open(os.path.join(folder, 'library.info'), 'w')
     os.rename(
         os.path.join(folder, 'smiles.info'),
         os.path.join(folder, 'old_smiles.info'),
     )
-    os.mknod(os.path.join(folder, 'smiles.info'))
+    open(os.path.join(folder, 'smiles.info'), 'w')
 
 
 def _clean_database(folder):
@@ -86,8 +86,8 @@ class _NpdToolsDatabase:
         self.folder = folder
         self._existing_inches = set()
         os.mkdir(os.path.join(folder, 'mols'))
-        os.mknod(os.path.join(folder, 'library.info'))
-        os.mknod(os.path.join(folder, 'smiles.info'))
+        open(os.path.join(folder, 'library.info'), 'w')
+        open(os.path.join(folder, 'smiles.info'), 'w')
         self._l = 0
 
     def add_mol(self, quast_mol):

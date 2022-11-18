@@ -144,8 +144,16 @@ class NPDQuastFolder:
             {'challenges', 'temp', 'true_answers.txt'},
             {'challenges', 'debug', 'true_answers.txt'},
             {'challenges', 'temp', 'debug', 'true_answers.txt'},
+            {'challenges', 'reports', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'reports', 'temp', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'reports', 'debug', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'reports', 'temp', 'debug', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'temp', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'debug', 'true_answers.txt', '.snakemake'},
+            {'challenges', 'temp', 'debug', 'true_answers.txt', '.snakemake'},
         ]):
-            logger.info('Invalid folder format')
+            logger.info('Invalid folder format, cur format:\n{}'.format(os.listdir(self._folder)))
             return False
         return self._check_challenges(logger) and self._check_reports(logger)
 

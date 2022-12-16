@@ -1,6 +1,0 @@
-report_dir: '/home/artem/Programming/bioinformatics/NPD-QUAST-test/snakemake_test/new3_unexecuted'
-report_name: 'dereplicator'
-run_tool: 'Dereplicator+'
-challenges: [Challenge-082,Challenge-083]
-options: ['--pass-to-dereplicate " --num_hits_to_report 10 "', '--min-score 1']
-tool_dir: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux

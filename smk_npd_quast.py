@@ -168,7 +168,8 @@ def handle_args(options, logger):
             cores=1,
             configfiles=[os.path.join('smk', 'config.yaml')],
             debug_dag=True,
-            debug=True
+            debug=True,
+            #unlock=True
         )
         npd_quast.compile_reports(options, logger)
         logger.info(

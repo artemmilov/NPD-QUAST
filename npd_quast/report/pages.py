@@ -91,8 +91,14 @@ class TotalPage(_AbstractPage):
                     'templates',
                     'total_page.html',
                 ),
-        ) as total_page:
+        ) as total_page, open(
+            os.path.join(self._npd_quast_folder, 'reports', 'top_plot.html')
+        ) as top_plot, open(
+            os.path.join(self._npd_quast_folder, 'reports', 'quantiles_plot.html')
+        ) as quantiles_plot:
             s = total_page.read()
+            tp = top_plot.read()
+            qt = quantiles_plot.read()
         self._s = s.replace(
             '$ASIDE$',
             super()._make_aside(),
@@ -107,13 +113,13 @@ class TotalPage(_AbstractPage):
                             tool_answers_dict,
                             tops=[1, 3, 5, 10],
                         ),
-                        "<img src=\"top_plot.png\">",
+                        tp,
                         tables.QuantilesTable(
                             true_answers,
                             tool_answers_dict,
                             quantiles=[25, 50, 75],
                         ),
-                        "<img src=\"quantiles_plot.png\">",
+                        qt,
                         tables.RankTable(
                             true_answers,
                             tool_answers_dict,
@@ -145,14 +151,20 @@ class ToolPage(_AbstractPage):
         tool_answers = tool_answers_dict[report]
         super().__init__(npd_quast_folder)
         with open(
-                os.path.join(
-                    'npd_quast',
-                    'report',
-                    'templates',
-                    'tool_page.html',
-                ),
-        ) as tool_page:
+            os.path.join(
+                'npd_quast',
+                'report',
+                'templates',
+                'tool_page.html',
+            ),
+        ) as tool_page, open(
+            os.path.join(self._npd_quast_folder, 'reports', report, 'top_plot.html')
+        ) as top_plot, open(
+            os.path.join(self._npd_quast_folder, 'reports', report, 'quantiles_plot.html')
+        ) as quantiles_plot:
             s = tool_page.read()
+            tp = top_plot.read()
+            qt = quantiles_plot.read()
         self._s = s.replace(
             '$TOOL_NAME$',
             report,
@@ -177,6 +189,12 @@ class ToolPage(_AbstractPage):
         ).replace(
             '$MEDIAN_WEIGHTED_RRP$',
             str(metrics.median_weighted_rrp(true_answers, tool_answers)),
+        ).replace(
+            '$TOP_PLOT$',
+            tp
+        ).replace(
+            '$QUANTILES_PLOT$',
+            qt
         )
 
 

@@ -3,6 +3,10 @@ from matplotlib.ticker import MultipleLocator
 from .metrics import top_x, k_quantile
 import matplotlib.pyplot as plt
 
+import plotly.graph_objs as go
+
+import numpy as np
+
 COLORS = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w']
 
 
@@ -88,3 +92,107 @@ def write_quantiles_plot(true_answers, tool_answers_dict, folder):
         ax.legend()
 
     fig.savefig(folder)
+
+
+def write_interactive_top_plot(true_answers, tool_answers_dict, folder):
+    # объявляем фигуру
+    fig = go.Figure()
+
+    n = 10
+    for i, tool in enumerate(tool_answers_dict.keys()):
+        tool_answers = tool_answers_dict[tool]
+        quantiles = [
+            k_quantile(true_answers, tool_answers, k)
+            for k in range(10, 90)
+        ]
+
+        # добавляем график
+        fig.add_trace(
+            go.Scatter(
+                x=np.arange(1, n), y=np.array(quantiles),  # данные
+                name=tool,  # имя в легенде
+                marker=dict(color='#00CC66'),  # цвет в html-формате
+                opacity=0.8,  # прозрачность
+                line={'width': 3}  # свойства линии - толщина
+            )
+        )
+        # if max(tops) > m:
+        #     m = max(tops)
+        # if len(tool_answers_dict) == 1:
+        #     ax.plot(range(1, n), tops, alpha=1.0)
+        # else:
+        #     ax.plot(range(1, n), tops, alpha=1.0, color=COLORS[i], label=tool)
+        #     legend = True
+
+    # свойства фигуры
+    fig.update_layout(
+        height=450, width=700,  # размер фигуры
+        title_text='Top x',  # заголовок графика
+        title_font_size=16,  # размер заголовка
+        plot_bgcolor='rgba(0,0,0,0.05)',  # цвет фона
+    )
+
+    # параметры оси абсцисс
+    fig.update_xaxes(
+        range=[-1.5, 1.5],  # ограничение графика
+        zeroline=True,  # рисовать линию x=0
+        zerolinewidth=2  # толщина линии x=0
+    )
+
+    # параметры оси ординат
+    fig.update_yaxes(
+        zeroline=True,  # рисовать линию y=0
+        zerolinewidth=2,  # толщина линии y=0
+        zerolinecolor='LightGray'  # цвет линии y=0
+    )
+
+    # показать график
+    fig.write_html(folder)
+
+
+def write_interactive_quantiles_plot(true_answers, tool_answers_dict, folder):
+    # объявляем фигуру
+    fig = go.Figure()
+
+    n = 10
+    for i, tool in enumerate(tool_answers_dict.keys()):
+        tool_answers = tool_answers_dict[tool]
+        quantiles = [
+            k_quantile(true_answers, tool_answers, k)
+            for k in range(10, 90)
+        ]
+        # добавляем график
+        fig.add_trace(
+            go.Scatter(
+                x=np.arange(10, 90), y=np.array(quantiles),  # данные
+                name=tool,  # имя в легенде
+                marker=dict(color='#00CC66'),  # цвет в html-формате
+                opacity=0.8,  # прозрачность
+                line={'width': 3}  # свойства линии - толщина
+            )
+        )
+
+    # свойства фигуры
+    fig.update_layout(
+        height=450, width=700,  # размер фигуры
+        title_text='Quantiles',  # заголовок графика
+        title_font_size=16,  # размер заголовка
+        plot_bgcolor='rgba(0,0,0,0.05)',  # цвет фона
+    )
+
+    # параметры оси абсцисс
+    fig.update_xaxes(
+        range=[-1.5, 1.5],  # ограничение графика
+        zeroline=True,  # рисовать линию x=0
+        zerolinewidth=2  # толщина линии x=0
+    )
+
+    # параметры оси ординат
+    fig.update_yaxes(
+        zeroline=True,  # рисовать линию y=0
+        zerolinewidth=2,  # толщина линии y=0
+        zerolinecolor='LightGray'  # цвет линии y=0
+    )
+
+    # показать график
+    fig.write_html(folder)

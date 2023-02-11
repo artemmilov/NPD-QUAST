@@ -9,6 +9,13 @@ rule all_sirius:
            config['report_name'], 'tool_answers.txt')
 
 
+# challenge1/specter1,2,3
+
+#  rule: results/challenge1.txt
+#  rule: pre_results/challenge1/specter1.txt
+
+
+
 def take_all_spectra(challenges):
     all_spectra = []
     for challenge in challenges:
@@ -43,11 +50,14 @@ rule take_answer_sirius:
         os.path.join('..', 'scripts', 'Sirius', 'take_answer.py')
 
 
+def get_challenge_by_specter(specter):
+    return os.path.split(os.path.split(specter)[0])[0]
+
 rule run_sirius:
     input:
         spectrer=os.path.join(config['report_dir'], 'challenges', '{specter}.mgf'),
-        db=os.path.join(config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'databases' , '{specter}.txt')
+        db=get_challenge_by_specter(os.path.join(config['report_dir'], 'temp', config['report_name'],
+            config['run_tool'], 'databases' , '{specter}.txt')) + '.txt'
     output:
         res=directory(os.path.join(
             config['report_dir'], 'temp', config['report_name'],
@@ -68,7 +78,7 @@ rule prepare_data_sirius:
     input:
         raw_db=os.path.join(config['report_dir'], 'challenges', '{specter}.mgf')
     output:
-        db=os.path.join(config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'databases' , '{specter}.txt')
+        db=get_challenge_by_specter(os.path.join(config['report_dir'], 'temp', config['report_name'],
+            config['run_tool'], 'databases' , '{specter}.txt')) + '.txt'
     script:
         os.path.join('..', 'scripts', 'Sirius', 'prepare.py')

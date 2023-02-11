@@ -80,7 +80,7 @@ def deploy_database():
     # with open("challenges/Challenge-082/database.csv", 'r', encoding='utf-8') as raw_database:
     with open(snakemake.input[0], 'r', encoding='utf-8') as raw_database:
         database = _NpdToolsDatabase()
-        mols_data = raw_database.readlines()
+        mols_data = raw_database.readlines()[1:]
         scan = 1
         for mol_data in mols_data:
             try:
@@ -92,7 +92,7 @@ def deploy_database():
                 smiles = parse_from_mgf(mol_data)[4]
                 quast_mol = _QuastMol(filename, name, mass, smiles)
             except Exception:
-                continue
+                continue        # Log!
             database.add_mol(quast_mol)
             scan += 1
 

@@ -79,20 +79,20 @@ def write_report(
                 'down.png',
             )
         )
-        plots.write_top_plot(
+        plots.write_interactive_top_plot(
             true_answers,
             {
                 report:
-                tool_answers_dict[report]
+                    tool_answers_dict[report]
             },
             os.path.join(
                 npd_quast_folder,
                 'reports',
                 report,
-                'top_plot.png'
+                'top_plot.html'
             ),
         )
-        plots.write_quantiles_plot(
+        plots.write_interactive_quantiles_plot(
             true_answers,
             {
                 report:
@@ -102,7 +102,7 @@ def write_report(
                 npd_quast_folder,
                 'reports',
                 report,
-                'quantiles_plot.png'
+                'quantiles_plot.html'
             ),
         )
         with open(
@@ -132,22 +132,22 @@ def write_report(
         ),
         'w',
     ) as total_page:
-        plots.write_top_plot(
+        plots.write_interactive_top_plot(
             true_answers,
             tool_answers_dict,
             os.path.join(
                 npd_quast_folder,
                 'reports',
-                'top_plot.png',
+                'top_plot.html',
             ),
         )
-        plots.write_quantiles_plot(
+        plots.write_interactive_quantiles_plot(
             true_answers,
             tool_answers_dict,
             os.path.join(
                 npd_quast_folder,
                 'reports',
-                'quantiles_plot.png',
+                'quantiles_plot.html',
             ),
         )
         total_page.write(

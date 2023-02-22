@@ -161,10 +161,13 @@ class ToolPage(_AbstractPage):
             os.path.join(self._npd_quast_folder, 'reports', report, 'top_plot.html')
         ) as top_plot, open(
             os.path.join(self._npd_quast_folder, 'reports', report, 'quantiles_plot.html')
-        ) as quantiles_plot:
+        ) as quantiles_plot, open(
+            os.path.join(self._npd_quast_folder, 'reports', report, 'naive_method.html')
+        ) as naive_method:
             s = tool_page.read()
             tp = top_plot.read()
             qt = quantiles_plot.read()
+            nm = naive_method.read()
         self._s = s.replace(
             '$TOOL_NAME$',
             report,
@@ -195,6 +198,9 @@ class ToolPage(_AbstractPage):
         ).replace(
             '$QUANTILES_PLOT$',
             qt
+        ).replace(
+            '$DECOY_NAIVE_METHOD$',
+            nm
         )
 
 
@@ -224,3 +230,36 @@ class HelpPage(_AbstractPage):
                     ]
                 ) + '</ul>'
             )
+
+
+class DecoysPage(_AbstractPage):
+    _in = True
+
+    def __init__(
+            self,
+            npd_quast_folder,
+            report,
+    ):
+        super().__init__(npd_quast_folder)
+        with open(
+            os.path.join(
+                'npd_quast',
+                'report',
+                'templates',
+                'decoys_page.html',
+            ),
+        ) as decoys_page, open(
+            os.path.join(self._npd_quast_folder, 'reports', report, 'naive_method.html')
+        ) as naive_method:
+            s = decoys_page.read()
+            nm = naive_method.read()
+        self._s = s.replace(
+            '$TOOL_NAME$',
+            report,
+        ).replace(
+            '$ASIDE$',
+            super()._make_aside(),
+        ).replace(
+            '$NAIVE_METHOD$',
+            nm
+        )

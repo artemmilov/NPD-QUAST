@@ -1,6 +1,6 @@
 from matplotlib.ticker import MultipleLocator
 
-from .metrics import top_x, k_quantile
+from .metrics import top_x, k_quantile, fdr
 import matplotlib.pyplot as plt
 
 import plotly.graph_objs as go
@@ -101,15 +101,17 @@ def write_interactive_top_plot(true_answers, tool_answers_dict, folder):
     n = 10
     for i, tool in enumerate(tool_answers_dict.keys()):
         tool_answers = tool_answers_dict[tool]
-        quantiles = [
-            k_quantile(true_answers, tool_answers, k)
-            for k in range(10, 90)
+        if sum(map(len, tool_answers.values())) > n:
+            n = sum(map(len, tool_answers.values()))
+        tops = [
+            top_x(true_answers, tool_answers, top)
+            for top in range(1, n)
         ]
 
         # добавляем график
         fig.add_trace(
             go.Scatter(
-                x=np.arange(1, n), y=np.array(quantiles),  # данные
+                x=np.arange(1, n), y=np.array(tops),  # данные
                 name=tool,  # имя в легенде
                 marker=dict(color='#00CC66'),  # цвет в html-формате
                 opacity=0.8,  # прозрачность
@@ -176,6 +178,60 @@ def write_interactive_quantiles_plot(true_answers, tool_answers_dict, folder):
     fig.update_layout(
         height=450, width=700,  # размер фигуры
         title_text='Quantiles',  # заголовок графика
+        title_font_size=16,  # размер заголовка
+        plot_bgcolor='rgba(0,0,0,0.05)',  # цвет фона
+    )
+
+    # параметры оси абсцисс
+    fig.update_xaxes(
+        range=[-1.5, 1.5],  # ограничение графика
+        zeroline=True,  # рисовать линию x=0
+        zerolinewidth=2  # толщина линии x=0
+    )
+
+    # параметры оси ординат
+    fig.update_yaxes(
+        zeroline=True,  # рисовать линию y=0
+        zerolinewidth=2,  # толщина линии y=0
+        zerolinecolor='LightGray'  # цвет линии y=0
+    )
+
+    # показать график
+    fig.write_html(folder)
+
+
+def write_interactive_decoy_naive_method(tool_answers, folder):
+    # mass_spectra = []
+    # for challenge in os.listdir(os.path.join(folder, 'challenges')):
+    #     for specter in os.listdir(os.path.join(folder, 'challenges', challenge, 'spectra')):
+    #         f = os.path.join(folder, 'challenges', challenge, 'spectra', specter)
+    #         mass_spectra.append(MassSpecter(f))
+
+
+    # объявляем фигуру
+    fig = go.Figure()
+
+    n = len(tool_answers)
+    fdrs = [
+        fdr(tool_answers, k)
+        for k in range(1, n + 1)
+    ]
+
+    # добавляем график
+    fig.add_trace(
+        go.Scatter(
+            x=np.arange(1, n), y=np.array(fdrs),  # данные
+            name='Naive decoys',  # имя в легенде
+            marker=dict(color='#00CC66'),  # цвет в html-формате
+            opacity=0.8,  # прозрачность
+            line={'width': 3}  # свойства линии - толщина
+        )
+    )
+
+    # свойства фигуры
+    fig.update_layout(
+        height=450, width=700,  # размер фигуры
+        title_text='Naive decoys',  # заголовок графика
         title_font_size=16,  # размер заголовка
         plot_bgcolor='rgba(0,0,0,0.05)',  # цвет фона
     )

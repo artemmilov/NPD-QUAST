@@ -233,3 +233,12 @@ def gold_medals(true_answers, tool_answers_dict):
 
 def all_medals(true_answers, tool_answers_dict):
     return _abstract_medal_score(true_answers, tool_answers_dict, [1, 1, 1])
+
+
+def fdr(tool_answers, k):
+    first_k = set(sorted(tool_answers[0], key=lambda _tool_answer: _tool_answer[2])[:k])
+    wrong_answers = 0
+    for tool_answer in first_k:
+        if tool_answer.count('decoy') >= 1:
+            wrong_answers += 1
+    return wrong_answers / k

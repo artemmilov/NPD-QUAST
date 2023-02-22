@@ -105,6 +105,16 @@ def write_report(
                 'quantiles_plot.html'
             ),
         )
+
+        plots.write_interactive_decoy_naive_method(
+            tool_answers_dict[report],
+            os.path.join(
+                npd_quast_folder,
+                'reports',
+                report,
+                'naive_method.html'
+            ),
+        )
         with open(
             os.path.join(
                 npd_quast_folder,

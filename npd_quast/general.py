@@ -1,8 +1,17 @@
+import os.path
 from collections import defaultdict
 
 
 class NPDQuastError(Exception):
     pass
+
+
+def get_true_spectra(folder):
+    true_spectra = []
+    for challenge in os.listdir(os.path.join(folder, 'challenges')):
+        if challenge != 'fake':
+            for specter in os.listdir(os.path.join(folder, 'challenges', challenge, 'spectra')):
+                true_spectra.append('{}\t{}'.format(challenge, specter))
 
 
 def parse_true_answers(true_answers_data_file):

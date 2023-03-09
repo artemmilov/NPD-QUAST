@@ -21,9 +21,12 @@ rule take_answer_dereplicator_plus:
     input:
         db=os.path.join(config['report_dir'], 'temp', config['report_name'],
             config['run_tool'], 'databases' , '{challenge1}'),
-        pre_result_folder=directory(os.path.join(
+        pre_result_folder_spectra=directory(os.path.join(
             config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'results', '{challenge1}'))
+            config['run_tool'], 'results', '{challenge1}', 'spectra')),
+        pre_result_decoys=directory(os.path.join(
+            config['report_dir'],'temp',config['report_name'],
+            config['run_tool'],'results','{challenge1}','decoys'))
     output:
         result=os.path.join(config['report_dir'], 'temp', config['report_name'],
             'answers', '{challenge1}.txt')
@@ -33,12 +36,16 @@ rule take_answer_dereplicator_plus:
 rule run_dereplicator_plus:
     input:
         spectra=os.path.join(config['report_dir'], 'challenges', '{challenge2}', 'spectra'),
+        decoys=os.path.join(config['report_dir'],'challenges','{challenge2}','decoys'),
         db=os.path.join(config['report_dir'], 'temp', config['report_name'],
             config['run_tool'], 'databases' , '{challenge2}')
     output:
-        res=directory(os.path.join(
+        res_spectra=directory(os.path.join(
             config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'results', '{challenge2}'))
+            config['run_tool'], 'results', '{challenge2}', 'spectra')),
+        res_decoys=directory(os.path.join(
+        config['report_dir'],'temp',config['report_name'],
+            config['run_tool'],'results','{challenge2}','decoys'))
     shell:
         ' '.join(
             [
@@ -51,7 +58,23 @@ rule run_dereplicator_plus:
                 '--db-path',
                 '{input.db}',
                 '-o',
-                '{output.res}'  # /path_to_result
+                '{output.res_spectra}'  # /path_to_result
+            ] +
+            config['options'] +
+            [
+                ';\n'
+            ] +
+            [
+                os.path.join(
+                    config['tool_dir'],
+                    'bin',
+                    'dereplicator+.py',
+                ),
+                '{input.decoys}',
+                '--db-path',
+                '{input.db}',
+                '-o',
+                '{output.res_decoys}'  # /path_to_result
             ] +
             config['options']
         )

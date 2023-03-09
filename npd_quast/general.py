@@ -28,11 +28,12 @@ def parse_tool_answers(tool_answers_data_file):
     tool_answers = defaultdict(list)
     with open(tool_answers_data_file) as tool_answers_data:
         for tool_answer in tool_answers_data.read().split('\n'):
-            if tool_answer != '':
-                tool_answers[tool_answer.split('\t')[0] + '\t' + tool_answer.split('\t')[1]].append(
+            if (tool_answer != '') and (tool_answer.split('\t')[1] == 'spectra'):
+                tool_answers[tool_answer.split('\t')[0] + '\t' + \
+                             tool_answer.split('\t')[2]].append(
                     (
-                        tool_answer.split('\t')[2],
-                        float(tool_answer.split('\t')[3], )
+                        tool_answer.split('\t')[3],
+                        float(tool_answer.split('\t')[4], )
                     ),
                 )
     return tool_answers

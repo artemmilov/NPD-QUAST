@@ -82,6 +82,7 @@ class TotalPage(_AbstractPage):
             npd_quast_folder,
             true_answers,
             tool_answers_dict,
+            true_answers_on=False
     ):
         super().__init__(npd_quast_folder)
         with open(
@@ -91,51 +92,56 @@ class TotalPage(_AbstractPage):
                     'templates',
                     'total_page.html',
                 ),
-        ) as total_page, open(
-            os.path.join(self._npd_quast_folder, 'reports', 'top_plot.html')
-        ) as top_plot, open(
-            os.path.join(self._npd_quast_folder, 'reports', 'quantiles_plot.html')
-        ) as quantiles_plot:
+        ) as total_page:
             s = total_page.read()
-            tp = top_plot.read()
-            qt = quantiles_plot.read()
         self._s = s.replace(
             '$ASIDE$',
             super()._make_aside(),
-        ).replace(
-            '$TABLES$',
-            ''.join(
-                map(
-                    str,
-                    [
-                        tables.TopTable(
-                            true_answers,
-                            tool_answers_dict,
-                            tops=[1, 3, 5, 10],
-                        ),
-                        tp,
-                        tables.QuantilesTable(
-                            true_answers,
-                            tool_answers_dict,
-                            quantiles=[25, 50, 75],
-                        ),
-                        qt,
-                        tables.RankTable(
-                            true_answers,
-                            tool_answers_dict,
-                        ),
-                        tables.RRPTable(
-                            true_answers,
-                            tool_answers_dict,
-                        ),
-                        tables.MultiMedalsTable(
-                            true_answers,
-                            tool_answers_dict,
-                        ),
-                    ],
-                ),
-            ),
         )
+        if true_answers_on:
+            with open(
+                os.path.join(self._npd_quast_folder, 'reports', 'top_plot.html')
+            ) as top_plot, open(
+                os.path.join(self._npd_quast_folder, 'reports', 'quantiles_plot.html')
+            ) as quantiles_plot:
+                tp = top_plot.read()
+                qt = quantiles_plot.read()
+            self._s = self._s.replace(
+                '$TABLES$',
+                ''.join(
+                    map(
+                        str,
+                        [
+                            tables.TopTable(
+                                true_answers,
+                                tool_answers_dict,
+                                tops=[1, 3, 5, 10],
+                            ),
+                            tp,
+                            tables.QuantilesTable(
+                                true_answers,
+                                tool_answers_dict,
+                                quantiles=[25, 50, 75],
+                            ),
+                            qt,
+                            tables.RankTable(
+                                true_answers,
+                                tool_answers_dict,
+                            ),
+                            tables.RRPTable(
+                                true_answers,
+                                tool_answers_dict,
+                            ),
+                            tables.MultiMedalsTable(
+                                true_answers,
+                                tool_answers_dict,
+                            ),
+                        ],
+                    ),
+                ),
+            )
+        else:
+            self._s = self._s.replace('$TABLES$', '')
 
 
 class ToolPage(_AbstractPage):
@@ -147,6 +153,8 @@ class ToolPage(_AbstractPage):
             true_answers,
             tool_answers_dict,
             report,
+            true_answers_on=False,
+            decoys_on=False,
     ):
         tool_answers = tool_answers_dict[report]
         super().__init__(npd_quast_folder)
@@ -157,51 +165,88 @@ class ToolPage(_AbstractPage):
                 'templates',
                 'tool_page.html',
             ),
-        ) as tool_page, open(
-            os.path.join(self._npd_quast_folder, 'reports', report, 'top_plot.html')
-        ) as top_plot, open(
-            os.path.join(self._npd_quast_folder, 'reports', report, 'quantiles_plot.html')
-        ) as quantiles_plot, open(
-            os.path.join(self._npd_quast_folder, 'reports', report, 'naive_method.html')
-        ) as naive_method:
+        ) as tool_page:
             s = tool_page.read()
-            tp = top_plot.read()
-            qt = quantiles_plot.read()
-            nm = naive_method.read()
         self._s = s.replace(
             '$TOOL_NAME$',
             report,
         ).replace(
             '$ASIDE$',
             super()._make_aside(),
-        ).replace(
-            '$MEAN_CORRECT_ANSWER_RANK$',
-            str(metrics.mean_rank(true_answers, tool_answers)),
-        ).replace(
-            '$MEDIAN_CORRECT_ANSWER_RANK$',
-            str(metrics.median_rank(true_answers, tool_answers)),
-        ).replace(
-            '$MEAN_RRP$',
-            str(metrics.mean_rrp(true_answers, tool_answers)),
-        ).replace(
-            '$MEDIAN_RRP$',
-            str(metrics.median_rrp(true_answers, tool_answers)),
-        ).replace(
-            '$MEAN_WEIGHTED_RRP$',
-            str(metrics.mean_weighted_rrp(true_answers, tool_answers)),
-        ).replace(
-            '$MEDIAN_WEIGHTED_RRP$',
-            str(metrics.median_weighted_rrp(true_answers, tool_answers)),
-        ).replace(
-            '$TOP_PLOT$',
-            tp
-        ).replace(
-            '$QUANTILES_PLOT$',
-            qt
-        ).replace(
-            '$DECOY_NAIVE_METHOD$',
-            nm
         )
+        if true_answers_on:
+            with open(
+                os.path.join(self._npd_quast_folder, 'reports', report, 'top_plot.html')
+            ) as top_plot, open(
+                os.path.join(self._npd_quast_folder, 'reports', report, 'quantiles_plot.html')
+            ) as quantiles_plot:
+                tp = top_plot.read()
+                qt = quantiles_plot.read()
+            self._s = self._s.replace(
+                '$MEAN_CORRECT_ANSWER_RANK$',
+                str(metrics.mean_rank(true_answers, tool_answers)),
+            ).replace(
+                '$MEDIAN_CORRECT_ANSWER_RANK$',
+                str(metrics.median_rank(true_answers, tool_answers)),
+            ).replace(
+                '$MEAN_RRP$',
+                str(metrics.mean_rrp(true_answers, tool_answers)),
+            ).replace(
+                '$MEDIAN_RRP$',
+                str(metrics.median_rrp(true_answers, tool_answers)),
+            ).replace(
+                '$MEAN_WEIGHTED_RRP$',
+                str(metrics.mean_weighted_rrp(true_answers, tool_answers)),
+            ).replace(
+                '$MEDIAN_WEIGHTED_RRP$',
+                str(metrics.median_weighted_rrp(true_answers, tool_answers)),
+            ).replace(
+                '$TOP_PLOT$',
+                tp
+            ).replace(
+                '$QUANTILES_PLOT$',
+                qt
+            )
+        else:
+            self._s = self._s.replace(
+                '$MEAN_CORRECT_ANSWER_RANK$',
+                '',
+            ).replace(
+                '$MEDIAN_CORRECT_ANSWER_RANK$',
+                '',
+            ).replace(
+                '$MEAN_RRP$',
+                '',
+            ).replace(
+                '$MEDIAN_RRP$',
+                '',
+            ).replace(
+                '$MEAN_WEIGHTED_RRP$',
+                '',
+            ).replace(
+                '$MEDIAN_WEIGHTED_RRP$',
+                '',
+            ).replace(
+                '$TOP_PLOT$',
+                ''
+            ).replace(
+                '$QUANTILES_PLOT$',
+                ''
+            )
+        if decoys_on:
+            with open(
+                os.path.join(self._npd_quast_folder, 'reports', report, 'naive_method.html')
+            ) as naive_method:
+                nm = naive_method.read()
+            self._s = self._s.replace(
+                '$DECOY_NAIVE_METHOD$',
+                nm
+            )
+        else:
+            self._s = self._s.replace(
+                '$DECOY_NAIVE_METHOD$',
+                ''
+            )
 
 
 class HelpPage(_AbstractPage):

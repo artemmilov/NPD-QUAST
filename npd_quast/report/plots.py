@@ -99,10 +99,12 @@ def write_interactive_top_plot(true_answers, tool_answers_dict, folder):
     fig = go.Figure()
 
     n = 10
+    #print(tool_answers_dict)
     for i, tool in enumerate(tool_answers_dict.keys()):
         tool_answers = tool_answers_dict[tool]
         if sum(map(len, tool_answers.values())) > n:
             n = sum(map(len, tool_answers.values()))
+        #print(tool_answers)
         tops = [
             top_x(true_answers, tool_answers, top)
             for top in range(1, n)
@@ -153,6 +155,9 @@ def write_interactive_top_plot(true_answers, tool_answers_dict, folder):
 
 
 def write_interactive_quantiles_plot(true_answers, tool_answers_dict, folder):
+    print('a')
+    print(tool_answers_dict)
+    # print(tool_answers_dict)
     # объявляем фигуру
     fig = go.Figure()
 
@@ -199,6 +204,9 @@ def write_interactive_quantiles_plot(true_answers, tool_answers_dict, folder):
     # показать график
     fig.write_html(folder)
 
+    print('b')
+    print(tool_answers_dict)
+
 
 def write_interactive_decoy_naive_method(tool_answers, folder):
     # mass_spectra = []
@@ -211,7 +219,9 @@ def write_interactive_decoy_naive_method(tool_answers, folder):
     # объявляем фигуру
     fig = go.Figure()
 
-    n = len(tool_answers)
+    # Question! Tool_answers
+    n = sum([len(x) for x in tool_answers.values() if x != []])
+    #print(n)
     fdrs = [
         fdr(tool_answers, k)
         for k in range(1, n + 1)

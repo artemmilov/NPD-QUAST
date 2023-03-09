@@ -7,8 +7,10 @@ import npd_quast.report.plots as plots
 
 def write_report(
         npd_quast_folder,
-        true_answers,
         tool_answers_dict,
+        true_answers=None,
+        true_answers_on=False,
+        decoys_on=False
 ):
     for report in os.listdir(
         os.path.join(
@@ -79,61 +81,69 @@ def write_report(
                 'down.png',
             )
         )
-        plots.write_interactive_top_plot(
-            true_answers,
-            {
-                report:
-                    tool_answers_dict[report]
-            },
-            os.path.join(
-                npd_quast_folder,
-                'reports',
-                report,
-                'top_plot.html'
-            ),
-        )
-        plots.write_interactive_quantiles_plot(
-            true_answers,
-            {
-                report:
-                tool_answers_dict[report]
-            },
-            os.path.join(
-                npd_quast_folder,
-                'reports',
-                report,
-                'quantiles_plot.html'
-            ),
-        )
-
-        plots.write_interactive_decoy_naive_method(
-            tool_answers_dict[report],
-            os.path.join(
-                npd_quast_folder,
-                'reports',
-                report,
-                'naive_method.html'
-            ),
-        )
-        with open(
-            os.path.join(
-                npd_quast_folder,
-                'reports',
-                report,
-                'tool_page.html',
-            ),
-            'w',
-        ) as tool_page:
-            tool_page.write(
-                str(
-                    ToolPage(
-                        npd_quast_folder,
-                        true_answers,
-                        tool_answers_dict,
-                        report,
-                    ),
+        if true_answers_on:
+            print('1')
+            print(tool_answers_dict)
+            plots.write_interactive_top_plot(
+                true_answers,
+                {
+                    report:
+                        tool_answers_dict.get(report)
+                },
+                os.path.join(
+                    npd_quast_folder,
+                    'reports',
+                    report,
+                    'top_plot.html'
                 ),
             )
+            print('2')
+            print(tool_answers_dict)
+            plots.write_interactive_quantiles_plot(
+                true_answers,
+                {
+                    report:
+                    tool_answers_dict.get(report)
+                },
+                os.path.join(
+                    npd_quast_folder,
+                    'reports',
+                    report,
+                    'quantiles_plot.html'
+                ),
+            )
+        # if decoys_on:
+        #     plots.write_interactive_decoy_naive_method(
+        #         tool_answers_dict[report],
+        #         os.path.join(
+        #             npd_quast_folder,
+        #             'reports',
+        #             report,
+        #             'naive_method.html'
+        #         ),
+        #     )
+        # with open(
+        #     os.path.join(
+        #         npd_quast_folder,
+        #         'reports',
+        #         report,
+        #         'tool_page.html',
+        #     ),
+        #     'w',
+        # ) as tool_page:
+        #     tool_page.write(
+        #         str(
+        #             ToolPage(
+        #                 npd_quast_folder,
+        #                 true_answers,
+        #                 tool_answers_dict,
+        #                 report,
+        #                 true_answers_on=true_answers_on,
+        #                 decoys_on=decoys_on
+        #             ),
+        #         ),
+        #     )
+    # print(tool_answers_dict)
     with open(
         os.path.join(
             npd_quast_folder,
@@ -142,33 +152,39 @@ def write_report(
         ),
         'w',
     ) as total_page:
-        plots.write_interactive_top_plot(
-            true_answers,
-            tool_answers_dict,
-            os.path.join(
-                npd_quast_folder,
-                'reports',
-                'top_plot.html',
-            ),
-        )
-        plots.write_interactive_quantiles_plot(
-            true_answers,
-            tool_answers_dict,
-            os.path.join(
-                npd_quast_folder,
-                'reports',
-                'quantiles_plot.html',
-            ),
-        )
-        total_page.write(
-            str(
-                TotalPage(
+        if true_answers_on:
+            print('3')
+            print(tool_answers_dict)
+            plots.write_interactive_top_plot(
+                true_answers,
+                tool_answers_dict,
+                os.path.join(
                     npd_quast_folder,
-                    true_answers,
-                    tool_answers_dict,
+                    'reports',
+                    'top_plot.html',
                 ),
-            ),
-        )
+            )
+            print('4')
+            print(tool_answers_dict)
+            plots.write_interactive_quantiles_plot(
+                true_answers,
+                tool_answers_dict,
+                os.path.join(
+                    npd_quast_folder,
+                    'reports',
+                    'quantiles_plot.html',
+                ),
+            )
+    #     total_page.write(
+    #         str(
+    #             TotalPage(
+    #                 npd_quast_folder,
+    #                 true_answers,
+    #                 tool_answers_dict,
+    #                 true_answers_on=true_answers_on
+    #             ),
+    #         ),
+    #     )
     with open(
         os.path.join(
             npd_quast_folder,

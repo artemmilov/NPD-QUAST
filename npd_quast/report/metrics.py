@@ -4,6 +4,7 @@ ROUND = 2
 
 
 def top_x(true_answers, tool_answers, x=None):
+
     all_answers = []
     for challenge, challenge_answers in tool_answers.items():
         for challenge_answer in challenge_answers:
@@ -32,7 +33,7 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
     sorted_answers = sorted(
         [
             [tool_answer[0], tool_answer[1]]
-            for tool_answer in tool_answers[scan]
+            for tool_answer in tool_answers.get(scan)       # !!!!!!!!!!!!!!!!!!!!!!!
         ],
         key=lambda ans: ans[1],
     )
@@ -55,14 +56,17 @@ def _get_ranks(true_answers, tool_answers, default_rank=None):
         for i, set_inches in enumerate(sorted_inches):
             if true_inchi in set_inches:
                 before = sum(map(len, sorted_inches[:i]))
-                ans_rank = mean(
-                    list(
-                        map(
-                            lambda x: before + x,
-                            range(0, len(set_inches)),
+                try:
+                    ans_rank = mean(
+                        list(
+                            map(
+                                lambda x: before + x,
+                                range(0, len(set_inches)),
+                            ),
                         ),
-                    ),
-                )
+                    )
+                except RuntimeWarning:
+                    print('_get_ranks')
                 ranks.append(ans_rank)
                 found = True
         if not found:
@@ -72,10 +76,13 @@ def _get_ranks(true_answers, tool_answers, default_rank=None):
 
 
 def mean_rank(true_answers, tool_answers, default_rank=None):
-    return round(
-        float(mean(_get_ranks(true_answers, tool_answers, default_rank))),
-        ROUND,
-    )
+    try:
+        return round(
+            float(mean(_get_ranks(true_answers, tool_answers, default_rank))),
+            ROUND,
+        )
+    except RuntimeWarning:
+        print('mean_rank')
 
 
 def median_rank(true_answers, tool_answers, default_rank=None):
@@ -104,17 +111,23 @@ def _get_rrps(true_answers, tool_answers):
 
 
 def mean_rrp(true_answers, tool_answers):
-    return round(
-        float(mean(_get_rrps(true_answers, tool_answers))),
-        ROUND,
-    )
+    try:
+        return round(
+            float(mean(_get_rrps(true_answers, tool_answers))),
+            ROUND,
+        )
+    except RuntimeWarning:
+        print('mean_rrp')
 
 
 def median_rrp(true_answers, tool_answers):
-    return round(
-        float(median(_get_rrps(true_answers, tool_answers))),
-        ROUND,
-    )
+    try:
+        return round(
+            float(median(_get_rrps(true_answers, tool_answers))),
+            ROUND,
+        )
+    except RuntimeWarning:
+        print('median_rrp')
 
 
 def _get_weighted_rrps(true_answers, tool_answers):
@@ -150,12 +163,15 @@ def _get_weighted_rrps(true_answers, tool_answers):
 
 
 def mean_weighted_rrp(true_answers, tool_answers):
-    return round(
-        float(
-            mean(_get_weighted_rrps(true_answers, tool_answers))
-        ),
-        ROUND,
-    )
+    try:
+        return round(
+            float(
+                mean(_get_weighted_rrps(true_answers, tool_answers))
+            ),
+            ROUND,
+        )
+    except RuntimeWarning:
+        print('mean_weighted_rrp')
 
 
 def median_weighted_rrp(true_answers, tool_answers):
@@ -174,14 +190,17 @@ def k_quantile(true_answers, tool_answers, k=50):
         for i, set_inches in enumerate(sorted_inches):
             if true_inchi in set_inches:
                 before = sum(map(len, sorted_inches[:i]))
-                ans_rank = mean(
-                    list(
-                        map(
-                            lambda x: before + x,
-                            range(0, len(set_inches)),
+                try:
+                    ans_rank = mean(
+                        list(
+                            map(
+                                lambda x: before + x,
+                                range(0, len(set_inches)),
+                            ),
                         ),
-                    ),
-                )
+                    )
+                except RuntimeWarning:
+                    print('k_quantile')
                 positions.append(ans_rank)
     if len(positions) != 0:
         return round(quantile(positions, k / 100), ROUND)

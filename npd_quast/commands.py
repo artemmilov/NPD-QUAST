@@ -52,12 +52,19 @@ def compile_reports(options, logger):
                 options.folder,
             )
         )
-        true_answers = general.parse_true_answers(
-            os.path.join(
-                abs_folder,
-                'true_answers.txt',
+
+        true_answers_on = 'true_answers.txt' in os.listdir(options.folder)
+        true_answers = None
+        if true_answers_on:
+            true_answers = general.parse_true_answers(
+                os.path.join(
+                    abs_folder,
+                    'true_answers.txt',
+                )
             )
-        )
+        decoys_on = False
+        for challenge in os.listdir(os.path.join(options.folder, 'challenges')):
+            decoys_on = decoys_on or 'decoys' in os.listdir(os.path.join(options.folder, 'challenges', challenge))
         tool_answers_dict = {
             report: general.parse_tool_answers(
                 os.path.join(
@@ -83,7 +90,9 @@ def compile_reports(options, logger):
         }
         npd_quast.report.write_report(
             abs_folder,
-            true_answers,
             tool_answers_dict,
+            true_answers=true_answers,
+            true_answers_on=true_answers_on,
+            decoys_on=decoys_on
         )
         print('All reports has been compiled!')

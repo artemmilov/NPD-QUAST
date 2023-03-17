@@ -30,6 +30,9 @@ def top_x(true_answers, tool_answers, x=None):
 
 
 def _get_sorted_inches_for_scan(tool_answers, scan):
+    result = []
+    if tool_answers.get(scan) is None:
+        return result
     sorted_answers = sorted(
         [
             [tool_answer[0], tool_answer[1]]
@@ -37,7 +40,6 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
         ],
         key=lambda ans: ans[1],
     )
-    result = []
     last_scan = None
     for sorted_answer in sorted_answers:
         if sorted_answer[1] == last_scan:

@@ -239,12 +239,12 @@ class ToolPage(_AbstractPage):
             ) as naive_method:
                 nm = naive_method.read()
             self._s = self._s.replace(
-                '$DECOY_NAIVE_METHOD$',
+                '$DECOY_PLOT$',
                 nm
             )
         else:
             self._s = self._s.replace(
-                '$DECOY_NAIVE_METHOD$',
+                '$DECOY_PLOT',
                 ''
             )
 

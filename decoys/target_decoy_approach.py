@@ -16,6 +16,22 @@ def handle_naive_method(mass_spectra):
     return MassSpecter(peaks=result_specter)
 
 
+def handle_spectrum_based_method(mass_spectra):
+    k = random.choice(list(map(lambda ms: len(ms.peaks), mass_spectra)))
+    i = random.choice(range(len(mass_spectra)))
+    result_peaks = [max(mass_spectra[i].peaks, key=lambda pk: pk[0])]
+    result_masses = set(map(lambda pk: pk[0], result_peaks))
+
+    for _ in range(k):
+        suitable_peaks = []
+        for mass_specter in mass_spectra:
+            if result_masses.issubset(set(mass_specter.peaks)):
+                suitable_peaks += mass_specter.peaks
+        result_peaks.append(random.choice(suitable_peaks))
+        result_masses = set(map(lambda pk: pk[0], result_peaks))
+    return MassSpecter(peaks=result_peaks)
+
+
 def make_decoys(npd_quast_folder, percent=100):
     mass_spectra = []
     for challenge in os.listdir(os.path.join(npd_quast_folder, 'challenges')):

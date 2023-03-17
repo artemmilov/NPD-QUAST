@@ -13,6 +13,7 @@ def _is_peak(s):
 
 
 class MassSpecter:
+    pepmass = None
     peaks = []
 
     def __init__(self, text=None, file=None, peaks=None):
@@ -35,14 +36,15 @@ class MassSpecter:
         for line in _text.split('\n'):
             if _is_peak(line):
                 self.peaks.append([float(line.split('\t')[0]), float(line.split('\t')[1])])
+        self.pepmass = max(map(lambda peak: peak[0], self.peaks))
 
     def write_to_file(self, folder):
         with open(folder, 'w') as f:
             f.write('''BEGIN IONS
 MSLEVEL=2
-PEPMASS=150.0913
+PEPMASS={}
 CHARGE=1+
-SCANS=1\n''')
+SCANS=1\n'''.format(self.pepmass))
             for peak in self.peaks:
                 f.write('{}\t{}\n'.format(peak[0], peak[1]))
             f.write('END IONS\n')

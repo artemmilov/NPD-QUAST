@@ -35,7 +35,7 @@ class MassSpecter:
 
         for line in _text.split('\n'):
             if _is_peak(line):
-                self.peaks.append([float(line.split('\t')[0]), float(line.split('\t')[1])])
+                self.peaks.append((float(line.split('\t')[0]), float(line.split('\t')[1]),))
         self.pepmass = max(map(lambda peak: peak[0], self.peaks))
 
     def write_to_file(self, folder):

@@ -27,6 +27,8 @@ def handle_spectrum_based_method(mass_spectra):
         for mass_specter in mass_spectra:
             if result_masses.issubset(set(mass_specter.peaks)):
                 suitable_peaks += mass_specter.peaks
+        if len(suitable_peaks) == 0:
+            break
         result_peaks.append(random.choice(suitable_peaks))
         result_masses = set(map(lambda pk: pk[0], result_peaks))
     return MassSpecter(peaks=result_peaks)

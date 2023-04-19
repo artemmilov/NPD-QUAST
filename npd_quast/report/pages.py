@@ -201,6 +201,9 @@ class ToolPage(_AbstractPage):
                 '$MEDIAN_WEIGHTED_RRP$',
                 str(metrics.median_weighted_rrp(true_answers, tool_answers)),
             ).replace(
+                '$AUC$',
+                str(metrics.auc(true_answers, tool_answers))
+            ).replace(
                 '$TOP_PLOT$',
                 tp
             ).replace(
@@ -226,6 +229,9 @@ class ToolPage(_AbstractPage):
             ).replace(
                 '$MEDIAN_WEIGHTED_RRP$',
                 '',
+            ).replace(
+                '$AUC$',
+                ''
             ).replace(
                 '$TOP_PLOT$',
                 ''

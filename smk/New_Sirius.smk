@@ -30,12 +30,12 @@ def take_all_spectra(challenges):
 rule compile_answers_sirius:
     input:
         expand(os.path.join(config['report_dir'], 'temp', config['report_name'],
-            'answers', '{specter}.txt'), specter=take_all_spectra(config['challenges']))
+            'answers', '{challenge}.txt'), challenge=config['challenges'])
     output:
         os.path.join(config['report_dir'], 'reports',
             config['report_name'], 'tool_answers.txt')
     script:
-         os.path.join('..', 'scripts', 'compile_answers.py')
+        os.path.join('..', 'scripts', 'compile_answers.py')
 
 
 rule take_answer_sirius:

@@ -1,10 +1,11 @@
+import math
+
 from numpy import mean, median, quantile
 
 ROUND = 2
 
 
 def top_x(true_answers, tool_answers, x=None):
-
     all_answers = []
     for challenge, challenge_answers in tool_answers.items():
         for challenge_answer in challenge_answers:
@@ -36,7 +37,7 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
     sorted_answers = sorted(
         [
             [tool_answer[0], tool_answer[1]]
-            for tool_answer in tool_answers.get(scan)       # !!!!!!!!!!!!!!!!!!!!!!!
+            for tool_answer in tool_answers.get(scan)  # !!!!!!!!!!!!!!!!!!!!!!!
         ],
         key=lambda ans: ans[1],
     )
@@ -53,6 +54,8 @@ def _get_sorted_inches_for_scan(tool_answers, scan):
 def _get_ranks(true_answers, tool_answers, default_rank=None):
     ranks = []
     for scan, true_inchi in true_answers.items():
+        if true_inchi not in map(lambda ta: ta[0], tool_answers[scan]):
+            continue
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         found = False
         for i, set_inches in enumerate(sorted_inches):
@@ -99,6 +102,8 @@ def median_rank(true_answers, tool_answers, default_rank=None):
 def _get_rrps(true_answers, tool_answers):
     rrps = []
     for scan, true_inchi in true_answers.items():
+        if scan not in map(lambda ta: ta[0], tool_answers[scan]):
+            continue
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         for i, set_inches in enumerate(sorted_inches):
             if true_inchi in set_inches:
@@ -135,6 +140,8 @@ def median_rrp(true_answers, tool_answers):
 def _get_weighted_rrps(true_answers, tool_answers):
     weighted_rrps = []
     for scan, true_inchi in true_answers.items():
+        if scan not in map(lambda ta: ta[0], tool_answers[scan]):
+            continue
         sorted_answers = sorted(
             [
                 [tool_answer[0], tool_answer[1]]
@@ -188,6 +195,8 @@ def median_weighted_rrp(true_answers, tool_answers):
 def k_quantile(true_answers, tool_answers, k=50):
     positions = []
     for scan, true_inchi in true_answers.items():
+        if scan not in map(lambda ta: ta[0], tool_answers[scan]):
+            continue
         sorted_inches = _get_sorted_inches_for_scan(tool_answers, scan)
         for i, set_inches in enumerate(sorted_inches):
             if true_inchi in set_inches:
@@ -214,6 +223,8 @@ def _abstract_medal_score(true_answers, tool_answers_dict, medals):
     for scan, true_inchi in true_answers.items():
         positions_dict = {}
         for tool_title, tool_answers in tool_answers_dict.items():
+            if scan not in map(lambda ta: ta[0], tool_answers[scan]):
+                continue
             sorted_tool_answers = sorted(
                 tool_answers[scan],
                 key=lambda ans: ans[1],
@@ -254,6 +265,24 @@ def gold_medals(true_answers, tool_answers_dict):
 
 def all_medals(true_answers, tool_answers_dict):
     return _abstract_medal_score(true_answers, tool_answers_dict, [1, 1, 1])
+
+
+def auc(true_answers, tool_answers):
+    return 0
+    n0 = len(tool_answers.keys())
+    n1 = sum(map(len, tool_answers.values()))
+    s0 = 0
+    answers = []
+    for scan in tool_answers:
+        for ans in tool_answers[scan]:
+            answers.append((scan, ans[0], ans[1],))
+    answers.sort(key=lambda _ans: _ans[2], reverse=True)
+    # print(true_answers.items())
+    for i, answer in enumerate(answers):
+        if (answer[0], answer[1],) in true_answers.items(): # ('Challenge-093\tChallenge-093', 'OYTCZOJKXCTBHG')
+            s0 += i + 1
+    print(s0, n0, n1)
+    return (s0 - n0 * (n0 + 1) / 2) / (n0 * n1)
 
 
 def fdr(tool_answers, k):

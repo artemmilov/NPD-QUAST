@@ -162,16 +162,38 @@ def handle_args(options, logger):
             elif options.tool == 'Sirius':
                 config.write("options: ['', '--name cur_database', '', '-c 10', '--database cur_database']\n")
             config.write('tool_dir: {}\n'.format(input_config['supported tools'][tool_code_name]))
-        snakemake.snakemake(
-            snakefile=os.path.join('smk', options.tool + '.smk'),
-            workdir=options.folder,
-            cores=1,
-            configfiles=[os.path.join('smk', 'config.yaml')],
-            #debug_dag=True,
-            #debug=True,
-            forceall=True,
-            #unlock=True
-        )
+        if options.tool != 'Sirius':
+            snakemake.snakemake(
+                snakefile=os.path.join('smk', options.tool + '.smk'),
+                workdir=options.folder,
+                cores=1,
+                configfiles=[os.path.join('smk', 'config.yaml')],
+                # debug_dag=True,
+                # debug=True,
+                forceall=True,
+                # unlock=True
+            )
+        else:
+            # snakemake.snakemake(
+            #     snakefile=os.path.join('smk', 'Sirius', 'build_databases.smk'),
+            #     workdir=options.folder,
+            #     cores=1,
+            #     configfiles=[os.path.join('smk', 'config.yaml')],
+            #     # debug_dag=True,
+            #     # debug=True,
+            #     forceall=True,
+            #     # unlock=True
+            # )
+            snakemake.snakemake(
+                snakefile=os.path.join('smk', 'Sirius', 'run.smk'),
+                workdir=options.folder,
+                cores=1,
+                configfiles=[os.path.join('smk', 'config.yaml')],
+                # debug_dag=True,
+                # debug=True,
+                forceall=True,
+                # unlock=True
+            )
         npd_quast.compile_reports(options, logger)
         logger.info(
             '{0} report has been reported in {1}!'.format(

@@ -3,6 +3,21 @@ import os
 configfile: os.path.join('smk', 'config.yaml')
 
 
+def form_data():
+    challenges = []
+    spectra = []
+    again_challenges = []
+    decoys = []
+    for challenge in config['challenges']:
+        for specter in os.listdir(os.path.join(config['report_dir'], 'challenges', challenge, 'spectra')):
+            challenges.append(challenge)
+            spectra.append(str(specter).split('.')[0])
+        for decoy in os.listdir(os.path.join(config['report_dir'],'challenges',challenge,'decoys')):
+            again_challenges.append(challenge)
+            decoys.append(str(decoy).split('.')[0])
+    return [challenges, spectra, again_challenges, decoys]
+
+
 rule all_sirius_run:
     input:
        os.path.join(config['report_dir'], 'reports',
@@ -22,9 +37,11 @@ rule all_sirius_run:
 
 rule compile_answers_sirius_run:
     input:
-        # list
         expand(os.path.join(config['report_dir'], 'temp', config['report_name'],
-            'answers', '{challenge}', 'spectra', '{specter}', '.txt'))
+            'answers', '{challenge}', 'spectra', '{specter}', '.txt'),
+        zip,
+        challenge = form_data()[0],
+        specter = form_data()[0])
     output:
         os.path.join(config['report_dir'], 'reports',
             config['report_name'], 'tool_answers.txt')

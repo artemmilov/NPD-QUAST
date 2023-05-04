@@ -20,10 +20,25 @@ def take_all_spectra(challenges):
     return all_spectra
 
 
+def form_data():
+    challenges = []
+    spectra = []
+    for challenge in config['challenges']:
+        for specter in os.listdir(os.path.join(config['report_dir'], 'challenges', challenge, 'spectra')):
+            challenges.append(challenge)
+            spectra.append(str(specter).split('.')[0])
+    return [challenges, spectra]
+
+
 rule compile_answers_magma_plus_run:
     input:
-        glob_wildcards(os.path.join(config['report_dir'],'temp',config['report_name'],
-            'answers','{challenge}','spectra','{specter}.txt'))
+        expand(
+            os.path.join(config['report_dir'],'temp',config['report_name'],
+            'answers','{challenge}','spectra','{specter}.txt'),
+            zip,
+            challenge=form_data()[0],
+            specter=form_data()[1]
+        )
     output:
         os.path.join(config['report_dir'],'reports',
             config['report_name'],'tool_answers.txt')
@@ -64,9 +79,11 @@ rule run_magma_plus_run:
     shell:
         'cd {input.job_dir};\n' + \
         'export PATH={0}:$PATH;\n'.format(config['tool_dir']) + \
-        'eval "$(conda shell.bash hook)";\n' + \
-        'conda env create -f ~/Programming/bioinformatics/NPD-QUAST/envs/magma-plus-env.yml || true;\n' + \
-        'conda activate magma-plus-env;\n' + \
+        #'mamba create -n kinoml --no-default-packages' + \
+        #'mamba env update -n kinoml -f env.yml' + \
+        #'eval "$(conda shell.bash hook)";\n' + \
+        # 'conda env create -f ~/Programming/bioinformatics/NPD-QUAST/envs/magma-plus-env.yml || true;\n' + \
+        'conda activate magma-plus-env-1;\n' + \
         'export MAGMAPLUS_CLASSIFIER_PATH={0};\n'.format(config['tool_dir']) + \
         'path_to_magma={0};\n'.format(config['tool_dir']) + \
         'python ' + config['tool_dir'] + '/MAGMa_plus.py' + \

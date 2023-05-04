@@ -65,7 +65,7 @@ rule run_magma_plus:
         'cd {input.job_dir};\n' +\
         'export PATH={0}:$PATH;\n'.format(config['tool_dir']) +\
         'eval "$(conda shell.bash hook)";\n' +\
-        'conda env create -f ~/Programming/bioinformatics/NPD-QUAST/envs/magma-plus-env.yml || true;\n' +\
+        #'conda env create -f ~/Programming/bioinformatics/NPD-QUAST/envs/magma-plus-env.yml || true;\n' +\
         'conda activate magma-plus-env;\n' +\
         'export MAGMAPLUS_CLASSIFIER_PATH={0};\n'.format(config['tool_dir']) +\
         'path_to_magma={0};\n'.format(config['tool_dir']) +\

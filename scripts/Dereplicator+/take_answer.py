@@ -33,26 +33,3 @@ with open(snakemake.output[0], 'w') as tool_answers:
                     str(-float(score)),
                 ),
             )
-
-with open(snakemake.output[0], 'a') as tool_answers:
-    with open(os.path.join(snakemake.input[2], 'all_matches.tsv')) as output:
-        for line in output.readlines()[1:]:
-            # QUESTION!!!QUESTION!!!QUESTION!!!QUESTION!!!QUESTION!!!
-            challenge_name = os.path.split(os.path.split(os.path.split(line.split('\t')[0])[0])[0])[1]
-            # QUESTION!!!QUESTION!!!QUESTION!!!QUESTION!!!QUESTION!!!
-            spectra_or_decoy = os.path.split(os.path.split(line.split('\t')[0])[0])[1]
-            answer_scan = int(line.split('\t')[2])
-            answer_id = int(line.split('\t')[3])
-            answer_inchi_key = id_to_inchi[answer_id]
-            specter = os.path.split(line.split('\t')[0])[-1].split('.')[0]
-            score = line.split('\t')[5]
-            tool_answers.write(
-                '{0}\t{1}\t{2}\t{3}\t{4}\t{5}\n'.format(
-                    challenge_name,
-                    spectra_or_decoy,
-                    specter,
-                    answer_scan,
-                    answer_inchi_key,
-                    str(-float(score)),
-                ),
-            )

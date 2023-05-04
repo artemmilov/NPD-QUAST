@@ -63,7 +63,7 @@ def make_decoys(npd_quast_folder, percent=100):
         for i in range(k):
             handle_naive_method(mass_spectra).write_to_file(os.path.join(npd_quast_folder,
                                                                          'challenges', challenge, 'spectra',
-                                                                         'decoy_{}'.format(i)))
+                                                                         'decoy_{}.mgf'.format(i)))
 
 
 def main():

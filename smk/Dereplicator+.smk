@@ -7,45 +7,46 @@ rule all_dereplicator_plus:
        os.path.join(config['report_dir'], 'reports',
            config['report_name'], 'tool_answers.txt')
 
+
 rule compile_answers_dereplicator_plus:
     input:
-        expand(os.path.join(config['report_dir'], 'temp', config['report_name'],
-            'answers', '{challenge}.txt'), challenge=config['challenges'])
+        [
+            os.path.join(config['report_dir'], 'temp', config['report_name'],
+                'answers', '{challenge}_{smt}.txt').format(challenge=challenge, smt=smt)
+            for challenge in config['challenges']
+            for smt in os.listdir(os.path.join(config['report_dir'], 'challenges', challenge))
+            if os.path.isdir(os.path.join(config['report_dir'], 'challenges', challenge, str(smt)))
+         ]
     output:
         os.path.join(config['report_dir'], 'reports',
             config['report_name'], 'tool_answers.txt')
     script:
         os.path.join('..', 'scripts', 'compile_answers.py')
 
+
 rule take_answer_dereplicator_plus:
     input:
         db=os.path.join(config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'databases' , '{challenge1}'),
-        pre_result_folder_spectra=directory(os.path.join(
+            config['run_tool'], 'databases' , '{challenge}'),
+        pre_result_folder=os.path.join(
             config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'results', '{challenge1}', 'spectra')),
-        pre_result_decoys=directory(os.path.join(
-            config['report_dir'],'temp',config['report_name'],
-            config['run_tool'],'results','{challenge1}','decoys'))
+            config['run_tool'], 'results', '{challenge}', '{smt}')
     output:
         result=os.path.join(config['report_dir'], 'temp', config['report_name'],
-            'answers', '{challenge1}.txt')
+            'answers', '{challenge}_{smt}.txt')
     script:
         os.path.join('..', 'scripts', 'Dereplicator+', 'take_answer.py')
 
+
 rule run_dereplicator_plus:
     input:
-        spectra=os.path.join(config['report_dir'], 'challenges', '{challenge2}', 'spectra'),
-        decoys=os.path.join(config['report_dir'],'challenges','{challenge2}','decoys'),
+        inp=os.path.join(config['report_dir'], 'challenges', '{challenge2}', '{smt}'),
         db=os.path.join(config['report_dir'], 'temp', config['report_name'],
             config['run_tool'], 'databases' , '{challenge2}')
     output:
         res_spectra=directory(os.path.join(
             config['report_dir'], 'temp', config['report_name'],
-            config['run_tool'], 'results', '{challenge2}', 'spectra')),
-        res_decoys=directory(os.path.join(
-        config['report_dir'],'temp',config['report_name'],
-            config['run_tool'],'results','{challenge2}','decoys'))
+            config['run_tool'], 'results', '{challenge2}', '{smt}'))
     shell:
         ' '.join(
             [
@@ -54,27 +55,11 @@ rule run_dereplicator_plus:
                     'bin',
                     'dereplicator+.py',
                 ),
-                '{input.spectra}',
+                '{input.inp}',
                 '--db-path',
                 '{input.db}',
                 '-o',
                 '{output.res_spectra}'  # /path_to_result
-            ] +
-            config['options'] +
-            [
-                ';\n'
-            ] +
-            [
-                os.path.join(
-                    config['tool_dir'],
-                    'bin',
-                    'dereplicator+.py',
-                ),
-                '{input.decoys}',
-                '--db-path',
-                '{input.db}',
-                '-o',
-                '{output.res_decoys}'  # /path_to_result
             ] +
             config['options']
         )

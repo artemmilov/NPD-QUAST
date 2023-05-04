@@ -20,16 +20,16 @@ rule compile_answers:
         os.path.join('..', 'scripts', 'compile_answers.py')
 
 
-rule take_answer_dereplicator_plus:
+rule take_answer:
     input:
     output:
 
 
-rule run_dereplicator_plus:
+rule run:
     input:
     output:
 
 
-rule prepare_data_dereplicator_plus:
+rule prepare_data:
     input:
     output:

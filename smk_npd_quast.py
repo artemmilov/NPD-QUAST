@@ -162,7 +162,7 @@ def handle_args(options, logger):
             elif options.tool == 'Sirius':
                 config.write("options: ['', '--name cur_database', '', '-c 10', '--database cur_database']\n")
             config.write('tool_dir: {}\n'.format(input_config['supported tools'][tool_code_name]))
-        if options.tool != 'Sirius':
+        if options.tool == 'Dereplicator+':
             snakemake.snakemake(
                 snakefile=os.path.join('smk', options.tool + '.smk'),
                 workdir=options.folder,
@@ -173,9 +173,19 @@ def handle_args(options, logger):
                 forceall=True,
                 # unlock=True
             )
-        else:
+        elif options.tool == 'MAGMa+':
+            snakemake.snakemake(
+                snakefile=os.path.join('smk', 'MAGMa+', 'build_databases.smk'),
+                workdir=options.folder,
+                cores=1,
+                configfiles=[os.path.join('smk', 'config.yaml')],
+                # debug_dag=True,
+                # debug=True,
+                forceall=True,
+                # unlock=True
+            )
             # snakemake.snakemake(
-            #     snakefile=os.path.join('smk', 'Sirius', 'build_databases.smk'),
+            #     snakefile=os.path.join('smk', 'MAGMa+', 'run.smk'),
             #     workdir=options.folder,
             #     cores=1,
             #     configfiles=[os.path.join('smk', 'config.yaml')],
@@ -184,6 +194,17 @@ def handle_args(options, logger):
             #     forceall=True,
             #     # unlock=True
             # )
+        else:
+            snakemake.snakemake(
+                snakefile=os.path.join('smk', 'Sirius', 'build_databases.smk'),
+                workdir=options.folder,
+                cores=1,
+                configfiles=[os.path.join('smk', 'config.yaml')],
+                # debug_dag=True,
+                # debug=True,
+                forceall=True,
+                # unlock=True
+            )
             snakemake.snakemake(
                 snakefile=os.path.join('smk', 'Sirius', 'run.smk'),
                 workdir=options.folder,

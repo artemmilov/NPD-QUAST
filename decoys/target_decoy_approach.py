@@ -1,7 +1,9 @@
+import math
 import os
 
 from decoys.mass_specter import MassSpecter
 import random
+from collections import defaultdict
 
 
 def handle_naive_method(mass_spectra, number_peaks_like_target=False, peaks_from_same_pepmass=False):
@@ -21,6 +23,39 @@ def handle_naive_method(mass_spectra, number_peaks_like_target=False, peaks_from
     result_specter = []
     for _ in range(k):
         result_specter.append(random.choice(all_spectres))
+    return MassSpecter(peaks=result_specter)
+
+
+def handle_naive_method_extra(mass_spectra, number_peaks_like_target=False, peaks_from_same_pepmass=False,
+                              f=lambda x: math.sqrt(x)):
+    print('A')
+    target_mass_specter = random.choice(mass_spectra)
+    target_pepmass = target_mass_specter.pepmass
+    target_length = len(target_mass_specter.peaks)
+
+    all_spectres = defaultdict(int)
+    for mass_specter in mass_spectra:
+        print('A')
+        if (not peaks_from_same_pepmass) or (mass_specter.pepmass == target_pepmass):
+            for peak in mass_specter.peaks:
+                all_spectres[peak] += 1
+    total = sum(all_spectres.values())
+    for peak in all_spectres:
+        all_spectres[peak] /= total
+    if not number_peaks_like_target:
+        k = random.choice(list(map(lambda ms: len(ms.peaks), mass_spectra)))
+    else:
+        k = target_length
+    result_specter = []
+    for _ in range(k):
+        take = False
+        peak = None
+        while not take:
+            peak = random.choice(all_spectres)
+            val = f(all_spectres[peak])
+            if random.random() <= val:
+                take = True
+        result_specter.append(peak)
     return MassSpecter(peaks=result_specter)
 
 

@@ -73,12 +73,15 @@ to each other. """
 
 def handle_args(options, logger):
     mass_spectra = []
+    print('A')
     for challenge in os.listdir(os.path.join(options.folder, 'challenges')):
         for specter in os.listdir(os.path.join(options.folder, 'challenges', challenge, 'spectra')):
             mass_spectra.append(decoys.MassSpecter(file=os.path.join(
                 options.folder, 'challenges', challenge, 'spectra', specter)))
     s = 0
+    print('A')
     for challenge in os.listdir(os.path.join(options.folder, 'challenges')):
+        print('A')
         k = int((options.percent / 100) * \
                 len(os.listdir(os.path.join(options.folder, 'challenges', challenge, 'spectra'))))
         for i in range(k):
@@ -86,6 +89,11 @@ def handle_args(options, logger):
                 os.mkdir(os.path.join(options.folder, 'challenges', challenge, 'decoys'))
             if options.method == 'naive':
                 decoys.handle_naive_method(mass_spectra).write_to_file(
+                    os.path.join(options.folder, 'challenges', challenge,
+                                 'decoys', 'decoy_{}'.format(s)))
+            elif options.method == 'naive_extra':
+                print('A')
+                decoys.handle_naive_method_extra(mass_spectra).write_to_file(
                     os.path.join(options.folder, 'challenges', challenge,
                                  'decoys', 'decoy_{}'.format(s)))
             elif options.method == 'spectrum_based':

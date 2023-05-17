@@ -184,16 +184,17 @@ def handle_args(options, logger):
                 forceall=True,
                 # unlock=True
             )
-            # snakemake.snakemake(
-            #     snakefile=os.path.join('smk', 'MAGMa+', 'run.smk'),
-            #     workdir=options.folder,
-            #     cores=1,
-            #     configfiles=[os.path.join('smk', 'config.yaml')],
-            #     # debug_dag=True,
-            #     # debug=True,
-            #     forceall=True,
-            #     # unlock=True
-            # )
+            snakemake.snakemake(
+                snakefile=os.path.join('smk', 'MAGMa+', 'run.smk'),
+                workdir=options.folder,
+                cores=1,
+                configfiles=[os.path.join('smk', 'config.yaml')],
+                # debug_dag=True,
+                # debug=True,
+                forceall=True,
+                # unlock=True,
+                use_conda=True
+            )
         else:
             snakemake.snakemake(
                 snakefile=os.path.join('smk', 'Sirius', 'build_databases.smk'),

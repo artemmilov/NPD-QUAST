@@ -37,11 +37,15 @@ rule all_sirius_run:
 
 rule compile_answers_sirius_run:
     input:
-        expand(os.path.join(config['report_dir'], 'temp', config['report_name'],
-            'answers', '{challenge}', 'spectra', '{specter}', '.txt'),
-        zip,
-        challenge = form_data()[0],
-        specter = form_data()[0])
+        [
+            os.path.join(config['report_dir'],'temp',config['report_name'],
+                'answers','{challenge}_{smt}_{specter}.txt').format(challenge=challenge,smt=smt, specter=specter)
+            for challenge in config['challenges']
+            for smt in os.listdir(os.path.join(config['report_dir'],'challenges',challenge))
+            if os.path.isdir(os.path.join(config['report_dir'],'challenges',challenge, str(smt)))
+            for specter in map(lambda s: s.split('.')[0],
+            os.listdir(os.path.join(config['report_dir'],'challenges',challenge, str(smt))))
+        ]
     output:
         os.path.join(config['report_dir'], 'reports',
             config['report_name'], 'tool_answers.txt')
@@ -53,10 +57,10 @@ rule take_answer_sirius_run:
     input:
         pre_result_folder=directory(os.path.join(
             config['report_dir'], 'temp', config['report_name'],
-            'results', '{challenge}', 'spectra', '{specter}'))
+            'results', '{challenge}', '{smt}', '{specter}'))
     output:
         result=os.path.join(config['report_dir'], 'temp', config['report_name'],
-            'answers', '{challenge}', 'spectra', '{specter}','.txt')
+            'answers', '{challenge}_{smt}_{specter}.txt')
     script:
         os.path.join('..', 'scripts', 'Sirius', 'take_answer.py')
 
@@ -70,15 +74,15 @@ def get_challenge_by_specter(specter):
 
 rule run_sirius_run:
     input:
-        specter=os.path.join(config['report_dir'], 'challenges', '{challenge}', 'spectra', '{specter}' + '.mgf'),
+        specter=os.path.join(config['report_dir'], 'challenges', '{challenge}', '{smt}', '{specter}' + '.mgf'),
         dirty_db=os.path.join(config['report_dir'], 'temp', config['report_name'],
             'databases' , '{specter}') + '.txt'
     output:
         res=directory(os.path.join(
             config['report_dir'], 'temp', config['report_name'],
-            'results', '{challenge}', 'spectra', '{specter}'))
+            'results', '{challenge}', '{smt}', '{specter}'))
     shell:
-        'export PATH=\"{0}:$PATH\";'.format(os.path.join(config['tool_dir'], 'bin')) + \
+        'export PATH=\"{0}:$PATH\";'.format(os.path.join(config['tool_dir'], 'bin')) + config['a']['d']['e'] +\
         'sirius -i ' + '{input.dirty_db}' + ' {0} custom-db {1};'.format(
             config['options'][0], config['options'][1]) + \
         'sirius -i {input.specter} -o {output.res} ' + '{0} formula {1} structure {2}'.format(
@@ -87,3 +91,4 @@ rule run_sirius_run:
 # export PATH="/home/artem/Programming/bioinformatics/sirius-5.5.7-linux64-headless/sirius/bin:$PATH"
 # sirius -i /home/artem/Programming/bioinformatics/NPD-QUAST-test/snakemake_test/new2_unexecuted/temp/database.txt  custom-db --name cur_database
 # sirius -i /home/artem/Programming/bioinformatics/NPD-QUAST-test/snakemake_test/new2_unexecuted/temp/spectra/Challenge-082.mgf -o /home/artem/Programming/bioinformatics/NPD-QUAST-test/snakemake_test/new2_unexecuted/temp/tool/cur_results/Challenge-082  formula -c 10 structure --database cur_database
+

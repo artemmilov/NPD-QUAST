@@ -1,6 +1,6 @@
 report_dir: '/home/artem/Programming/bioinformatics/NPD-QUAST-test/snakemake_test/test_1'
-report_name: 'd'
-run_tool: 'Dereplicator+'
+report_name: 'm'
+run_tool: 'MAGMa+'
 challenges: [Challenge-100]
-options: ['--pass-to-dereplicate " --num_hits_to_report 10 "', '--min-score 1']
-tool_dir: /home/artem/Programming/bioinformatics/molDiscovery-2.6.0-beta-Linux
+tool_dir: /home/artem/Programming/bioinformatics/MAGMa-plus
+

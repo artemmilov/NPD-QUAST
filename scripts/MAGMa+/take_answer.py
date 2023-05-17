@@ -1,8 +1,9 @@
 import os
 import sqlite3
 
-specter = os.path.split(snakemake.output[0])[1].split('.')[0]
-challenge = os.path.split(os.path.split(os.path.split(snakemake.output[0])[0])[0])[1]
+challenge = os.path.split(os.path.split(os.path.split(os.path.split(snakemake.input[0])[0])[0])[0])[1]
+spectra_or_decoy = os.path.split(os.path.split(os.path.split(snakemake.input[0])[0])[0])[1]
+specter = os.path.split(os.path.split(snakemake.input[0])[0])[1]
 
 with open(snakemake.output[0], 'w') as parsed_answers:
     conn = sqlite3.connect(snakemake.input[1])
@@ -24,9 +25,11 @@ with open(snakemake.output[0], 'w') as parsed_answers:
                 cur.execute('SELECT * FROM molecules WHERE id = {0}'.format(answer_id))
             )[0][5]
             parsed_answers.write(
-                '{0}\t{1}\t{2}\t{3}\n'.format(
+                '{0}\t{1}\t{2}\t{3}\t{4}\t{5}\n'.format(
                     challenge,
+                    spectra_or_decoy,
                     specter,
+                    1,
                     answer_inchi_key,
                     str(round(float(line.split(' ')[0]), 3)),
                 ),

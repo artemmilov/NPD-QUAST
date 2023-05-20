@@ -65,7 +65,7 @@ to each other. """
     parser.add_argument(
         '-P',
         '--percent',
-        type=int,
+        type=float,
         help='percent of real spectra = count of decoys',
     )
     return parser.parse_args(args)
@@ -73,38 +73,40 @@ to each other. """
 
 def handle_args(options, logger):
     mass_spectra = []
-    print('A')
     for challenge in os.listdir(os.path.join(options.folder, 'challenges')):
+        i = 0
+        n = len(os.listdir(os.path.join(options.folder, 'challenges', challenge, 'spectra')))
+        print('-' * 15 + 'reading mass spectra' + '-' * 15)
         for specter in os.listdir(os.path.join(options.folder, 'challenges', challenge, 'spectra')):
+            if int(i / n * 49) > int((i - 1) / n * 49):
+                print('#' * (int(i / n * 49) - int((i - 1) / n * 49)), end='', flush=True)
+            i += 1
             mass_spectra.append(decoys.MassSpecter(file=os.path.join(
                 options.folder, 'challenges', challenge, 'spectra', specter)))
-    s = 0
-    print('A')
+        print('#\n' + '-' * 23 + 'done' + '-' * 23 + '\n')
     for challenge in os.listdir(os.path.join(options.folder, 'challenges')):
-        print('A')
-        k = int((options.percent / 100) * \
+        k = int((options.percent / 100) *
                 len(os.listdir(os.path.join(options.folder, 'challenges', challenge, 'spectra'))))
-        for i in range(k):
-            if not os.path.exists(os.path.join(options.folder, 'challenges', challenge, 'decoys')):
-                os.mkdir(os.path.join(options.folder, 'challenges', challenge, 'decoys'))
-            if options.method == 'naive':
-                decoys.handle_naive_method(mass_spectra).write_to_file(
-                    os.path.join(options.folder, 'challenges', challenge,
-                                 'decoys', 'decoy_{}'.format(s)))
-            elif options.method == 'naive_extra':
-                print('A')
-                decoys.handle_naive_method_extra(mass_spectra).write_to_file(
-                    os.path.join(options.folder, 'challenges', challenge,
-                                 'decoys', 'decoy_{}'.format(s)))
-            elif options.method == 'spectrum_based':
-                decoys.handle_spectrum_based_method(mass_spectra).write_to_file(
-                    os.path.join(options.folder, 'challenges', challenge,
-                                 'decoys', 'decoy_{}'.format(s)))
-            else:
-                logger.error('Incorrect method!')
-                return
-            s += 1
-    logger.info('Done!')
+        print('-' * 18 + 'making decoys' + '-' * 19)
+        if not os.path.exists(os.path.join(options.folder, 'challenges', challenge, 'decoys')):
+            os.mkdir(os.path.join(options.folder, 'challenges', challenge, 'decoys'))
+        if options.method == 'naive':
+            for i, decoy in enumerate(decoys.handle_naive_method(mass_spectra, decoys_count=k)):
+                decoy.write_to_file(os.path.join(options.folder, 'challenges', challenge,
+                                    'decoys', 'decoy_{}.mgf'.format(i)))
+        elif options.method == 'naive_extra':
+            for i, decoy in enumerate(decoys.handle_naive_method_extra(mass_spectra, decoys_count=k)):
+                decoy.write_to_file(os.path.join(options.folder, 'challenges', challenge,
+                                    'decoys', 'decoy_{}.mgf'.format(i)))
+        elif options.method == 'spectrum_based':
+            for i, decoy in enumerate(decoys.handle_spectrum_based_method(mass_spectra, decoys_count=k)):
+                decoy.write_to_file(os.path.join(options.folder, 'challenges', challenge,
+                                    'decoys', 'decoy_{}.mgf'.format(i)))
+        else:
+            logger.error('Incorrect method!')
+            return
+    print('#\n' + '-' * 23 + 'done' + '-' * 23 + '\n')
+    # logger.info('Done!')
 
 
 def main():
@@ -113,7 +115,7 @@ def main():
 
     logger = NerpaLogger()
     options = parse_args()
-    logger.info('Start running Decoys')
+    #logger.info('Start running Decoys')
     handle_args(options, logger)
 
 
